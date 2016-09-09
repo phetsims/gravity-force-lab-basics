@@ -14,19 +14,11 @@ define( function( require ) {
   var Screen = require( 'JOIST/Screen' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
-  // strings
-  var gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
-
   /**
    * @constructor
    */
   function GravityForceLabBasicsScreen() {
-
-    //If this is a single-screen sim, then no icon is necessary.
-    //If there are multiple screens, then the icon must be provided here.
-    var icon = null;
-
-    Screen.call( this, gravityForceLabBasicsTitleString, icon,
+    Screen.call( this,
       function() { return new GravityForceLabBasicsModel(); },
       function( model ) { return new GravityForceLabBasicsScreenView( model ); },
       { backgroundColor: 'white' }
