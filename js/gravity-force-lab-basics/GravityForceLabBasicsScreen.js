@@ -13,6 +13,8 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Screen = require( 'JOIST/Screen' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var Property = require( 'AXON/Property' );
+  var Color = require( 'SCENERY/util/Color' );
 
   /**
    * @constructor
@@ -21,7 +23,7 @@ define( function( require ) {
     Screen.call( this,
       function() { return new GravityForceLabBasicsModel(); },
       function( model ) { return new GravityForceLabBasicsScreenView( model ); },
-      { backgroundColor: 'white' }
+      { backgroundColorProperty: new Property( Color.toColor( 'white' ) ) }
     );
   }
 
