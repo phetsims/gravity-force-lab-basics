@@ -9,17 +9,23 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var ScreenView = require( 'JOIST/ScreenView' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
+  var GravityForceLabScreenView = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenView' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var Image = require( 'SCENERY/nodes/Image' );
+  var HSlider = require( 'SUN/HSlider' );
+  var Property = require( 'AXON/Property' );
+
+  // images
+  var backgroundImage = require( 'image!GRAVITY_FORCE_LAB_BASICS/background.png' );
 
   /**
    * @param {GravityForceLabBasicsModel} gravityForceLabBasicsModel
    * @constructor
    */
-  function GravityForceLabBasicsScreenView( gravityForceLabBasicsModel ) {
+  function GravityForceLabBasicsScreenView( gravityForceLabBasicsModel, tandem ) {
 
-    ScreenView.call( this );
+    GravityForceLabScreenView.call( this, gravityForceLabBasicsModel, tandem );
 
     // Reset All button
     var resetAllButton = new ResetAllButton( {
@@ -30,16 +36,17 @@ define( function( require ) {
       bottom: this.layoutBounds.maxY - 10
     } );
     this.addChild( resetAllButton );
+
+    //Show the mock-up and a slider to change its transparency
+    var mockupOpacityProperty = new Property( 0.00 );
+    var mockImage = new Image( backgroundImage, { pickable: false } );
+    mockImage.scale( this.layoutBounds.width / mockImage.width, this.layoutBounds.height / mockImage.height );
+    mockupOpacityProperty.linkAttribute( mockImage, 'opacity' );
+    this.addChild( mockImage );
+    this.addChild( new HSlider( mockupOpacityProperty, { min: 0, max: 1 }, { top: 10, left: 10 } ) );
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsScreenView', GravityForceLabBasicsScreenView );
 
-  return inherit( ScreenView, GravityForceLabBasicsScreenView, {
-
-    //TODO Called by the animation loop. Optional, so if your view has no animation, please delete this.
-    // @public
-    step: function( dt ) {
-      //TODO Handle view animation here.
-    }
-  } );
+  return inherit( GravityForceLabScreenView, GravityForceLabBasicsScreenView );
 } );
