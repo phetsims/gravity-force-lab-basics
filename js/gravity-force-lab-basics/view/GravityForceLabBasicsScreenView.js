@@ -9,8 +9,9 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
+  var Bounds2 = require( 'DOT/Bounds2' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var GravityForceLabScreenView = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenView' );
+  var ScreenView = require( 'JOIST/ScreenView' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var Image = require( 'SCENERY/nodes/Image' );
   var HSlider = require( 'SUN/HSlider' );
@@ -24,8 +25,7 @@ define( function( require ) {
    * @constructor
    */
   function GravityForceLabBasicsScreenView( gravityForceLabBasicsModel, tandem ) {
-
-    GravityForceLabScreenView.call( this, gravityForceLabBasicsModel, tandem );
+    ScreenView.call( this, { layoutBounds: new Bounds2( 0, 0, 768, 464 ) } );
 
     // Reset All button
     var resetAllButton = new ResetAllButton( {
@@ -48,5 +48,5 @@ define( function( require ) {
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsScreenView', GravityForceLabBasicsScreenView );
 
-  return inherit( GravityForceLabScreenView, GravityForceLabBasicsScreenView );
+  return inherit( ScreenView, GravityForceLabBasicsScreenView );
 } );
