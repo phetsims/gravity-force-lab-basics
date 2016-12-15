@@ -18,6 +18,7 @@ define( function( require ) {
   var MAX_DISTANCE_FROM_CENTER = 7.48; // meters, empirically determined boundary for masses
 
   var GravityForceLabBasicsConstants = {
+    BILLION_MULTIPLIER: 1000000000, // a billion for scaling values (since basics version uses billions of kg)
     MIN_MASS: MIN_MASS,
     MAX_MASS: MAX_MASS,
     RIGHT_MASS_BOUNDARY: MAX_DISTANCE_FROM_CENTER,
