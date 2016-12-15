@@ -16,7 +16,10 @@ define( function( require ) {
    * @constructor
    */
   function GravityForceLabBasicsModel( tandem ) {
-    GravityForceLabModel.call( this, tandem );
+    GravityForceLabModel.call( this, tandem.createTandem( 'gravityForceLabBasicsModel' ) );
+
+    // @public @override
+
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );
