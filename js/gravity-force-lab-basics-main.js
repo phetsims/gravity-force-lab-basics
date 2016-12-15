@@ -9,9 +9,17 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var GravityForceLabBasicsScreen = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsScreen' );
   var Sim = require( 'JOIST/Sim' );
+  var Property = require( 'AXON/Property' );
+  var Color = require( 'SCENERY/util/Color' );
   var SimLauncher = require( 'JOIST/SimLauncher' );
+  var Screen = require( 'JOIST/Screen' );
+  var Tandem = require( 'TANDEM/Tandem' );
+  var GravityForceLabBasicsModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GravityForceLabBasicsModel' );
+  var GravityForceLabBasicsScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsScreenView' );
+
+  // constants
+  var tandem = Tandem.createRootTandem();
 
   // strings
   var gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
@@ -29,7 +37,20 @@ define( function( require ) {
   };
 
   SimLauncher.launch( function() {
-    var sim = new Sim( gravityForceLabBasicsTitleString, [ new GravityForceLabBasicsScreen() ], simOptions );
+
+    var gravityForceLabBasicsScreenTandem = tandem.createTandem( 'gravityForceLabBasicsScreen' );
+
+    var sim = new Sim( gravityForceLabBasicsTitleString,
+      [ new Screen(
+          function() {
+            return new GravityForceLabBasicsModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) );
+          },
+          function( model ) {
+            return new GravityForceLabBasicsScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
+          },
+          { backgroundColorProperty: new Property( Color.toColor( '#ffffb3' ) ), tandem: gravityForceLabBasicsScreenTandem }
+        )
+      ], simOptions );
     sim.start();
   } );
 } );

@@ -9,27 +9,20 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var PropertySet = require( 'AXON/PropertySet' );
+  var GravityForceLabModel = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/GravityForceLabModel' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
   /**
    * @constructor
    */
-  function GravityForceLabBasicsModel() {
+  function GravityForceLabBasicsModel( tandem ) {
+    GravityForceLabModel.call( this, tandem.createTandem( 'gravityForceLabBasicsModel' ) );
 
-    PropertySet.call( this, {
-      //TODO
-    } );
+    // @public @override
+
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );
 
-  return inherit( PropertySet, GravityForceLabBasicsModel, {
-
-    //TODO Called by the animation loop. Optional, so if your model has no animation, please delete this.
-    // @public
-    step: function( dt ) {
-      //TODO Handle model animation here.
-    }
-  } );
+  return inherit( GravityForceLabModel, GravityForceLabBasicsModel );
 } );

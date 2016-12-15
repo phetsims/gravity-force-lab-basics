@@ -40,6 +40,7 @@ require.config( {
     SCENERY_PHET: '../../scenery-phet/js',
     SUN: '../../sun/js',
     TANDEM: '../../tandem/js',
+    GRAVITY_FORCE_LAB: '../../gravity-force-lab/js',
 
     // this sim
     GRAVITY_FORCE_LAB_BASICS: '.'
