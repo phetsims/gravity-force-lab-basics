@@ -60,7 +60,7 @@ define( function( require ) {
     this.addChild( parameterControlPanel );
 
     // mass controls
-    var massControl1 = new MassControl( mass1String, model.mass1.massProperty, GravityForceLabBasicsConstants.MASS_RANGE );
+    var massControl1 = new MassControl( mass1String, model.mass1.massProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl1' ) );
     this.addChild( massControl1 );
 
     var massControl2 = new MassControl( mass2String, model.mass2.massProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl2' ), {
@@ -106,7 +106,7 @@ define( function( require ) {
       listener: function() {
         model.reset();
       },
-      right:  this.layoutBounds.maxX - 10,
+      right: this.layoutBounds.maxX - 10,
       bottom: this.layoutBounds.maxY - 10
     } );
     this.addChild( resetAllButton );

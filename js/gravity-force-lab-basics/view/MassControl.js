@@ -34,6 +34,7 @@ define( function( require ) {
    * @param {Range} massRange
    * @param {Color} thumbColor
    * @param {Tandem} tandem
+   * @param {Object} [options]
    * @constructor
    */
   function MassControl( titleString, massProperty, massRange, tandem, options ) {
