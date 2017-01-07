@@ -11,6 +11,9 @@
     "grunt-eslint": "~19.0.0"
   },
   "phet": {
-    "requirejsNamespace": "GRAVITY_FORCE_LAB_BASICS"
+    "requirejsNamespace": "GRAVITY_FORCE_LAB_BASICS",
+    "phetLibs": [
+      "gravity-force-lab"
+    ]
   }
 }

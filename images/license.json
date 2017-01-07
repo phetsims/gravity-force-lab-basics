@@ -1,3 +1,10 @@
 {
-
+  "background.png": {
+    "text": [
+      "Copyright 2016-2017 University of Colorado Boulder"
+    ],
+    "projectURL": "http://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "created by Amy Rouinfar"
+  }
 }
