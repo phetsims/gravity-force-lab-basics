@@ -50,7 +50,7 @@ define( function( require ) {
     var modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping(
       Vector2.ZERO,
       new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height / 2 ),
-      50
+      .05
     );
 
     // view parameter controls
@@ -81,7 +81,8 @@ define( function( require ) {
         direction: 'left',
         arrowColor: '#66f',
         y: MASS_NODE_Y_POSITION,
-        forceArrowHeight: 125
+        forceArrowHeight: 125,
+        forceReadoutDecimalPlaces: 1
       }
     ) );
 
@@ -97,7 +98,8 @@ define( function( require ) {
         direction: 'right',
         arrowColor: '#f66',
         y: MASS_NODE_Y_POSITION,
-        forceArrowHeight: 175
+        forceArrowHeight: 175,
+        forceReadoutDecimalPlaces: 1
       }
     ) );
 

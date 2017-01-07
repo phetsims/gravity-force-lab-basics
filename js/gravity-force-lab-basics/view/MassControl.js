@@ -17,6 +17,7 @@ define( function( require ) {
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
   var Property = require( 'AXON/Property' );
+  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   var Text = require( 'SCENERY/nodes/Text' );
@@ -47,7 +48,13 @@ define( function( require ) {
 
     var numberPicker = new NumberPicker( massProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
-      color: options.color
+      color: options.color,
+      upFunction: function() { return massProperty.get() + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
+      downFunction: function() { return massProperty.get() - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
+      formatText: function( text ) {
+        var value = parseInt( text, 10 );
+        return value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER;
+      }
     } );
     var numberPickerLabel = new Text( billionKGString, { font: new PhetFont( { size: 11, weight: 'bold' } ) } );
     var numberPickerSpacer = new Spacer( MIN_PANEL_WIDTH - numberPicker.width - numberPickerLabel.width - 10, 0 );

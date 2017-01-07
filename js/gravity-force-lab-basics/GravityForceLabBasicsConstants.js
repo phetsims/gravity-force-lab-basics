@@ -13,12 +13,13 @@ define( function( require ) {
   var Range = require( 'DOT/Range' );
 
   // constants
-  var MIN_MASS = 1; // kg
-  var MAX_MASS = 1000; // kg
-  var MAX_DISTANCE_FROM_CENTER = 7.48; // meters, empirically determined boundary for masses
+  var BILLION_MULTIPLIER = 1000000000;
+  var MIN_MASS = 1 * BILLION_MULTIPLIER; // kg
+  var MAX_MASS = 10 * BILLION_MULTIPLIER; // kg
+  var MAX_DISTANCE_FROM_CENTER = 10000; // meters, empirically determined boundary for masses
 
   var GravityForceLabBasicsConstants = {
-    BILLION_MULTIPLIER: 1000000000, // a billion for scaling values (since basics version uses billions of kg)
+    BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
     MIN_MASS: MIN_MASS,
     MAX_MASS: MAX_MASS,
     RIGHT_MASS_BOUNDARY: MAX_DISTANCE_FROM_CENTER,
