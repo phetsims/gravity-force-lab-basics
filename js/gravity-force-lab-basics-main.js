@@ -11,7 +11,6 @@ define( function( require ) {
   // modules
   var Sim = require( 'JOIST/Sim' );
   var Property = require( 'AXON/Property' );
-  var Color = require( 'SCENERY/util/Color' );
   var SimLauncher = require( 'JOIST/SimLauncher' );
   var Screen = require( 'JOIST/Screen' );
   var Tandem = require( 'TANDEM/Tandem' );
@@ -48,7 +47,7 @@ define( function( require ) {
           function( model ) {
             return new GravityForceLabBasicsScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
           },
-          { backgroundColorProperty: new Property( Color.toColor( '#ffffb3' ) ), tandem: gravityForceLabBasicsScreenTandem }
+          { backgroundColorProperty: new Property( '#ffffb3' ), tandem: gravityForceLabBasicsScreenTandem }
         )
       ], simOptions );
     sim.start();
