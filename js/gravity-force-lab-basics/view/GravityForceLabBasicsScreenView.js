@@ -12,9 +12,11 @@ define( function( require ) {
   var Bounds2 = require( 'DOT/Bounds2' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
+  var DistanceControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceControl' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var Image = require( 'SCENERY/nodes/Image' );
+  var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
   var MassNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassNode' );
   var HSlider = require( 'SUN/HSlider' );
@@ -25,7 +27,7 @@ define( function( require ) {
   var Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  var MASS_CONTROLS_Y_POSITION = 360;
+  var MASS_CONTROLS_Y_POSITION = 345;
   var MASS_NODE_Y_POSITION = 215;
 
   // strings
@@ -61,12 +63,21 @@ define( function( require ) {
 
     // mass controls
     var massControl1 = new MassControl( mass1String, model.mass1.massProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl1' ) );
-    this.addChild( massControl1 );
-
     var massControl2 = new MassControl( mass2String, model.mass2.massProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl2' ), {
       color: new Color( 255, 0, 0 )
     } );
-    this.addChild( massControl2 );
+
+    // place mass controls in an HBox
+    var massControlBox = new HBox( {
+      children: [ massControl1, massControl2 ],
+      center: this.layoutBounds.center,
+      spacing: 50
+    } );
+    this.addChild( massControlBox );
+
+    // distance controls
+    var distanceControl = new DistanceControl( model.mass1, model.mass2 );
+    this.addChild( distanceControl );
 
     // add the mass nodes to the screen
     this.addChild( new MassNode(
@@ -116,10 +127,13 @@ define( function( require ) {
     // layout the view elements
     parameterControlPanel.right = this.layoutBounds.width - 15;
     parameterControlPanel.bottom = MASS_CONTROLS_Y_POSITION;
-    massControl2.right = parameterControlPanel.left - 45;
-    massControl2.top = parameterControlPanel.top;
-    massControl1.right = massControl2.left - 45;
-    massControl1.top = parameterControlPanel.top;
+
+    massControlBox.right = parameterControlPanel.left - 45;
+    massControlBox.top = parameterControlPanel.top;
+
+    distanceControl.centerX = massControlBox.centerX;
+    distanceControl.top = massControlBox.bottom + 15;
+
     // massControl1ConstantRadius.center = massControl1.center;
     // massControl2ConstantRadius.center = massControl2.center;
     resetAllButton.right = parameterControlPanel.right;

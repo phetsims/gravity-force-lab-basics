@@ -44,17 +44,21 @@ define( function( require ) {
       color: new Color( 0, 0, 255 )
     }, options );
 
-    var titleText = new Text( titleString, { font: new PhetFont( 16 ) } );
+    var titleText = new Text( titleString, { font: new PhetFont( 14 ) } );
 
     var numberPicker = new NumberPicker( massProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
-      color: options.color,
       upFunction: function() { return massProperty.get() + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       downFunction: function() { return massProperty.get() - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       formatText: function( text ) {
         var value = parseInt( text, 10 );
         return value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER;
-      }
+      },
+
+      // arrow options
+      arrowHeight: 3,
+      arrowYSpacing: 2,
+      color: options.color,
     } );
     var numberPickerLabel = new Text( billionKGString, { font: new PhetFont( { size: 11, weight: 'bold' } ) } );
     var numberPickerSpacer = new Spacer( MIN_PANEL_WIDTH - numberPicker.width - numberPickerLabel.width - 10, 0 );
@@ -74,7 +78,7 @@ define( function( require ) {
 
     var panelVBox = new VBox( {
       children: [ titleBox, numberPickerBox ],
-      spacing: 10
+      spacing: 5
     } );
 
     Panel.call( this, panelVBox, {
