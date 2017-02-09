@@ -12,7 +12,6 @@ define( function( require ) {
   var Bounds2 = require( 'DOT/Bounds2' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
-  var DistanceControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceControl' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var Image = require( 'SCENERY/nodes/Image' );
@@ -75,10 +74,6 @@ define( function( require ) {
     } );
     this.addChild( massControlBox );
 
-    // distance controls
-    var distanceControl = new DistanceControl( model.mass1, model.mass2 );
-    this.addChild( distanceControl );
-
     // add the mass nodes to the screen
     this.addChild( new MassNode(
       model,
@@ -130,9 +125,6 @@ define( function( require ) {
 
     massControlBox.right = parameterControlPanel.left - 45;
     massControlBox.top = parameterControlPanel.top;
-
-    distanceControl.centerX = massControlBox.centerX;
-    distanceControl.top = massControlBox.bottom + 15;
 
     // massControl1ConstantRadius.center = massControl1.center;
     // massControl2ConstantRadius.center = massControl2.center;
