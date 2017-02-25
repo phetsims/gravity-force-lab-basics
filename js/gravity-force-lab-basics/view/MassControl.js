@@ -48,8 +48,8 @@ define( function( require ) {
 
     var numberPicker = new NumberPicker( massProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
-      upFunction: function() { return massProperty.get() + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
-      downFunction: function() { return massProperty.get() - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
+      upFunction: function( mass ) { return mass + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
+      downFunction: function( mass ) { return mass - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       formatText: function( text ) {
         var value = parseInt( text, 10 );
         return value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER;
