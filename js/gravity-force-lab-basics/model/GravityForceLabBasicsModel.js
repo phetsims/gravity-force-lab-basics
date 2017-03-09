@@ -9,9 +9,10 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var GravityForceLabModel = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/GravityForceLabModel' );
+  var InverseSquareLawModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/InverseSquareLawModel' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  var InverseSquareLawModes = require( 'INVERSE_SQUARE_LAW_COMMON/InverseSquareLawModes' );
 
   /**
    * @constructor
@@ -30,13 +31,16 @@ define( function( require ) {
     var modelOptions = {
       massDensity: 1.5, // kg/m^3
       massConstantRadius: 500, // m
-      massRange: GravityForceLabBasicsConstants.MASS_RANGE,
+
+      valueRange: GravityForceLabBasicsConstants.MASS_RANGE,
 
       // boundaries for locations of the masses in meters
-      leftMassBoundary: GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY,
-      rightMassBoundary: GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY
+      leftObjectBoundary: GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY,
+      rightObjectBoundary: GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY
     };
-    GravityForceLabModel.call( this, mass1, mass2 , position1, position2, tandem.createTandem( 'gravityForceLabBasicsModel' ), modelOptions );
+
+    // leverage InverseSquareLawModel, in "Mass" mode
+    InverseSquareLawModel.call( this, InverseSquareLawModes.MASS, mass1, mass2, position1, position2, tandem.createTandem( 'gravityForceLabBasicsModel' ), modelOptions );
 
     // @public @override
 
@@ -44,5 +48,5 @@ define( function( require ) {
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );
 
-  return inherit( GravityForceLabModel, GravityForceLabBasicsModel );
+  return inherit( InverseSquareLawModel, GravityForceLabBasicsModel );
 } );

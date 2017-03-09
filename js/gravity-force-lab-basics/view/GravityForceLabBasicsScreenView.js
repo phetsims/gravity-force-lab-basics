@@ -61,8 +61,8 @@ define( function( require ) {
     this.addChild( parameterControlPanel );
 
     // mass controls
-    var massControl1 = new MassControl( mass1String, model.mass1.massProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl1' ) );
-    var massControl2 = new MassControl( mass2String, model.mass2.massProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl2' ), {
+    var massControl1 = new MassControl( mass1String, model.object1.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl1' ) );
+    var massControl2 = new MassControl( mass2String, model.object2.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl2' ), {
       color: new Color( 255, 0, 0 )
     } );
 
@@ -77,7 +77,7 @@ define( function( require ) {
     // add the mass nodes to the screen
     this.addChild( new MassNode(
       model,
-      model.mass1,
+      model.object1,
       this.layoutBounds,
       modelViewTransform,
       tandem.createTandem( 'mass1Node' ),
@@ -94,7 +94,7 @@ define( function( require ) {
 
     this.addChild( new MassNode(
       model,
-      model.mass2,
+      model.object2,
       this.layoutBounds,
       modelViewTransform,
       tandem.createTandem( 'mass2Node' ),
