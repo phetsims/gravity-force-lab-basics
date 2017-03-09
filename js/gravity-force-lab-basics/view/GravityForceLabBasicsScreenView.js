@@ -14,7 +14,9 @@ define( function( require ) {
   var ScreenView = require( 'JOIST/ScreenView' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
+  var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
   var MassNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassNode' );
@@ -28,6 +30,7 @@ define( function( require ) {
   // constants
   var MASS_CONTROLS_Y_POSITION = 345;
   var MASS_NODE_Y_POSITION = 215;
+  var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
 
   // strings
   var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
@@ -88,7 +91,8 @@ define( function( require ) {
         arrowColor: '#66f',
         y: MASS_NODE_Y_POSITION,
         forceArrowHeight: 125,
-        forceReadoutDecimalPlaces: 1
+        forceReadoutDecimalPlaces: 1,
+        snapValue: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
       }
     ) );
 
@@ -105,7 +109,8 @@ define( function( require ) {
         arrowColor: '#f66',
         y: MASS_NODE_Y_POSITION,
         forceArrowHeight: 175,
-        forceReadoutDecimalPlaces: 1
+        forceReadoutDecimalPlaces: 1,
+        snapValue: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
       }
     ) );
 
@@ -131,6 +136,10 @@ define( function( require ) {
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
 
+    //------------------------------------------------
+    // debugging
+    //------------------------------------------------
+
     //Show the mock-up and a slider to change its transparency
     var mockupOpacityProperty = new Property( 0.00 );
     var mockImage = new Image( backgroundImage, { pickable: false } );
@@ -138,6 +147,10 @@ define( function( require ) {
     mockupOpacityProperty.linkAttribute( mockImage, 'opacity' );
     this.addChild( mockImage );
     this.addChild( new HSlider( mockupOpacityProperty, { min: 0, max: 1 }, { top: 10, left: 10 } ) );
+
+    if ( SHOW_GRID ) {
+      this.addChild( new GridNode( this.layoutBounds, modelViewTransform ) );
+    }
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsScreenView', GravityForceLabBasicsScreenView );

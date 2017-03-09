@@ -16,15 +16,19 @@ define( function( require ) {
   var BILLION_MULTIPLIER = 1000000000;
   var MIN_MASS = 1 * BILLION_MULTIPLIER; // kg
   var MAX_MASS = 10 * BILLION_MULTIPLIER; // kg
-  var MAX_DISTANCE_FROM_CENTER = 10000; // meters, empirically determined boundary for masses
+  var MAX_DISTANCE_FROM_CENTER = 5600; // meters, empirically determined boundary for masses
 
   var GravityForceLabBasicsConstants = {
     BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
+
     MIN_MASS: MIN_MASS,
     MAX_MASS: MAX_MASS,
+    MASS_RANGE: new Range( MIN_MASS, MAX_MASS ),
+
     RIGHT_MASS_BOUNDARY: MAX_DISTANCE_FROM_CENTER,
     LEFT_MASS_BOUNDARY: -MAX_DISTANCE_FROM_CENTER,
-    MASS_RANGE: new Range( MIN_MASS, MAX_MASS )
+
+    MASS_POSITION_DELTA: 100 // in m, masses can move in 0.1 km increments and will snap to these locations
   };
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsConstants', GravityForceLabBasicsConstants );
