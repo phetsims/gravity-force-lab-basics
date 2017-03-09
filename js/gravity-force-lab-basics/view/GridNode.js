@@ -40,9 +40,8 @@ define( function( require ) {
     }
 
     Path.call( this, gridShape, {
-      stroke: 'black',
-      lineWidth: 1,
-      fill: 'black'
+      stroke: 'rgba( 0, 0, 0, 0.6 )',
+      lineWidth: 1
     } );
   }
 

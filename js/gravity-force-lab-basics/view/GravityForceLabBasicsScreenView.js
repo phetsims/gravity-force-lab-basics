@@ -92,7 +92,7 @@ define( function( require ) {
         y: MASS_NODE_Y_POSITION,
         forceArrowHeight: 125,
         forceReadoutDecimalPlaces: 1,
-        snapValue: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
+        snapToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
       }
     ) );
 
@@ -110,7 +110,7 @@ define( function( require ) {
         y: MASS_NODE_Y_POSITION,
         forceArrowHeight: 175,
         forceReadoutDecimalPlaces: 1,
-        snapValue: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
+        snapToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
       }
     ) );
 
