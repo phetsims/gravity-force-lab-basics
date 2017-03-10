@@ -36,7 +36,10 @@ define( function( require ) {
 
       // boundaries for locations of the masses in meters
       leftObjectBoundary: GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY,
-      rightObjectBoundary: GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY
+      rightObjectBoundary: GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY,
+
+      snapToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
+      minSeparationBetweenObjects: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
     };
 
     // leverage InverseSquareLawModel, in "Mass" mode
