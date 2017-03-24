@@ -31,6 +31,7 @@ define( function( require ) {
   var MASS_CONTROLS_Y_POSITION = 345;
   var MASS_NODE_Y_POSITION = 215;
   var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
+  var MOCKUP = GravityForceLabBasicsQueryParameters.mockup;
 
   // strings
   var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
@@ -140,13 +141,15 @@ define( function( require ) {
     // debugging
     //------------------------------------------------
 
-    //Show the mock-up and a slider to change its transparency
-    var mockupOpacityProperty = new Property( 0.00 );
-    var mockImage = new Image( backgroundImage, { pickable: false } );
-    mockImage.scale( this.layoutBounds.width / mockImage.width, this.layoutBounds.height / mockImage.height );
-    mockupOpacityProperty.linkAttribute( mockImage, 'opacity' );
-    this.addChild( mockImage );
-    this.addChild( new HSlider( mockupOpacityProperty, { min: 0, max: 1 }, { top: 10, left: 10 } ) );
+    if ( MOCKUP ) {
+      //Show the mock-up and a slider to change its transparency
+      var mockupOpacityProperty = new Property( 0.00 );
+      var mockImage = new Image( backgroundImage, { pickable: false } );
+      mockImage.scale( this.layoutBounds.width / mockImage.width, this.layoutBounds.height / mockImage.height );
+      mockupOpacityProperty.linkAttribute( mockImage, 'opacity' );
+      this.addChild( mockImage );
+      this.addChild( new HSlider( mockupOpacityProperty, { min: 0, max: 1 }, { top: 10, left: 10 } ) );
+    }
 
     if ( SHOW_GRID ) {
       this.addChild( new GridNode( this.layoutBounds, modelViewTransform ) );

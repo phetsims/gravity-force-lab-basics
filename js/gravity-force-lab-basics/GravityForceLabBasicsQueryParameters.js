@@ -16,7 +16,11 @@ define( function( require ) {
     // shows a grid that represents the possible locations for the masses in this sim
     // masses are restricted to being placed along this grid and will snap to the lines
     // shown
-    showGrid: { type: 'flag' }
+    showGrid: { type: 'flag' },
+
+    // for development - add a slider to the screen view allows one to slide view the latest mockup
+    // overlayed above the sim.
+    mockup: { type: 'flag' }
   } );
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsQueryParameters', GravityForceLabBasicsQueryParameters );
