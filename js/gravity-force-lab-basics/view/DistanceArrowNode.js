@@ -4,8 +4,8 @@
  * Double headed arrow that shows the distance between the two masses in gravity-force-lab-basics.  The arrow
  * goes from the center of one mass to the other.
  *
- * @author Jesse Greenberg (PhET Interactive Simulations)
  * @author Steele Dalton (PhET Interactive Simulations)
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 define( function( require ) {
@@ -26,8 +26,13 @@ define( function( require ) {
   var distanceUnitsPatternString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distanceUnitsPattern' );
 
   /**
-   * 
    * @constructor
+   * @param {Property} mass1PositionProperty
+   * @param {Property} mass2PositionProperty
+   * @param {Property} showValuesProperty
+   * @param {ModelViewTransform2} modelViewTransform
+   * @param {Tandem} tandem
+   * @param {Object} options
    */
   function DistanceArrowNode( mass1PositionProperty, mass2PositionProperty, showValuesProperty, modelViewTransform, tandem, options ) {
 
