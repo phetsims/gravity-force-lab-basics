@@ -56,7 +56,10 @@ define( function( require ) {
     var leftBoundary = GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY;
     var rightBoundary = GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY;
 
-    InverseSquareLawModel.call( this, InverseSquareLawCommonConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ) );
+    InverseSquareLawModel.call( this, InverseSquareLawCommonConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ), {
+      snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
+      minSeparationBetweenObjects: 200 // in meters
+    } );
 
   }
 

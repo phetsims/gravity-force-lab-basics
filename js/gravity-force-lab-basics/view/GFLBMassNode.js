@@ -14,7 +14,6 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var RangeWithValue = require('DOT/RangeWithValue'); 
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
-  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var ObjectNode = require('INVERSE_SQUARE_LAW_COMMON/view/ObjectNode');
 
@@ -35,7 +34,7 @@ define( function( require ) {
       labelFont: new PhetFont( 25 ),
       labelMaxWidth: 40,
       forceReadoutDecimalPlaces: 1,
-      snapToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA // in meters, charges will snap to the nearest 0.1 meters in model coordinates
+      snapToNearest: model.snapObjectsToNearest // in meters, charges will snap to the nearest 0.1 meters in model coordinates
     }, options );
 
     // @private
