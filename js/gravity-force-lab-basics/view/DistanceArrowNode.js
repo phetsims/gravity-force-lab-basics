@@ -46,35 +46,31 @@ define( function( require ) {
     } );
     this.addChild( arrowNode );
 
+    // the label
     var labelText = new Text( StringUtils.fillIn( distanceUnitsPatternString, { distance: 0 } ), {
       font: new PhetFont( 12 ),
       bottom: arrowNode.top - 5
     } );
     this.addChild( labelText );
 
-    showValuesProperty.link( function( showValues ) {
-      if ( !showValues ) {
-        labelText.setText( distanceString );
-      }
-    } );
-
     Property.multilink( [ mass1PositionProperty, mass2PositionProperty, showValuesProperty ], function( position1, position2, showValues ) {
 
-      // update the arrow node
+      // update the arrow node width
       var viewPosition1 = modelViewTransform.modelToViewX( position1 );
       var viewPosition2 = modelViewTransform.modelToViewX( position2 );
       arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
 
-      // center the label
-      labelText.centerX = arrowNode.centerX;
-
+      // update label text and center
       if ( showValues ) {
-
-        // update label
         var distance = position2 - position1;
         var labelString = StringUtils.fillIn( distanceUnitsPatternString, { distance: distance } );
         labelText.setText( labelString );
       }
+      else {
+        labelText.setText( distanceString );
+      }
+      
+      labelText.centerX = arrowNode.centerX;
     } );
   }
 
