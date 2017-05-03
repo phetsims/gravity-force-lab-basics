@@ -82,7 +82,7 @@ define( function( require ) {
     // add the mass nodes to the screen
     this.addChild( new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass1Node' ), {
       label: mass1LabelString,
-      otherObjectName: mass2LabelString,
+      otherObjectLabel: mass2LabelString,
       defaultDirection: 'left',
       arrowColor: '#66F',
       y: MASS_NODE_Y_POSITION,
@@ -91,7 +91,7 @@ define( function( require ) {
 
     this.addChild( new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass2Node' ), {
       label: mass2LabelString,
-      otherObjectName: mass1LabelString,
+      otherObjectLabel: mass1LabelString,
       defaultDirection: 'right',
       arrowColor: '#F66',
       y: MASS_NODE_Y_POSITION,
