@@ -13,7 +13,6 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Panel = require( 'SUN/Panel' );
   var VBox = require( 'SCENERY/nodes/VBox' );
-  var Spacer = require( 'SCENERY/nodes/Spacer' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
   var Property = require( 'AXON/Property' );
@@ -21,7 +20,6 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
 
   // strings
   var billionKGString = 'billion kg'; // TODO: use string pattern
@@ -61,24 +59,15 @@ define( function( require ) {
       color: options.color,
     } );
     var numberPickerLabel = new Text( billionKGString, { font: new PhetFont( { size: 11, weight: 'bold' } ) } );
-    var numberPickerSpacer = new Spacer( MIN_PANEL_WIDTH - numberPicker.width - numberPickerLabel.width - 10, 0 );
 
     var numberPickerHBox = new HBox( {
-      children: [ numberPicker, numberPickerLabel, numberPickerSpacer ],
+      children: [ numberPicker, numberPickerLabel ],
       spacing: 10
     } );
 
-    // ensure that the number picker and title have the same width
-    var controlAlignGroup = new AlignGroup( {
-      matchVertical: false,
-      matchHorizontal: true
-    } );
-    var titleBox = controlAlignGroup.createBox( titleText, { xAlign: 'center' } );
-    var numberPickerBox = controlAlignGroup.createBox( numberPickerHBox, { xAlign: 'left' } );
-
     var panelVBox = new VBox( {
-      children: [ titleBox, numberPickerBox ],
-      spacing: 5
+      children: [ titleText, numberPickerHBox ],
+      spacing: 10
     } );
 
     Panel.call( this, panelVBox, {
@@ -88,7 +77,7 @@ define( function( require ) {
       maxWidth: 224,
       minWidth: MIN_PANEL_WIDTH,
       resize: false,
-      align: 'left',
+      align: 'center',
       tandem: tandem
     } );
 

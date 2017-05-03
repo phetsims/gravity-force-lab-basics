@@ -29,7 +29,7 @@ define( function( require ) {
   var Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  var MASS_CONTROLS_Y_POSITION = 345;
+  var MASS_CONTROLS_Y_POSITION = 385;
   var MASS_NODE_Y_POSITION = 215;
   var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
   var MOCKUP = GravityForceLabBasicsQueryParameters.mockup;
@@ -122,7 +122,6 @@ define( function( require ) {
     massControlBox.right = parameterControlPanel.left - 45;
     massControlBox.top = parameterControlPanel.top;
 
-    // massControl1ConstantRadius.center = massControl1.center;
     // massControl2ConstantRadius.center = massControl2.center;
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
