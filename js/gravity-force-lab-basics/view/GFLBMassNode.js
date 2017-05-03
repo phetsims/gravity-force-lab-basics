@@ -34,6 +34,8 @@ define( function( require ) {
       labelFont: new PhetFont( 25 ),
       labelMaxWidth: 40,
       forceReadoutDecimalPlaces: 1,
+      arrowFill: 'black',
+      arrowTailWidth: 2,
       snapToNearest: model.snapObjectsToNearest // in meters, charges will snap to the nearest 0.1 meters in model coordinates
     }, options );
 
