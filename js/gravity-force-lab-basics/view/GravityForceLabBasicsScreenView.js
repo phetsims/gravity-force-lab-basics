@@ -15,6 +15,7 @@ define( function( require ) {
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
+  var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   var Image = require( 'SCENERY/nodes/Image' );
   var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
   var HBox = require( 'SCENERY/nodes/HBox' );
@@ -96,6 +97,13 @@ define( function( require ) {
       y: MASS_NODE_Y_POSITION,
       forceArrowHeight: 175
     } ) );
+
+    // arrow that shows distance between the two masses
+    var distanceArrow = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, model.showValuesProperty, modelViewTransform, tandem.createTandem( 'distanceArrowNode' ), {
+      y: 145
+    } );
+    // model.showValuesProperty.linkAttribute( distanceArrow, 'visible' );
+    this.addChild( distanceArrow );
 
     // Reset All button
     var resetAllButton = new ResetAllButton( {

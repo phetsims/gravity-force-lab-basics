@@ -7,5 +7,11 @@
   },
   "mass2Label": {
   	"value": "mass 2"
+  },
+  "distanceUnitsPattern": {
+  	"value": "{{distance}} km"
+  },
+  "distance": {
+  	"value": "Distance"
   }
 }
