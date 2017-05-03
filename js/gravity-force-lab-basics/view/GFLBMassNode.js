@@ -43,10 +43,10 @@ define( function( require ) {
     this.objectModel = massModel;
 
     // functions that determine scaling of the arrow readout and the correct image to represent
-    var pullForceRange = new RangeWithValue( ( 0.7 ), ( 1224 ) ); // empirically determined for linear mapping of pull objects
+    var pullForceRange = new RangeWithValue( ( 0.7 ), ( 1070 ) ); // empirically determined for linear mapping of pull objects
 
     // the arrow node, scaled by model ranges and values
-    var arrowForceRange = new RangeWithValue( ( 0.7 ), ( 1224 ) ); // empirically determined for linear mapping of pull objects
+    var arrowForceRange = new RangeWithValue( ( 0.7 ), ( 1070 ) ); // empirically determined for linear mapping of pull objects
     
     ObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, arrowForceRange, tandem.createTandem( 'chargeNode1' ), options );
   }
