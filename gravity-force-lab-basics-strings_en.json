@@ -1,5 +1,11 @@
 {
   "gravity-force-lab-basics.title": {
     "value": "Gravity Force Lab: Basics"
+  },
+  "mass1Label": {
+  	"value": "mass 1"
+  },
+  "mass2Label": {
+  	"value": "mass 2"
   }
 }

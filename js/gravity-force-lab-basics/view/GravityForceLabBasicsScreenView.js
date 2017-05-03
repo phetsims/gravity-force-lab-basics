@@ -19,7 +19,7 @@ define( function( require ) {
   var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
-  var MassNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassNode' );
+  var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   var HSlider = require( 'SUN/HSlider' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var ParameterControlPanel = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/ParameterControlPanel' );
@@ -36,8 +36,8 @@ define( function( require ) {
   // strings
   var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
   var mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
-  var mass1AbbreviatedString = require( 'string!GRAVITY_FORCE_LAB/mass1Abbreviated' );
-  var mass2AbbreviatedString = require( 'string!GRAVITY_FORCE_LAB/mass2Abbreviated' );
+  var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
+  var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
 
   // images
   var backgroundImage = require( 'image!GRAVITY_FORCE_LAB_BASICS/background.png' );
@@ -79,41 +79,23 @@ define( function( require ) {
     this.addChild( massControlBox );
 
     // add the mass nodes to the screen
-    this.addChild( new MassNode(
-      model,
-      model.object1,
-      this.layoutBounds,
-      modelViewTransform,
-      tandem.createTandem( 'mass1Node' ),
-      {
-        label: mass1AbbreviatedString,
-        otherMassLabel: mass2AbbreviatedString,
-        direction: 'left',
-        arrowColor: '#66f',
-        y: MASS_NODE_Y_POSITION,
-        forceArrowHeight: 125,
-        forceReadoutDecimalPlaces: 1,
-        snapToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
-      }
-    ) );
+    this.addChild( new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass1Node' ), {
+      label: mass1LabelString,
+      otherObjectName: mass2LabelString,
+      defaultDirection: 'left',
+      arrowColor: '#66F',
+      y: MASS_NODE_Y_POSITION,
+      forceArrowHeight: 125
+    } ) );
 
-    this.addChild( new MassNode(
-      model,
-      model.object2,
-      this.layoutBounds,
-      modelViewTransform,
-      tandem.createTandem( 'mass2Node' ),
-      {
-        label: mass2AbbreviatedString,
-        otherMassLabel: mass1AbbreviatedString,
-        direction: 'right',
-        arrowColor: '#f66',
-        y: MASS_NODE_Y_POSITION,
-        forceArrowHeight: 175,
-        forceReadoutDecimalPlaces: 1,
-        snapToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA
-      }
-    ) );
+    this.addChild( new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass2Node' ), {
+      label: mass2LabelString,
+      otherObjectName: mass1LabelString,
+      defaultDirection: 'right',
+      arrowColor: '#F66',
+      y: MASS_NODE_Y_POSITION,
+      forceArrowHeight: 175
+    } ) );
 
     // Reset All button
     var resetAllButton = new ResetAllButton( {
