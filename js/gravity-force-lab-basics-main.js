@@ -47,7 +47,7 @@ define( function( require ) {
           function( model ) {
             return new GravityForceLabBasicsScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
           },
-          { backgroundColorProperty: new Property( '#ffffb3' ), tandem: gravityForceLabBasicsScreenTandem }
+          { backgroundColorProperty: new Property( '#ffffc2' ), tandem: gravityForceLabBasicsScreenTandem }
         )
       ], simOptions );
     sim.start();
