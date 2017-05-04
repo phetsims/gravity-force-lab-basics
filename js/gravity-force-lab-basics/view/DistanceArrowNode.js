@@ -22,19 +22,17 @@ define( function( require ) {
   var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
 
   // strings
-  var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
   var distanceUnitsPatternString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distanceUnitsPattern' );
 
   /**
    * @constructor
    * @param {Property} mass1PositionProperty
    * @param {Property} mass2PositionProperty
-   * @param {Property} showValuesProperty
    * @param {ModelViewTransform2} modelViewTransform
    * @param {Tandem} tandem
    * @param {Object} options
    */
-  function DistanceArrowNode( mass1PositionProperty, mass2PositionProperty, showValuesProperty, modelViewTransform, tandem, options ) {
+  function DistanceArrowNode( mass1PositionProperty, mass2PositionProperty, modelViewTransform, tandem, options ) {
 
     Node.call( this, options );
 
@@ -53,7 +51,7 @@ define( function( require ) {
     } );
     this.addChild( labelText );
 
-    Property.multilink( [ mass1PositionProperty, mass2PositionProperty, showValuesProperty ], function( position1, position2, showValues ) {
+    Property.multilink( [ mass1PositionProperty, mass2PositionProperty ], function( position1, position2 ) {
 
       // update the arrow node width
       var viewPosition1 = modelViewTransform.modelToViewX( position1 );
@@ -61,15 +59,8 @@ define( function( require ) {
       arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
 
       // update label text and center
-      if ( showValues ) {
-        var distance = position2 - position1;
-        var labelString = StringUtils.fillIn( distanceUnitsPatternString, { distance: distance } );
-        labelText.setText( labelString );
-      }
-      else {
-        labelText.setText( distanceString );
-      }
-      
+      labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, { distance: position2 - position1 } ) );
+
       labelText.centerX = arrowNode.centerX;
     } );
   }

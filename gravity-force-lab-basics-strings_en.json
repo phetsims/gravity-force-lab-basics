@@ -13,5 +13,8 @@
   },
   "distance": {
   	"value": "Distance"
+  },
+  "forceValues": {
+  	"value": "Force Values"
   }
 }

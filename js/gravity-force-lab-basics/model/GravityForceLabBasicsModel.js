@@ -45,6 +45,12 @@ define( function( require ) {
       phetioValueType: TBoolean
     } );
 
+    //@pubic
+    this.showDistanceProperty = new Property( true, {
+      tandem: tandem.createTandem( 'constantRadiusProperty' ),
+      phetioValueType: TBoolean
+    } );
+    
     // TODO: Should these be in inverse-square-law-common?
     var baseColor1 = new Color( '#00f' );
     var baseColor2 = new Color( '#f00' );

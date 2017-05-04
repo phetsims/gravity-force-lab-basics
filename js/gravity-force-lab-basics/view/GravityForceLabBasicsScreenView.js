@@ -20,10 +20,10 @@ define( function( require ) {
   var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
+  var ISLCheckboxPanel = require ('INVERSE_SQUARE_LAW_COMMON/view/ISLCheckboxPanel' );
   var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   var HSlider = require( 'SUN/HSlider' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
-  var ParameterControlPanel = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/ParameterControlPanel' );
   var MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
   var Property = require( 'AXON/Property' );
   var Vector2 = require( 'DOT/Vector2' );
@@ -39,6 +39,9 @@ define( function( require ) {
   var mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
   var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
   var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
+  var forceValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/forceValues' );
+  var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
+  var constantRadiusString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantRadius' );
 
   // images
   var backgroundImage = require( 'image!GRAVITY_FORCE_LAB_BASICS/background.png' );
@@ -59,8 +62,27 @@ define( function( require ) {
       .05
     );
 
-    // view parameter controls
-    var parameterControlPanel = new ParameterControlPanel( model, tandem.createTandem( 'parameterControlPanel' ), {
+    var checkboxItems = [
+      {
+        content: forceValuesString,
+        property: model.showValuesProperty,
+        textTandemLabel: 'showValuesText',
+        checkboxTandemLabel: 'showValuesCheckbox'
+      },
+      {
+        content: distanceString,
+        property: model.showDistanceProperty,
+        textTandemLabel: 'distanceText',
+        checkboxTandemLabel: 'distanceCheckbox'
+      },
+      {
+        content: constantRadiusString,
+        property: model.constantRadiusProperty,
+        textTandemLabel: 'constantRadiusText',
+        checkboxTandemLabel: 'constanntRadiusCheckbox'
+      }
+    ];
+    var parameterControlPanel = new ISLCheckboxPanel( checkboxItems, tandem.createTandem( 'parameterControlPanel' ), {
       fill: '#f1f1f2'
     } );
     this.addChild( parameterControlPanel );
@@ -99,10 +121,10 @@ define( function( require ) {
     } ) );
 
     // arrow that shows distance between the two masses
-    var distanceArrow = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, model.showValuesProperty, modelViewTransform, tandem.createTandem( 'distanceArrowNode' ), {
+    var distanceArrow = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, modelViewTransform, tandem.createTandem( 'distanceArrowNode' ), {
       y: 145
     } );
-    // model.showValuesProperty.linkAttribute( distanceArrow, 'visible' );
+    model.showDistanceProperty.linkAttribute( distanceArrow, 'visible' );
     this.addChild( distanceArrow );
 
     // Reset All button
