@@ -20,6 +20,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var Util = require( 'DOT/Util' );
 
   // strings
   var billionKGString = 'billion kg'; // TODO: use string pattern
@@ -48,9 +49,8 @@ define( function( require ) {
       font: new PhetFont( 20 ),
       upFunction: function( mass ) { return mass + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       downFunction: function( mass ) { return mass - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
-      formatText: function( text ) {
-        var value = parseInt( text, 10 );
-        return value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER;
+      formatValue: function( value ) {
+        return Util.toFixed( value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER, 0 );
       },
 
       // arrow options
