@@ -23,7 +23,7 @@ define( function( require ) {
   var Util = require( 'DOT/Util' );
 
   // strings
-  var billionKGString = 'billion kg'; // TODO: use string pattern
+  var billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg');
 
   // constants
   var MIN_PANEL_WIDTH = 130;
@@ -58,7 +58,7 @@ define( function( require ) {
       arrowYSpacing: 2,
       color: options.color,
     } );
-    var numberPickerLabel = new Text( billionKGString, { font: new PhetFont( { size: 11, weight: 'bold' } ) } );
+    var numberPickerLabel = new Text( billionKgString, { font: new PhetFont( { size: 11, weight: 'bold' } ) } );
 
     var numberPickerHBox = new HBox( {
       children: [ numberPicker, numberPickerLabel ],
