@@ -23,7 +23,7 @@ define( function( require ) {
   var Util = require( 'DOT/Util' );
 
   // strings
-  var billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg');
+  var billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg' );
 
   // constants
   var MIN_PANEL_WIDTH = 130;
