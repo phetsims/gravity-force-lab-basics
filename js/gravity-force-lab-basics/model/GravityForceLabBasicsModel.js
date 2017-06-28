@@ -71,5 +71,16 @@ define( function( require ) {
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );
 
-  return inherit( InverseSquareLawModel, GravityForceLabBasicsModel );
+  return inherit( InverseSquareLawModel, GravityForceLabBasicsModel, {
+
+    /**
+     * Reset the GravityForceLabBasicsModel.
+     * @public
+     */
+    reset: function() {
+      this.constantRadiusProperty.reset();
+      this.showDistanceProperty.reset();
+      InverseSquareLawModel.prototype.reset.call( this );
+    }
+  } );
 } );
