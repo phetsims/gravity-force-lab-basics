@@ -32,7 +32,7 @@ define( function( require ) {
       arrowLabelFill: 'black',
       labelFill: '#F3F3F3',
       labelFont: new PhetFont( 25 ),
-      labelMaxWidth: 40,
+      labelMaxWidth: 35,
       forceReadoutDecimalPlaces: 1,
       arrowFill: 'black',
       arrowTailWidth: 2,
