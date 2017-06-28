@@ -45,7 +45,7 @@ define( function( require ) {
       phetioValueType: TBoolean
     } );
 
-    //@pubic
+    // @public
     this.showDistanceProperty = new Property( true, {
       tandem: tandem.createTandem( 'constantRadiusProperty' ),
       phetioValueType: TBoolean
