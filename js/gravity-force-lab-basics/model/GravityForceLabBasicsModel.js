@@ -31,7 +31,7 @@ define( function( require ) {
     var value1 = 2 * massMultiplier;
     var value2 = 4 * massMultiplier;
 
-    // initial positions
+    // initial positions, in meters
     var position1 = -2000;
     var position2 = 2000;
 

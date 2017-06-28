@@ -58,8 +58,8 @@ define( function( require ) {
       var viewPosition2 = modelViewTransform.modelToViewX( position2 );
       arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
 
-      // update label text and center
-      labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, { distance: position2 - position1 } ) );
+      // update label text and center, distance in meters so divide by 1000 to read out in km
+      labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, { distance: ( position2 - position1 ) / 1000 } ) );
 
       labelText.centerX = arrowNode.centerX;
     } );
