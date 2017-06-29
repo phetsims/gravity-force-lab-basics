@@ -38,16 +38,18 @@ define( function( require ) {
 
     var arrowNode = new ArrowNode( mass1PositionProperty.get(), 0, mass2PositionProperty.get(), 0 , {
       doubleHead: true,
-      tailWidth: 1,
-      headHeight: 4,
-      headWidth: 4
+      tailWidth: 0.5,
+      headHeight: 6,
+      headWidth: 6,
+      stroke: '#BFBFBF',
+      fill: '#BFBFBF'
     } );
     this.addChild( arrowNode );
 
     // the label
     var labelText = new Text( StringUtils.fillIn( distanceUnitsPatternString, { distance: 0 } ), {
       font: new PhetFont( 12 ),
-      bottom: arrowNode.top - 5
+      bottom: arrowNode.top
     } );
     this.addChild( labelText );
 
