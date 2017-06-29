@@ -59,7 +59,7 @@ define( function( require ) {
       arrowYSpacing: 2,
       color: options.color,
     } );
-    var numberPickerLabel = new Text( billionKgString, { font: new PhetFont( { size: 11, weight: 'bold' } ) } );
+    var numberPickerLabel = new Text( billionKgString, { font: new PhetFont( { size: 11 } ) } );
 
     var numberPickerHBox = new HBox( {
       children: [ numberPicker, numberPickerLabel ],
