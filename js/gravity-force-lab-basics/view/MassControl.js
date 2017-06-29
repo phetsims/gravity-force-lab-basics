@@ -26,7 +26,7 @@ define( function( require ) {
   var billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg' );
 
   // constants
-  var MIN_PANEL_WIDTH = 130;
+  var MIN_PANEL_WIDTH = 150;
 
   /**
    * @param {string} titleString
@@ -47,6 +47,7 @@ define( function( require ) {
 
     var numberPicker = new NumberPicker( massProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
+      scale: 1.5,
       upFunction: function( mass ) { return mass + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       downFunction: function( mass ) { return mass - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       formatValue: function( value ) {
