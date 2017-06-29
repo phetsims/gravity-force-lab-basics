@@ -36,6 +36,8 @@ define( function( require ) {
       forceReadoutDecimalPlaces: 1,
       arrowFill: 'black',
       arrowTailWidth: 2,
+      labelShadowOffsetX: 0.9,
+      labelShadowOffsetY: 0.9,
       snapToNearest: model.snapObjectsToNearest // in meters, charges will snap to the nearest 0.1 meters in model coordinates
     }, options );
 
