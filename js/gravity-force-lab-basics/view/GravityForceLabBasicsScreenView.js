@@ -31,6 +31,7 @@ define( function( require ) {
   // constants
   var MASS_CONTROLS_Y_POSITION = 385;
   var MASS_NODE_Y_POSITION = 215;
+  var PANEL_SPACING = 50;
   var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
   var MOCKUP = GravityForceLabBasicsQueryParameters.mockup;
 
@@ -97,7 +98,7 @@ define( function( require ) {
     var massControlBox = new HBox( {
       children: [ massControl1, massControl2 ],
       center: this.layoutBounds.center,
-      spacing: 50
+      spacing: PANEL_SPACING
     } );
     this.addChild( massControlBox );
 
@@ -141,7 +142,7 @@ define( function( require ) {
     parameterControlPanel.right = this.layoutBounds.width - 15;
     parameterControlPanel.bottom = MASS_CONTROLS_Y_POSITION;
 
-    massControlBox.right = parameterControlPanel.left - 45;
+    massControlBox.right = parameterControlPanel.left - PANEL_SPACING;
     massControlBox.top = parameterControlPanel.top;
 
     // massControl2ConstantRadius.center = massControl2.center;
