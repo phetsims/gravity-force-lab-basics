@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.0.0-dev.4 Wed Jun 28 2017 17:40:31 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.0.0-dev.5 Thu Jun 29 2017 15:14:59 GMT-0600 (Mountain Daylight Time)",
   "assert": {
     "sha": "5c3f92048a9c2ffd6df8ede54fd64f1f7a7e4ef2",
     "branch": "master"
@@ -13,7 +13,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "523eb1ced730f4dbb71b58b99397b96c98ed2f9d",
+    "sha": "4be31153e442b9d8f6c36db6cdee86d8287e2bd7",
     "branch": "master"
   },
   "dot": {
@@ -25,11 +25,11 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "b5ef0d4c7fc6a0c6d807a8aaeb75f243b1cd5848",
+    "sha": "7c253d33d4bf742a6231bd5b1a20d50b193adee3",
     "branch": "master"
   },
   "inverse-square-law-common": {
-    "sha": "a9007b647755115cb53b62619a633811043bb351",
+    "sha": "c6b293f131b3c9d8b957d42ff52a1a749d97d1d6",
     "branch": "master"
   },
   "joist": {
@@ -65,7 +65,7 @@
     "branch": "master"
   },
   "sun": {
-    "sha": "e911a9aa969fe60e95d6822931935d64e4d5947d",
+    "sha": "1ea05e92d1a8ce6a275ac75541265e1b508c9be9",
     "branch": "master"
   },
   "tandem": {
