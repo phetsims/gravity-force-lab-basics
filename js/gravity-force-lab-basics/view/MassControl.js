@@ -13,6 +13,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Panel = require( 'SUN/Panel' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  var Bounds2 = require( 'DOT/Bounds2' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
   var Property = require( 'AXON/Property' );
@@ -20,6 +21,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var Shape = require( 'KITE/Shape' );
   var Util = require( 'DOT/Util' );
 
   // strings
@@ -43,7 +45,7 @@ define( function( require ) {
       color: new Color( 0, 0, 255 )
     }, options );
 
-    var titleText = new Text( titleString, { font: new PhetFont( 14 ) } );
+    var titleText = new Text( titleString, { font: new PhetFont( 18 ) } );
 
     var numberPicker = new NumberPicker( massProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
@@ -59,7 +61,7 @@ define( function( require ) {
       arrowYSpacing: 2,
       color: options.color,
     } );
-    var numberPickerLabel = new Text( billionKgString, { font: new PhetFont( { size: 11 } ) } );
+    var numberPickerLabel = new Text( billionKgString, { font: new PhetFont( { size: 14 } ) } );
 
     var numberPickerHBox = new HBox( {
       children: [ numberPicker, numberPickerLabel ],
@@ -82,6 +84,11 @@ define( function( require ) {
       tandem: tandem
     } );
 
+    // custom focus highlight for these controls that include the label
+    var scaleX = numberPicker.getScaleVector().x;
+    var scaleY = numberPicker.getScaleVector().y;
+    var focusBounds = new Bounds2( -5, -10, numberPickerHBox.width / scaleX + 5, numberPickerHBox.height / scaleY );
+    numberPicker.focusHighlight = Shape.bounds( focusBounds );
   }
 
   gravityForceLabBasics.register( 'MassControl', MassControl );
