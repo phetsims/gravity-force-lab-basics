@@ -159,7 +159,7 @@ define( function( require ) {
     Property.multilink( objectProperties, function( position1, radius1, position2, radius2 ) {
       mass1Node.setAccessibleAttribute( 'min', model.getObjectMinPosition( model.object1 ) );
       mass1Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object1 ) );
-      mass2Node.setAccessibleAttribute( 'min', model.getObjectMaxPosition( model.object2 ) );
+      mass2Node.setAccessibleAttribute( 'min', model.getObjectMinPosition( model.object2 ) );
       mass2Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object2 ) );
     } ); 
     
