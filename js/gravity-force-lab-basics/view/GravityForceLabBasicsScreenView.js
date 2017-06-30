@@ -13,6 +13,7 @@ define( function( require ) {
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var Line = require( 'SCENERY/nodes/Line' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
   var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
@@ -34,6 +35,7 @@ define( function( require ) {
   var PANEL_SPACING = 50;
   var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
   var MOCKUP = GravityForceLabBasicsQueryParameters.mockup;
+  var SHOW_DRAG_BOUNDS = GravityForceLabBasicsQueryParameters.showDragBounds;
 
   // strings
   var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
@@ -103,23 +105,26 @@ define( function( require ) {
     this.addChild( massControlBox );
 
     // add the mass nodes to the screen
-    this.addChild( new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass1Node' ), {
+    var mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass1Node' ), {
       label: mass1LabelString,
       otherObjectLabel: mass2LabelString,
       defaultDirection: 'left',
       arrowColor: '#66F',
       y: MASS_NODE_Y_POSITION,
       forceArrowHeight: 125
-    } ) );
+    } );
 
-    this.addChild( new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass2Node' ), {
+    var mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass2Node' ), {
       label: mass2LabelString,
       otherObjectLabel: mass1LabelString,
       defaultDirection: 'right',
       arrowColor: '#F66',
       y: MASS_NODE_Y_POSITION,
       forceArrowHeight: 175
-    } ) );
+    } );
+
+    this.addChild( mass1Node );
+    this.addChild( mass2Node );
 
     // arrow that shows distance between the two masses
     var distanceArrow = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, modelViewTransform, tandem.createTandem( 'distanceArrowNode' ), {
@@ -149,9 +154,60 @@ define( function( require ) {
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
 
+    // a11y - TODO: could move to a common type for inverse square law common sims
+    var objectProperties = [ model.object1.positionProperty, model.object1.radiusProperty, model.object2.positionProperty, model.object2.radiusProperty ];
+    Property.multilink( objectProperties, function( position1, radius1, position2, radius2 ) {
+      mass1Node.setAccessibleAttribute( 'min', model.getObjectMinPosition( model.object1 ) );
+      mass1Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object1 ) );
+      mass2Node.setAccessibleAttribute( 'min', model.getObjectMaxPosition( model.object2 ) );
+      mass2Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object2 ) );
+    } ); 
+    
     //------------------------------------------------
     // debugging
     //------------------------------------------------
+    
+    if ( SHOW_DRAG_BOUNDS ) {
+
+      // Show the min/max locations for dragging the objects
+      var verticalMin = this.layoutBounds.minY;
+      var verticalMax = this.layoutBounds.height;
+      var object1LineOptions = { stroke: 'blue', lineWidth: 2 };
+      var object2LineOptions = { stroke: 'red', lineWidth: 2 };
+
+      var object1MinLine = new Line( 0, verticalMin, 0, verticalMax, object1LineOptions );
+      var object1MaxLine = new Line( 0, verticalMin, 0, verticalMax, object1LineOptions );
+      var object2MinLine = new Line( 0, verticalMin, 0, verticalMax, object2LineOptions );
+      var object2MaxLine = new Line( 0, verticalMin, 0, verticalMax, object2LineOptions );
+
+      this.addChild( object1MinLine );
+      this.addChild( object2MinLine );
+      this.addChild( object1MaxLine );
+      this.addChild( object2MaxLine );
+
+      var object1MinX;
+      var object1MaxX;
+      var object2MinX;
+      var object2MaxX;
+      Property.multilink( objectProperties, function( position1, radius1, position2, radius2 ) {
+        object1MinX = modelViewTransform.modelToViewX( model.getObjectMinPosition( model.object1 ) );
+        object1MinLine.x1 = object1MinX;
+        object1MinLine.x2 = object1MinX;
+
+        object1MaxX = modelViewTransform.modelToViewX( model.getObjectMaxPosition( model.object1 ) );
+        object1MaxLine.x1 = object1MaxX;
+        object1MaxLine.x2 = object1MaxX;
+
+        object2MinX = modelViewTransform.modelToViewX( model.getObjectMinPosition( model.object2 ) );
+        object2MinLine.x1 = object2MinX;
+        object2MinLine.x2 = object2MinX;
+
+        object2MaxX = modelViewTransform.modelToViewX( model.getObjectMaxPosition( model.object2 ) );
+        object2MaxLine.x1 = object2MaxX;
+        object2MaxLine.x2 = object2MaxX;
+      } ); 
+    }
+  
 
     if ( MOCKUP ) {
       //Show the mock-up and a slider to change its transparency
