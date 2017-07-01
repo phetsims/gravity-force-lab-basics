@@ -1,11 +1,11 @@
 {
-  "comment": "# gravity-force-lab-basics 1.0.0-dev.5 Thu Jun 29 2017 15:14:59 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.0.0-dev.6 Fri Jun 30 2017 18:21:24 GMT-0600 (MDT)",
   "assert": {
     "sha": "5c3f92048a9c2ffd6df8ede54fd64f1f7a7e4ef2",
     "branch": "master"
   },
   "axon": {
-    "sha": "12510072f4c4746ee195d1b275668d175f6c725b",
+    "sha": "acd850c6f799e0f253d385047b8a5a6b8f3495b8",
     "branch": "master"
   },
   "brand": {
@@ -13,7 +13,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "4be31153e442b9d8f6c36db6cdee86d8287e2bd7",
+    "sha": "3bfeed863ba80ccdfa6428461e2a4ab71a5eb0dc",
     "branch": "master"
   },
   "dot": {
@@ -25,11 +25,11 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "7c253d33d4bf742a6231bd5b1a20d50b193adee3",
+    "sha": "9daea95b811de5c4a281bbd5d80f9add82079ae6",
     "branch": "master"
   },
   "inverse-square-law-common": {
-    "sha": "c6b293f131b3c9d8b957d42ff52a1a749d97d1d6",
+    "sha": "d0396d75212d7690d361ff927eb92a55b996ccd8",
     "branch": "master"
   },
   "joist": {
@@ -37,7 +37,7 @@
     "branch": "master"
   },
   "kite": {
-    "sha": "c9b529a2d0df2faa24e97bcfb70653b867969b49",
+    "sha": "41ac3b7a27f0313bcafb9eb0fde1c1860a5c2cc6",
     "branch": "master"
   },
   "phet-core": {
@@ -53,11 +53,11 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "3aec90c5599e557449fcde29c90c4d3f35a69407",
+    "sha": "333b5df081102d2b5ca0caa6f678c0c0568aad82",
     "branch": "master"
   },
   "scenery-phet": {
-    "sha": "1610b400b28d089d924cb41d72aafac2c60f0007",
+    "sha": "f95f098fb212aeccb0e323078101787977dee72b",
     "branch": "master"
   },
   "sherpa": {
