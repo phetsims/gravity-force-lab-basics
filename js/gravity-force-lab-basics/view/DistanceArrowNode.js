@@ -24,6 +24,10 @@ define( function( require ) {
   // strings
   var distanceUnitsPatternString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distanceUnitsPattern' );
 
+  // constants
+  var HEAD_WIDTH = 6;
+  var HEAD_HEIGHT = 6;
+
   /**
    * @constructor
    * @param {Property} mass1PositionProperty
@@ -39,8 +43,8 @@ define( function( require ) {
     var arrowNode = new ArrowNode( mass1PositionProperty.get(), 0, mass2PositionProperty.get(), 0 , {
       doubleHead: true,
       tailWidth: 0.5,
-      headHeight: 6,
-      headWidth: 6,
+      headHeight: HEAD_HEIGHT,
+      headWidth: HEAD_WIDTH,
       stroke: '#BFBFBF',
       fill: '#BFBFBF'
     } );
@@ -49,7 +53,7 @@ define( function( require ) {
     // the label
     var labelText = new Text( StringUtils.fillIn( distanceUnitsPatternString, { distance: 0 } ), {
       font: new PhetFont( 12 ),
-      bottom: arrowNode.top
+      bottom: arrowNode.top + ( 3 * HEAD_WIDTH / 4 )
     } );
     this.addChild( labelText );
 
