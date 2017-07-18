@@ -162,6 +162,9 @@ define( function( require ) {
       mass2Node.setAccessibleAttribute( 'min', model.getObjectMinPosition( model.object2 ) );
       mass2Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object2 ) );
     } ); 
+
+    // a11y - specify the order of focus for things in the ScreenView
+    this.accessibleOrder = [ mass1Node, mass2Node, massControlBox, parameterControlPanel, resetAllButton ];
     
     //------------------------------------------------
     // debugging
@@ -207,7 +210,6 @@ define( function( require ) {
         object2MaxLine.x2 = object2MaxX;
       } ); 
     }
-  
 
     if ( MOCKUP ) {
       //Show the mock-up and a slider to change its transparency

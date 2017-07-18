@@ -13,7 +13,6 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Panel = require( 'SUN/Panel' );
   var VBox = require( 'SCENERY/nodes/VBox' );
-  var Bounds2 = require( 'DOT/Bounds2' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
   var Property = require( 'AXON/Property' );
@@ -21,7 +20,6 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var Shape = require( 'KITE/Shape' );
   var Util = require( 'DOT/Util' );
 
   // strings
