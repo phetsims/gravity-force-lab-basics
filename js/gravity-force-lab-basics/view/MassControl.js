@@ -13,6 +13,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Panel = require( 'SUN/Panel' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  var Bounds2 = require( 'DOT/Bounds2' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var Color = require( 'SCENERY/util/Color' );
   var Property = require( 'AXON/Property' );
@@ -20,6 +21,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var Shape = require( 'KITE/Shape' );
   var Util = require( 'DOT/Util' );
 
   // strings
@@ -27,6 +29,7 @@ define( function( require ) {
 
   // constants
   var MIN_PANEL_WIDTH = 150;
+  var HIGHLIGHT_CORNER_RADIUS = 6;
 
   /**
    * @param {string} titleString
@@ -81,6 +84,23 @@ define( function( require ) {
       align: 'center',
       tandem: tandem
     } );
+
+    // custom focus highlight for these controls that include the label
+    var scaleX = numberPicker.getScaleVector().x;
+    var scaleY = numberPicker.getScaleVector().y;
+    var focusBounds = new Bounds2( -5, -10, numberPicker.width / scaleX + 5, numberPicker.height / scaleY ) ;
+    numberPicker.focusHighlight = Shape.roundedRectangleWithRadii(
+      focusBounds.minX,
+      focusBounds.minY,
+      focusBounds.width,
+      focusBounds.height, {
+        topLeft: HIGHLIGHT_CORNER_RADIUS,
+        topRight: HIGHLIGHT_CORNER_RADIUS,
+        bottomLeft: HIGHLIGHT_CORNER_RADIUS,
+        bottomRight: HIGHLIGHT_CORNER_RADIUS
+      }
+    );
+    console.log( 'here' );
   }
 
   gravityForceLabBasics.register( 'MassControl', MassControl );
