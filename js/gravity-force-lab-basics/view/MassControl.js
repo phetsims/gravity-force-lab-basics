@@ -83,12 +83,6 @@ define( function( require ) {
       align: 'center',
       tandem: tandem
     } );
-
-    // custom focus highlight for these controls that include the label
-    var scaleX = numberPicker.getScaleVector().x;
-    var scaleY = numberPicker.getScaleVector().y;
-    var focusBounds = new Bounds2( -5, -10, numberPickerHBox.width / scaleX + 5, numberPickerHBox.height / scaleY );
-    numberPicker.focusHighlight = Shape.bounds( focusBounds );
   }
 
   gravityForceLabBasics.register( 'MassControl', MassControl );
