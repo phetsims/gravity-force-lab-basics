@@ -126,6 +126,11 @@ define( function( require ) {
     this.addChild( mass1Node );
     this.addChild( mass2Node );
 
+    // the arrow nodes and their labels should be on top of the masses, but under the rest of the control
+    // panel
+    this.addChild( mass1Node.arrowNode );
+    this.addChild( mass2Node.arrowNode );
+
     // arrow that shows distance between the two masses
     var distanceArrow = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, modelViewTransform, tandem.createTandem( 'distanceArrowNode' ), {
       y: 145
