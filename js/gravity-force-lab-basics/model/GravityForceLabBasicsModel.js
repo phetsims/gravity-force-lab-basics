@@ -13,7 +13,7 @@ define( function( require ) {
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var Property = require( 'AXON/Property' );
-  var InverseSquareLawCommonConstants = require( 'INVERSE_SQUARE_LAW_COMMON/InverseSquareLawCommonConstants' );
+  var ISLCConstants = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCConstants' );
   var Mass = require( 'INVERSE_SQUARE_LAW_COMMON/model/Mass' );
   var Color = require( 'SCENERY/util/Color' );
 
@@ -62,7 +62,7 @@ define( function( require ) {
     var leftBoundary = GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY;
     var rightBoundary = GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY;
 
-    InverseSquareLawModel.call( this, InverseSquareLawCommonConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ), {
+    InverseSquareLawModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ), {
       snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
       minSeparationBetweenObjects: 200 // in meters
     } );
