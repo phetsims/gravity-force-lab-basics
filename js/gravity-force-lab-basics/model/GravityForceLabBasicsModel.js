@@ -9,7 +9,7 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
-  var InverseSquareLawModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/InverseSquareLawModel' );
+  var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var Property = require( 'AXON/Property' );
@@ -62,7 +62,7 @@ define( function( require ) {
     var leftBoundary = GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY;
     var rightBoundary = GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY;
 
-    InverseSquareLawModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ), {
+    ISLCModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ), {
       snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
       minSeparationBetweenObjects: 200 // in meters
     } );
@@ -71,7 +71,7 @@ define( function( require ) {
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );
 
-  return inherit( InverseSquareLawModel, GravityForceLabBasicsModel, {
+  return inherit( ISLCModel, GravityForceLabBasicsModel, {
 
     /**
      * Reset the GravityForceLabBasicsModel.
@@ -80,7 +80,7 @@ define( function( require ) {
     reset: function() {
       this.constantRadiusProperty.reset();
       this.showDistanceProperty.reset();
-      InverseSquareLawModel.prototype.reset.call( this );
+      ISLCModel.prototype.reset.call( this );
     }
   } );
 } );
