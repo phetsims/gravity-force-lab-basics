@@ -15,7 +15,7 @@ define( function( require ) {
   var RangeWithValue = require('DOT/RangeWithValue'); 
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var ObjectNode = require('INVERSE_SQUARE_LAW_COMMON/view/ObjectNode');
+  var ISLCObjectNode = require('INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode');
 
   /**
    * @param {CoulombsLawbModel} model
@@ -52,13 +52,13 @@ define( function( require ) {
     // the arrow node, scaled by model ranges and values
     var arrowForceRange = new RangeWithValue( ( 0.7 ), ( 1070 ) ); // empirically determined for linear mapping of pull objects
     
-    ObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, arrowForceRange, tandem.createTandem( 'chargeNode1' ), options );
+    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, arrowForceRange, tandem.createTandem( 'chargeNode1' ), options );
   }
 
   gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
 
-  // TODO: Inherit from InverseSquareObjectNode
-  return inherit( ObjectNode, GFLBMassNode, {
+  // TODO: Inherit from InverseSquareISLCObjectNode
+  return inherit( ISLCObjectNode, GFLBMassNode, {
 
     updateGradient: function( baseColor ) {
       var radius = this.modelViewTransform.modelToViewDeltaX( this.objectModel.radiusProperty.get() );
