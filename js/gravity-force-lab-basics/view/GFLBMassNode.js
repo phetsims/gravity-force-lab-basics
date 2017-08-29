@@ -36,6 +36,7 @@ define( function( require ) {
       forceReadoutDecimalPlaces: 1,
       arrowFill: 'black',
       arrowTailWidth: 2,
+      maxArrowWidth: 15,
       labelShadowOffsetX: 0.9,
       labelShadowOffsetY: 0.9,
       snapToNearest: model.snapObjectsToNearest // in meters, charges will snap to the nearest 0.1 meters in model coordinates
@@ -48,11 +49,8 @@ define( function( require ) {
 
     // functions that determine scaling of the arrow readout and the correct image to represent
     var pullForceRange = new RangeWithValue( ( 0.7 ), ( 1070 ) ); // empirically determined for linear mapping of pull objects
-
-    // the arrow node, scaled by model ranges and values
-    var arrowForceRange = new RangeWithValue( ( 0.7 ), ( 1070 ) ); // empirically determined for linear mapping of pull objects
     
-    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, arrowForceRange, tandem.createTandem( 'chargeNode1' ), options );
+    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, tandem.createTandem( 'chargeNode1' ), options );
   }
 
   gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
