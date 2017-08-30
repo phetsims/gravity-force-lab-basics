@@ -48,7 +48,7 @@ define( function( require ) {
     this.objectModel = massModel;
 
     // functions that determine scaling of the arrow readout and the correct image to represent
-    var pullForceRange = new RangeWithValue( ( 0.7 ), ( 1070 ) ); // empirically determined for linear mapping of pull objects
+    var pullForceRange = new RangeWithValue( 35, 1070 ); // empirically determined for linear mapping of pull objects
     
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, tandem.createTandem( 'chargeNode1' ), options );
   }
