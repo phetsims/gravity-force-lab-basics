@@ -55,12 +55,16 @@ define( function( require ) {
     var baseColor1 = new Color( '#00f' );
     var baseColor2 = new Color( '#f00' );
 
-    var massOptions = { constantRadius: GravityForceLabBasicsConstants.CONSTANT_RADIUS };
-    var mass1 = new Mass( value1, position1, valueRange, density, this.constantRadiusProperty, baseColor1, tandem, massOptions );
-    var mass2 = new Mass( value2, position2, valueRange, density, this.constantRadiusProperty, baseColor2, tandem, massOptions );
-
     var leftBoundary = GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY;
     var rightBoundary = GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY;
+
+    var massOptions = {
+      constantRadius: GravityForceLabBasicsConstants.CONSTANT_RADIUS,
+      leftObjectBoundary: leftBoundary,
+      rightObjectBoundary: rightBoundary
+    };
+    var mass1 = new Mass( value1, position1, valueRange, density, this.constantRadiusProperty, baseColor1, tandem, massOptions );
+    var mass2 = new Mass( value2, position2, valueRange, density, this.constantRadiusProperty, baseColor2, tandem, massOptions );
 
     ISLCModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ), {
       snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
