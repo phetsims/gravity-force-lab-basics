@@ -8,24 +8,24 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
   var Bounds2 = require( 'DOT/Bounds2' );
+  var Color = require( 'SCENERY/util/Color' );
+  var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
+  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
+  var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
+  var HBox = require( 'SCENERY/nodes/HBox' );
+  var Image = require( 'SCENERY/nodes/Image' );
+  var inherit = require( 'PHET_CORE/inherit' );
+  var Line = require( 'SCENERY/nodes/Line' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
-  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var Line = require( 'SCENERY/nodes/Line' );
-  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
-  var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
-  var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
-  var HBox = require( 'SCENERY/nodes/HBox' );
-  var Color = require( 'SCENERY/util/Color' );
   var ISLCheckboxPanel = require ('INVERSE_SQUARE_LAW_COMMON/view/ISLCheckboxPanel' );
   var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   var HSlider = require( 'SUN/HSlider' );
-  var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
+  var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var Property = require( 'AXON/Property' );
   var Vector2 = require( 'DOT/Vector2' );
 
@@ -38,13 +38,13 @@ define( function( require ) {
   var SHOW_DRAG_BOUNDS = GravityForceLabBasicsQueryParameters.showDragBounds;
 
   // strings
-  var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
-  var mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
-  var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
-  var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
-  var forceValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/forceValues' );
-  var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
   var constantRadiusString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantRadius' );
+  var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
+  var forceValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/forceValues' );
+  var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
+  var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
+  var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
+  var mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
 
   // images
   var backgroundImage = require( 'image!GRAVITY_FORCE_LAB_BASICS/background.png' );

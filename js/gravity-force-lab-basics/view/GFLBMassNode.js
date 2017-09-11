@@ -13,8 +13,8 @@ define( function( require ) {
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var RangeWithValue = require('DOT/RangeWithValue'); 
-  var RadialGradient = require( 'SCENERY/util/RadialGradient' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  var RadialGradient = require( 'SCENERY/util/RadialGradient' );
   var ISLCObjectNode = require('INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode');
 
   /**

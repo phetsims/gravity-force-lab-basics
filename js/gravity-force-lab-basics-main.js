@@ -9,13 +9,13 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Sim = require( 'JOIST/Sim' );
-  var Property = require( 'AXON/Property' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
-  var Screen = require( 'JOIST/Screen' );
-  var Tandem = require( 'TANDEM/Tandem' );
   var GravityForceLabBasicsModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GravityForceLabBasicsModel' );
   var GravityForceLabBasicsScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsScreenView' );
+  var Property = require( 'AXON/Property' );
+  var Screen = require( 'JOIST/Screen' );
+  var Sim = require( 'JOIST/Sim' );
+  var SimLauncher = require( 'JOIST/SimLauncher' );
+  var Tandem = require( 'TANDEM/Tandem' );
 
   // constants
   var tandem = Tandem.createRootTandem();
