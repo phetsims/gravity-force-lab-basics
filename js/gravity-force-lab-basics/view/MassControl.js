@@ -32,7 +32,6 @@ define( function( require ) {
    * @param {string} titleString
    * @param {Property.<number>} massProperty
    * @param {Range} massRange
-   * @param {Color} thumbColor
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
@@ -57,7 +56,7 @@ define( function( require ) {
       // arrow options
       arrowHeight: 3,
       arrowYSpacing: 2,
-      color: options.color,
+      color: options.color
     } );
     var numberPickerLabel = new Text( billionKgString, { font: new PhetFont( { size: 14 } ) } );
 
