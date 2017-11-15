@@ -19,7 +19,7 @@ define( function( require ) {
   var PropertyIO = require( 'AXON/PropertyIO' );
 
   // phet-io modules
-  var TBoolean = require( 'ifphetio!PHET_IO/types/TBoolean' );
+  var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
 
   /**
    * @constructor
@@ -43,13 +43,13 @@ define( function( require ) {
     // TODO: Should this be in InverseSquareLawCommonModel?
     this.constantRadiusProperty = new Property( false, {
       tandem: tandem.createTandem( 'constantRadiusProperty' ),
-      phetioType: PropertyIO( TBoolean )
+      phetioType: PropertyIO( BooleanIO )
     } );
 
     // @public
     this.showDistanceProperty = new Property( true, {
       tandem: tandem.createTandem( 'constantRadiusProperty' ),
-      phetioType: PropertyIO( TBoolean )
+      phetioType: PropertyIO( BooleanIO )
     } );
     
     // TODO: Should these be in inverse-square-law-common?
