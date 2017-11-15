@@ -16,7 +16,7 @@ define( function( require ) {
   var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
   var Mass = require( 'INVERSE_SQUARE_LAW_COMMON/model/Mass' );
   var Property = require( 'AXON/Property' );
-  var TProperty = require( 'AXON/TProperty' );
+  var PropertyIO = require( 'AXON/PropertyIO' );
 
   // phet-io modules
   var TBoolean = require( 'ifphetio!PHET_IO/types/TBoolean' );
@@ -43,13 +43,13 @@ define( function( require ) {
     // TODO: Should this be in InverseSquareLawCommonModel?
     this.constantRadiusProperty = new Property( false, {
       tandem: tandem.createTandem( 'constantRadiusProperty' ),
-      phetioType: TProperty( TBoolean )
+      phetioType: PropertyIO( TBoolean )
     } );
 
     // @public
     this.showDistanceProperty = new Property( true, {
       tandem: tandem.createTandem( 'constantRadiusProperty' ),
-      phetioType: TProperty( TBoolean )
+      phetioType: PropertyIO( TBoolean )
     } );
     
     // TODO: Should these be in inverse-square-law-common?
