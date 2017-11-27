@@ -31,7 +31,6 @@ define( function( require ) {
 
   // constants
   var MASS_CONTROLS_Y_POSITION = 385;
-  var MASS_NODE_Y_POSITION = 215;
   var PANEL_SPACING = 50;
   var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
   var MOCKUP = GravityForceLabBasicsQueryParameters.mockup;
@@ -110,7 +109,6 @@ define( function( require ) {
       otherObjectLabel: mass2LabelString,
       defaultDirection: 'left',
       arrowColor: '#66F',
-      y: MASS_NODE_Y_POSITION,
       forceArrowHeight: 125
     } );
 
@@ -119,7 +117,6 @@ define( function( require ) {
       otherObjectLabel: mass1LabelString,
       defaultDirection: 'right',
       arrowColor: '#F66',
-      y: MASS_NODE_Y_POSITION,
       forceArrowHeight: 175
     } );
 

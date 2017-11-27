@@ -17,6 +17,8 @@ define( function( require ) {
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
   var ISLCObjectNode = require('INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode');
 
+  // constants
+  var MASS_NODE_Y_POSITION = 215;
   /**
    * @param {CoulombsLawbModel} model
    * @param {ChargeModel} massMode
@@ -39,6 +41,7 @@ define( function( require ) {
       maxArrowWidth: 15,
       labelShadowOffsetX: 0.9,
       labelShadowOffsetY: 0.9,
+      y: MASS_NODE_Y_POSITION,
       snapToNearest: model.snapObjectsToNearest // in meters, charges will snap to the nearest 0.1 meters in model coordinates
     }, options );
 
