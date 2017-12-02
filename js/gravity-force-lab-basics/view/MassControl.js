@@ -47,6 +47,7 @@ define( function( require ) {
     var numberPicker = new NumberPicker( massProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
       scale: 1.5,
+      tandem: tandem.createTandem( 'numberPicker' ),
       upFunction: function( mass ) { return mass + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       downFunction: function( mass ) { return mass - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
       formatValue: function( value ) {
