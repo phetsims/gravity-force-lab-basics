@@ -48,10 +48,10 @@ define( function( require ) {
 
     // @public
     this.showDistanceProperty = new Property( true, {
-      tandem: tandem.createTandem( 'constantRadiusProperty' ),
+      tandem: tandem.createTandem( 'showDistanceProperty' ),
       phetioType: PropertyIO( BooleanIO )
     } );
-    
+
     // TODO: Should these be in inverse-square-law-common?
     var baseColor1 = new Color( '#00f' );
     var baseColor2 = new Color( '#f00' );
@@ -64,10 +64,10 @@ define( function( require ) {
       leftObjectBoundary: leftBoundary,
       rightObjectBoundary: rightBoundary
     };
-    var mass1 = new Mass( value1, position1, valueRange, density, this.constantRadiusProperty, baseColor1, tandem, massOptions );
-    var mass2 = new Mass( value2, position2, valueRange, density, this.constantRadiusProperty, baseColor2, tandem, massOptions );
+    var mass1 = new Mass( value1, position1, valueRange, density, this.constantRadiusProperty, baseColor1, tandem.createTandem( 'mass1'), massOptions );
+    var mass2 = new Mass( value2, position2, valueRange, density, this.constantRadiusProperty, baseColor2, tandem.createTandem( 'mass2'), massOptions );
 
-    ISLCModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem.createTandem( 'gravityForceLabBasicsModel' ), {
+    ISLCModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem, {
       snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
       minSeparationBetweenObjects: 200 // in meters
     } );

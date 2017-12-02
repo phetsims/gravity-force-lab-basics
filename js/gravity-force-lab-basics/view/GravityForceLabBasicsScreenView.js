@@ -21,7 +21,7 @@ define( function( require ) {
   var Line = require( 'SCENERY/nodes/Line' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
-  var ISLCheckboxPanel = require ('INVERSE_SQUARE_LAW_COMMON/view/ISLCheckboxPanel' );
+  var ISLCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCheckboxPanel' );
   var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   var HSlider = require( 'SUN/HSlider' );
   var MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
@@ -50,6 +50,7 @@ define( function( require ) {
 
   /**
    * @param {GravityForceLabBasicsModel} model
+   * @param {Tandem} tandem
    * @constructor
    */
   function GravityForceLabBasicsScreenView( model, tandem ) {
@@ -141,7 +142,8 @@ define( function( require ) {
         model.reset();
       },
       right: this.layoutBounds.maxX - 10,
-      bottom: this.layoutBounds.maxY - 10
+      bottom: this.layoutBounds.maxY - 10,
+      tandem: tandem.createTandem( 'resetAllButton' )
     } );
     this.addChild( resetAllButton );
 
@@ -163,15 +165,15 @@ define( function( require ) {
       mass1Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object1 ) );
       mass2Node.setAccessibleAttribute( 'min', model.getObjectMinPosition( model.object2 ) );
       mass2Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object2 ) );
-    } ); 
+    } );
 
     // a11y - specify the order of focus for things in the ScreenView
     this.accessibleOrder = [ mass1Node, mass2Node, massControlBox, parameterControlPanel, resetAllButton ];
-    
+
     //------------------------------------------------
     // debugging
     //------------------------------------------------
-    
+
     if ( SHOW_DRAG_BOUNDS ) {
 
       // Show the min/max locations for dragging the objects
@@ -210,7 +212,7 @@ define( function( require ) {
         object2MaxX = modelViewTransform.modelToViewX( model.getObjectMaxPosition( model.object2 ) );
         object2MaxLine.x1 = object2MaxX;
         object2MaxLine.x2 = object2MaxX;
-      } ); 
+      } );
     }
 
     if ( MOCKUP ) {
