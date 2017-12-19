@@ -38,7 +38,10 @@ define( function( require ) {
       forceReadoutDecimalPlaces: 1,
       arrowFill: 'black',
       arrowTailWidth: 2,
-      maxArrowWidth: 15,
+
+      // TODO: scale factor for the arrow so that it has requested size, calculate this if design team likes the feel,
+      // see https://github.com/phetsims/inverse-square-law-common/issues/21
+      maxArrowWidth: 100,
       labelShadowOffsetX: 0.9,
       labelShadowOffsetY: 0.9,
       y: MASS_NODE_Y_POSITION,
