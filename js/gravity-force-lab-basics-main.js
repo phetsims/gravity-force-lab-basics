@@ -41,14 +41,14 @@ define( function( require ) {
 
     var sim = new Sim( gravityForceLabBasicsTitleString,
       [ new Screen(
-          function() {
-            return new GravityForceLabBasicsModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) );
-          },
-          function( model ) {
-            return new GravityForceLabBasicsScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
-          },
-          { backgroundColorProperty: new Property( '#ffffc2' ), tandem: gravityForceLabBasicsScreenTandem }
-        )
+        function() {
+          return new GravityForceLabBasicsModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) );
+        },
+        function( model ) {
+          return new GravityForceLabBasicsScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
+        },
+        { backgroundColorProperty: new Property( '#ffffc2' ), tandem: gravityForceLabBasicsScreenTandem }
+      )
       ], simOptions );
     sim.start();
   } );

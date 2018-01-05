@@ -40,7 +40,7 @@ define( function( require ) {
 
     Node.call( this, options );
 
-    var arrowNode = new ArrowNode( mass1PositionProperty.get(), 0, mass2PositionProperty.get(), 0 , {
+    var arrowNode = new ArrowNode( mass1PositionProperty.get(), 0, mass2PositionProperty.get(), 0, {
       doubleHead: true,
       tailWidth: 0.5,
       headHeight: HEAD_HEIGHT,
@@ -73,7 +73,5 @@ define( function( require ) {
 
   gravityForceLabBasics.register( 'DistanceArrowNode', DistanceArrowNode );
 
-  return inherit( Node, DistanceArrowNode, {
-
-  } );
+  return inherit( Node, DistanceArrowNode, {} );
 } );
