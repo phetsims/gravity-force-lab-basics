@@ -23,8 +23,8 @@ define( function( require ) {
   var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
 
   /**
-   * @constructor
    * @param {Tandem} tandem
+   * @constructor
    */
   function GravityForceLabBasicsModel( tandem ) {
 
@@ -72,7 +72,6 @@ define( function( require ) {
       snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
       minSeparationBetweenObjects: 200 // in meters
     } );
-
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );

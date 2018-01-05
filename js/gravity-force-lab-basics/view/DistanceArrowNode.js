@@ -28,12 +28,12 @@ define( function( require ) {
   var HEAD_HEIGHT = 6;
 
   /**
-   * @constructor
    * @param {Property} mass1PositionProperty
    * @param {Property} mass2PositionProperty
    * @param {ModelViewTransform2} modelViewTransform
    * @param {Tandem} tandem
    * @param {Object} options
+   * @constructor
    */
   function DistanceArrowNode( mass1PositionProperty, mass2PositionProperty, modelViewTransform, tandem, options ) {
 

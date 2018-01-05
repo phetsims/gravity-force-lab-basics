@@ -64,6 +64,10 @@ define( function( require ) {
   // TODO: Inherit from InverseSquareISLCObjectNode
   return inherit( ISLCObjectNode, GFLBMassNode, {
 
+    /**
+     * TODO: document me
+     * @param baseColor
+     */
     updateGradient: function( baseColor ) {
       var radius = this.modelViewTransform.modelToViewDeltaX( this.objectModel.radiusProperty.get() );
       this.objectCircle.fill = new RadialGradient( -radius * 0.6, -radius * 0.6, 1, -radius * 0.6, -radius * 0.6, radius )

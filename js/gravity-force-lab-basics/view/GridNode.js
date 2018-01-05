@@ -16,6 +16,11 @@ define( function( require ) {
   var Path = require( 'SCENERY/nodes/Path' );
   var Shape = require( 'KITE/Shape' );
 
+  /**
+   * @param {Bounds2} layoutBounds
+   * @param {ModelViewTransform2} modelViewTransform
+   * @constructor
+   */
   function GridNode( layoutBounds, modelViewTransform ) {
 
     // grid parameters in model coordinates
@@ -48,5 +53,4 @@ define( function( require ) {
   gravityForceLabBasics.register( 'GridNode', GridNode );
 
   return inherit( Path, GridNode );
-
 } );
