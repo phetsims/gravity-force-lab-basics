@@ -12,13 +12,14 @@ define( function( require ) {
   // modules
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var RangeWithValue = require('DOT/RangeWithValue'); 
+  var RangeWithValue = require( 'DOT/RangeWithValue' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
-  var ISLCObjectNode = require('INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode');
+  var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
 
   // constants
   var MASS_NODE_Y_POSITION = 215;
+
   /**
    * @param {CoulombsLawbModel} model
    * @param {ChargeModel} massMode
@@ -55,8 +56,8 @@ define( function( require ) {
 
     // functions that determine scaling of the arrow readout and the correct image to represent
     var pullForceRange = new RangeWithValue( 35, 1070 ); // empirically determined for linear mapping of pull objects
-    
-    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, tandem.createTandem( 'chargeNode1' ), options );
+
+    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, tandem, options );
   }
 
   gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
