@@ -1,9 +1,9 @@
 // Copyright 2016, University of Colorado Boulder
 
 /**
- * Creates the namespace for this simulation.
+ * The namespace for this simulation.
  *
- * @author John Blanco
+ * @author John Blanco (PhET Interactive Simulations)
  */
 define( function( require ) {
   'use strict';

@@ -3,7 +3,7 @@
 /**
  * Label with a number picker for setting mass.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 define( function( require ) {
   'use strict';

@@ -3,7 +3,7 @@
 /**
  * Constants that are shared between the various portions of the Gravity Force Lab simulation.
  *
- * @author John Blanco
+ * @author John Blanco (PhET Interactive Simulations)
  */
 define( function( require ) {
   'use strict';

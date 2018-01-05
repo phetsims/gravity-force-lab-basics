@@ -1,8 +1,9 @@
 // Copyright 2016-2017, University of Colorado Boulder
 
 /**
+ * Main screen view for the simulation.
  *
- * @author John Blanco
+ * @author John Blanco (PhET Interactive Simulations)
  */
 define( function( require ) {
   'use strict';

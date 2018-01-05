@@ -3,9 +3,9 @@
 /**
  * Grid that shows the possible locations of where the masses can be in the play area.
  * This node should only be used for debugging and will be hidden behind query parameter "showGrid".
- * @author Jesse Greenberg
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
-
 define( function( require ) {
   'use strict';
 

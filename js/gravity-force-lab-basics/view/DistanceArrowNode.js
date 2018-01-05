@@ -7,7 +7,6 @@
  * @author Steele Dalton (PhET Interactive Simulations)
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
-
 define( function( require ) {
   'use strict';
 
