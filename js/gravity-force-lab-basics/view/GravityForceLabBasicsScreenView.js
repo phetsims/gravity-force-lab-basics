@@ -82,7 +82,8 @@ define( function( require ) {
       textTandemLabel: 'constantRadiusText',
       checkboxTandemLabel: 'constantRadiusCheckbox'
     } ];
-    var parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, tandem.createTandem( 'parameterControlPanel' ), {
+    var parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, {
+      tandem: tandem.createTandem( 'parameterControlPanel' ),
       fill: '#f1f1f2'
     } );
     this.addChild( parameterControlPanel );
