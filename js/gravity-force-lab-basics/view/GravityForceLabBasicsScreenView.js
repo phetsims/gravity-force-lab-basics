@@ -103,20 +103,22 @@ define( function( require ) {
     this.addChild( massControlBox );
 
     // add the mass nodes to the screen
-    var mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass1Node' ), {
+    var mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
       label: mass1LabelString,
       otherObjectLabel: mass2LabelString,
       defaultDirection: 'left',
       arrowColor: '#66F',
-      forceArrowHeight: 125
+      forceArrowHeight: 125,
+      tandem: tandem.createTandem( 'mass1Node' )
     } );
 
-    var mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, tandem.createTandem( 'mass2Node' ), {
+    var mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
       label: mass2LabelString,
       otherObjectLabel: mass1LabelString,
       defaultDirection: 'right',
       arrowColor: '#F66',
-      forceArrowHeight: 175
+      forceArrowHeight: 175,
+      tandem: tandem.createTandem( 'mass2Node' )
     } );
 
     this.addChild( mass1Node );

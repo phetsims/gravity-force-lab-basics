@@ -11,25 +11,24 @@ define( function( require ) {
   // modules
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var RangeWithValue = require( 'DOT/RangeWithValue' );
+  var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
-  var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
+  var RangeWithValue = require( 'DOT/RangeWithValue' );
+  var Tandem = require( 'TANDEM/Tandem' );
 
   // constants
   var MASS_NODE_Y_POSITION = 215;
 
   /**
-   * @param {CoulombsLawbModel} model
-   * @param {ChargeModel} massMode
+   * @param {GravityForceLabBasicsModel} model
+   * @param {Mass} massModel
    * @param {Bounds2} layoutBounds
    * @param {ModelViewTransform2} modelViewTransform
-   * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
    */
-  function GFLBMassNode( model, massModel, layoutBounds, modelViewTransform, tandem, options ) {
-
+  function GFLBMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
     options = _.extend( {
       arrowLabelFill: 'black',
       labelFill: '#F3F3F3',
@@ -45,7 +44,9 @@ define( function( require ) {
       labelShadowOffsetX: 0.9,
       labelShadowOffsetY: 0.9,
       y: MASS_NODE_Y_POSITION,
-      snapToNearest: model.snapObjectsToNearest // in meters, charges will snap to the nearest 0.1 meters in model coordinates
+      snapToNearest: model.snapObjectsToNearest, // in meters, charges will snap to the nearest 0.1 meters in model coordinates
+
+      tandem: Tandem.required
     }, options );
 
     // @private
@@ -56,12 +57,11 @@ define( function( require ) {
     // functions that determine scaling of the arrow readout and the correct image to represent
     var pullForceRange = new RangeWithValue( 35, 1070 ); // empirically determined for linear mapping of pull objects
 
-    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, tandem, options );
+    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
   }
 
   gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
 
-  // TODO: Inherit from InverseSquareISLCObjectNode
   return inherit( ISLCObjectNode, GFLBMassNode, {
 
     /**
