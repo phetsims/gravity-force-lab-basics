@@ -31,11 +31,10 @@ define( function( require ) {
    * @param {Property} mass1PositionProperty
    * @param {Property} mass2PositionProperty
    * @param {ModelViewTransform2} modelViewTransform
-   * @param {Tandem} tandem
    * @param {Object} options
    * @constructor
    */
-  function DistanceArrowNode( mass1PositionProperty, mass2PositionProperty, modelViewTransform, tandem, options ) {
+  function DistanceArrowNode( mass1PositionProperty, mass2PositionProperty, modelViewTransform, options ) {
 
     Node.call( this, options );
 
@@ -72,5 +71,5 @@ define( function( require ) {
 
   gravityForceLabBasics.register( 'DistanceArrowNode', DistanceArrowNode );
 
-  return inherit( Node, DistanceArrowNode, {} );
+  return inherit( Node, DistanceArrowNode );
 } );

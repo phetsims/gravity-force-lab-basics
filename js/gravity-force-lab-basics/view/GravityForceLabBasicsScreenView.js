@@ -127,11 +127,12 @@ define( function( require ) {
     this.addChild( mass2Node.arrowNode );
 
     // arrow that shows distance between the two masses
-    var distanceArrow = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, modelViewTransform, tandem.createTandem( 'distanceArrowNode' ), {
+    var distanceArrowNode = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, modelViewTransform, {
+      tandem: tandem.createTandem( 'distanceArrowNode' ),
       y: 145
     } );
-    model.showDistanceProperty.linkAttribute( distanceArrow, 'visible' );
-    this.addChild( distanceArrow );
+    model.showDistanceProperty.linkAttribute( distanceArrowNode, 'visible' );
+    this.addChild( distanceArrowNode );
 
     // Reset All button
     var resetAllButton = new ResetAllButton( {
