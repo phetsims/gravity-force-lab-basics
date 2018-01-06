@@ -66,26 +66,22 @@ define( function( require ) {
       .05
     );
 
-    var checkboxItems = [
-      {
-        content: forceValuesString,
-        property: model.showValuesProperty,
-        textTandemLabel: 'showValuesText',
-        checkboxTandemLabel: 'showValuesCheckbox'
-      },
-      {
-        content: distanceString,
-        property: model.showDistanceProperty,
-        textTandemLabel: 'distanceText',
-        checkboxTandemLabel: 'distanceCheckbox'
-      },
-      {
-        content: constantRadiusString,
-        property: model.constantRadiusProperty,
-        textTandemLabel: 'constantRadiusText',
-        checkboxTandemLabel: 'constanntRadiusCheckbox'
-      }
-    ];
+    var checkboxItems = [ {
+      content: forceValuesString,
+      property: model.showValuesProperty,
+      textTandemLabel: 'forceValuesText',
+      checkboxTandemLabel: 'forceValuesCheckbox'
+    }, {
+      content: distanceString,
+      property: model.showDistanceProperty,
+      textTandemLabel: 'distanceText',
+      checkboxTandemLabel: 'distanceCheckbox'
+    }, {
+      content: constantRadiusString,
+      property: model.constantRadiusProperty,
+      textTandemLabel: 'constantRadiusText',
+      checkboxTandemLabel: 'constantRadiusCheckbox'
+    } ];
     var parameterControlPanel = new ISLCheckboxPanel( checkboxItems, tandem.createTandem( 'parameterControlPanel' ), {
       fill: '#f1f1f2'
     } );
