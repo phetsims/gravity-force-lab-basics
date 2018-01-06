@@ -21,7 +21,7 @@ define( function( require ) {
   var HSlider = require( 'SUN/HSlider' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var ISLCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCheckboxPanel' );
+  var ISLCCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxPanel' );
   var Line = require( 'SCENERY/nodes/Line' );
   var MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
@@ -82,7 +82,7 @@ define( function( require ) {
       textTandemLabel: 'constantRadiusText',
       checkboxTandemLabel: 'constantRadiusCheckbox'
     } ];
-    var parameterControlPanel = new ISLCheckboxPanel( checkboxItems, tandem.createTandem( 'parameterControlPanel' ), {
+    var parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, tandem.createTandem( 'parameterControlPanel' ), {
       fill: '#f1f1f2'
     } );
     this.addChild( parameterControlPanel );
