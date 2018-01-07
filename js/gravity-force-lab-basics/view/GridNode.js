@@ -1,4 +1,4 @@
-// Copyright 2017, University of Colorado Boulder
+// Copyright 2017-2018, University of Colorado Boulder
 
 /**
  * Grid that shows the possible locations of where the masses can be in the play area.
