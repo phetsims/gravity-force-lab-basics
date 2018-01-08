@@ -40,7 +40,7 @@ define( function( require ) {
   // strings
   var constantRadiusString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantRadius' );
   var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
-  var forceValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/forceValues' );
+  var showValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/showValues' );
   var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
   var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
   var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
@@ -67,7 +67,7 @@ define( function( require ) {
     );
 
     var checkboxItems = [ {
-      content: forceValuesString,
+      content: showValuesString,
       property: model.showValuesProperty,
       textTandemLabel: 'forceValuesText',
       checkboxTandemLabel: 'forceValuesCheckbox'

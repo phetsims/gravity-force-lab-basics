@@ -14,8 +14,8 @@
   "distance": {
   	"value": "Distance"
   },
-  "forceValues": {
-  	"value": "Force Values"
+  "showValues": {
+  	"value": "Show Values"
   },
   "billionKg": {
     "value": "billion kg"
