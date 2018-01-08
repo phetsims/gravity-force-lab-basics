@@ -20,11 +20,7 @@ define( function( require ) {
 
     // Shows boundary positions of the two masses, as solid green lines.  The boundary positions for each
     // object will change depending on the size and position of both objects.
-    showDragBounds: { type: 'flag' },
-
-    // for development - add a slider to the screen view allows one to slide view the latest mockup
-    // overlayed above the sim.
-    mockup: { type: 'flag' }
+    showDragBounds: { type: 'flag' }
   } );
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsQueryParameters', GravityForceLabBasicsQueryParameters );

@@ -18,8 +18,6 @@ define( function( require ) {
   var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
   var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
-  var HSlider = require( 'SUN/HSlider' );
-  var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxPanel' );
   var Line = require( 'SCENERY/nodes/Line' );
@@ -34,7 +32,6 @@ define( function( require ) {
   var MASS_CONTROLS_Y_POSITION = 385;
   var PANEL_SPACING = 50;
   var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
-  var MOCKUP = GravityForceLabBasicsQueryParameters.mockup;
   var SHOW_DRAG_BOUNDS = GravityForceLabBasicsQueryParameters.showDragBounds;
 
   // strings
@@ -45,9 +42,6 @@ define( function( require ) {
   var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
   var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
   var mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
-
-  // images
-  var backgroundImage = require( 'image!GRAVITY_FORCE_LAB_BASICS/background.png' );
 
   /**
    * @param {GravityForceLabBasicsModel} model
@@ -214,16 +208,6 @@ define( function( require ) {
         object2MaxLine.x1 = object2MaxX;
         object2MaxLine.x2 = object2MaxX;
       } );
-    }
-
-    if ( MOCKUP ) {
-      //Show the mock-up and a slider to change its transparency
-      var mockupOpacityProperty = new Property( 0.00 );
-      var mockImage = new Image( backgroundImage, { pickable: false } );
-      mockImage.scale( this.layoutBounds.width / mockImage.width, this.layoutBounds.height / mockImage.height );
-      mockupOpacityProperty.linkAttribute( mockImage, 'opacity' );
-      this.addChild( mockImage );
-      this.addChild( new HSlider( mockupOpacityProperty, { min: 0, max: 1 }, { top: 10, left: 10 } ) );
     }
 
     if ( SHOW_GRID ) {
