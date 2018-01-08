@@ -30,13 +30,13 @@ define( function( require ) {
 
   /**
    * @param {string} titleString
-   * @param {Property.<number>} massProperty
+   * @param {Property.<number>} valueProperty
    * @param {Range} massRange
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
    */
-  function MassControl( titleString, massProperty, massRange, tandem, options ) {
+  function MassControl( titleString, valueProperty, massRange, tandem, options ) {
 
     options = _.extend( {
       color: new Color( 0, 0, 255 )
@@ -44,7 +44,7 @@ define( function( require ) {
 
     var titleText = new Text( titleString, { font: new PhetFont( 18 ) } );
 
-    var numberPicker = new NumberPicker( massProperty, new Property( massRange ), {
+    var numberPicker = new NumberPicker( valueProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
       scale: 1.5,
       tandem: tandem.createTandem( 'numberPicker' ),
