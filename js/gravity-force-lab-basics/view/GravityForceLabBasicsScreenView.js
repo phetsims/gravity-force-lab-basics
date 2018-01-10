@@ -63,8 +63,8 @@ define( function( require ) {
     var checkboxItems = [ {
       content: showValuesString,
       property: model.showValuesProperty,
-      textTandemLabel: 'forceValuesText',
-      checkboxTandemLabel: 'forceValuesCheckbox'
+      textTandemLabel: 'showValuesText',
+      checkboxTandemLabel: 'showValuesCheckbox'
     }, {
       content: distanceString,
       property: model.showDistanceProperty,
