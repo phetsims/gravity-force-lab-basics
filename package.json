@@ -12,7 +12,6 @@
   "phet": {
     "requirejsNamespace": "GRAVITY_FORCE_LAB_BASICS",
     "phetLibs": [
-      "gravity-force-lab",
       "inverse-square-law-common"
     ],
     "runnable": true,

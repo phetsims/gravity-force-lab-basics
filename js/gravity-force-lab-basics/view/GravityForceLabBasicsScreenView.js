@@ -39,9 +39,9 @@ define( function( require ) {
   var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
   var showValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/showValues' );
   var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
-  var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
+  var mass1String = require( 'string!INVERSE_SQUARE_LAW_COMMON/mass1' );
   var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
-  var mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
+  var mass2String = require( 'string!INVERSE_SQUARE_LAW_COMMON/mass2' );
 
   /**
    * @param {GravityForceLabBasicsModel} model
