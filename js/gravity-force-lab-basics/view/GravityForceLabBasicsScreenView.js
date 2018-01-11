@@ -4,6 +4,7 @@
  * Main screen view for the simulation.
  *
  * @author John Blanco (PhET Interactive Simulations)
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 define( function( require ) {
   'use strict';
@@ -19,6 +20,7 @@ define( function( require ) {
   var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var ISLCCheckboxItem = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxItem' );
   var ISLCCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxPanel' );
   var Line = require( 'SCENERY/nodes/Line' );
   var MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
@@ -37,11 +39,11 @@ define( function( require ) {
   // strings
   var constantRadiusString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantRadius' );
   var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
-  var showValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/showValues' );
   var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
   var mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
   var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
   var mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
+  var showValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/showValues' );
 
   /**
    * @param {GravityForceLabBasicsModel} model
@@ -60,22 +62,17 @@ define( function( require ) {
       .05
     );
 
-    var checkboxItems = [ {
-      content: showValuesString,
-      property: model.showValuesProperty,
-      textTandemLabel: 'showValuesText',
-      checkboxTandemLabel: 'showValuesCheckbox'
-    }, {
-      content: distanceString,
-      property: model.showDistanceProperty,
-      textTandemLabel: 'distanceText',
-      checkboxTandemLabel: 'distanceCheckbox'
-    }, {
-      content: constantRadiusString,
-      property: model.constantRadiusProperty,
-      textTandemLabel: 'constantRadiusText',
-      checkboxTandemLabel: 'constantRadiusCheckbox'
-    } ];
+    var checkboxItems = [
+      new ISLCCheckboxItem( showValuesString, model.showValuesProperty, {
+        tandem: tandem.createTandem( 'showValuesCheckbox' )
+      } ),
+      new ISLCCheckboxItem( distanceString, model.showDistanceProperty, {
+        tandem: tandem.createTandem( 'scientificNotationCheckbox' )
+      } ),
+      new ISLCCheckboxItem( constantRadiusString, model.constantRadiusProperty, {
+        tandem: tandem.createTandem( 'constantRadiusCheckbox' )
+      } )
+    ];
     var parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, {
       tandem: tandem.createTandem( 'parameterControlPanel' ),
       fill: '#f1f1f2'
