@@ -67,7 +67,7 @@ define( function( require ) {
         tandem: tandem.createTandem( 'showValuesCheckbox' )
       } ),
       new ISLCCheckboxItem( distanceString, model.showDistanceProperty, {
-        tandem: tandem.createTandem( 'scientificNotationCheckbox' )
+        tandem: tandem.createTandem( 'distanceCheckbox' )
       } ),
       new ISLCCheckboxItem( constantRadiusString, model.constantRadiusProperty, {
         tandem: tandem.createTandem( 'constantRadiusCheckbox' )
