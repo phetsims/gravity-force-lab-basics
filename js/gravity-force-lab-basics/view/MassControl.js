@@ -42,7 +42,10 @@ define( function( require ) {
       color: new Color( 0, 0, 255 )
     }, options );
 
-    var titleText = new Text( titleString, { font: new PhetFont( 18 ) } );
+    var titleText = new Text( titleString, {
+      font: new PhetFont( 18 ),
+      tandem: tandem.createTandem( 'titleText' )
+    } );
 
     var numberPicker = new NumberPicker( valueProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
@@ -59,7 +62,10 @@ define( function( require ) {
       arrowYSpacing: 2,
       color: options.color
     } );
-    var numberPickerLabel = new Text( billionKgString, { font: new PhetFont( { size: 14 } ) } );
+    var numberPickerLabel = new Text( billionKgString, {
+      font: new PhetFont( { size: 14 } ),
+      tandem: tandem.createTandem( 'numberPickerLabel' )
+    } );
 
     var numberPickerHBox = new HBox( {
       children: [ numberPicker, numberPickerLabel ],
