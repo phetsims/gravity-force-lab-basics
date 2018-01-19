@@ -10,12 +10,15 @@ define( function( require ) {
 
   // modules
   var Color = require( 'SCENERY/util/Color' );
+  var DerivedProperty = require( 'AXON/DerivedProperty' );
+  var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCConstants = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCConstants' );
   var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
   var Mass = require( 'INVERSE_SQUARE_LAW_COMMON/model/Mass' );
+  var NumberIO = require( 'ifphetio!PHET_IO/types/NumberIO' );
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
 
@@ -72,6 +75,17 @@ define( function( require ) {
       snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
       minSeparationBetweenObjects: 200 // in meters
     } );
+
+    // @public
+    this.distanceProperty = new DerivedProperty( [ 
+        this.object1.positionProperty, 
+        this.object2.positionProperty
+      ], function( x1, x2 ) {
+        return Math.abs( x2 - x1 ) / 1000;
+      }, {
+        phetioType: DerivedPropertyIO( NumberIO ),
+        tandem: tandem.createTandem( 'distanceProperty' )
+      } );
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );

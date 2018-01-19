@@ -121,7 +121,7 @@ define( function( require ) {
     this.addChild( mass2Node.arrowNode );
 
     // arrow that shows distance between the two masses
-    var distanceArrowNode = new DistanceArrowNode( model.object1.positionProperty, model.object2.positionProperty, modelViewTransform, {
+    var distanceArrowNode = new DistanceArrowNode( model, modelViewTransform, {
       tandem: tandem.createTandem( 'distanceArrowNode' ),
       y: 145
     } );

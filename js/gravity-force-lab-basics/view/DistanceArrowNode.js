@@ -18,6 +18,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Property = require( 'AXON/Property' );
   var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
+  var Tandem = require( 'TANDEM/Tandem' );
   var Text = require( 'SCENERY/nodes/Text' );
 
   // strings
@@ -28,17 +29,20 @@ define( function( require ) {
   var HEAD_HEIGHT = 6;
 
   /**
-   * @param {Property} mass1PositionProperty
-   * @param {Property} mass2PositionProperty
+   * @param {GravityForceLabBasicsModel} model
    * @param {ModelViewTransform2} modelViewTransform
    * @param {Object} options
    * @constructor
    */
-  function DistanceArrowNode( mass1PositionProperty, mass2PositionProperty, modelViewTransform, options ) {
+  function DistanceArrowNode( model, modelViewTransform, options ) {
+
+    _.extend( {
+      tandem: Tandem.required
+    }, options );
 
     Node.call( this, options );
 
-    var arrowNode = new ArrowNode( mass1PositionProperty.get(), 0, mass2PositionProperty.get(), 0, {
+    var arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0, model.object2.positionProperty.get(), 0, {
       doubleHead: true,
       tailWidth: 0.5,
       headHeight: HEAD_HEIGHT,
@@ -51,11 +55,12 @@ define( function( require ) {
     // the label
     var labelText = new Text( StringUtils.fillIn( distanceUnitsPatternString, { distance: 0 } ), {
       font: new PhetFont( 12 ),
-      bottom: arrowNode.top + ( 3 * HEAD_WIDTH / 4 )
+      bottom: arrowNode.top + ( 3 * HEAD_WIDTH / 4 ),
+      tandem: options.tandem.createTandem( 'labelNode' )
     } );
     this.addChild( labelText );
 
-    Property.multilink( [ mass1PositionProperty, mass2PositionProperty ], function( position1, position2 ) {
+    Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ], function( position1, position2 ) {
 
       // update the arrow node width
       var viewPosition1 = modelViewTransform.modelToViewX( position1 );
@@ -63,7 +68,7 @@ define( function( require ) {
       arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
 
       // update label text and center, distance in meters so divide by 1000 to read out in km
-      labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, { distance: ( position2 - position1 ) / 1000 } ) );
+      labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, { distance: model.distanceProperty.get() } ) );
 
       labelText.centerX = arrowNode.centerX;
     } );
