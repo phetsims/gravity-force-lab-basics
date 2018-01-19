@@ -44,7 +44,6 @@ define( function( require ) {
     var density = 1.5; // kg/m^3
 
     // @public
-    // TODO: Should this be in InverseSquareLawCommonModel? TODO: SR votes yes
     this.constantRadiusProperty = new Property( false, {
       tandem: tandem.createTandem( 'constantRadiusProperty' ),
       phetioType: PropertyIO( BooleanIO )
