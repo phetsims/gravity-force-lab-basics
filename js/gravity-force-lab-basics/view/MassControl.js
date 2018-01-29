@@ -60,7 +60,10 @@ define( function( require ) {
       // arrow options
       arrowHeight: 3,
       arrowYSpacing: 2,
-      color: options.color
+      color: options.color,
+
+      // a11y
+      a11yPageValueDelta: GravityForceLabBasicsConstants.BILLION_MULTIPLIER * 2
     } );
     var numberPickerLabel = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),
