@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.0.0-dev.16 Mon Jan 29 2018 13:33:05 GMT-0700 (Mountain Standard Time)",
+  "comment": "# gravity-force-lab-basics 1.0.0-dev.17 Tue Jan 30 2018 17:12:24 GMT-0700 (MST)",
   "assert": {
     "sha": "928741cfc8fe804334d5b35292140314511f8678",
     "branch": "master"
@@ -21,11 +21,11 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "cf11e06f57a2013b2d077a1aa7b756c75ddaedfd",
+    "sha": "26a76ab5fd8cdd18a77ebbc3f9dbb986c52b2cf1",
     "branch": "master"
   },
   "inverse-square-law-common": {
-    "sha": "d135be3ba59ef09710ebc14bb288280243b8461b",
+    "sha": "6adeabb74c046c32a8102878eafc29c5636f0d45",
     "branch": "master"
   },
   "joist": {
@@ -57,15 +57,15 @@
     "branch": "master"
   },
   "phet-io-wrapper-sonification": {
-    "sha": "84c7469890fdf240df34997581509f299a20c138",
+    "sha": "f61d3da821ae471e655ba96479f3085fee0a1819",
     "branch": "master"
   },
   "phet-io-wrapper-visualizing-engagement": {
-    "sha": "83ca1fe39c4f9b25bee48309dce494bea7254f25",
+    "sha": "14150f43c23232984af555edd3d4a07c73a84886",
     "branch": "master"
   },
   "phet-io-wrappers": {
-    "sha": "3753cb49b924fe63aab9a5742b8d42c6acaa7e28",
+    "sha": "d11aebf69543136a4bc26bc9993f2cec586b7998",
     "branch": "master"
   },
   "phetcommon": {
@@ -77,15 +77,15 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "70cf829b42b65d6c4f58045f40ed6768b7b889a5",
+    "sha": "2602da303f9246852a3e23bfe268368899a011bb",
     "branch": "master"
   },
   "scenery-phet": {
-    "sha": "bd233bf8f798e0db98a550c31bd7e73f48994b53",
+    "sha": "841c9cd1d1ee933eba0045232d288ce4402e1aed",
     "branch": "master"
   },
   "sherpa": {
-    "sha": "d59690f0f6c46384e532496fa7e9156ea0724f46",
+    "sha": "7a6906fd09154b40ff68462843acc7f97e0d2276",
     "branch": "master"
   },
   "sun": {
