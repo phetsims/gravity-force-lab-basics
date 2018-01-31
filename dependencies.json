@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.0.0-dev.17 Tue Jan 30 2018 17:12:24 GMT-0700 (MST)",
+  "comment": "# gravity-force-lab-basics 1.0.0-dev.18 Tue Jan 30 2018 17:18:35 GMT-0700 (MST)",
   "assert": {
     "sha": "928741cfc8fe804334d5b35292140314511f8678",
     "branch": "master"
@@ -21,7 +21,7 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "26a76ab5fd8cdd18a77ebbc3f9dbb986c52b2cf1",
+    "sha": "3b76d043442decc2af9ccb00874de510a490c8b8",
     "branch": "master"
   },
   "inverse-square-law-common": {
