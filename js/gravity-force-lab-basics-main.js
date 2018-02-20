@@ -25,12 +25,11 @@ define( function( require ) {
 
   var simOptions = {
     credits: {
-      //TODO fill in proper credits, all of these fields are optional, see joist.AboutDialog
-      leadDesign: '',
-      softwareDevelopment: '',
-      team: '',
-      qualityAssurance: '',
-      graphicArts: '',
+      leadDesign: 'Amy Rouinfar',
+      softwareDevelopment: 'Michael Barlow, Jesse Greenberg',
+      team: 'Ariel Paul, Kathy Perkins',
+      qualityAssurance: 'Steele Dalton',
+      graphicArts: 'Mariah Hermsmeyer',
       thanks: ''
     }
   };
