@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var GravityForceLabBasicsKeyboardHelpContent = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsKeyboardHelpContent' );
   var GravityForceLabBasicsModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GravityForceLabBasicsModel' );
   var GravityForceLabBasicsScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsScreenView' );
   var Property = require( 'AXON/Property' );
@@ -23,6 +24,8 @@ define( function( require ) {
   // strings
   var gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
 
+  var keyboardHelpContent = new GravityForceLabBasicsKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ) ); 
+
   var simOptions = {
     credits: {
       leadDesign: 'Amy Rouinfar',
@@ -31,7 +34,8 @@ define( function( require ) {
       qualityAssurance: 'Steele Dalton',
       graphicArts: 'Mariah Hermsmeyer',
       thanks: ''
-    }
+    },
+    keyboardHelpNode: keyboardHelpContent
   };
 
   SimLauncher.launch( function() {
