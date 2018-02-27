@@ -10,12 +10,58 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var ArrowKeyNode = require( 'SCENERY_PHET/keyboard/ArrowKeyNode' );
+  var EndKeyNode = require( 'SCENERY_PHET/keyboard/EndKeyNode' );
   var GeneralNavigationHelpContent = require( 'SCENERY_PHET/keyboard/help/GeneralNavigationHelpContent' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var HBox = require( 'SCENERY/nodes/HBox' );
+  var HelpContent = require( 'SCENERY_PHET/keyboard/help/HelpContent' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var HomeKeyNode = require( 'SCENERY_PHET/keyboard/HomeKeyNode' );
+  var PageUpKeyNode = require( 'SCENERY_PHET/keyboard/PageUpKeyNode' );
   var Panel = require( 'SUN/Panel' );
+  var RichText = require( 'SCENERY/nodes/RichText' );
   var SliderControlsHelpContent = require( 'SCENERY_PHET/keyboard/help/SliderControlsHelpContent' );
+  var VBox = require( 'SCENERY/nodes/VBox' );
+
+  // strings
+  var moveMassString = 'move mass'; // be sure to title case and capitalize
+  var changeMassString = 'change mass';
+  var moveInLargerStepsString = 'Move in larger steps';
+  var jumpLeftString = 'Jump to left';
+  var jumpRightString = 'Jump to right';
+  var increaseMassString = 'Increase mass';
+  var decreaseMassString = 'Decrease mass';
+  var changeMassLargeStepsString = 'Change mass in larger steps';
+  var jumpToMaxMassString = 'Jump to maximum mass';
+  var jumpToMinMassString = 'Jump to minimum mass';
+
+  // constants
+  var DEFAULT_LABEL_OPTIONS = {
+    font: HelpContent.DEFAULT_LABEL_FONT,
+    maxWidth: HelpContent.DEFAULT_TEXT_MAX_WIDTH
+  };
+
+  var ICON_OPTIONS = {
+    home: function () {
+      return new HomeKeyNode();
+    },
+    end: function() {
+      return new EndKeyNode();
+    },
+    leftRight: function() {
+      return HelpContent.leftRightArrowKeysRowIcon();
+    },
+    downOrLeft: function() {
+      return HelpContent.iconOrIcon( new ArrowKeyNode( 'down' ), new ArrowKeyNode( 'left' ) );
+    },
+    upOrRight: function() {
+      return HelpContent.iconOrIcon( new ArrowKeyNode( 'up' ), new ArrowKeyNode( 'right' ) );
+    },
+    pageUpPageDown: function() {
+      return HelpContent.pageUpPageDownRowIcon();
+    }
+  };
 
   /**
    * Constructor.
@@ -25,11 +71,63 @@ define( function( require ) {
    */
   function GravityForceLabBasicsKeyboardHelpContent( tandem ) {
 
-    var sliderControlsHelpContent = new SliderControlsHelpContent();
+    var toTitleCase = function ( str ) {
+      return str.replace( /\w\S*/g, function( txt ) {
+        return txt.charAt( 0 ).toUpperCase() + txt.substr( 1 ).toLowerCase();
+      } );
+    };
+
+    var capitalize = function( str ) {
+      return str.replace( /\w\S*/, function( txt ) {
+        return txt.charAt( 0 ).toUpperCase() + txt.substr( 1 ).toLowerCase();
+      } );
+    };
+
+    // Mass movement help dialog section
+    // move mass content
+    var moveMassRow = this.constructRow( capitalize( moveMassString ), 'leftRight' );
+
+    // 'move in larger steps' content
+    var moveLargeStepsRow = this.constructRow( moveInLargerStepsString, 'pageUpPageDown' );
+
+    // 'jump to left' content
+    var jumpLeftRow = this.constructRow( jumpLeftString, 'home' );
+
+    // 'jump to right' content
+    var jumpRightRow = this.constructRow( jumpRightString, 'end' );
+
+    var moveMassRows = [ moveMassRow, moveLargeStepsRow, jumpLeftRow, jumpRightRow ];
+    var moveMassHelpContent = new HelpContent( toTitleCase( moveMassString ), moveMassRows );
+
+    // Mass adjustment help section
+    var increaseMassRow = this.constructRow( increaseMassString, 'upOrRight' );
+    var decreaseMassRow = this.constructRow( decreaseMassString, 'downOrLeft' );
+    var changeMassLargeStepsRow = this.constructRow( changeMassLargeStepsString, 'pageUpPageDown' );
+    var jumpToMinMassRow = this.constructRow( jumpToMinMassString, 'home' );
+    var jumpToMaxMassRow = this. constructRow( jumpToMaxMassString, 'end' )
+
+    var adjustMassRows = [ increaseMassRow, decreaseMassRow, changeMassLargeStepsRow, jumpToMinMassRow, jumpToMaxMassRow ];
+    var adjustMassHelpContent = new HelpContent( toTitleCase( changeMassString ), adjustMassRows );
+
+    // align icons for the mass movement and adjustment sections
+    HelpContent.alignHelpContentIcons( [ moveMassHelpContent, adjustMassHelpContent ] );
+
     var generalNavigationHelpContent = new GeneralNavigationHelpContent();
 
+    var leftContent = new VBox( {
+      children: [ moveMassHelpContent, adjustMassHelpContent ],
+      align: 'top',
+      spacing: 30
+    } );
+
+    var rightContent = new VBox( {
+      children: [ generalNavigationHelpContent ],
+      align: 'top',
+      spacing: 30
+    } );
+
     var content = new HBox( {
-      children: [ sliderControlsHelpContent, generalNavigationHelpContent ],
+      children: [ leftContent, rightContent ],
       align: 'top',
       spacing: 30
     } );
@@ -43,5 +141,20 @@ define( function( require ) {
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsKeyboardHelpContent', GravityForceLabBasicsKeyboardHelpContent );
 
-  return inherit( Panel, GravityForceLabBasicsKeyboardHelpContent );
+  return inherit( Panel, GravityForceLabBasicsKeyboardHelpContent, {
+
+    /**
+     * Works like this.constructRow( 'jump to the end', 'end' );
+     * @param  {[type]} labelString [description]
+     * @param  {[type]} iconOption  [description]
+     * @return {[type]}             [description]
+     */
+    constructRow: function( labelString, iconOption ) {
+      var labelNode = new RichText( labelString, DEFAULT_LABEL_OPTIONS );
+
+      var iconNode = ICON_OPTIONS[ iconOption ]();
+
+      return HelpContent.labelWithIcon( labelNode, iconNode );
+    }
+  } );
 } );
