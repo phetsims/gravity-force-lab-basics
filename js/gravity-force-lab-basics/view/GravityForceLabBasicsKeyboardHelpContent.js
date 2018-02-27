@@ -18,10 +18,8 @@ define( function( require ) {
   var HelpContent = require( 'SCENERY_PHET/keyboard/help/HelpContent' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HomeKeyNode = require( 'SCENERY_PHET/keyboard/HomeKeyNode' );
-  var PageUpKeyNode = require( 'SCENERY_PHET/keyboard/PageUpKeyNode' );
   var Panel = require( 'SUN/Panel' );
   var RichText = require( 'SCENERY/nodes/RichText' );
-  var SliderControlsHelpContent = require( 'SCENERY_PHET/keyboard/help/SliderControlsHelpContent' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
@@ -104,7 +102,7 @@ define( function( require ) {
     var decreaseMassRow = this.constructRow( decreaseMassString, 'downOrLeft' );
     var changeMassLargeStepsRow = this.constructRow( changeMassLargeStepsString, 'pageUpPageDown' );
     var jumpToMinMassRow = this.constructRow( jumpToMinMassString, 'home' );
-    var jumpToMaxMassRow = this. constructRow( jumpToMaxMassString, 'end' )
+    var jumpToMaxMassRow = this. constructRow( jumpToMaxMassString, 'end' );
 
     var adjustMassRows = [ increaseMassRow, decreaseMassRow, changeMassLargeStepsRow, jumpToMinMassRow, jumpToMaxMassRow ];
     var adjustMassHelpContent = new HelpContent( toTitleCase( changeMassString ), adjustMassRows );
