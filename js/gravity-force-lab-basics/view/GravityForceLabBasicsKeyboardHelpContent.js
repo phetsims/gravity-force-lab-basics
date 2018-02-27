@@ -13,6 +13,7 @@ define( function( require ) {
   var ArrowKeyNode = require( 'SCENERY_PHET/keyboard/ArrowKeyNode' );
   var EndKeyNode = require( 'SCENERY_PHET/keyboard/EndKeyNode' );
   var GeneralNavigationHelpContent = require( 'SCENERY_PHET/keyboard/help/GeneralNavigationHelpContent' );
+  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var HelpContent = require( 'SCENERY_PHET/keyboard/help/HelpContent' );
@@ -23,16 +24,17 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var moveMassString = 'move mass'; // be sure to title case and capitalize
-  var changeMassString = 'change mass';
-  var moveInLargerStepsString = 'Move in larger steps';
-  var jumpLeftString = 'Jump to left';
-  var jumpRightString = 'Jump to right';
-  var increaseMassString = 'Increase mass';
-  var decreaseMassString = 'Decrease mass';
-  var changeMassLargeStepsString = 'Change mass in larger steps';
-  var jumpToMaxMassString = 'Jump to maximum mass';
-  var jumpToMinMassString = 'Jump to minimum mass';
+  var moveMassHeadingString = GFLBA11yStrings.moveMassHeadingString;
+  var moveMassLabelString = GFLBA11yStrings.moveMassLabelString;
+  var changeMassHeadingString = GFLBA11yStrings.changeMassHeadingString;
+  var moveInLargerStepsString = GFLBA11yStrings.moveInLargerStepsString;
+  var jumpToLeftString = GFLBA11yStrings.jumpToLeftString;
+  var jumpToRightString = GFLBA11yStrings.jumpToRightString;
+  var increaseMassString = GFLBA11yStrings.increaseMassString;
+  var decreaseMassString = GFLBA11yStrings.decreaseMassString;
+  var changeMassInLargerStepsString = GFLBA11yStrings.changeMassInLargerStepsString;
+  var jumpToMaximumMassString = GFLBA11yStrings.jumpToMaximumMassString;
+  var jumpToMinimumMassString = GFLBA11yStrings.jumpToMinimumMassString;
 
   // constants
   var DEFAULT_LABEL_OPTIONS = {
@@ -69,43 +71,31 @@ define( function( require ) {
    */
   function GravityForceLabBasicsKeyboardHelpContent( tandem ) {
 
-    var toTitleCase = function ( str ) {
-      return str.replace( /\w\S*/g, function( txt ) {
-        return txt.charAt( 0 ).toUpperCase() + txt.substr( 1 ).toLowerCase();
-      } );
-    };
-
-    var capitalize = function( str ) {
-      return str.replace( /\w\S*/, function( txt ) {
-        return txt.charAt( 0 ).toUpperCase() + txt.substr( 1 ).toLowerCase();
-      } );
-    };
-
     // Mass movement help dialog section
     // move mass content
-    var moveMassRow = this.constructRow( capitalize( moveMassString ), 'leftRight' );
+    var moveMassRow = this.constructRow( moveMassLabelString, 'leftRight' );
 
     // 'move in larger steps' content
     var moveLargeStepsRow = this.constructRow( moveInLargerStepsString, 'pageUpPageDown' );
 
     // 'jump to left' content
-    var jumpLeftRow = this.constructRow( jumpLeftString, 'home' );
+    var jumpLeftRow = this.constructRow( jumpToLeftString, 'home' );
 
     // 'jump to right' content
-    var jumpRightRow = this.constructRow( jumpRightString, 'end' );
+    var jumpRightRow = this.constructRow( jumpToRightString, 'end' );
 
     var moveMassRows = [ moveMassRow, moveLargeStepsRow, jumpLeftRow, jumpRightRow ];
-    var moveMassHelpContent = new HelpContent( toTitleCase( moveMassString ), moveMassRows );
+    var moveMassHelpContent = new HelpContent( moveMassHeadingString, moveMassRows );
 
     // Mass adjustment help section
     var increaseMassRow = this.constructRow( increaseMassString, 'upOrRight' );
     var decreaseMassRow = this.constructRow( decreaseMassString, 'downOrLeft' );
-    var changeMassLargeStepsRow = this.constructRow( changeMassLargeStepsString, 'pageUpPageDown' );
-    var jumpToMinMassRow = this.constructRow( jumpToMinMassString, 'home' );
-    var jumpToMaxMassRow = this. constructRow( jumpToMaxMassString, 'end' );
+    var changeMassLargeStepsRow = this.constructRow( changeMassInLargerStepsString, 'pageUpPageDown' );
+    var jumpToMinMassRow = this.constructRow( jumpToMinimumMassString, 'home' );
+    var jumpToMaxMassRow = this. constructRow( jumpToMaximumMassString, 'end' );
 
     var adjustMassRows = [ increaseMassRow, decreaseMassRow, changeMassLargeStepsRow, jumpToMinMassRow, jumpToMaxMassRow ];
-    var adjustMassHelpContent = new HelpContent( toTitleCase( changeMassString ), adjustMassRows );
+    var adjustMassHelpContent = new HelpContent( changeMassHeadingString, adjustMassRows );
 
     // align icons for the mass movement and adjustment sections
     HelpContent.alignHelpContentIcons( [ moveMassHelpContent, adjustMassHelpContent ] );
