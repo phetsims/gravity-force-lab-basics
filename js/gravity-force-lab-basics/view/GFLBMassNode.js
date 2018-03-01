@@ -37,9 +37,6 @@ define( function( require ) {
       forceReadoutDecimalPlaces: 1,
       arrowFill: 'black',
       arrowTailWidth: 2,
-
-      // TODO: scale factor for the arrow so that it has requested size, calculate this if design team likes the feel,
-      // see https://github.com/phetsims/inverse-square-law-common/issues/21
       maxArrowWidth: 100,
       labelShadowOffsetX: 0.9,
       labelShadowOffsetY: 0.9,
@@ -65,7 +62,8 @@ define( function( require ) {
   return inherit( ISLCObjectNode, GFLBMassNode, {
 
     /**
-     * TODO: document me
+     * Redraws the white gradient on the mass objects with their radius.
+     *
      * @param baseColor
      */
     updateGradient: function( baseColor ) {

@@ -17,7 +17,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCConstants = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCConstants' );
   var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
-  var Mass = require( 'INVERSE_SQUARE_LAW_COMMON/model/Mass' );
+  var Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
   var NumberIO = require( 'ifphetio!PHET_IO/types/NumberIO' );
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
