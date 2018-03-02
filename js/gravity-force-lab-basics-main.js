@@ -35,7 +35,8 @@ define( function( require ) {
       graphicArts: 'Mariah Hermsmeyer',
       thanks: ''
     },
-    keyboardHelpNode: keyboardHelpContent
+    keyboardHelpNode: keyboardHelpContent,
+    accessibility: true
   };
 
   SimLauncher.launch( function() {
