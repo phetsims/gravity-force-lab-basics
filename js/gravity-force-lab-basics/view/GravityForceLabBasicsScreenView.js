@@ -93,7 +93,7 @@ define( function( require ) {
     } );
     this.addChild( massControlBox );
 
-    // add the mass nodes to the screen
+    // add the mass nodes to the view
     var mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
       label: mass1LabelString,
       otherObjectLabel: mass2LabelString,
