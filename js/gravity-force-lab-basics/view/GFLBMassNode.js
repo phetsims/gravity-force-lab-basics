@@ -29,6 +29,7 @@ define( function( require ) {
    * @constructor
    */
   function GFLBMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
+    
     options = _.extend( {
       arrowLabelFill: 'black',
       labelFill: '#F3F3F3',
