@@ -79,7 +79,7 @@ define( function( require ) {
         this.object1.positionProperty, 
         this.object2.positionProperty
       ], function( x1, x2 ) {
-        return Math.abs( x2 - x1 ) / 1000;
+        return Math.abs( x2 - x1 ) / 1000; // divided by 100 to convert to KM
       }, {
         phetioType: DerivedPropertyIO( NumberIO ),
         tandem: tandem.createTandem( 'distanceProperty' )
