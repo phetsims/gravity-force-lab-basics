@@ -42,6 +42,7 @@ define( function( require ) {
     maxWidth: HelpContent.DEFAULT_TEXT_MAX_WIDTH
   };
 
+  // helper functions that return icons for the dialog
   var ICON_OPTIONS = {
     home: function () {
       return new HomeKeyNode();
