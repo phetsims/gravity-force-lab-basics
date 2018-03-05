@@ -36,10 +36,6 @@ define( function( require ) {
    */
   function DistanceArrowNode( model, modelViewTransform, options ) {
 
-    options = _.extend( {
-      tandem: Tandem.required
-    }, options );
-
     Node.call( this, options );
 
     var arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0, model.object2.positionProperty.get(), 0, {
