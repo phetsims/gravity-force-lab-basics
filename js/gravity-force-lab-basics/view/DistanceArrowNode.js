@@ -36,7 +36,7 @@ define( function( require ) {
    */
   function DistanceArrowNode( model, modelViewTransform, options ) {
 
-    _.extend( {
+    options = _.extend( {
       tandem: Tandem.required
     }, options );
 
