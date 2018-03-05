@@ -150,15 +150,6 @@ define( function( require ) {
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
 
-    // a11y - TODO: could move to a common type for inverse square law common sims
-    var objectProperties = [ model.object1.positionProperty, model.object1.radiusProperty, model.object2.positionProperty, model.object2.radiusProperty ];
-    Property.multilink( objectProperties, function( position1, radius1, position2, radius2 ) {
-      mass1Node.setAccessibleAttribute( 'min', model.getObjectMinPosition( model.object1 ) );
-      mass1Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object1 ) );
-      mass2Node.setAccessibleAttribute( 'min', model.getObjectMinPosition( model.object2 ) );
-      mass2Node.setAccessibleAttribute( 'max', model.getObjectMaxPosition( model.object2 ) );
-    } );
-
     // a11y - specify the order of focus for things in the ScreenView
     this.accessibleOrder = [ mass1Node, mass2Node, massControlBox, parameterControlPanel, resetAllButton ];
 
@@ -188,6 +179,13 @@ define( function( require ) {
       var object1MaxX;
       var object2MinX;
       var object2MaxX;
+      var objectProperties = [
+        model.object1.positionProperty,
+        model.object1.radiusProperty,
+        model.object2.positionProperty,
+        model.object2.radiusProperty
+      ];
+
       Property.multilink( objectProperties, function( position1, radius1, position2, radius2 ) {
         object1MinX = modelViewTransform.modelToViewX( model.getObjectMinPosition( model.object1 ) );
         object1MinLine.x1 = object1MinX;
