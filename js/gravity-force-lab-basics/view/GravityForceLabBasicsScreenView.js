@@ -16,7 +16,6 @@ define( function( require ) {
   var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
-  var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCCheckboxItem = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxItem' );
@@ -35,7 +34,7 @@ define( function( require ) {
   var MASS_CONTROLS_Y_POSITION = 385;
   var PANEL_SPACING = 50;
   var SHOW_GRID = ISLCQueryParameters.showGrid;
-  var SHOW_DRAG_BOUNDS = GravityForceLabBasicsQueryParameters.showDragBounds;
+  var SHOW_DRAG_BOUNDS = ISLCQueryParameters.showDragBounds;
 
   // strings
   var constantRadiusString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantRadius' );
