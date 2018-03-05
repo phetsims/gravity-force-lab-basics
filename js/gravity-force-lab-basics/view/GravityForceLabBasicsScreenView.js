@@ -17,11 +17,12 @@ define( function( require ) {
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var GravityForceLabBasicsQueryParameters = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsQueryParameters' );
-  var GridNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GridNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCCheckboxItem = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxItem' );
   var ISLCCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxPanel' );
+  var ISLCGridNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCGridNode' );
+  var ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
   var Line = require( 'SCENERY/nodes/Line' );
   var MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
@@ -33,7 +34,7 @@ define( function( require ) {
   // constants
   var MASS_CONTROLS_Y_POSITION = 385;
   var PANEL_SPACING = 50;
-  var SHOW_GRID = GravityForceLabBasicsQueryParameters.showGrid;
+  var SHOW_GRID = ISLCQueryParameters.showGrid;
   var SHOW_DRAG_BOUNDS = GravityForceLabBasicsQueryParameters.showDragBounds;
 
   // strings
@@ -206,7 +207,13 @@ define( function( require ) {
     }
 
     if ( SHOW_GRID ) {
-      this.addChild( new GridNode( this.layoutBounds, modelViewTransform ) );
+      var gridNode = new ISLCGridNode(
+        model.snapObjectsToNearest,
+        this.layoutBounds,
+        modelViewTransform,
+        { stroke: 'rgba( 250, 100, 100, 0.6 )' }
+      );
+      this.addChild( gridNode );
     }
   }
 

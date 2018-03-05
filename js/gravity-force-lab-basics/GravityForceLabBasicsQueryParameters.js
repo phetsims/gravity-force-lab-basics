@@ -13,11 +13,6 @@ define( function( require ) {
 
   var GravityForceLabBasicsQueryParameters = QueryStringMachine.getAll( {
 
-    // shows a grid that represents the possible locations for the masses in this sim
-    // masses are restricted to being placed along this grid and will snap to the lines
-    // shown
-    showGrid: { type: 'flag' },
-
     // Shows boundary positions of the two masses, as solid green lines.  The boundary positions for each
     // object will change depending on the size and position of both objects.
     showDragBounds: { type: 'flag' }
