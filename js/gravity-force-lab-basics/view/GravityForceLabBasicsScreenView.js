@@ -146,7 +146,6 @@ define( function( require ) {
     massControlBox.right = parameterControlPanel.left - PANEL_SPACING;
     massControlBox.top = parameterControlPanel.top;
 
-    // massControl2ConstantRadius.center = massControl2.center;
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
 
