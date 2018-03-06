@@ -133,14 +133,15 @@ define( function( require ) {
   return inherit( Panel, GravityForceLabBasicsKeyboardHelpContent, {
 
     /**
-     * Works like this.constructRow( 'jump to the end', 'end' );
-     * @param  {[type]} labelString [description]
-     * @param  {[type]} iconOption  [description]
-     * @return {[type]}             [description]
+     * Construct a row for the help dialog, assembling a label with an icon using Helpcontent. Usages will look like:
+     * this.constructRow( 'jump to the end', 'end' );
+     * 
+     * @param  {string} labelString - the text label for the row (visual)
+     * @param  {string} iconOption - must be one of the keys in ICON_OPTIONS
+     * @return {Object} - {label: Node, icon: Node}, return value of HelpContent.labelWithIcon 
      */
     constructRow: function( labelString, iconOption ) {
       var labelNode = new RichText( labelString, DEFAULT_LABEL_OPTIONS );
-
       var iconNode = ICON_OPTIONS[ iconOption ]();
 
       return HelpContent.labelWithIcon( labelNode, iconNode );
