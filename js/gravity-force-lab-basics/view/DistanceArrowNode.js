@@ -30,7 +30,7 @@ define( function( require ) {
   /**
    * @param {GravityForceLabBasicsModel} model
    * @param {ModelViewTransform2} modelViewTransform
-   * @param {Object} options
+   * @param {Object} [options]
    * @constructor
    */
   function DistanceArrowNode( model, modelViewTransform, options ) {
