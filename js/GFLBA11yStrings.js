@@ -26,7 +26,10 @@ define( function( require ) {
     jumpToMinimumMassString: 'Jump to minimum mass',
 
     // valuetext read when changing the values of the mass controls
-    massReadoutPatternString: '{{value}} kilograms'
+    massReadoutPatternString: '{{value}} kilograms',
+
+    mass1ControlLabelString: 'Mass 1',
+    mass2ControlLabelString: 'Mass 2'
   };
 
   if ( assert ) { Object.freeze( GFLBA11yStrings ); }

@@ -15,6 +15,7 @@ define( function( require ) {
   var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -43,6 +44,10 @@ define( function( require ) {
   var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
   var mass2String = require( 'string!INVERSE_SQUARE_LAW_COMMON/mass2' );
   var showValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/showValues' );
+
+  // a11y strings
+  var mass1ControlLabelString = GFLBA11yStrings.mass1ControlLabelString;
+  var mass2ControlLabelString = GFLBA11yStrings.mass2ControlLabelString;
 
   /**
    * @param {GravityForceLabBasicsModel} model
@@ -79,8 +84,8 @@ define( function( require ) {
     this.addChild( parameterControlPanel );
 
     // mass controls
-    var massControl1 = new MassControl( mass1String, model.object1.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl1' ) );
-    var massControl2 = new MassControl( mass2String, model.object2.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, tandem.createTandem( 'massControl2' ), {
+    var massControl1 = new MassControl( mass1String, model.object1.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, mass1ControlLabelString, tandem.createTandem( 'massControl1' ) );
+    var massControl2 = new MassControl( mass2String, model.object2.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, mass2ControlLabelString, tandem.createTandem( 'massControl2' ), {
       color: new Color( 255, 0, 0 )
     } );
 

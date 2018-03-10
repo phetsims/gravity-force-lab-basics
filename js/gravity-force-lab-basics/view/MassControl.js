@@ -40,7 +40,7 @@ define( function( require ) {
    * @param {Object} [options]
    * @constructor
    */
-  function MassControl( titleString, valueProperty, massRange, tandem, options ) {
+  function MassControl( titleString, valueProperty, massRange, accessibleLabel, tandem, options ) {
 
     options = _.extend( {
       color: new Color( 0, 0, 255 )
@@ -68,7 +68,8 @@ define( function( require ) {
 
       // a11y
       a11yPageValueDelta: GravityForceLabBasicsConstants.BILLION_MULTIPLIER * 2,
-      a11yValuePattern: massReadoutPatternString
+      a11yValuePattern: massReadoutPatternString,
+      accessibleLabel: accessibleLabel
     } );
     var numberPickerLabel = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),
