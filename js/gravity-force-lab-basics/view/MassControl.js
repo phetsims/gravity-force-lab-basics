@@ -12,6 +12,7 @@ define( function( require ) {
   var Color = require( 'SCENERY/util/Color' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
@@ -24,6 +25,9 @@ define( function( require ) {
 
   // strings
   var billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg' );
+
+  // a11y strings
+  var massReadoutPatternString = GFLBA11yStrings.massReadoutPatternString;
 
   // constants
   var MIN_PANEL_WIDTH = 150;
@@ -63,7 +67,8 @@ define( function( require ) {
       color: options.color,
 
       // a11y
-      a11yPageValueDelta: GravityForceLabBasicsConstants.BILLION_MULTIPLIER * 2
+      a11yPageValueDelta: GravityForceLabBasicsConstants.BILLION_MULTIPLIER * 2,
+      a11yValuePattern: massReadoutPatternString
     } );
     var numberPickerLabel = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),

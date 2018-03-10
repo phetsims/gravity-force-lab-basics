@@ -23,7 +23,10 @@ define( function( require ) {
     decreaseMassString: 'Decrease mass',
     changeMassInLargerStepsString: 'Change mass in larger steps',
     jumpToMaximumMassString: 'Jump to maximum mass',
-    jumpToMinimumMassString: 'Jump to minimum mass'
+    jumpToMinimumMassString: 'Jump to minimum mass',
+
+    // valuetext read when changing the values of the mass controls
+    massReadoutPatternString: '{{value}} kilograms'
   };
 
   if ( assert ) { Object.freeze( GFLBA11yStrings ); }
