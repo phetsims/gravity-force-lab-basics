@@ -15,7 +15,6 @@ define( function( require ) {
   var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -46,8 +45,8 @@ define( function( require ) {
   var showValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/showValues' );
 
   // a11y strings
-  var mass1ControlLabelString = GFLBA11yStrings.mass1ControlLabelString.value;
-  var mass2ControlLabelString = GFLBA11yStrings.mass2ControlLabelString.value;
+  var mass1ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1ControlLabel' );
+  var mass2ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2ControlLabel' );
 
   /**
    * @param {GravityForceLabBasicsModel} model

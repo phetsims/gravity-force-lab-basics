@@ -13,7 +13,6 @@ define( function( require ) {
   var ArrowKeyNode = require( 'SCENERY_PHET/keyboard/ArrowKeyNode' );
   var EndKeyNode = require( 'SCENERY_PHET/keyboard/EndKeyNode' );
   var GeneralNavigationHelpContent = require( 'SCENERY_PHET/keyboard/help/GeneralNavigationHelpContent' );
-  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var HelpContent = require( 'SCENERY_PHET/keyboard/help/HelpContent' );
@@ -24,17 +23,17 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var moveMassHeadingString = GFLBA11yStrings.moveMassHeadingString.value;
-  var moveMassLabelString = GFLBA11yStrings.moveMassLabelString.value;
-  var changeMassHeadingString = GFLBA11yStrings.changeMassHeadingString.value;
-  var moveInLargerStepsString = GFLBA11yStrings.moveInLargerStepsString.value;
-  var jumpToLeftString = GFLBA11yStrings.jumpToLeftString.value;
-  var jumpToRightString = GFLBA11yStrings.jumpToRightString.value;
-  var increaseMassString = GFLBA11yStrings.increaseMassString.value;
-  var decreaseMassString = GFLBA11yStrings.decreaseMassString.value;
-  var changeMassInLargerStepsString = GFLBA11yStrings.changeMassInLargerStepsString.value;
-  var jumpToMaximumMassString = GFLBA11yStrings.jumpToMaximumMassString.value;
-  var jumpToMinimumMassString = GFLBA11yStrings.jumpToMinimumMassString.value;
+  var moveMassHeadingString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveMassHeading' );
+  var moveMassLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveMassLabel' );
+  var changeMassHeadingString = require( 'string!GRAVITY_FORCE_LAB_BASICS/changeMassHeading' );
+  var moveInLargerStepsString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveInLargerSteps' );
+  var jumpToLeftString = require( 'string!GRAVITY_FORCE_LAB_BASICS/jumpToLeft' );
+  var jumpToRightString = require( 'string!GRAVITY_FORCE_LAB_BASICS/jumpToRight' );
+  var increaseMassString = require( 'string!GRAVITY_FORCE_LAB_BASICS/increaseMass' );
+  var decreaseMassString = require( 'string!GRAVITY_FORCE_LAB_BASICS/decreaseMass' );
+  var changeMassInLargerStepsString = require( 'string!GRAVITY_FORCE_LAB_BASICS/changeMassInLargerSteps' );
+  var jumpToMaximumMassString = require( 'string!GRAVITY_FORCE_LAB_BASICS/jumpToMaximumMass' );
+  var jumpToMinimumMassString = require( 'string!GRAVITY_FORCE_LAB_BASICS/jumpToMinimumMass' );
 
   // constants
   var DEFAULT_LABEL_OPTIONS = {
