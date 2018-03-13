@@ -82,7 +82,7 @@ define( function( require ) {
       fill: '#f1f1f2'
     } );
     this.addChild( parameterControlPanel );
-    debugger;
+
     // mass controls
     var massControl1 = new MassControl( mass1String, model.object1.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, mass1ControlLabelString, tandem.createTandem( 'massControl1' ) );
     var massControl2 = new MassControl( mass2String, model.object2.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, mass2ControlLabelString, tandem.createTandem( 'massControl2' ), {
