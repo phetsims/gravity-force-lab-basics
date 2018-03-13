@@ -42,7 +42,7 @@ define( function( require ) {
   };
 
   // helper functions that return icons for the dialog
-  var ICON_OPTIONS = {
+  var ICON_CREATOR = {
     home: function () {
       return new HomeKeyNode();
     },
@@ -136,12 +136,12 @@ define( function( require ) {
      * this.constructRow( 'jump to the end', 'end' );
      * 
      * @param  {string} labelString - the text label for the row (visual)
-     * @param  {string} iconOption - must be one of the keys in ICON_OPTIONS
+     * @param  {string} iconOption - must be one of the keys in ICON_CREATOR
      * @return {Object} - {label: Node, icon: Node}, return value of HelpContent.labelWithIcon 
      */
     constructRow: function( labelString, iconOption ) {
       var labelNode = new RichText( labelString, DEFAULT_LABEL_OPTIONS );
-      var iconNode = ICON_OPTIONS[ iconOption ]();
+      var iconNode = ICON_CREATOR[ iconOption ]();
 
       return HelpContent.labelWithIcon( labelNode, iconNode );
     }
