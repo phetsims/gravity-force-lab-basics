@@ -24,17 +24,17 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var moveMassHeadingString = GFLBA11yStrings.moveMassHeadingString;
-  var moveMassLabelString = GFLBA11yStrings.moveMassLabelString;
-  var changeMassHeadingString = GFLBA11yStrings.changeMassHeadingString;
-  var moveInLargerStepsString = GFLBA11yStrings.moveInLargerStepsString;
-  var jumpToLeftString = GFLBA11yStrings.jumpToLeftString;
-  var jumpToRightString = GFLBA11yStrings.jumpToRightString;
-  var increaseMassString = GFLBA11yStrings.increaseMassString;
-  var decreaseMassString = GFLBA11yStrings.decreaseMassString;
-  var changeMassInLargerStepsString = GFLBA11yStrings.changeMassInLargerStepsString;
-  var jumpToMaximumMassString = GFLBA11yStrings.jumpToMaximumMassString;
-  var jumpToMinimumMassString = GFLBA11yStrings.jumpToMinimumMassString;
+  var moveMassHeadingString = GFLBA11yStrings.moveMassHeadingString.value;
+  var moveMassLabelString = GFLBA11yStrings.moveMassLabelString.value;
+  var changeMassHeadingString = GFLBA11yStrings.changeMassHeadingString.value;
+  var moveInLargerStepsString = GFLBA11yStrings.moveInLargerStepsString.value;
+  var jumpToLeftString = GFLBA11yStrings.jumpToLeftString.value;
+  var jumpToRightString = GFLBA11yStrings.jumpToRightString.value;
+  var increaseMassString = GFLBA11yStrings.increaseMassString.value;
+  var decreaseMassString = GFLBA11yStrings.decreaseMassString.value;
+  var changeMassInLargerStepsString = GFLBA11yStrings.changeMassInLargerStepsString.value;
+  var jumpToMaximumMassString = GFLBA11yStrings.jumpToMaximumMassString.value;
+  var jumpToMinimumMassString = GFLBA11yStrings.jumpToMinimumMassString.value;
 
   // constants
   var DEFAULT_LABEL_OPTIONS = {

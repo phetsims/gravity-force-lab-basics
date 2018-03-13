@@ -13,23 +13,23 @@ define( function( require ) {
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
   var GFLBA11yStrings = {
-    moveMassHeadingString: 'Move Mass',
-    moveMassLabelString: 'Move mass',
-    moveInLargerStepsString: 'Move in larger steps',
-    jumpToLeftString: 'Jump to left',
-    jumpToRightString: 'Jump to right',
-    changeMassHeadingString: 'Change Mass',
-    increaseMassString: 'Increase mass',
-    decreaseMassString: 'Decrease mass',
-    changeMassInLargerStepsString: 'Change mass in larger steps',
-    jumpToMaximumMassString: 'Jump to maximum mass',
-    jumpToMinimumMassString: 'Jump to minimum mass',
+    moveMassHeadingString: { value: 'Move Mass' },
+    moveMassLabelString: { value: 'Move mass' },
+    moveInLargerStepsString: { value: 'Move in larger steps' },
+    jumpToLeftString: { value: 'Jump to left' },
+    jumpToRightString: { value: 'Jump to right' },
+    changeMassHeadingString: { value: 'Change Mass' },
+    increaseMassString: { value: 'Increase mass' },
+    decreaseMassString: { value: 'Decrease mass' },
+    changeMassInLargerStepsString: { value: 'Change mass in larger steps' },
+    jumpToMaximumMassString: { value: 'Jump to maximum mass' },
+    jumpToMinimumMassString: { value: 'Jump to minimum mass' },
 
     // valuetext read when changing the values of the mass controls
-    massReadoutPatternString: '{{value}} kilograms',
+    massReadoutPatternString: { value: '{{value}} kilograms' },
 
-    mass1ControlLabelString: 'Mass 1',
-    mass2ControlLabelString: 'Mass 2'
+    mass1ControlLabelString: { value: 'Mass 1' },
+    mass2ControlLabelString: { value: 'Mass 2' }
   };
 
   if ( assert ) { Object.freeze( GFLBA11yStrings ); }

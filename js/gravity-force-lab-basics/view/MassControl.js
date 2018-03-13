@@ -27,7 +27,7 @@ define( function( require ) {
   var billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg' );
 
   // a11y strings
-  var massReadoutPatternString = GFLBA11yStrings.massReadoutPatternString;
+  var massReadoutPatternString = GFLBA11yStrings.massReadoutPatternString.value;
 
   // constants
   var MIN_PANEL_WIDTH = 150;
