@@ -28,7 +28,7 @@ define( function( require ) {
    * @param {Object} [options]
    * @constructor
    */
-  function GFLBMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
+  function GravityForceLabBasicsMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
     
     options = _.extend( {
       arrowLabelFill: 'black',
@@ -58,9 +58,9 @@ define( function( require ) {
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
   }
 
-  gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
+  gravityForceLabBasics.register( 'GravityForceLabBasicsMassNode', GravityForceLabBasicsMassNode );
 
-  return inherit( ISLCObjectNode, GFLBMassNode, {
+  return inherit( ISLCObjectNode, GravityForceLabBasicsMassNode, {
 
     /**
      * Redraws the white gradient on the mass objects with their radius.

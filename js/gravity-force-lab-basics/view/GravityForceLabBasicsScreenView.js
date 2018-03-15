@@ -13,7 +13,7 @@ define( function( require ) {
   var Bounds2 = require( 'DOT/Bounds2' );
   var Color = require( 'SCENERY/util/Color' );
   var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
-  var GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
+  var GravityForceLabBasicsMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsMassNode' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var HBox = require( 'SCENERY/nodes/HBox' );
@@ -97,7 +97,7 @@ define( function( require ) {
     this.addChild( massControlBox );
 
     // add the mass nodes to the view
-    var mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
+    var mass1Node = new GravityForceLabBasicsMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
       label: mass1LabelString,
       otherObjectLabel: mass2LabelString,
       defaultDirection: 'left',
@@ -106,7 +106,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'mass1Node' )
     } );
 
-    var mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
+    var mass2Node = new GravityForceLabBasicsMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
       label: mass2LabelString,
       otherObjectLabel: mass1LabelString,
       defaultDirection: 'right',
