@@ -53,9 +53,6 @@
   "jumpToMinimumMass": {
     "value": "Jump to minimum mass"
   },
-  "massReadoutPattern": {
-    "value": "{{value}} kilograms"
-  },
   "mass1ControlLabel": {
     "value": "Mass 1"
   },
