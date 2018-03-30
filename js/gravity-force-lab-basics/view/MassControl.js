@@ -69,7 +69,7 @@ define( function( require ) {
       // a11y
       a11yPageValueDelta: GravityForceLabBasicsConstants.BILLION_MULTIPLIER * 2,
       a11yValuePattern: massReadoutPatternString,
-      accessibleLabel: accessibleLabel,
+      labelContent: accessibleLabel,
       a11yFormatValue: function( value ) {
         return Util.toFixed( value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER, 0 );
       }
