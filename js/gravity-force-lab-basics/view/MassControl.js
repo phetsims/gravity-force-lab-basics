@@ -36,11 +36,12 @@ define( function( require ) {
    * @param {string} titleString
    * @param {Property.<number>} valueProperty
    * @param {Range} massRange
+   * @param {String} labelContent - a11y, the content of the label for the mass control
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
    */
-  function MassControl( titleString, valueProperty, massRange, accessibleLabel, tandem, options ) {
+  function MassControl( titleString, valueProperty, massRange, labelContent, tandem, options ) {
 
     options = _.extend( {
       color: new Color( 0, 0, 255 )
@@ -69,7 +70,7 @@ define( function( require ) {
       // a11y
       a11yPageValueDelta: GravityForceLabBasicsConstants.BILLION_MULTIPLIER * 2,
       a11yValuePattern: massReadoutPatternString,
-      labelContent: accessibleLabel,
+      labelContent: labelContent,
       a11yFormatValue: function( value ) {
         return Util.toFixed( value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER, 0 );
       }
