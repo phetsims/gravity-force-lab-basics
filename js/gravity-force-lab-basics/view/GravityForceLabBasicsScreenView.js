@@ -36,13 +36,13 @@ define( function( require ) {
   var SHOW_DRAG_BOUNDS = ISLCQueryParameters.showDragBounds;
 
   // strings
-  var constantRadiusString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantRadius' );
+  var constantSizeString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantSize' );
   var distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
   var mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
   var mass1String = require( 'string!INVERSE_SQUARE_LAW_COMMON/mass1' );
   var mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
   var mass2String = require( 'string!INVERSE_SQUARE_LAW_COMMON/mass2' );
-  var showValuesString = require( 'string!GRAVITY_FORCE_LAB_BASICS/showValues' );
+  var forceValuesString = require( 'string!INVERSE_SQUARE_LAW_COMMON/forceValues' );
 
   // a11y strings
   var mass1ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1ControlLabel' );
@@ -66,13 +66,13 @@ define( function( require ) {
     );
 
     var checkboxItems = [
-      new ISLCCheckboxItem( showValuesString, model.showValuesProperty, {
-        tandem: tandem.createTandem( 'showValuesCheckbox' )
+      new ISLCCheckboxItem( forceValuesString, model.forceValuesProperty, {
+        tandem: tandem.createTandem( 'forceValuesCheckbox' )
       } ),
       new ISLCCheckboxItem( distanceString, model.showDistanceProperty, {
         tandem: tandem.createTandem( 'distanceCheckbox' )
       } ),
-      new ISLCCheckboxItem( constantRadiusString, model.constantRadiusProperty, {
+      new ISLCCheckboxItem( constantSizeString, model.constantRadiusProperty, {
         tandem: tandem.createTandem( 'constantRadiusCheckbox' )
       } )
     ];
