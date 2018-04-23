@@ -23,8 +23,8 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var moveMassHeadingString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveMassHeading' );
-  var moveMassLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveMassLabel' );
+  var moveSpheresHeadingString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveSpheresHeading' );
+  var moveSphereLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveSphereLabel' );
   var changeMassHeadingString = require( 'string!GRAVITY_FORCE_LAB_BASICS/changeMassHeading' );
   var moveInLargerStepsString = require( 'string!GRAVITY_FORCE_LAB_BASICS/moveInLargerSteps' );
   var jumpToLeftString = require( 'string!GRAVITY_FORCE_LAB_BASICS/jumpToLeft' );
@@ -73,7 +73,7 @@ define( function( require ) {
 
     // Mass movement help dialog section
     // move mass content
-    var moveMassRow = this.constructRow( moveMassLabelString, 'leftRight' );
+    var moveMassRow = this.constructRow( moveSphereLabelString, 'leftRight' );
 
     // 'move in larger steps' content
     var moveLargeStepsRow = this.constructRow( moveInLargerStepsString, 'pageUpPageDown' );
@@ -85,7 +85,7 @@ define( function( require ) {
     var jumpRightRow = this.constructRow( jumpToRightString, 'end' );
 
     var moveMassRows = [ moveMassRow, moveLargeStepsRow, jumpLeftRow, jumpRightRow ];
-    var moveMassHelpContent = new HelpContent( moveMassHeadingString, moveMassRows );
+    var moveMassHelpContent = new HelpContent( moveSpheresHeadingString, moveMassRows );
 
     // Mass adjustment help section
     var increaseMassRow = this.constructRow( increaseMassString, 'upOrRight' );

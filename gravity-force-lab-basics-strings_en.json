@@ -17,11 +17,11 @@
   "billionKg": {
     "value": "billion kg"
   },
-  "moveMassHeading": {
-    "value": "Move Mass"
+  "moveSpheresHeading": {
+    "value": "Move Spheres"
   },
-  "moveMassLabel": {
-    "value": "Move mass"
+  "moveSphereLabel": {
+    "value": "Move sphere"
   },
   "moveInLargerSteps": {
     "value": "Move in larger steps"
