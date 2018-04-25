@@ -18,7 +18,6 @@ define( function( require ) {
   var HelpContent = require( 'SCENERY_PHET/keyboard/help/HelpContent' );
   var inherit = require( 'PHET_CORE/inherit' );
   var HomeKeyNode = require( 'SCENERY_PHET/keyboard/HomeKeyNode' );
-  var Panel = require( 'SUN/Panel' );
   var RichText = require( 'SCENERY/nodes/RichText' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
@@ -114,22 +113,17 @@ define( function( require ) {
       spacing: 30
     } );
 
-    var content = new HBox( {
+    HBox.call( this, {
       children: [ leftContent, rightContent ],
       align: 'top',
-      spacing: 30
-    } );
-
-    Panel.call( this, content, {
-      stroke: null,
-      fill: 'rgb( 214, 237, 249 )',
+      spacing: 30,
       tandem: tandem
     } );
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsKeyboardHelpContent', GravityForceLabBasicsKeyboardHelpContent );
 
-  return inherit( Panel, GravityForceLabBasicsKeyboardHelpContent, {
+  return inherit( HBox, GravityForceLabBasicsKeyboardHelpContent, {
 
     /**
      * Construct a row for the help dialog, assembling a label with an icon using Helpcontent. Usages will look like:
