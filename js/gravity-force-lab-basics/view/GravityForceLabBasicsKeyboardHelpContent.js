@@ -137,7 +137,7 @@ define( function( require ) {
       var labelNode = new RichText( labelString, DEFAULT_LABEL_OPTIONS );
       var iconNode = ICON_CREATOR[ iconOption ]();
 
-      return HelpContent.labelWithIcon( labelNode, iconNode );
+      return HelpContent.labelWithIcon( labelNode, iconNode, '{{help content}}' );
     }
   } );
 } );
