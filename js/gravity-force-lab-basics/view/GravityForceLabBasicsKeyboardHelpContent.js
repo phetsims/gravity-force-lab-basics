@@ -13,6 +13,7 @@ define( function( require ) {
   var ArrowKeyNode = require( 'SCENERY_PHET/keyboard/ArrowKeyNode' );
   var EndKeyNode = require( 'SCENERY_PHET/keyboard/EndKeyNode' );
   var GeneralNavigationHelpContent = require( 'SCENERY_PHET/keyboard/help/GeneralNavigationHelpContent' );
+  var GravityForceLabBasicsA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var HelpContent = require( 'SCENERY_PHET/keyboard/help/HelpContent' );
@@ -33,6 +34,17 @@ define( function( require ) {
   var changeMassInLargerStepsString = require( 'string!GRAVITY_FORCE_LAB_BASICS/changeMassInLargerSteps' );
   var jumpToMaximumMassString = require( 'string!GRAVITY_FORCE_LAB_BASICS/jumpToMaximumMass' );
   var jumpToMinimumMassString = require( 'string!GRAVITY_FORCE_LAB_BASICS/jumpToMinimumMass' );
+
+  // a11y strings
+  var moveSphereDescriptionString = GravityForceLabBasicsA11yStrings.moveSphereDescription.value;
+  var moveInLargerStepsDescriptionString = GravityForceLabBasicsA11yStrings.moveInLargerStepsDescription.value;
+  var jumpToLeftDescriptionString = GravityForceLabBasicsA11yStrings.jumpToLeftDescription.value;
+  var jumpToRightDescriptionString = GravityForceLabBasicsA11yStrings.jumpToRightDescription.value;
+  var increaseMassDescriptionString = GravityForceLabBasicsA11yStrings.increaseMassDescription.value;
+  var decreaseMassDescriptionString = GravityForceLabBasicsA11yStrings.decreaseMassDescription.value;
+  var changeMassInLargerStepsDescriptionString = GravityForceLabBasicsA11yStrings.changeMassInLargerStepsDescription.value;
+  var jumpToMaximumMassDescriptionString = GravityForceLabBasicsA11yStrings.jumpToMaximumMassDescription.value;
+  var jumpToMinimumMassDescriptionString = GravityForceLabBasicsA11yStrings.jumpToMinimumMassDescription.value;
 
   // constants
   var DEFAULT_LABEL_OPTIONS = {
@@ -72,26 +84,26 @@ define( function( require ) {
 
     // Mass movement help dialog section
     // move mass content
-    var moveMassRow = this.constructRow( moveSphereLabelString, 'leftRight' );
+    var moveMassRow = this.constructRow( moveSphereLabelString, moveSphereDescriptionString, 'leftRight' );
 
     // 'move in larger steps' content
-    var moveLargeStepsRow = this.constructRow( moveInLargerStepsString, 'pageUpPageDown' );
+    var moveLargeStepsRow = this.constructRow( moveInLargerStepsString, moveInLargerStepsDescriptionString, 'pageUpPageDown' );
 
     // 'jump to left' content
-    var jumpLeftRow = this.constructRow( jumpToLeftString, 'home' );
+    var jumpLeftRow = this.constructRow( jumpToLeftString, jumpToLeftDescriptionString, 'home' );
 
     // 'jump to right' content
-    var jumpRightRow = this.constructRow( jumpToRightString, 'end' );
+    var jumpRightRow = this.constructRow( jumpToRightString, jumpToRightDescriptionString, 'end' );
 
     var moveMassRows = [ moveMassRow, moveLargeStepsRow, jumpLeftRow, jumpRightRow ];
     var moveMassHelpContent = new HelpContent( moveSpheresHeadingString, moveMassRows );
 
     // Mass adjustment help section
-    var increaseMassRow = this.constructRow( increaseMassString, 'upOrRight' );
-    var decreaseMassRow = this.constructRow( decreaseMassString, 'downOrLeft' );
-    var changeMassLargeStepsRow = this.constructRow( changeMassInLargerStepsString, 'pageUpPageDown' );
-    var jumpToMinMassRow = this.constructRow( jumpToMinimumMassString, 'home' );
-    var jumpToMaxMassRow = this. constructRow( jumpToMaximumMassString, 'end' );
+    var increaseMassRow = this.constructRow( increaseMassString, increaseMassDescriptionString, 'upOrRight' );
+    var decreaseMassRow = this.constructRow( decreaseMassString, decreaseMassDescriptionString, 'downOrLeft' );
+    var changeMassLargeStepsRow = this.constructRow( changeMassInLargerStepsString, changeMassInLargerStepsDescriptionString, 'pageUpPageDown' );
+    var jumpToMinMassRow = this.constructRow( jumpToMinimumMassString, jumpToMinimumMassDescriptionString, 'home' );
+    var jumpToMaxMassRow = this.constructRow( jumpToMaximumMassString, jumpToMaximumMassDescriptionString, 'end' );
 
     var adjustMassRows = [ increaseMassRow, decreaseMassRow, changeMassLargeStepsRow, jumpToMinMassRow, jumpToMaxMassRow ];
     var adjustMassHelpContent = new HelpContent( changeMassHeadingString, adjustMassRows );
@@ -130,14 +142,14 @@ define( function( require ) {
      * this.constructRow( 'jump to the end', 'end' );
      * 
      * @param  {string} labelString - the text label for the row (visual)
-     * @param  {string} iconOption - must be one of the keys in ICON_CREATOR
-     * @return {Object} - {label: Node, icon: Node}, return value of HelpContent.labelWithIcon 
+     * @param  {string} descriptionString - must be one of the keys in ICON_CREATOR
+     * @param  {string} iconID - must be one of ICON_CREATOR keys, see that above
      */
-    constructRow: function( labelString, iconOption ) {
+    constructRow: function( labelString, descriptionString, iconID ) {
       var labelNode = new RichText( labelString, DEFAULT_LABEL_OPTIONS );
-      var iconNode = ICON_CREATOR[ iconOption ]();
+      var iconNode = ICON_CREATOR[ iconID ]();
 
-      return HelpContent.labelWithIcon( labelNode, iconNode, '{{help content}}' );
+      return HelpContent.labelWithIcon( labelNode, iconNode, descriptionString );
     }
   } );
 } );

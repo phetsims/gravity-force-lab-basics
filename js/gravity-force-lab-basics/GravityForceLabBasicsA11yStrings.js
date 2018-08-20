@@ -15,6 +15,33 @@ define( function( require ) {
   var GravityForceLabBasicsA11yStrings = {
     massReadoutPattern: {
       value: '{{value}} billion kg'
+    },
+    moveSphereDescription: {
+      value: 'Move sphere left and right with the Left and Right Arrow keys.'
+    },
+    moveInLargerStepsDescription: {
+      value: 'Move in larger steps with Page Up and Page Down keys.'
+    },
+    jumpToLeftDescription: {
+      value: 'Jump to left with Home key.'
+    },
+    jumpToRightDescription: {
+      value: 'Jump to right with End key.'
+    },
+    increaseMassDescription: {
+      value: 'Increase mass with Up or Right Arrow key.'
+    },
+    decreaseMassDescription: {
+      value: 'Decrease mass with Down or Left Arrow key.'
+    },
+    changeMassInLargerStepsDescription: {
+      value: 'Change mass in larger steps with Page Up and Page Down keys.'
+    },
+    jumpToMaximumMassDescription: {
+      value: 'Jump to maximum mass with End key.'
+    },
+    jumpToMinimumMassDescription: {
+      value: 'Jump to minimum mass with Home key.'
     }
   };
 
