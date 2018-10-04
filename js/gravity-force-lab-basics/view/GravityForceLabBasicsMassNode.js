@@ -14,7 +14,7 @@ define( function( require ) {
   var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
-  var RangeWithValue = require( 'DOT/RangeWithValue' );
+  var Range = require( 'DOT/Range' );
   var Tandem = require( 'TANDEM/Tandem' );
 
   // constants
@@ -53,7 +53,7 @@ define( function( require ) {
     this.objectModel = massModel;
 
     // functions that determine scaling of the arrow readout and the correct image to represent
-    var pullForceRange = new RangeWithValue( 35, 1070 ); // empirically determined for linear mapping of pull objects
+    var pullForceRange = new Range( 35, 1070 ); // empirically determined for linear mapping of pull objects
 
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
   }
