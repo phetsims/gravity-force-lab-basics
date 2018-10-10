@@ -16,7 +16,7 @@ define( function( require ) {
   var BILLION_MULTIPLIER = 1000000000;
   var MIN_MASS = 1.00 * BILLION_MULTIPLIER; // kg
   var MAX_MASS = 10.0 * BILLION_MULTIPLIER; // kg
-  var MAX_DISTANCE_FROM_CENTER = 4750; // meters, empirically determined boundary for masses
+  var MAX_DISTANCE_FROM_CENTER = 4800; // meters, empirically determined boundary for masses
 
   var GravityForceLabBasicsConstants = {
     BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
