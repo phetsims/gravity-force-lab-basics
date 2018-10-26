@@ -98,7 +98,10 @@ define( function( require ) {
       minWidth: MIN_PANEL_WIDTH,
       resize: false,
       align: 'center',
-      tandem: tandem
+      tandem: tandem,
+
+      // TODO: review
+      tagName: 'li'
     } );
   }
 

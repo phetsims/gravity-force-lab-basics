@@ -11,10 +11,10 @@ define( function( require ) {
   // modules
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
-  var Range = require( 'DOT/Range' );
   var Tandem = require( 'TANDEM/Tandem' );
 
   // constants
@@ -29,7 +29,7 @@ define( function( require ) {
    * @constructor
    */
   function GravityForceLabBasicsMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
-    
+
     options = _.extend( {
       arrowLabelFill: 'black',
       labelFill: '#F3F3F3',
@@ -44,7 +44,14 @@ define( function( require ) {
       y: MASS_NODE_Y_POSITION,
       snapToNearest: model.snapObjectsToNearest, // in meters, charges will snap to the nearest 0.1 meters in model coordinates
 
-      tandem: Tandem.required
+      tandem: Tandem.required,
+
+      // a11y
+      // TODO: refactor into proper string usage
+      createAriaValueText: function( formattedValue, previousValue ) {
+        formattedValue += 4800;
+        return `${formattedValue} meter mark`;
+      }
     }, options );
 
     // @private
@@ -52,8 +59,7 @@ define( function( require ) {
     this.model = model;
     this.objectModel = massModel;
 
-    // functions that determine scaling of the arrow readout and the correct image to represent
-    var pullForceRange = new Range( 35, 1070 ); // empirically determined for linear mapping of pull objects
+    var pullForceRange = GravityForceLabBasicsConstants.PULL_FORCE_RANGE;
 
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
   }

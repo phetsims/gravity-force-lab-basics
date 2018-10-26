@@ -16,11 +16,14 @@ define( function( require ) {
   var BILLION_MULTIPLIER = 1000000000;
   var MIN_MASS = 1.00 * BILLION_MULTIPLIER; // kg
   var MAX_MASS = 10.0 * BILLION_MULTIPLIER; // kg
+  var MIN_FORCE = 35; // N
+  var MAX_FORCE = 1070; // N
   var MAX_DISTANCE_FROM_CENTER = 4800; // meters, empirically determined boundary for masses
 
   var GravityForceLabBasicsConstants = {
     BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
     MASS_RANGE: new Range( MIN_MASS, MAX_MASS ),
+    PULL_FORCE_RANGE: new Range( MIN_FORCE, MAX_FORCE ), // empirically determined for linear mapping of pull objects
     CONSTANT_RADIUS: 500, // meters
     RIGHT_MASS_BOUNDARY: MAX_DISTANCE_FROM_CENTER,
     LEFT_MASS_BOUNDARY: -MAX_DISTANCE_FROM_CENTER,
