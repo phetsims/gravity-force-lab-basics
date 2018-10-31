@@ -5,9 +5,11 @@ define( require => {
 
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  const GravityForceLabBasicsA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsA11yStrings' );
   const GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   const GravityForceLabStringManager = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabStringManager' );
   const LinearFunction = require( 'DOT/LinearFunction' );
+  const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Util = require( 'DOT/Util' );
 
   const { MASS_RANGE, PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
@@ -15,10 +17,17 @@ define( require => {
   const forceToIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max * 0.6, 0, 6, true );
   const forceToPullIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max, 6, 0, true );
 
+  const massesDistanceApartPatternString = GravityForceLabBasicsA11yStrings.massesDistanceApartPattern.value;
+
+
   class GFLBStringManager extends GravityForceLabStringManager {
 
     constructor( model, object1Label, object2Label ) {
       super( model, object1Label, object2Label, {} );
+    }
+
+    static getMassesDistanceApart( distance ) {
+      return StringUtils.fillIn( massesDistanceApartPatternString, { distance } );
     }
 
     // @override

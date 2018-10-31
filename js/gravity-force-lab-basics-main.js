@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var GravityForceLabBasicsKeyboardHelpContent = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsKeyboardHelpContent' );
+  var GravityForceLabKeyboardHelpContent = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabKeyboardHelpContent' );
   var GravityForceLabBasicsModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GravityForceLabBasicsModel' );
   var GravityForceLabBasicsScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsScreenView' );
   var Property = require( 'AXON/Property' );
@@ -24,7 +24,7 @@ define( function( require ) {
   // strings
   var gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
 
-  var keyboardHelpContent = new GravityForceLabBasicsKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ) ); 
+  var keyboardHelpContent = new GravityForceLabKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ) );
 
   var simOptions = {
     credits: {

@@ -100,7 +100,7 @@ define( function( require ) {
       align: 'center',
       tandem: tandem,
 
-      // TODO: review
+      // a11y
       tagName: 'li'
     } );
   }

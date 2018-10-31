@@ -27,6 +27,7 @@ define( function( require ) {
   var ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
   var MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
   var MassPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassPDOMNode' );
+  var GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   var GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
   var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
@@ -60,6 +61,7 @@ define( function( require ) {
   var mass2ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2ControlLabel' );
   var spherePositionsString = ISLCA11yStrings.spherePositions.value;
   var spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
+  var massControlsLabelString = GravityForceLabA11yStrings.massControlsLabel.value;
 
   /**
    * @param {GravityForceLabBasicsModel} model
@@ -139,10 +141,9 @@ define( function( require ) {
       color: new Color( 255, 0, 0 )
     } );
 
-    // TODO: implement proper string usage
     var massControlsNode = new Node( {
       labelTagName: 'h3',
-      labelContent: 'Mass Controls',
+      labelContent: massControlsLabelString,
       tagName: 'ul'
     } );
     playAreaNode.addChild( massControlsNode );
@@ -177,15 +178,14 @@ define( function( require ) {
     controlAreaNode.addChild( parameterControlPanel );
 
     // arrow that shows distance between the two masses
-    // TODO: review accessible implementation and string usage
     var distanceArrowNode = new DistanceArrowNode( model, modelViewTransform, {
       tandem: tandem.createTandem( 'distanceArrowNode' ),
       y: 145,
-      tagName: 'li'
+      tagName: 'p'
     } );
     model.showDistanceProperty.linkAttribute( distanceArrowNode, 'visible' );
     model.distanceProperty.link( function( distance ) {
-      distanceArrowNode.innerContent = `masses are ${distance} km apart`;
+      distanceArrowNode.innerContent = GFLBStringManager.getMassesDistanceApart( distance );
     } );
     massPositionsNode.addChild( distanceArrowNode );
 
