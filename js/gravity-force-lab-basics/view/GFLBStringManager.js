@@ -18,16 +18,33 @@ define( require => {
   const forceToPullIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max, 6, 0, true );
 
   const massesDistanceApartPatternString = GravityForceLabBasicsA11yStrings.massesDistanceApartPattern.value;
-
+  const unitsNewtonsString = require( 'string!INVERSE_SQUARE_LAW_COMMON/units.newtons' );
 
   class GFLBStringManager extends GravityForceLabStringManager {
 
     constructor( model, object1Label, object2Label ) {
-      super( model, object1Label, object2Label, {} );
+      super( model, object1Label, object2Label, {
+        distanceUnits: 'kilometers',
+        centerOffset: 4800,
+        valueUnits: unitsNewtonsString,
+        convertForceValue: value => Util.toFixedNumber( value, 1 ),
+        convertDistanceApart: distance => Util.toFixedNumber( distance / 1e3, 1 ),
+        formatMassValue: mass => `${mass/1e9} billion`, // TODO: convert to proper string usage
+        formatPositionUnitMark: position => {
+          position = Util.toFixedNumber( position / 1e3, 1 );
+          return StringUtils.fillIn( '{{position}} kilometer', { position } );
+        }
+      } );
     }
 
     static getMassesDistanceApart( distance ) {
       return StringUtils.fillIn( massesDistanceApartPatternString, { distance } );
+    }
+
+    // TODO: proper string usage
+    getOnlyQualitativeObjectDistanceSummary() {
+      const pattern = '{{mass1}} and {{mass2}} are {{qualitativeDistance}} each other.';
+      return StringUtils.fillIn( pattern, { mass1: this.object1Label, mass2: this.object2Label, qualitativeDistance: this.getQualitativeDistance() } );
     }
 
     // @override

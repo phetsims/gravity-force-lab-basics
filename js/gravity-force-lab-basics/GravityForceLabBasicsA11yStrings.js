@@ -13,11 +13,17 @@ define( function( require ) {
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
   var GravityForceLabBasicsA11yStrings = {
+    screenSummaryDescription: {
+      value: 'The Play Area has two spheres, a blue sphere labelled Mass 1 and a red sphere labelled Mass 2, and each sphere is held in place by a robot. Arrows representing force starts at center of each sphere and point directly at opposite sphere. Spheres can be moved closer or further from each other, and mass of each sphere can be increased or decreased. In Control Area there are checkboxes and buttons to show force values, show distance between spheres, set spheres to a constant size, and to reset sim.'
+    },
+    basicsSimStateLabel: {
+      value: 'Currently, force on mass 1 by mass 2 is of equal magnitude and pointing directly opposite to the force on mass 2 by mass 1.'
+    },
     massReadoutPattern: {
       value: '{{value}} billion kg'
     },
     massesDistanceApartPattern: {
-      value: 'masses are {{distance}} km apart;'
+      value: 'masses are {{distance}} km apart'
     }
   };
 

@@ -17,6 +17,7 @@ define( function( require ) {
   var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
   var GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var GravityForceLabBasicsA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsA11yStrings' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var GravityForceLabBasicsMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsMassNode' );
   var GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
@@ -62,6 +63,8 @@ define( function( require ) {
   var spherePositionsString = ISLCA11yStrings.spherePositions.value;
   var spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
   var massControlsLabelString = GravityForceLabA11yStrings.massControlsLabel.value;
+  var screenSummaryDescriptionString = GravityForceLabBasicsA11yStrings.screenSummaryDescription.value;
+  var basicsSimStateLabelString = GravityForceLabBasicsA11yStrings.basicsSimStateLabel.value;
 
   /**
    * @param {GravityForceLabBasicsModel} model
@@ -75,7 +78,12 @@ define( function( require ) {
     } );
 
     var stringManager = new GFLBStringManager( model, mass1LabelString, mass2LabelString );
-    var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager );
+    var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager, {
+      descriptionContent: screenSummaryDescriptionString,
+      summaryOptions: {
+        simStateLabel: basicsSimStateLabelString
+      }
+    } );
     var playAreaNode = new PlayAreaNode();
     var controlAreaNode = new ControlAreaNode();
     this.screenSummaryNode.addChild( summaryNode );
@@ -199,6 +207,14 @@ define( function( require ) {
       tandem: tandem.createTandem( 'resetAllButton' )
     } );
     controlAreaNode.addChild( resetAllButton );
+
+    // link summary content to distance property
+    model.showDistanceProperty.link( function( showDistance ) {
+      var content = showDistance ?
+                    stringManager.getObjectDistanceSummary() :
+                    stringManager.getOnlyQualitativeObjectDistanceSummary();
+      summaryNode.objectDistanceSummaryItem.innerContent = content;
+    } );
 
     // layout the view elements
     parameterControlPanel.right = this.layoutBounds.width - 15;
