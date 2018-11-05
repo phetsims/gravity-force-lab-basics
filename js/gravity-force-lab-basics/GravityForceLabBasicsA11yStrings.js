@@ -26,7 +26,7 @@ define( function( require ) {
       value: 'masses are {{distance}} km apart'
     },
     distanceCheckboxHelpText: {
-      value: 'Explore the distance between spheres in kilomoters'
+      value: 'Measure distance between spheres in kilometers.'
     }
   };
 
