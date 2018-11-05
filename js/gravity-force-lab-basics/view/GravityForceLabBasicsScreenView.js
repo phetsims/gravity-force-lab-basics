@@ -64,6 +64,9 @@ define( function( require ) {
   var spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
   var massControlsLabelString = GravityForceLabA11yStrings.massControlsLabel.value;
   var massControlsHelpTextBillionsString = GravityForceLabA11yStrings.massControlsHelpTextBillions.value;
+  var forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
+  var constantSizeCheckboxHelpTextString = GravityForceLabA11yStrings.constantSizeCheckboxHelpText.value;
+  var distanceCheckboxHelpTextString = GravityForceLabBasicsA11yStrings.distanceCheckboxHelpText.value;
   var screenSummaryDescriptionString = GravityForceLabBasicsA11yStrings.screenSummaryDescription.value;
   var basicsSimStateLabelString = GravityForceLabBasicsA11yStrings.basicsSimStateLabel.value;
 
@@ -170,14 +173,17 @@ define( function( require ) {
     var checkboxItems = [
       new ISLCCheckboxItem( forceValuesString, model.forceValuesProperty, {
         accessibleName: 'Force Values',
+        descriptionContent: forceValuesCheckboxHelpTextString,
         tandem: tandem.createTandem( 'forceValuesCheckbox' )
       } ),
       new ISLCCheckboxItem( distanceString, model.showDistanceProperty, {
         accessibleName: 'Distance',
+        descriptionContent: distanceCheckboxHelpTextString,
         tandem: tandem.createTandem( 'distanceCheckbox' )
       } ),
       new ISLCCheckboxItem( constantSizeString, model.constantRadiusProperty, {
         accessibleName: 'Constant Size',
+        descriptionContent: constantSizeCheckboxHelpTextString,
         tandem: tandem.createTandem( 'constantRadiusCheckbox' )
       } )
     ];

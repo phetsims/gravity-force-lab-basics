@@ -24,6 +24,9 @@ define( function( require ) {
     },
     massesDistanceApartPattern: {
       value: 'masses are {{distance}} km apart'
+    },
+    distanceCheckboxHelpText: {
+      value: 'Explore the distance between spheres in kilomoters'
     }
   };
 
