@@ -83,7 +83,7 @@ define( function( require ) {
     } );
 
     var stringManager = new GFLBStringManager( model, mass1LabelString, mass2LabelString );
-    this.alertManager = new GravityForceLabBasicsAlertManager( model );
+    this.alertManager = new GravityForceLabBasicsAlertManager( model, stringManager );
     var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager, {
       descriptionContent: screenSummaryDescriptionString,
       summaryOptions: {

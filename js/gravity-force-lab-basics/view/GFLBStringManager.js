@@ -27,7 +27,7 @@ define( require => {
         distanceUnits: 'kilometers',
         centerOffset: 4800,
         valueUnits: unitsNewtonsString,
-        convertForceValue: value => Util.toFixedNumber( value, 1 ),
+        convertForceValue: value => `${Util.toFixedNumber( value, 1 )} newtons`,
         convertDistanceApart: distance => Util.toFixedNumber( distance / 1e3, 1 ),
         formatMassValue: mass => `${mass/1e9} billion`, // TODO: convert to proper string usage
         formatPositionUnitMark: position => {

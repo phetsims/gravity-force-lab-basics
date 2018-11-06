@@ -13,11 +13,12 @@ define( require => {
 
   // strings
   const constantRadiusThinkDensityString = GravityForceLabA11yStrings.constantRadiusThinkDensity.value;
-  const massesDifferentSizesString = GravityForceLabA11yStrings.massesDifferentSizes.value;
 
   class GravityForceLabBasicsAlertManager extends ISLCAlertManager {
-    constructor( model ) {
+    constructor( model, stringManager ) {
       super( model, {} );
+
+      this.stringManager = stringManager;
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
         this.alertConstantRadius( constantRadius );
@@ -29,7 +30,7 @@ define( require => {
     }
 
     alertConstantRadius( constantRadius ) {
-      const alert = constantRadius ? constantRadiusThinkDensityString : massesDifferentSizesString;
+      const alert = constantRadius ? constantRadiusThinkDensityString : this.stringManager.getM1RelativeSize();
       const utterance = new Utterance( { alert, uniqueGroupId: 'constantRadius' } );
       utteranceQueue.addToBack( utterance );
     }
