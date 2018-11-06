@@ -15,6 +15,7 @@ define( function( require ) {
   var ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
+  var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
   var GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsA11yStrings' );
@@ -82,6 +83,7 @@ define( function( require ) {
     } );
 
     var stringManager = new GFLBStringManager( model, mass1LabelString, mass2LabelString );
+    this.alertManager = new GravityForceLabBasicsAlertManager( model );
     var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager, {
       descriptionContent: screenSummaryDescriptionString,
       summaryOptions: {
