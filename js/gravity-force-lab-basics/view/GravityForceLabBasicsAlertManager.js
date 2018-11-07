@@ -27,6 +27,10 @@ define( require => {
       model.showDistanceProperty.lazyLink( showDistance => {
         this.alertDistanceVisible( showDistance );
       } );
+
+      model.forceValuesProperty.lazyLink( showValues => {
+        this.alertForceValues( showValues );
+      } );
     }
 
     alertConstantRadius( constantRadius ) {
