@@ -17,6 +17,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
   var Tandem = require( 'TANDEM/Tandem' );
+  var Util = require( 'DOT/Util' );
 
   // constants
   var MASS_NODE_Y_POSITION = 215;
@@ -50,8 +51,8 @@ define( function( require ) {
       // a11y
       // TODO: proper string usage
       createAriaValueText: function( formattedValue, previousValue ) {
-        formattedValue += 4800;
-        return GFLBStringManager.getPositionMeterMarkText( `${formattedValue / 1e3} kilometer` );
+        formattedValue = Util.toFixedNumber( ( formattedValue + 4800 ) / 1e3, 1 );
+        return GFLBStringManager.getPositionMeterMarkText( `${formattedValue} kilometer` );
       }
     }, options );
 
