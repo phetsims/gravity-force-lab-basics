@@ -44,7 +44,8 @@ define( function( require ) {
   function MassControl( titleString, valueProperty, massRange, labelContent, tandem, options ) {
 
     options = _.extend( {
-      color: new Color( 0, 0, 255 )
+      color: new Color( 0, 0, 255 ),
+      onFocus: function( event ) {}
     }, options );
 
     var titleText = new Text( titleString, {
@@ -78,6 +79,10 @@ define( function( require ) {
     var numberPickerLabel = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),
       tandem: tandem.createTandem( 'numberPickerLabel' )
+    } );
+
+    numberPicker.addAccessibleInputListener( {
+      focus: options.onFocus
     } );
 
     var numberPickerHBox = new HBox( {

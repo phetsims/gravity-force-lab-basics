@@ -31,6 +31,14 @@ define( require => {
       model.forceValuesProperty.lazyLink( showValues => {
         this.alertForceValues( showValues );
       } );
+
+      model.object1.valueProperty.lazyLink( ( value, newValue ) => {
+        this.alertMassValueChanged( value, newValue );
+      } );
+
+      model.object2.valueProperty.lazyLink( ( value, newValue ) => {
+        this.alertMassValueChanged( value, newValue );
+      } );
     }
 
     alertConstantRadius( constantRadius ) {
@@ -42,6 +50,12 @@ define( require => {
     alertDistanceVisible( showDistance ) {
       const alert = showDistance ? 'Distance arrow visible.' : 'Distance arrow removed.';
       const utterance = new Utterance( { alert, uniqueGroupId: 'distanceVisible' } );
+      utteranceQueue.addToBack( utterance );
+    }
+
+    alertMassValueChanged( value, oldValue ) {
+      const alert = this.stringManager.getMassValueChangedAlertText( value, oldValue );
+      const utterance = new Utterance( { alert, uniqueGroupId: 'massChanged' } );
       utteranceQueue.addToBack( utterance );
     }
   }
