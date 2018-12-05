@@ -81,7 +81,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'numberPickerLabel' )
     } );
 
-    numberPicker.addAccessibleInputListener( {
+    numberPicker.addInputListener( {
       focus: options.onFocus
     } );
 
