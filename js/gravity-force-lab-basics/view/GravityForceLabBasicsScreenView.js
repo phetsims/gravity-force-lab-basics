@@ -65,6 +65,7 @@ define( function( require ) {
   var spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
   var massControlsLabelString = GravityForceLabA11yStrings.massControlsLabel.value;
   var massControlsHelpTextBillionsString = GravityForceLabA11yStrings.massControlsHelpTextBillions.value;
+  var massControlsHelpTextDensityBillionsString = GravityForceLabA11yStrings.massControlsHelpTextDensityBillions.value;
   var forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
   var constantSizeCheckboxHelpTextString = GravityForceLabA11yStrings.constantSizeCheckboxHelpText.value;
   var distanceCheckboxHelpTextString = GFLBA11yStrings.distanceCheckboxHelpText.value;
@@ -171,6 +172,9 @@ define( function( require ) {
     } );
     massControlsNode.addChild( massControlBox );
 
+    model.constantRadiusProperty.link( function( constantRadius ) {
+      massControlsNode.descriptionContent = constantRadius ? massControlsHelpTextBillionsString : massControlsHelpTextDensityBillionsString;
+    } );
 
     var checkboxItems = [
       new ISLCCheckboxItem( forceValuesString, model.forceValuesProperty, {
