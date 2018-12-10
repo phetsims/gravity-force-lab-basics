@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
-  var GravityForceLabBasicsA11yStrings = {
+  var GFLBA11yStrings = {
     screenSummaryDescription: {
       value: 'The Play Area has two spheres, a blue sphere labelled Mass 1 and a red sphere labelled Mass 2, and each sphere is held in place by a robot. Arrows representing force starts at center of each sphere and point directly at opposite sphere. Spheres can be moved closer or further from each other, and mass of each sphere can be increased or decreased. In Control Area there are checkboxes and buttons to show force values, show distance between spheres, set spheres to a constant size, and to reset sim.'
     },
@@ -27,20 +27,23 @@ define( function( require ) {
     },
     distanceCheckboxHelpText: {
       value: 'Measure distance between spheres in kilometers.'
+    },
+    massBillionsPattern: {
+      value: '{{mass}} billion'
     }
   };
 
   // TODO: This seems it should be factored out, see https://github.com/phetsims/tasks/issues/917
   if ( phet.chipper.queryParameters.stringTest === 'xss' ) {
-    for ( var key in GravityForceLabBasicsA11yStrings ) {
-      GravityForceLabBasicsA11yStrings[ key ].value += '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2NkYGD4DwABCQEBtxmN7wAAAABJRU5ErkJggg==" onload="window.location.href=atob(\'aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ==\')" />';
+    for ( var key in GFLBA11yStrings ) {
+      GFLBA11yStrings[ key ].value += '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2NkYGD4DwABCQEBtxmN7wAAAABJRU5ErkJggg==" onload="window.location.href=atob(\'aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ==\')" />';
     }
   }
 
   // verify that object is immutable, without the runtime penalty in production code
-  if ( assert ) { Object.freeze( GravityForceLabBasicsA11yStrings ); }
+  if ( assert ) { Object.freeze( GFLBA11yStrings ); }
 
-  gravityForceLabBasics.register( 'GravityForceLabBasicsA11yStrings', GravityForceLabBasicsA11yStrings );
+  gravityForceLabBasics.register( 'GFLBA11yStrings', GFLBA11yStrings );
 
-  return GravityForceLabBasicsA11yStrings;
+  return GFLBA11yStrings;
 } );

@@ -18,7 +18,7 @@ define( function( require ) {
   var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
   var GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GravityForceLabBasicsA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsA11yStrings' );
+  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var GravityForceLabBasicsMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsMassNode' );
   var GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
@@ -67,9 +67,9 @@ define( function( require ) {
   var massControlsHelpTextBillionsString = GravityForceLabA11yStrings.massControlsHelpTextBillions.value;
   var forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
   var constantSizeCheckboxHelpTextString = GravityForceLabA11yStrings.constantSizeCheckboxHelpText.value;
-  var distanceCheckboxHelpTextString = GravityForceLabBasicsA11yStrings.distanceCheckboxHelpText.value;
-  var screenSummaryDescriptionString = GravityForceLabBasicsA11yStrings.screenSummaryDescription.value;
-  var basicsSimStateLabelString = GravityForceLabBasicsA11yStrings.basicsSimStateLabel.value;
+  var distanceCheckboxHelpTextString = GFLBA11yStrings.distanceCheckboxHelpText.value;
+  var screenSummaryDescriptionString = GFLBA11yStrings.screenSummaryDescription.value;
+  var basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
 
   /**
    * @param {GravityForceLabBasicsModel} model
@@ -106,7 +106,7 @@ define( function( require ) {
     );
 
     // add the mass nodes to the view
-    var mass1Node = new GravityForceLabBasicsMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
+    var mass1Node = new GravityForceLabBasicsMassNode( model, model.object1, this.layoutBounds, stringManager, modelViewTransform, {
       label: mass1LabelString,
       otherObjectLabel: mass2LabelString,
       defaultDirection: 'left',
@@ -115,7 +115,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'mass1Node' )
     } );
 
-    var mass2Node = new GravityForceLabBasicsMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
+    var mass2Node = new GravityForceLabBasicsMassNode( model, model.object2, this.layoutBounds, stringManager, modelViewTransform, {
       label: mass2LabelString,
       otherObjectLabel: mass1LabelString,
       defaultDirection: 'right',

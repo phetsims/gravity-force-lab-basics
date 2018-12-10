@@ -11,7 +11,7 @@ define( function( require ) {
   // modules
   var Color = require( 'SCENERY/util/Color' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GravityForceLabBasicsA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsA11yStrings' );
+  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -27,7 +27,7 @@ define( function( require ) {
   var billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg' );
 
   // a11y strings
-  var massReadoutPatternString = GravityForceLabBasicsA11yStrings.massReadoutPattern.value;
+  var massReadoutPatternString = GFLBA11yStrings.massReadoutPattern.value;
 
   // constants
   var MIN_PANEL_WIDTH = 150;

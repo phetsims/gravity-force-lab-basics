@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
+  // var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -17,7 +17,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
   var Tandem = require( 'TANDEM/Tandem' );
-  var Util = require( 'DOT/Util' );
+  // var Util = require( 'DOT/Util' );
 
   // constants
   var MASS_NODE_Y_POSITION = 215;
@@ -30,7 +30,7 @@ define( function( require ) {
    * @param {Object} [options]
    * @constructor
    */
-  function GravityForceLabBasicsMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
+  function GravityForceLabBasicsMassNode( model, massModel, layoutBounds, stringManager, modelViewTransform, options ) {
 
     options = _.extend( {
       arrowLabelFill: 'black',
@@ -51,8 +51,9 @@ define( function( require ) {
       // a11y
       // TODO: proper string usage
       createAriaValueText: function( formattedValue, previousValue ) {
-        formattedValue = Util.toFixedNumber( ( formattedValue + 4800 ) / 1e3, 1 );
-        return GFLBStringManager.getPositionMeterMarkText( `${formattedValue} kilometer` );
+        // formattedValue = Util.toFixedNumber( ( formattedValue + 4800 ) / 1e3, 1 );
+        return stringManager.getSpherePositionAriaValueText( formattedValue, self );
+        // return GFLBStringManager.getPositionMeterMarkText( `${formattedValue} kilometer` );
       }
     }, options );
 
@@ -60,10 +61,13 @@ define( function( require ) {
     this.modelViewTransform = modelViewTransform;
     this.model = model;
     this.objectModel = massModel;
+    this.stringManager = stringManager;
 
     var pullForceRange = GravityForceLabBasicsConstants.PULL_FORCE_RANGE;
 
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
+
+    this.resetAriaValueText();
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsMassNode', GravityForceLabBasicsMassNode );
@@ -80,6 +84,13 @@ define( function( require ) {
       this.objectCircle.fill = new RadialGradient( -radius * 0.6, -radius * 0.6, 1, -radius * 0.6, -radius * 0.6, radius )
         .addColorStop( 0, baseColor.colorUtilsBrighter( 0.5 ).toCSS() )
         .addColorStop( 1, baseColor.toCSS() );
+    },
+
+    resetAriaValueText: function() {
+      var position = this.objectModel.positionProperty.get();
+      this.ariaValueText = this.stringManager.getSpherePositionAndRegionText( position, this.enum );
+      // position = Util.toFixedNumber( ( position + 4800 ) / 1e3, 1 );
+      // this.ariaValueText = GFLBStringManager.getPositionMeterMarkText( `${position} kilometer reset` );
     }
   } );
 } );
