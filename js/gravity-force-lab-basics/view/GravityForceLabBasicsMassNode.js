@@ -49,11 +49,8 @@ define( function( require ) {
       tandem: Tandem.required,
 
       // a11y
-      // TODO: proper string usage
       createAriaValueText: function( formattedValue, previousValue ) {
-        // formattedValue = Util.toFixedNumber( ( formattedValue + 4800 ) / 1e3, 1 );
         return stringManager.getSpherePositionAriaValueText( formattedValue, self );
-        // return GFLBStringManager.getPositionMeterMarkText( `${formattedValue} kilometer` );
       }
     }, options );
 

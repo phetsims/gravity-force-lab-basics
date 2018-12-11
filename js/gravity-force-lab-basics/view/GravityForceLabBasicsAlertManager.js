@@ -6,13 +6,15 @@ define( require => {
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
-  // const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
+  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const ISLCAlertManager = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCAlertManager' );
   const Utterance = require( 'SCENERY_PHET/accessibility/Utterance' );
   const utteranceQueue = require( 'SCENERY_PHET/accessibility/utteranceQueue' );
 
   // strings
   const constantRadiusThinkDensityString = GravityForceLabA11yStrings.constantRadiusThinkDensity.value;
+  const distanceArrowVisibleString = GFLBA11yStrings.distanceArrowVisible.value;
+  const distanceArrowRemovedString = GFLBA11yStrings.distanceArrowRemoved.value;
 
   class GravityForceLabBasicsAlertManager extends ISLCAlertManager {
     constructor( model, stringManager ) {
@@ -46,9 +48,9 @@ define( require => {
       const utterance = new Utterance( { alert, uniqueGroupId: 'constantRadius' } );
       utteranceQueue.addToBack( utterance );
     }
-    // TODO: proper string usage - wait until content is finalized
+
     alertDistanceVisible( showDistance ) {
-      const alert = showDistance ? 'Distance arrow visible.' : 'Distance arrow removed.';
+      const alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
       const utterance = new Utterance( { alert, uniqueGroupId: 'distanceVisible' } );
       utteranceQueue.addToBack( utterance );
     }

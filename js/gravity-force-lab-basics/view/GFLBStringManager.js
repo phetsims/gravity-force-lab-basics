@@ -21,6 +21,8 @@ define( require => {
   const massesDistanceApartPatternString = GFLBA11yStrings.massesDistanceApartPattern.value;
   const unitsNewtonsString = require( 'string!INVERSE_SQUARE_LAW_COMMON/units.newtons' );
   const massBillionsPatternString = GFLBA11yStrings.massBillionsPattern.value;
+  const positionKilometerPatternString = GFLBA11yStrings.positionKilometerPattern.value;
+  const mass1Mass2QualitativeDistancePatternString = GFLBA11yStrings.mass1Mass2QualitativeDistancePattern.value;
 
   class GFLBStringManager extends GravityForceLabStringManager {
 
@@ -34,10 +36,9 @@ define( require => {
         formatMassValue: mass => {
           mass = mass / 1e9;
           return StringUtils.fillIn( massBillionsPatternString, { mass } );
-        }, // TODO: convert to proper string usage
+        },
         formatPositionUnitMark: position => {
-          // position = Util.toFixedNumber( position / 1e3, 1 );
-          return StringUtils.fillIn( '{{position}} kilometer', { position } );
+          return StringUtils.fillIn( positionKilometerPatternString, { position } );
         }
       } );
     }
@@ -46,18 +47,8 @@ define( require => {
       return StringUtils.fillIn( massesDistanceApartPatternString, { distance } );
     }
 
-    // getSpherePositionAriaValueText( newPosition, objectEnum ) {
-    //   return super.getSpherePositionAriaValueText( Util.toFixedNumber( newPosition + 4.8, 1 ), objectEnum );
-    // }
-    //
-    // getSpherePositionAndRegionText( position, objectEnum ) {
-    //   position = Util.toFixedNumber( position + 4.8, 1 );
-    //   return super.getSpherePositionAndRegionText( position, objectEnum );
-    // }
-
-    // TODO: proper string usage
     getOnlyQualitativeObjectDistanceSummary() {
-      const pattern = '{{mass1}} and {{mass2}} are {{qualitativeDistance}} each other.';
+      const pattern = mass1Mass2QualitativeDistancePatternString;
       return StringUtils.fillIn( pattern, { mass1: this.object1Label, mass2: this.object2Label, qualitativeDistance: this.getQualitativeDistance() } );
     }
 

@@ -30,6 +30,18 @@ define( function( require ) {
     },
     massBillionsPattern: {
       value: '{{mass}} billion'
+    },
+    positionKilometerPattern: {
+      value: '{{position}} kilometer'
+    },
+    mass1Mass2QualitativeDistancePattern: {
+      value: '{{mass1}} and {{mass2}} are {{qualitativeDistance}} each other.'
+    },
+    distanceArrowVisible: {
+      value: 'Distance arrow visible.'
+    },
+    distanceArrowRemoved: {
+      value: 'Distance arrow removed.'
     }
   };
 
