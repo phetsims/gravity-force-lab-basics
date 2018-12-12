@@ -31,7 +31,7 @@ define( require => {
         distanceUnits: 'kilometers',
         centerOffset: 4800,
         valueUnits: unitsNewtonsString,
-        convertForceValue: value => `${Util.toFixedNumber( value, 1 )} newtons`,
+        forceValueToString: value => `${Util.toFixedNumber( value, 1 )} newtons`,
         convertDistanceMetric: distance => Util.toFixedNumber( distance / 1e3, 1 ),
         formatMassValue: mass => {
           mass = mass / 1e9;
@@ -49,7 +49,7 @@ define( require => {
 
     getOnlyQualitativeObjectDistanceSummary() {
       const pattern = mass1Mass2QualitativeDistancePatternString;
-      return StringUtils.fillIn( pattern, { mass1: this.object1Label, mass2: this.object2Label, qualitativeDistance: this.getQualitativeDistance() } );
+      return StringUtils.fillIn( pattern, { mass1: this.object1Label, mass2: this.object2Label, qualitativeDistance: this.getRelativeDistanceText() } );
     }
 
     getPositionRegionChanged( newPosition, oldPosition ) {
