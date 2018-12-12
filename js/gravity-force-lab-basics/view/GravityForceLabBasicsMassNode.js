@@ -46,12 +46,7 @@ define( function( require ) {
       y: MASS_NODE_Y_POSITION,
       snapToNearest: model.snapObjectsToNearest, // in meters, charges will snap to the nearest 0.1 meters in model coordinates
 
-      tandem: Tandem.required,
-
-      // a11y
-      createAriaValueText: function( formattedValue, previousValue ) {
-        return stringManager.getSpherePositionAriaValueText( formattedValue, self );
-      }
+      tandem: Tandem.required
     }, options );
 
     // @private
@@ -84,8 +79,11 @@ define( function( require ) {
     },
 
     resetAriaValueText: function() {
-      var position = this.objectModel.positionProperty.get();
-      this.ariaValueText = this.stringManager.getSpherePositionAndRegionText( position, this.enum );
+      if ( this.objectModel.isAtEdgeOfRange() ) {
+        this.ariaValueText = this.stringManager.getLastStopDistanceFromOtherObjectText( this.enum );
+        return;
+      }
+      this.ariaValueText = this.stringManager.getPositionAndDistanceFromOtherObjectText( this.enum );
       // position = Util.toFixedNumber( ( position + 4800 ) / 1e3, 1 );
       // this.ariaValueText = GFLBStringManager.getPositionMeterMarkText( `${position} kilometer reset` );
     }
