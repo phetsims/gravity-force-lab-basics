@@ -57,7 +57,7 @@ define( function( require ) {
 
     var pullForceRange = GravityForceLabBasicsConstants.PULL_FORCE_RANGE;
 
-    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
+    ISLCObjectNode.call( this, model, massModel, layoutBounds, stringManager, modelViewTransform, pullForceRange, options );
 
     this.resetAriaValueText();
   }

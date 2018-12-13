@@ -86,7 +86,7 @@ define( function( require ) {
     } );
 
     var stringManager = new GFLBStringManager( model, mass1LabelString, mass2LabelString );
-    this.alertManager = new GravityForceLabBasicsAlertManager( model, stringManager );
+    var alertManager = new GravityForceLabBasicsAlertManager( model, stringManager );
     var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager, {
       descriptionContent: screenSummaryDescriptionString,
       summaryOptions: {
@@ -312,6 +312,7 @@ define( function( require ) {
       return function( event ) {
         lastMoveCloser = null;
         objectNode.resetAriaValueText();
+        alertManager.alertPositionSliderFocused();
       };
     }
 
