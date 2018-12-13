@@ -71,7 +71,8 @@ define( function( require ) {
   var forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
   var constantSizeCheckboxHelpTextString = GravityForceLabA11yStrings.constantSizeCheckboxHelpText.value;
   var distanceCheckboxHelpTextString = GFLBA11yStrings.distanceCheckboxHelpText.value;
-  var screenSummaryDescriptionString = GFLBA11yStrings.screenSummaryDescription.value;
+  var screenSummaryMainDescriptionString = GFLBA11yStrings.screenSummaryMainDescription.value;
+  var screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySecondaryDescription.value;
   var basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
 
   /**
@@ -88,7 +89,8 @@ define( function( require ) {
     var stringManager = new GFLBStringManager( model, mass1LabelString, mass2LabelString );
     var alertManager = new GravityForceLabBasicsAlertManager( model, stringManager );
     var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager, {
-      descriptionContent: screenSummaryDescriptionString,
+      mainDescriptionContent: screenSummaryMainDescriptionString,
+      secondaryDecriptionContent: screenSummarySecondaryDescriptionString,
       summaryOptions: {
         simStateLabel: basicsSimStateLabelString
       }
