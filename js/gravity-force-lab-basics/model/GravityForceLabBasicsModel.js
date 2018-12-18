@@ -72,16 +72,17 @@ define( function( require ) {
       minSeparationBetweenObjects: 200 // in meters
     } );
 
-    // @public
-    this.distanceProperty = new DerivedProperty( [ 
-        this.object1.positionProperty, 
+    // @public (read-only) {Property.<Number>} - distance between the centers of the two masses
+    this.distanceProperty = new DerivedProperty( [
+        this.object1.positionProperty,
         this.object2.positionProperty
       ], function( x1, x2 ) {
-        return Math.abs( x2 - x1 ) / 1000; // divided by 100 to convert to KM
+        return Math.abs( x2 - x1 ) / 1000; // divided by 1000 to convert to kilometers
       }, {
         phetioType: DerivedPropertyIO( NumberIO ),
         tandem: tandem.createTandem( 'distanceProperty' )
-      } );
+      }
+    );
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );
