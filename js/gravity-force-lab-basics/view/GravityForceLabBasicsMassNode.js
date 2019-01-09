@@ -59,7 +59,7 @@ define( function( require ) {
 
     ISLCObjectNode.call( this, model, massModel, layoutBounds, stringManager, modelViewTransform, pullForceRange, options );
 
-    this.resetAriaValueText();
+    this.updateAriaValueText();
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsMassNode', GravityForceLabBasicsMassNode );
@@ -78,7 +78,7 @@ define( function( require ) {
         .addColorStop( 1, baseColor.toCSS() );
     },
 
-    resetAriaValueText: function() {
+    updateAriaValueText: function() {
       if ( this.objectModel.isAtEdgeOfRange() ) {
         this.ariaValueText = this.stringManager.getLastStopDistanceFromOtherObjectText( this.enum );
         return;

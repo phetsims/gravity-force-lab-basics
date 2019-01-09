@@ -14,6 +14,7 @@ define( function( require ) {
   var Color = require( 'SCENERY/util/Color' );
   var ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
+  var GFLBForceDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBForceDescriber' );
   var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
   var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
   var GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
@@ -86,6 +87,7 @@ define( function( require ) {
       addScreenSummaryNode: true
     } );
 
+    GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
     var stringManager = new GFLBStringManager( model, mass1LabelString, mass2LabelString );
     var alertManager = new GravityForceLabBasicsAlertManager( model, stringManager );
     var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager, {
@@ -313,7 +315,7 @@ define( function( require ) {
     function focusListenerCreator( objectNode ) {
       return function( event ) {
         lastMoveCloser = null;
-        objectNode.resetAriaValueText();
+        objectNode.updateAriaValueText();
         alertManager.alertPositionSliderFocused();
       };
     }

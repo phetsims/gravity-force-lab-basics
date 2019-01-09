@@ -31,7 +31,7 @@ define( require => {
       } );
 
       model.forceValuesProperty.lazyLink( showValues => {
-        this.alertForceValues( showValues );
+        ISLCAlertManager.alertForceValues( showValues );
       } );
 
       model.object1.valueProperty.lazyLink( ( value, newValue ) => {

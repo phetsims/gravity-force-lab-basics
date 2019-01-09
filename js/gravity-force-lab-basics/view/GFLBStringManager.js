@@ -12,10 +12,11 @@ define( require => {
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Util = require( 'DOT/Util' );
 
-  const { MASS_RANGE, PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
+  // const { MASS_RANGE, PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
+  const { MASS_RANGE } = GravityForceLabBasicsConstants;
   const massToIndex = new LinearFunction( MASS_RANGE.min, MASS_RANGE.max, 0, 6 );
-  const forceToIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max * 0.6, 0, 6, true );
-  const forceToPullIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max, 6, 0, true );
+  // const forceToIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max * 0.6, 0, 6, true );
+  // const forceToPullIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max, 6, 0, true );
 
   // strings
   const massesDistanceApartPatternString = GFLBA11yStrings.massesDistanceApartPattern.value;
@@ -34,10 +35,12 @@ define( require => {
         forceValueToString: value => `${Util.toFixedNumber( value, 1 )} newtons`,
         convertDistanceMetric: distance => Util.toFixedNumber( distance / 1e3, 1 ),
         formatMassValue: mass => {
+          // {{number}} billion
           mass = mass / 1e9;
           return StringUtils.fillIn( massBillionsPatternString, { mass } );
         },
         formatPositionUnitMark: position => {
+          // {{posiiton}} kilometer
           return StringUtils.fillIn( positionKilometerPatternString, { position } );
         }
       } );
@@ -52,9 +55,9 @@ define( require => {
       return StringUtils.fillIn( pattern, { mass1: this.object1Label, mass2: this.object2Label, qualitativeDistance: this.getRelativeDistanceText() } );
     }
 
-    getPositionRegionChanged( newPosition, oldPosition ) {
-      return super.getPositionRegionChanged( newPosition / 1000, oldPosition / 1000 );
-    }
+    // getPositionRegionChanged( newPosition, oldPosition ) {
+    //   return super.getPositionRegionChanged( newPosition / 1000, oldPosition / 1000 );
+    // }
 
     // @override
     getDistanceIndex( distance ) {
@@ -68,14 +71,14 @@ define( require => {
     }
 
     // @override
-    getForceVectorIndex( force ) {
-      return Util.roundSymmetric( forceToIndex( force ) );
-    }
+    // getForceVectorIndex( force ) {
+    //   return Util.roundSymmetric( forceToIndex( force ) );
+    // }
 
     // @override
-    getEffortIndex( force ) {
-      return Util.roundSymmetric( forceToPullIndex( force ) );
-    }
+    // getEffortIndex( force ) {
+    //   return Util.roundSymmetric( forceToPullIndex( force ) );
+    // }
   }
 
   return gravityForceLabBasics.register( 'GFLBStringManager', GFLBStringManager );
