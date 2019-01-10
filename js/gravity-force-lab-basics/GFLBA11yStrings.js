@@ -37,6 +37,12 @@ define( function( require ) {
     positionKilometerPattern: {
       value: '{{position}} kilometer'
     },
+    kilometer: {
+      value: 'kilometer'
+    },
+    kilometers: {
+      value: 'kilometers'
+    },
     mass1Mass2QualitativeDistancePattern: {
       value: '{{mass1}} and {{mass2}} are {{qualitativeDistance}} each other.'
     },

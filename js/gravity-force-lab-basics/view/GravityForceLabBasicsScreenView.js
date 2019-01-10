@@ -14,12 +14,13 @@ define( function( require ) {
   var Color = require( 'SCENERY/util/Color' );
   var ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   var DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
+  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   var GFLBForceDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBForceDescriber' );
-  var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
+  var GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
+  var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
   var GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var GravityForceLabBasicsMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsMassNode' );
   var GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
@@ -36,11 +37,9 @@ define( function( require ) {
   var MassPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassPDOMNode' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var Node = require( 'SCENERY/nodes/Node' );
-  var Property = require( 'AXON/Property' );
   var PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
-  var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -88,9 +87,10 @@ define( function( require ) {
     } );
 
     GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
-    var stringManager = new GFLBStringManager( model, mass1LabelString, mass2LabelString );
-    var alertManager = new GravityForceLabBasicsAlertManager( model, stringManager );
-    var summaryNode = new GravityForceLabScreenSummaryNode( model, stringManager, {
+    var massDescriber = GFLBMassDescriber.initialize( model );
+    var positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
+    var alertManager = GravityForceLabBasicsAlertManager.initialize( model );
+    var summaryNode = new GravityForceLabScreenSummaryNode( model, {
       mainDescriptionContent: screenSummaryMainDescriptionString,
       secondaryDecriptionContent: screenSummarySecondaryDescriptionString,
       summaryOptions: {
@@ -112,62 +112,30 @@ define( function( require ) {
       .05
     );
 
-    // position state variables
-    var lastMoveCloser = false;
-    var movedCloser = false;
-    var distanceBetween = Math.abs( model.object2.positionProperty.get() - model.object1.positionProperty.get() );
-
-    function ariaValueTextCreator( objectEnum ) {
-      return function( formattedValue, oldValue ) {
-        var thisObjectEnum = objectEnum;
-        var thisObject = thisObjectEnum === OBJECT_ONE ? model.object1 : model.object2;
-        var newDistanceBetween = Math.abs( model.object1.positionProperty.get() - model.object2.positionProperty.get() );
-        newDistanceBetween = Util.toFixedNumber( newDistanceBetween, 1 );
-        var newAriaValueText = stringManager.getDistanceFromOtherObjectText( thisObjectEnum, newDistanceBetween );
-
-        movedCloser = newDistanceBetween < distanceBetween;
-
-        if ( lastMoveCloser !== movedCloser ) {
-          newAriaValueText = stringManager.getProgressPositionAndDistanceFromOtherObjectText( thisObjectEnum, movedCloser, newDistanceBetween );
-        }
-
-        if ( thisObject.isAtEdgeOfRange() ) {
-          // last stop
-          newAriaValueText = stringManager.getLastStopDistanceFromOtherObjectText( thisObjectEnum, newDistanceBetween );
-        }
-
-        lastMoveCloser = movedCloser;
-        distanceBetween = newDistanceBetween;
-        return newAriaValueText;
-      };
-    }
-
     // add the mass nodes to the view
-    var mass1Node = new GravityForceLabBasicsMassNode( model, model.object1, this.layoutBounds, stringManager, modelViewTransform, {
+    var mass1Node = new GravityForceLabBasicsMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
       label: mass1LabelString,
       otherObjectLabel: mass2LabelString,
       defaultDirection: 'left',
       arrowColor: '#66F',
       forceArrowHeight: 125,
-      tandem: tandem.createTandem( 'mass1Node' ),
-      createAriaValueText: ariaValueTextCreator( OBJECT_ONE )
+      tandem: tandem.createTandem( 'mass1Node' )
     } );
 
-    var mass2Node = new GravityForceLabBasicsMassNode( model, model.object2, this.layoutBounds, stringManager, modelViewTransform, {
+    var mass2Node = new GravityForceLabBasicsMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
       label: mass2LabelString,
       otherObjectLabel: mass1LabelString,
       defaultDirection: 'right',
       arrowColor: '#F66',
       forceArrowHeight: 175,
-      tandem: tandem.createTandem( 'mass2Node' ),
-      createAriaValueText: ariaValueTextCreator( OBJECT_TWO )
+      tandem: tandem.createTandem( 'mass2Node' )
     } );
 
-    playAreaNode.addChild( new MassPDOMNode( model, OBJECT_ONE, stringManager, {
+    playAreaNode.addChild( new MassPDOMNode( model, OBJECT_ONE, {
       thisObjectLabel: mass1LabelString,
       otherObjectLabel: mass2LabelString
     } ) );
-    playAreaNode.addChild( new MassPDOMNode( model, OBJECT_TWO, stringManager, {
+    playAreaNode.addChild( new MassPDOMNode( model, OBJECT_TWO, {
       thisObjectLabel: mass2LabelString,
       otherObjectLabel: mass1LabelString
     } ) );
@@ -245,7 +213,7 @@ define( function( require ) {
     } );
     model.showDistanceProperty.linkAttribute( distanceArrowNode, 'visible' );
     model.distanceProperty.link( function( distance ) {
-      distanceArrowNode.innerContent = GFLBStringManager.getMassesDistanceApart( distance );
+      distanceArrowNode.innerContent = GFLBPositionDescriber.getMassesDistanceApart( distance );
     } );
     massPositionsNode.addChild( distanceArrowNode );
 
@@ -263,8 +231,8 @@ define( function( require ) {
     // link summary content to distance property
     model.showDistanceProperty.link( function( showDistance ) {
       var content = showDistance ?
-                    stringManager.getObjectDistanceSummary() :
-                    stringManager.getOnlyQualitativeObjectDistanceSummary();
+                    positionDescriber.getObjectDistanceSummary() :
+                    positionDescriber.getOnlyQualitativeObjectDistanceSummary();
       summaryNode.objectDistanceSummaryItem.innerContent = content;
     } );
 
@@ -281,47 +249,29 @@ define( function( require ) {
     // a11y - specify the order of focus for things in the ScreenView
     // this.accessibleOrder = [ mass1Node, mass2Node, massControlBox, parameterControlPanel, resetAllButton ];
 
-    Property.multilink(
-      [ model.object1.positionProperty, model.object2.positionProperty ],
-      function( x1, x2 ) {
-        var focusedMassNode;
-        var otherMassNode;
-        var distance = Util.toFixedNumber( Math.abs( x1 - x2 ), 1 );
+    model.object1.valueProperty.link( function( mass ) {
+      var text = massDescriber.getMassValueAndRelativeSize( OBJECT_TWO );
+      massControl2.ariaValueText = text;
+    } );
+    model.object2.valueProperty.link( function( mass ) {
+      var text = massDescriber.getMassValueAndRelativeSize( OBJECT_ONE );
+      massControl2.ariaValueText = text;
+    } );
 
-        if ( mass1Node.isFocused() ) {
-          focusedMassNode = mass1Node;
-          otherMassNode = mass2Node;
-        }
-        else if ( mass2Node.isFocused() ) {
-          focusedMassNode = mass2Node;
-          otherMassNode = mass1Node;
-        }
-        else {
-          // this case is possible if the radius of a mass pushes the other mass
-          mass1Node.ariaValueText = stringManager.getPositionAndDistanceFromOtherObjectText( OBJECT_ONE, distance );
-          mass2Node.ariaValueText = stringManager.getPositionAndDistanceFromOtherObjectText( OBJECT_TWO, distance );
-          return;
-        }
-
-        var newAriaValueText = stringManager.getPositionAndDistanceFromOtherObjectText( otherMassNode.enum, distance );
-
-        if ( focusedMassNode.objectModel.isAtEdgeOfRange() ) {
-          newAriaValueText = stringManager.getLastStopDistanceFromOtherObjectText( otherMassNode.enum, distance );
-        }
-        otherMassNode.ariaValueText = newAriaValueText;
-      }
-    );
-
-    function focusListenerCreator( objectNode ) {
-      return function( event ) {
-        lastMoveCloser = null;
-        objectNode.updateAriaValueText();
+    mass1Node.addInputListener( {
+      focus: function( event ) {
+        positionDescriber.lastMoveCloser = null;
+        mass1Node.ariaValueText = positionDescriber.getFocusAriaValueText( OBJECT_ONE );
         alertManager.alertPositionSliderFocused();
-      };
-    }
-
-    mass1Node.addInputListener( { focus: focusListenerCreator( mass1Node ) } );
-    mass2Node.addInputListener( { focus: focusListenerCreator( mass2Node ) } );
+      }
+    } );
+    mass2Node.addInputListener( {
+      focus: function( event ) {
+        positionDescriber.lastMoveCloser = null;
+        mass2Node.ariaValueText = positionDescriber.getFocusAriaValueText( OBJECT_TWO );
+        alertManager.alertPositionSliderFocused();
+      }
+    } );
 
     //------------------------------------------------
     // debugging

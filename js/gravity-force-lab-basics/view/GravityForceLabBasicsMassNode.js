@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  // var GFLBStringManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBStringManager' );
+  var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -30,7 +30,7 @@ define( function( require ) {
    * @param {Object} [options]
    * @constructor
    */
-  function GravityForceLabBasicsMassNode( model, massModel, layoutBounds, stringManager, modelViewTransform, options ) {
+  function GravityForceLabBasicsMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
 
     options = _.extend( {
       arrowLabelFill: 'black',
@@ -53,13 +53,12 @@ define( function( require ) {
     this.modelViewTransform = modelViewTransform;
     this.model = model;
     this.objectModel = massModel;
-    this.stringManager = stringManager;
 
     var pullForceRange = GravityForceLabBasicsConstants.PULL_FORCE_RANGE;
 
-    ISLCObjectNode.call( this, model, massModel, layoutBounds, stringManager, modelViewTransform, pullForceRange, options );
+    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
 
-    this.updateAriaValueText();
+    this.resetAriaValueText();
   }
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsMassNode', GravityForceLabBasicsMassNode );
@@ -77,15 +76,17 @@ define( function( require ) {
         .addColorStop( 0, baseColor.colorUtilsBrighter( 0.5 ).toCSS() )
         .addColorStop( 1, baseColor.toCSS() );
     },
-
-    updateAriaValueText: function() {
-      if ( this.objectModel.isAtEdgeOfRange() ) {
-        this.ariaValueText = this.stringManager.getLastStopDistanceFromOtherObjectText( this.enum );
-        return;
+    resetAriaValueText: function() {
+      const positionDescriber = GFLBPositionDescriber.getDescriber();
+      if ( positionDescriber.objectAtEdge( this.enum ) ) {
+        this.ariaValueText = positionDescriber.getPositionAtEdgeAndDistanceFromOtherObjectText( this.enum );
       }
-      this.ariaValueText = this.stringManager.getPositionAndDistanceFromOtherObjectText( this.enum );
-      // position = Util.toFixedNumber( ( position + 4800 ) / 1e3, 1 );
-      // this.ariaValueText = GFLBStringManager.getPositionMeterMarkText( `${position} kilometer reset` );
+      else if ( positionDescriber.objectsClosest ) {
+        this.ariaValueText = positionDescriber.getClosestToOtherObjectText( this.enum );
+      }
+      else {
+        this.ariaValueText = positionDescriber.getPositionAndDistanceFromOtherObjectText( this.enum );
+      }
     }
   } );
 } );

@@ -8,7 +8,6 @@ define( require => {
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   const LinearFunction = require( 'DOT/LinearFunction' );
-  const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Util = require( 'DOT/Util' );
 
   const { PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
@@ -46,7 +45,6 @@ define( require => {
     static getDescriber() {
       // assert && assert( describer, 'describer has not yet been initialized' );
       return ForceDescriber.getDescriber();
-      // return describer;
     }
 
     /**
