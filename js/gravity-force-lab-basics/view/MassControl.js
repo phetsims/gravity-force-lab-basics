@@ -42,7 +42,6 @@ define( function( require ) {
    * @constructor
    */
   function MassControl( titleString, valueProperty, massRange, labelContent, tandem, options ) {
-
     options = _.extend( {
       color: new Color( 0, 0, 255 ),
       onFocus: function( event ) {}
