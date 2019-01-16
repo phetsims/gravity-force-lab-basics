@@ -47,10 +47,10 @@ define( function( require ) {
       value: '{{mass1}} and {{mass2}} are {{qualitativeDistance}} each other.'
     },
     distanceArrowVisible: {
-      value: 'Distance arrow visible.'
+      value: 'Distance shown in kilometers.'
     },
     distanceArrowRemoved: {
-      value: 'Distance arrow removed.'
+      value: 'Distance hidden.'
     }
   };
 
