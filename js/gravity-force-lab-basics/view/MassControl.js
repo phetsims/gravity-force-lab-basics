@@ -31,6 +31,7 @@ define( function( require ) {
 
   // constants
   var MIN_PANEL_WIDTH = 150;
+  var MAX_TEXT_WIDTH = 125; // i18n
 
   /**
    * @param {string} titleString
@@ -49,6 +50,7 @@ define( function( require ) {
 
     var titleText = new Text( titleString, {
       font: new PhetFont( 18 ),
+      maxWidth: MAX_TEXT_WIDTH,
       tandem: tandem.createTandem( 'titleText' )
     } );
 
@@ -77,6 +79,7 @@ define( function( require ) {
     } );
     var numberPickerLabel = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),
+      maxWidth: MAX_TEXT_WIDTH,
       tandem: tandem.createTandem( 'numberPickerLabel' )
     } );
 
@@ -98,7 +101,6 @@ define( function( require ) {
       fill: '#f1f1f2',
       xMargin: 15,
       yMargin: 10,
-      maxWidth: 224,
       minWidth: MIN_PANEL_WIDTH,
       resize: false,
       align: 'center',
