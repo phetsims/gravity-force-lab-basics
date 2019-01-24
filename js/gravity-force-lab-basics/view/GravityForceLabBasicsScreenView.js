@@ -171,7 +171,6 @@ define( function( require ) {
     } );
     playAreaNode.addChild( massControlsNode );
 
-
     // the list of mass controls is aria-labelledby the its label sibling, see https://github.com/phetsims/gravity-force-lab/issues/132
     massControlsNode.addAriaLabelledbyAssociation( {
       otherNode: massControlsNode,
