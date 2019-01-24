@@ -11,6 +11,7 @@ define( function( require ) {
   // modules
   var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var GravityForceLabConstants = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabConstants' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
@@ -45,7 +46,7 @@ define( function( require ) {
       labelShadowOffsetY: 0.9,
       y: MASS_NODE_Y_POSITION,
       snapToNearest: model.snapObjectsToNearest, // in meters, charges will snap to the nearest 0.1 meters in model coordinates
-
+      stepSize: GravityForceLabConstants.LOCATION_STEP_SIZE,
       tandem: Tandem.required
     }, options );
 
@@ -76,6 +77,11 @@ define( function( require ) {
         .addColorStop( 0, baseColor.colorUtilsBrighter( 0.5 ).toCSS() )
         .addColorStop( 1, baseColor.toCSS() );
     },
+
+    /**
+     * TODO: this is copied from GFL/MassNode
+     * @private
+     */
     resetAriaValueText: function() {
       const positionDescriber = GFLBPositionDescriber.getDescriber();
       if ( positionDescriber.objectAtEdge( this.enum ) ) {
