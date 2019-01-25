@@ -90,8 +90,8 @@ define( function( require ) {
     // we don't need to keep references for all of them, just need to initialize
     GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
     GFLBMassDescriber.initialize( model );
+    GravityForceLabBasicsAlertManager.initialize( model );
     var positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
-    var alertManager = GravityForceLabBasicsAlertManager.initialize( model );
     var summaryNode = new GravityForceLabScreenSummaryNode( model, {
       mainDescriptionContent: screenSummaryMainDescriptionString,
       secondaryDecriptionContent: screenSummarySecondaryDescriptionString,
@@ -159,10 +159,14 @@ define( function( require ) {
     massPositionsNode.addChild( mass2Node.arrowNode );
 
     // mass controls
-    var massControl1 = new MassControl( mass1String, model.object1.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, mass1ControlLabelString, tandem.createTandem( 'massControl1' ) );
-    var massControl2 = new MassControl( mass2String, model.object2.valueProperty, GravityForceLabBasicsConstants.MASS_RANGE, mass2ControlLabelString, tandem.createTandem( 'massControl2' ), {
-      color: new Color( 255, 0, 0 )
-    } );
+    var massControl1 = new MassControl( mass1String, model.object1.valueProperty,
+      GravityForceLabBasicsConstants.MASS_RANGE, mass1ControlLabelString,
+      tandem.createTandem( 'massControl1' ) );
+    var massControl2 = new MassControl( mass2String, model.object2.valueProperty,
+      GravityForceLabBasicsConstants.MASS_RANGE, mass2ControlLabelString,
+      tandem.createTandem( 'massControl2' ), {
+        color: new Color( 255, 0, 0 )
+      } );
 
     var massControlsNode = new Node( {
       labelTagName: 'h3',
@@ -254,21 +258,6 @@ define( function( require ) {
 
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
-
-    mass1Node.addInputListener( {
-      focus: function() {
-        positionDescriber.lastMoveCloser = null;
-        mass1Node.ariaValueText = positionDescriber.getFocusAriaValueText( OBJECT_ONE );
-        alertManager.alertPositionSliderFocused();
-      }
-    } );
-    mass2Node.addInputListener( {
-      focus: function() {
-        positionDescriber.lastMoveCloser = null;
-        mass2Node.ariaValueText = positionDescriber.getFocusAriaValueText( OBJECT_TWO );
-        alertManager.alertPositionSliderFocused();
-      }
-    } );
 
     //------------------------------------------------
     // debugging

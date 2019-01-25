@@ -11,6 +11,7 @@ define( function( require ) {
   // modules
   var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
@@ -49,6 +50,9 @@ define( function( require ) {
       tandem: Tandem.required
     }, options );
 
+    const positionDescriber = GFLBPositionDescriber.getDescriber();
+    const alertManager = GravityForceLabBasicsAlertManager.initialize( model );
+
     // @private
     this.modelViewTransform = modelViewTransform;
     this.model = model;
@@ -57,6 +61,14 @@ define( function( require ) {
     var pullForceRange = GravityForceLabBasicsConstants.PULL_FORCE_RANGE;
 
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
+
+    this.addInputListener( {
+      focus: () => {
+        positionDescriber.lastMoveCloser = null;
+        this.ariaValueText = positionDescriber.getFocusAriaValueText( this.enum );
+        alertManager.alertPositionSliderFocused();
+      }
+    } );
 
     this.resetAriaValueText();
   }
