@@ -201,7 +201,7 @@ define( require => {
       massControlsNode.addChild( massControlBox );
 
       model.constantRadiusProperty.link( constantRadius => {
-        massControlsNode.descriptionContent = constantRadius ? massControlsHelpTextBillionsString : massControlsHelpTextDensityBillionsString;
+        massControlsNode.descriptionContent = constantRadius ? massControlsHelpTextDensityBillionsString : massControlsHelpTextBillionsString;
       } );
 
       const checkboxItems = [
