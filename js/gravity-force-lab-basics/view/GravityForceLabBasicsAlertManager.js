@@ -85,6 +85,13 @@ define( require => {
       utteranceQueue.addToBack( utterance );
     }
 
+    /**
+     * When mass control is focused, produce the same alert as when the position slider is focused
+     */
+    alertMassControlFocused() {
+      this.alertPositionSliderFocused();
+    }
+
     // alertPositionChanged( endAtEdge ) {
     //   const alert = this.getPositionChangedAlertText( endAtEdge );
     //   const utterance = new Utterance( { alert, uniqueGroupId: 'position' } );

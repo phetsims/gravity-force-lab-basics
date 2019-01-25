@@ -10,9 +10,10 @@ define( function( require ) {
 
   // modules
   var Color = require( 'SCENERY/util/Color' );
-  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
+  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
@@ -43,10 +44,12 @@ define( function( require ) {
    * @constructor
    */
   function MassControl( titleString, valueProperty, massRange, labelContent, tandem, options ) {
+
     options = _.extend( {
-      color: new Color( 0, 0, 255 ),
-      onFocus: function( event ) {}
+      color: new Color( 0, 0, 255 )
     }, options );
+
+    const alertManager = GravityForceLabBasicsAlertManager.getManager();
 
     var titleText = new Text( titleString, {
       font: new PhetFont( 18 ),
@@ -83,8 +86,11 @@ define( function( require ) {
       tandem: tandem.createTandem( 'numberPickerLabel' )
     } );
 
+    // alert on focus
     numberPicker.addInputListener( {
-      focus: options.onFocus
+      focus() {
+        alertManager.alertMassControlFocused();
+      }
     } );
 
     var numberPickerHBox = new HBox( {
