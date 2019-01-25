@@ -87,8 +87,9 @@ define( function( require ) {
       addScreenSummaryNode: true
     } );
 
+    // we don't need to keep references for all of them, just need to initialize
     GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
-    var massDescriber = GFLBMassDescriber.initialize( model );
+    GFLBMassDescriber.initialize( model );
     var positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
     var alertManager = GravityForceLabBasicsAlertManager.initialize( model );
     var summaryNode = new GravityForceLabScreenSummaryNode( model, {
@@ -253,18 +254,6 @@ define( function( require ) {
 
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
-
-    // a11y - specify the order of focus for things in the ScreenView
-    // this.accessibleOrder = [ mass1Node, mass2Node, massControlBox, parameterControlPanel, resetAllButton ];
-
-    model.object1.valueProperty.link( function( mass ) {
-      var text = massDescriber.getMassValueAndRelativeSize( OBJECT_TWO );
-      massControl2.ariaValueText = text;
-    } );
-    model.object2.valueProperty.link( function( mass ) {
-      var text = massDescriber.getMassValueAndRelativeSize( OBJECT_ONE );
-      massControl2.ariaValueText = text;
-    } );
 
     mass1Node.addInputListener( {
       focus: function( event ) {
