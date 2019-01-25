@@ -256,14 +256,14 @@ define( function( require ) {
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
 
     mass1Node.addInputListener( {
-      focus: function( event ) {
+      focus: function() {
         positionDescriber.lastMoveCloser = null;
         mass1Node.ariaValueText = positionDescriber.getFocusAriaValueText( OBJECT_ONE );
         alertManager.alertPositionSliderFocused();
       }
     } );
     mass2Node.addInputListener( {
-      focus: function( event ) {
+      focus: function() {
         positionDescriber.lastMoveCloser = null;
         mass2Node.ariaValueText = positionDescriber.getFocusAriaValueText( OBJECT_TWO );
         alertManager.alertPositionSliderFocused();
