@@ -41,6 +41,7 @@ define( function( require ) {
   var PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
+  var StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -75,6 +76,7 @@ define( function( require ) {
   var screenSummaryMainDescriptionString = GFLBA11yStrings.screenSummaryMainDescription.value;
   var screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySecondaryDescription.value;
   var basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
+  var spherePositionsDescriptionPatternString = GFLBA11yStrings.spherePositionsDescriptionPattern.value;
 
   /**
    * @param {GravityForceLabBasicsModel} model
@@ -145,8 +147,15 @@ define( function( require ) {
     var massPositionsNode = new Node( {
       tagName: 'ul',
       labelTagName: 'h3',
-      labelContent: spherePositionsString,
-      descriptionContent: spherePositionHelpTextString
+      labelContent: spherePositionsString
+      // NOTE: descriptionContent set below
+    } );
+    model.distanceProperty.link( function( distance ) {
+      massPositionsNode.descriptionContent =
+        StringUtils.fillIn( spherePositionsDescriptionPatternString, {
+          spherePositionsHelpText: spherePositionHelpTextString,
+          distanceApart: GFLBPositionDescriber.getMassesDistanceApart( distance )
+        } );
     } );
 
     playAreaNode.addChild( massPositionsNode );
@@ -221,13 +230,9 @@ define( function( require ) {
     // arrow that shows distance between the two masses
     var distanceArrowNode = new DistanceArrowNode( model, modelViewTransform, {
       tandem: tandem.createTandem( 'distanceArrowNode' ),
-      y: 145,
-      tagName: 'p'
+      y: 145
     } );
     model.showDistanceProperty.linkAttribute( distanceArrowNode, 'visible' );
-    model.distanceProperty.link( function( distance ) {
-      distanceArrowNode.innerContent = GFLBPositionDescriber.getMassesDistanceApart( distance );
-    } );
     massPositionsNode.addChild( distanceArrowNode );
 
     // Reset All button

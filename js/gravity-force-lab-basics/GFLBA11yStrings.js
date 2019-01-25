@@ -26,7 +26,10 @@ define( function( require ) {
       value: '{{value}} billion kg'
     },
     massesDistanceApartPattern: {
-      value: 'masses are {{distance}} km apart'
+      value: 'Masses are {{distance}} km apart.'
+    },
+    spherePositionsDescriptionPattern:{
+      value: '{{distanceApart}} {{spherePositionsHelpText}}'
     },
     distanceCheckboxHelpText: {
       value: 'Measure distance between spheres in kilometers.'
