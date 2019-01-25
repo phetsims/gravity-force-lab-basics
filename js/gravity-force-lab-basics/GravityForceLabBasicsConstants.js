@@ -27,7 +27,8 @@ define( function( require ) {
     CONSTANT_RADIUS: 500, // meters
     RIGHT_MASS_BOUNDARY: MAX_DISTANCE_FROM_CENTER,
     LEFT_MASS_BOUNDARY: -MAX_DISTANCE_FROM_CENTER,
-    MASS_POSITION_DELTA: 100 // in m, masses can move in 0.1 km increments and will snap to these locations
+    MASS_POSITION_DELTA: 100, // in m, masses can move in 0.1 km increments and will snap to these locations
+    MASS_STEP_SIZE: 500 // in m, each time the mass is moved with a keyboard
   };
 
   gravityForceLabBasics.register( 'GravityForceLabBasicsConstants', GravityForceLabBasicsConstants );

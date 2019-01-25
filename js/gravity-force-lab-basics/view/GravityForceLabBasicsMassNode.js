@@ -46,7 +46,7 @@ define( function( require ) {
       labelShadowOffsetY: 0.9,
       y: MASS_NODE_Y_POSITION,
       snapToNearest: model.snapObjectsToNearest, // in meters, charges will snap to the nearest 0.1 meters in model coordinates
-      stepSize: GravityForceLabConstants.LOCATION_STEP_SIZE,
+      stepSize: GravityForceLabBasicsConstants.MASS_STEP_SIZE,
       tandem: Tandem.required
     }, options );
 
