@@ -135,14 +135,12 @@ define( require => {
         tandem: tandem.createTandem( 'mass2Node' )
       } );
 
-      playAreaNode.addChild( new MassPDOMNode( model, OBJECT_ONE, {
-        thisObjectLabel: mass1LabelString,
-        otherObjectLabel: mass2LabelString
-      } ) );
-      playAreaNode.addChild( new MassPDOMNode( model, OBJECT_TWO, {
-        thisObjectLabel: mass2LabelString,
-        otherObjectLabel: mass1LabelString
-      } ) );
+      const massPDOMNodeOptions = {
+        object1Label: mass1LabelString,
+        object2Label: mass2LabelString
+      };
+      playAreaNode.addChild( new MassPDOMNode( model, OBJECT_ONE, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new MassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
 
       const massPositionsNode = new Node( {
         tagName: 'ul',
