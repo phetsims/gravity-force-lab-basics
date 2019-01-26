@@ -29,7 +29,8 @@ define( require => {
         },
 
         forceArrowsString: forceArrowsString,
-        vectorsString: arrowsString
+        vectorsString: arrowsString,
+        vectorsCapitalizedString: forceArrowsString
       };
       super( model, object1Label, object2Label, options );
 
