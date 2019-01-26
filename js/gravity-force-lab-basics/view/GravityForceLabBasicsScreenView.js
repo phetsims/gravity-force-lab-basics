@@ -97,9 +97,7 @@ define( require => {
       const summaryNode = new GravityForceLabScreenSummaryNode( model, {
         mainDescriptionContent: screenSummaryMainDescriptionString,
         secondaryDecriptionContent: screenSummarySecondaryDescriptionString,
-        summaryOptions: {
-          simStateLabel: basicsSimStateLabelString
-        }
+        simStateLabel: basicsSimStateLabelString
       } );
       const playAreaNode = new PlayAreaNode();
       const controlAreaNode = new ControlAreaNode();
