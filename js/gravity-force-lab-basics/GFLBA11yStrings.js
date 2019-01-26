@@ -57,6 +57,9 @@ define( function( require ) {
     },
     forceArrows: {
       value: 'Force arrows'
+    },
+    arrows: {
+      value: 'arrows'
     }
   };
 

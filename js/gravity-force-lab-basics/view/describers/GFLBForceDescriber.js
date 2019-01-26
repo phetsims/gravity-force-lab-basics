@@ -13,6 +13,7 @@ define( require => {
 
   // a11y strings
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
+  const arrowsString = GFLBA11yStrings.arrows.value;
 
   // constants
   const { PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
@@ -27,7 +28,8 @@ define( require => {
           return Util.toFixedNumber( force, 1 );
         },
 
-        forceArrowsString: forceArrowsString
+        forceArrowsString: forceArrowsString,
+        vectorsString: arrowsString
       };
       super( model, object1Label, object2Label, options );
 
