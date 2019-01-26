@@ -54,6 +54,9 @@ define( function( require ) {
     },
     distanceArrowRemoved: {
       value: 'Distance hidden.'
+    },
+    forceArrows: {
+      value: 'Force arrows'
     }
   };
 

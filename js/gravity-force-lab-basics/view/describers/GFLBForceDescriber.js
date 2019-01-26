@@ -5,24 +5,29 @@ define( require => {
 
   // modules
   const ForceDescriber = require( 'INVERSE_SQUARE_LAW_COMMON/view/describers/ForceDescriber' );
+  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
   const LinearFunction = require( 'DOT/LinearFunction' );
   const Util = require( 'DOT/Util' );
 
+  // a11y strings
+  const forceArrowsString = GFLBA11yStrings.forceArrows.value;
+
+  // constants
   const { PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
   const forceToIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max * 0.6, 0, 6, true );
   const forceToPullIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max, 6, 0, true );
-
-  // let describer = null;
 
   class GFLBForceDescriber extends ForceDescriber {
 
     constructor( model, object1Label, object2Label ) {
       const options = {
-       convertForce: force => {
-         return Util.toFixedNumber( force, 1 );
-       }
+        convertForce: force => {
+          return Util.toFixedNumber( force, 1 );
+        },
+
+        forceArrowsString: forceArrowsString
       };
       super( model, object1Label, object2Label, options );
 
