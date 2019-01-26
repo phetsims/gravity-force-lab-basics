@@ -20,7 +20,7 @@ define( function( require ) {
       value: 'In the Control Area, checkboxes change what things are shown and how they behave, and a button resets the sim.'
     },
     basicsSimStateLabel: {
-      value: 'Currently, force on mass 1 by mass 2 is of equal magnitude and pointing directly opposite to the force on mass 2 by mass 1.'
+      value: 'Currently, force on mass 1 by mass 2 is of equal size and pointing directly opposite to the force on mass 2 by mass 1.'
     },
     massReadoutPattern: {
       value: '{{value}} billion kg'
