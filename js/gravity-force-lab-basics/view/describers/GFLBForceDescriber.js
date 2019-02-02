@@ -13,6 +13,7 @@ define( require => {
 
   // a11y strings
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
+  const forceArrowsLowerString = GFLBA11yStrings.forceArrowsLower.value;
   const arrowsString = GFLBA11yStrings.arrows.value;
 
   // constants
@@ -29,6 +30,7 @@ define( require => {
         },
 
         forceArrowsString: forceArrowsString,
+        forceArrowsLower: forceArrowsLowerString,
         vectorsString: arrowsString,
         vectorsCapitalizedString: forceArrowsString
       };
