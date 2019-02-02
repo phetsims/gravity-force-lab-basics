@@ -7,33 +7,37 @@ define( require => {
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
-  // const GFLBForceDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBForceDescriber' );
   const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
   const GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   const ISLCAlertManager = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCAlertManager' );
-  // const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Utterance = require( 'SCENERY_PHET/accessibility/Utterance' );
   const utteranceQueue = require( 'SCENERY_PHET/accessibility/utteranceQueue' );
 
   // strings
-  const constantRadiusThinkDensityString = GravityForceLabA11yStrings.constantRadiusThinkDensity.value;
+  const mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
+  const mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
+
+  // a11y strings
+  const constantRadiusThinkDensityPatternString = GravityForceLabA11yStrings.constantRadiusThinkDensityPattern.value;
   const distanceArrowVisibleString = GFLBA11yStrings.distanceArrowVisible.value;
   const distanceArrowRemovedString = GFLBA11yStrings.distanceArrowRemoved.value;
   const massAndForceClausesPatternString = GravityForceLabA11yStrings.massAndForceClausesPattern.value;
   const massSizeRelativeSizePatternString = GravityForceLabA11yStrings.massSizeRelativeSizePattern.value;
-  // const regionForceClausePatternString = ISLCA11yStrings.regionForceClausePattern.value;
 
   // constants
   const { OBJECT_ONE, OBJECT_TWO } = ISLCObjectEnum;
+  const CONSTANT_RADIUS_ALERT = StringUtils.fillIn( constantRadiusThinkDensityPatternString, {
+    mass1: mass1LabelString,
+    mass2: mass2LabelString
+  } );
 
   class GravityForceLabBasicsAlertManager extends ISLCAlertManager {
     constructor( model ) {
       super( model );
 
       this.massDescriber = GFLBMassDescriber.getDescriber();
-      // this.forceDescriber = GFLBForceDescriber.getDescriber();
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
         this.alertConstantRadius( constantRadius );
@@ -57,7 +61,7 @@ define( require => {
     }
 
     alertConstantRadius( constantRadius ) {
-      const alert = constantRadius ? constantRadiusThinkDensityString : this.massDescriber.getM1RelativeSize();
+      const alert = constantRadius ? CONSTANT_RADIUS_ALERT : this.massDescriber.getM1RelativeSize();
       const utterance = new Utterance( { alert, uniqueGroupId: 'constantRadius' } );
       utteranceQueue.addToBack( utterance );
     }
@@ -116,7 +120,12 @@ define( require => {
       const size = this.massDescriber.getMassSize( thisObjectMass );
       const relativeSize = this.massDescriber.getMassRelativeSize( objectEnum );
       const otherObjectLabel = this.massDescriber.getOtherObjectLabelFromEnum( objectEnum );
-      return StringUtils.fillIn( massSizeRelativeSizePatternString, { massValue, size, relativeSize, otherObjectLabel } );
+      return StringUtils.fillIn( massSizeRelativeSizePatternString, {
+        massValue,
+        size,
+        relativeSize,
+        otherObjectLabel
+      } );
     }
 
     getMassValueChangedAlertText( objectEnum, newMass, oldMass ) {
