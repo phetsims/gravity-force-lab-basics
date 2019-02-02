@@ -97,7 +97,8 @@ define( require => {
       const summaryNode = new GravityForceLabScreenSummaryNode( model, {
         mainDescriptionContent: screenSummaryMainDescriptionString,
         secondaryDecriptionContent: screenSummarySecondaryDescriptionString,
-        simStateLabel: basicsSimStateLabelString
+        simStateLabel: basicsSimStateLabelString,
+        simplifyLanguage: true
       } );
       const playAreaNode = new PlayAreaNode();
       const controlAreaNode = new ControlAreaNode();
@@ -245,7 +246,7 @@ define( require => {
       // link summary content to distance property
       model.showDistanceProperty.link( showDistance => {
         const content = showDistance ?
-                        positionDescriber.getObjectDistanceSummary() :
+                        positionDescriber.getObjectDistanceSummary( true ) : // true -> simplified language
                         positionDescriber.getOnlyQualitativeObjectDistanceSummary();
         summaryNode.objectDistanceSummaryItem.innerContent = content;
       } );
