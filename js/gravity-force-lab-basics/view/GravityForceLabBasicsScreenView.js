@@ -18,6 +18,7 @@ define( require => {
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GFLBForceDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBForceDescriber' );
   const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
+  const GFLBMassPDOMNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassPDOMNode' );
   const GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   const GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
@@ -34,7 +35,6 @@ define( require => {
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
   const ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
   const MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
-  const MassPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassPDOMNode' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
@@ -138,8 +138,8 @@ define( require => {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString
       };
-      playAreaNode.addChild( new MassPDOMNode( model, OBJECT_ONE, massPDOMNodeOptions ) );
-      playAreaNode.addChild( new MassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
 
       const massPositionsNode = new Node( {
         tagName: 'ul',
