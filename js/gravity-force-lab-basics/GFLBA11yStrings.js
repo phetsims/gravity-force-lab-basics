@@ -63,6 +63,15 @@ define( function( require ) {
     },
     arrows: {
       value: 'arrows'
+    },
+
+    /////////////////////////////////////////////
+    // Sphere positions
+    /////////////////////////////////////////////
+
+    // @overriding key name, see ISLCA11yStrings.js
+    forceAndVectorPattern: {
+      value: 'Force arrow is {{size}}, and points directly at {{otherObjectLabel}}.'
     }
   };
 

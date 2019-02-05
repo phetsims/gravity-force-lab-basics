@@ -15,6 +15,7 @@ define( require => {
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
   const forceArrowsLowerString = GFLBA11yStrings.forceArrowsLower.value;
   const arrowsString = GFLBA11yStrings.arrows.value;
+  const forceAndVectorPatternString = GFLBA11yStrings.forceAndVectorPattern.value;
 
   // constants
   const { PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
@@ -28,6 +29,8 @@ define( require => {
         convertForce: force => {
           return Util.toFixedNumber( force, 1 );
         },
+
+        forceAndVectorPatternString: forceAndVectorPatternString,
 
         forceArrowsString: forceArrowsString,
         forceArrowsLower: forceArrowsLowerString,
@@ -53,7 +56,6 @@ define( require => {
      * @returns {GFLBForceDescriber}
      */
     static getDescriber() {
-      // assert && assert( describer, 'describer has not yet been initialized' );
       return ForceDescriber.getDescriber();
     }
 
@@ -62,7 +64,6 @@ define( require => {
      * @throws Error
      */
     static initialize( model, object1Label, object2Label ) {
-      // assert && assert( describer === null, 'initialize may only be called once per describer instance' );
       const describer = new GFLBForceDescriber( model, object1Label, object2Label );
       return ForceDescriber.initialize( describer );
     }
