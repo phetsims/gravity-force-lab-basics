@@ -15,7 +15,8 @@ define( require => {
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
   const forceArrowsLowerString = GFLBA11yStrings.forceArrowsLower.value;
   const arrowsString = GFLBA11yStrings.arrows.value;
-  const forceAndVectorPatternString = GFLBA11yStrings.forceAndVectorPattern.value;
+  const basicsForceAndVectorPatternString = GFLBA11yStrings.basicsForceAndVectorPattern.value;
+  const basicsForceVectorMagnitudeUnitsPatternString = GFLBA11yStrings.basicsForceVectorMagnitudeUnitsPattern.value;
 
   // constants
   const { PULL_FORCE_RANGE } = GravityForceLabBasicsConstants;
@@ -30,7 +31,8 @@ define( require => {
           return Util.toFixedNumber( force, 1 );
         },
 
-        forceAndVectorPatternString: forceAndVectorPatternString,
+        forceAndVectorPatternString: basicsForceAndVectorPatternString,
+        forceVectorMagnitudeUnitsPatternString: basicsForceVectorMagnitudeUnitsPatternString,
 
         forceArrowsString: forceArrowsString,
         forceArrowsLower: forceArrowsLowerString,

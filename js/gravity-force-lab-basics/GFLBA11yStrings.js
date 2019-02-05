@@ -69,9 +69,12 @@ define( function( require ) {
     // Sphere positions
     /////////////////////////////////////////////
 
-    // @overriding key name, see ISLCA11yStrings.js
-    forceAndVectorPattern: {
+    basicsForceAndVectorPattern: {
       value: 'Force arrow is {{size}}, and points directly at {{otherObjectLabel}}.'
+    },
+
+    basicsForceVectorMagnitudeUnitsPattern: {
+      value: 'Size of force on {{thisObjectLabel}} by {{otherObjectLabel}} is {{forceValue}} {{units}}.'
     }
   };
 
