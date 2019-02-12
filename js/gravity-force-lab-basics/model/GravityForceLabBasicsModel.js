@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
+  var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Color = require( 'SCENERY/util/Color' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
@@ -20,8 +20,6 @@ define( function( require ) {
   var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
   var Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
   var NumberIO = require( 'TANDEM/types/NumberIO' );
-  var Property = require( 'AXON/Property' );
-  var PropertyIO = require( 'AXON/PropertyIO' );
 
   /**
    * @param {Tandem} tandem
@@ -42,15 +40,13 @@ define( function( require ) {
     var density = 1.5; // kg/m^3
 
     // @public
-    this.constantRadiusProperty = new Property( false, {
-      tandem: tandem.createTandem( 'constantRadiusProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.constantRadiusProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'constantRadiusProperty' )
     } );
 
     // @public
-    this.showDistanceProperty = new Property( true, {
-      tandem: tandem.createTandem( 'showDistanceProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.showDistanceProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'showDistanceProperty' )
     } );
 
     var baseColor1 = new Color( '#00f' );
