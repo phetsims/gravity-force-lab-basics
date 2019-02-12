@@ -36,12 +36,6 @@ define( require => {
       return StringUtils.fillIn( pattern, { mass1: this.object1Label, mass2: this.object2Label, qualitativeDistance: this.qualitativeDistance } );
     }
 
-    // @override
-    getDistanceIndex( distance ) {
-      distance /= 1000;
-      return super.getDistanceIndex( distance );
-    }
-
     static getMassesDistanceApart( distance ) {
       return StringUtils.fillIn( massesDistanceApartPatternString, { distance } );
     }
