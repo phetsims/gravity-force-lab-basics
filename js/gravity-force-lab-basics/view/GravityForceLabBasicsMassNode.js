@@ -18,7 +18,6 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var RadialGradient = require( 'SCENERY/util/RadialGradient' );
   var Tandem = require( 'TANDEM/Tandem' );
-  // var Util = require( 'DOT/Util' );
 
   // constants
   var MASS_NODE_Y_POSITION = 215;
