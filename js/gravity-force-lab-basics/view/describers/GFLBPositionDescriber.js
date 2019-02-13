@@ -29,11 +29,20 @@ define( require => {
       };
 
       super( model, object1Label, object2Label, options );
+
+      // link GFLB property to whether or now we use quantitative distance for alerts and value text
+      model.showDistanceProperty.link( showDistance => {
+        this.useQuantitativeDistance = showDistance;
+      } );
     }
 
     getOnlyQualitativeObjectDistanceSummary() {
       const pattern = mass1Mass2QualitativeDistancePatternString;
-      return StringUtils.fillIn( pattern, { mass1: this.object1Label, mass2: this.object2Label, qualitativeDistance: this.qualitativeDistance } );
+      return StringUtils.fillIn( pattern, {
+        mass1: this.object1Label,
+        mass2: this.object2Label,
+        qualitativeDistance: this.qualitativeDistance
+      } );
     }
 
     static getMassesDistanceApart( distance ) {
