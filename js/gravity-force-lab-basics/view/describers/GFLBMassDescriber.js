@@ -29,7 +29,7 @@ define( require => {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString,
         convertMassValue: mass => mass / 1e9,
-        formatMassValue: mass => StringUtils.fillIn( massBillionsPatternString, { mass } )
+        formatMassValue: mass => StringUtils.fillIn( massBillionsPatternString, { mass: mass } )
       };
 
       super( model, options );

@@ -46,7 +46,7 @@ define( require => {
     }
 
     static getMassesDistanceApart( distance ) {
-      return StringUtils.fillIn( massesDistanceApartPatternString, { distance } );
+      return StringUtils.fillIn( massesDistanceApartPatternString, { distance: distance } );
     }
 
     /**
