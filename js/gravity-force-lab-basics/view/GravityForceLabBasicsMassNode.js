@@ -94,8 +94,8 @@ define( function( require ) {
      */
     resetAriaValueText: function() {
       const positionDescriber = GFLBPositionDescriber.getDescriber();
-      if ( positionDescriber.objectAtEdge( this.enum ) ) {
-        this.ariaValueText = positionDescriber.getEdgeValueText( this.enum );
+      if ( positionDescriber.objectTouchingBoundary( this.enum ) ) {
+        this.ariaValueText = positionDescriber.getBoundaryTouchingValueText( this.enum );
       }
       else {
         this.ariaValueText = positionDescriber.getPositionAndDistanceFromOtherObjectText( this.enum );
