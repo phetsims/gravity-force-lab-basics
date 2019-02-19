@@ -37,8 +37,7 @@ define( require => {
     }
 
     getOnlyQualitativeObjectDistanceSummary() {
-      const pattern = mass1Mass2QualitativeDistancePatternString;
-      return StringUtils.fillIn( pattern, {
+      return StringUtils.fillIn( mass1Mass2QualitativeDistancePatternString, {
         mass1: this.object1Label,
         mass2: this.object2Label,
         qualitativeDistance: this.qualitativeDistance
@@ -47,6 +46,41 @@ define( require => {
 
     static getMassesDistanceApart( distance ) {
       return StringUtils.fillIn( massesDistanceApartPatternString, { distance: distance } );
+    }
+
+    // @override
+    getDistanceIndex( distance ) {
+      assert && assert( distance > 0, 'Distance between spheres should always be positive.' );
+
+      console.log( distance );
+      if ( distance === 9.6 ) {
+        return 0;
+      }
+      if ( distance >= 9.0 ) {
+        return 1;
+      }
+      if ( distance >= 7.6 ) {
+        return 2;
+      }
+      if ( distance >= 6.1 ) {
+        return 3;
+      }
+      if ( distance >= 4.6 ) {
+        return 4;
+      }
+      if ( distance >= 3.1 ) {
+        return 5;
+      }
+      if ( distance >= 2.0 ) {
+        return 6;
+      }
+      if ( distance >= 1.4 ) {
+        return 7;
+      }
+      if ( distance === 1.3 ) {
+        return 8;
+      }
+      assert && assert( false, 'Invalid distance value' );
     }
 
     /**
