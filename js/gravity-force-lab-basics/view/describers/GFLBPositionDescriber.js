@@ -52,7 +52,6 @@ define( require => {
     getDistanceIndex( distance ) {
       assert && assert( distance > 0, 'Distance between spheres should always be positive.' );
 
-      console.log( distance );
       if ( distance === 9.6 ) {
         return 0;
       }
