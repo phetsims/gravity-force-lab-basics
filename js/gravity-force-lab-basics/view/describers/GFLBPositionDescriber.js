@@ -15,7 +15,6 @@ define( require => {
   const kilometersString = GFLBA11yStrings.kilometers.value;
 
   const massesDistanceApartPatternString = GFLBA11yStrings.massesDistanceApartPattern.value;
-  const mass1Mass2QualitativeDistancePatternString = GFLBA11yStrings.mass1Mass2QualitativeDistancePattern.value;
 
   class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
 
@@ -33,14 +32,6 @@ define( require => {
       // link GFLB property to whether or now we use quantitative distance for alerts and value text
       model.showDistanceProperty.link( showDistance => {
         this.useQuantitativeDistance = showDistance;
-      } );
-    }
-
-    getOnlyQualitativeObjectDistanceSummary() {
-      return StringUtils.fillIn( mass1Mass2QualitativeDistancePatternString, {
-        mass1: this.object1Label,
-        mass2: this.object2Label,
-        qualitativeDistance: this.qualitativeDistance
       } );
     }
 

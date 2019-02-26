@@ -92,13 +92,15 @@ define( require => {
       // we don't need to keep references for all of them, just need to initialize
       GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
       GFLBMassDescriber.initialize( model );
+      GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
       GravityForceLabBasicsAlertManager.initialize( model );
-      const positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
+
+      // Main
       const summaryNode = new GravityForceLabScreenSummaryNode( model, {
         mainDescriptionContent: screenSummaryMainDescriptionString,
-        secondaryDecriptionContent: screenSummarySecondaryDescriptionString,
+        secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
         simStateLabel: basicsSimStateLabelString,
-        simplifyLanguage: true
+        additionalMassDistanceProperties: [ model.showDistanceProperty ]
       } );
       const playAreaNode = new PlayAreaNode();
       const controlAreaNode = new ControlAreaNode();
@@ -242,14 +244,6 @@ define( require => {
         tandem: tandem.createTandem( 'resetAllButton' )
       } );
       controlAreaNode.addChild( resetAllButton );
-
-      // link summary content to distance property
-      model.showDistanceProperty.link( showDistance => {
-        const content = showDistance ?
-                        positionDescriber.getObjectDistanceSummary( true ) : // true -> simplified language
-                        positionDescriber.getOnlyQualitativeObjectDistanceSummary();
-        summaryNode.objectDistanceSummaryItem.innerContent = content;
-      } );
 
       // layout the view elements
       parameterControlPanel.right = this.layoutBounds.width - 15;

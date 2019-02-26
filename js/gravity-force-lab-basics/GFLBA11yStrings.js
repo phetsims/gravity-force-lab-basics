@@ -46,9 +46,6 @@ define( function( require ) {
     kilometers: {
       value: 'kilometers'
     },
-    mass1Mass2QualitativeDistancePattern: {
-      value: '{{mass1}} and {{mass2}} are {{qualitativeDistance}} each other.'
-    },
     distanceArrowVisible: {
       value: 'Distance shown in kilometers.'
     },

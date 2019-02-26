@@ -44,7 +44,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'constantRadiusProperty' )
     } );
 
-    // @public
+    // @public - Property driving the "show distance" checkbox
     this.showDistanceProperty = new BooleanProperty( true, {
       tandem: tandem.createTandem( 'showDistanceProperty' )
     } );
