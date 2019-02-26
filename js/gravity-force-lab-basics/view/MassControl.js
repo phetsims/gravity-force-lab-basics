@@ -12,8 +12,8 @@ define( function( require ) {
   var Color = require( 'SCENERY/util/Color' );
   var GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
-  var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
+  var GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
+  var GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
@@ -49,7 +49,7 @@ define( function( require ) {
       color: new Color( 0, 0, 255 )
     }, options );
 
-    const alertManager = GravityForceLabBasicsAlertManager.getManager();
+    const alertManager = GFLBAlertManager.getManager();
 
     var titleText = new Text( titleString, {
       font: new PhetFont( 18 ),
@@ -61,10 +61,10 @@ define( function( require ) {
       font: new PhetFont( 20 ),
       scale: 1.5,
       tandem: tandem.createTandem( 'numberPicker' ),
-      upFunction: function( mass ) { return mass + GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
-      downFunction: function( mass ) { return mass - GravityForceLabBasicsConstants.BILLION_MULTIPLIER; },
+      upFunction: function( mass ) { return mass + GFLBConstants.BILLION_MULTIPLIER; },
+      downFunction: function( mass ) { return mass - GFLBConstants.BILLION_MULTIPLIER; },
       formatValue: function( value ) {
-        return Util.toFixed( value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER, 0 );
+        return Util.toFixed( value / GFLBConstants.BILLION_MULTIPLIER, 0 );
       },
 
       // arrow options
@@ -73,11 +73,11 @@ define( function( require ) {
       color: options.color,
 
       // a11y
-      a11yPageValueDelta: GravityForceLabBasicsConstants.BILLION_MULTIPLIER * 2,
+      a11yPageValueDelta: GFLBConstants.BILLION_MULTIPLIER * 2,
       a11yValuePattern: massReadoutPatternString,
       labelContent: labelContent,
       a11yFormatValue: function( value ) {
-        return Util.toFixed( value / GravityForceLabBasicsConstants.BILLION_MULTIPLIER, 0 );
+        return Util.toFixed( value / GFLBConstants.BILLION_MULTIPLIER, 0 );
       }
     } );
     var numberPickerLabel = new Text( billionKgString, {

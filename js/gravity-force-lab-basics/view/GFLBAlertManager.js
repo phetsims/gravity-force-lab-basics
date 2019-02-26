@@ -31,7 +31,7 @@ define( require => {
     mass2: mass2LabelString
   } );
 
-  class GravityForceLabBasicsAlertManager extends ISLCAlertManager {
+  class GFLBAlertManager extends ISLCAlertManager {
     constructor( model ) {
       super( model );
 
@@ -118,10 +118,10 @@ define( require => {
     }
 
     static initialize( model ) {
-      const manager = new GravityForceLabBasicsAlertManager( model );
+      const manager = new GFLBAlertManager( model );
       return ISLCAlertManager.initialize( manager );
     }
   }
 
-  return gravityForceLabBasics.register( 'GravityForceLabBasicsAlertManager', GravityForceLabBasicsAlertManager );
+  return gravityForceLabBasics.register( 'GFLBAlertManager', GFLBAlertManager );
 } );

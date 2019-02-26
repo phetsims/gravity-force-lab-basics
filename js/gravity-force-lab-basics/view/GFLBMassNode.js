@@ -11,8 +11,8 @@ define( function( require ) {
   // modules
   var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
-  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  var GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
+  var GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -23,14 +23,14 @@ define( function( require ) {
   var MASS_NODE_Y_POSITION = 215;
 
   /**
-   * @param {GravityForceLabBasicsModel} model
+   * @param {GFLBModel} model
    * @param {Mass} massModel
    * @param {Bounds2} layoutBounds
    * @param {ModelViewTransform2} modelViewTransform
    * @param {Object} [options]
    * @constructor
    */
-  function GravityForceLabBasicsMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
+  function GFLBMassNode( model, massModel, layoutBounds, modelViewTransform, options ) {
 
     options = _.extend( {
       arrowLabelFill: 'black',
@@ -45,19 +45,19 @@ define( function( require ) {
       labelShadowOffsetY: 0.9,
       y: MASS_NODE_Y_POSITION,
       snapToNearest: model.snapObjectsToNearest, // in meters, charges will snap to the nearest 0.1 meters in model coordinates
-      stepSize: GravityForceLabBasicsConstants.MASS_STEP_SIZE,
+      stepSize: GFLBConstants.MASS_STEP_SIZE,
       tandem: Tandem.required
     }, options );
 
     const positionDescriber = GFLBPositionDescriber.getDescriber();
-    const alertManager = GravityForceLabBasicsAlertManager.initialize( model );
+    const alertManager = GFLBAlertManager.initialize( model );
 
     // @private
     this.modelViewTransform = modelViewTransform;
     this.model = model;
     this.objectModel = massModel;
 
-    var pullForceRange = GravityForceLabBasicsConstants.PULL_FORCE_RANGE;
+    var pullForceRange = GFLBConstants.PULL_FORCE_RANGE;
 
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
 
@@ -72,9 +72,9 @@ define( function( require ) {
     this.resetAriaValueText();
   }
 
-  gravityForceLabBasics.register( 'GravityForceLabBasicsMassNode', GravityForceLabBasicsMassNode );
+  gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
 
-  return inherit( ISLCObjectNode, GravityForceLabBasicsMassNode, {
+  return inherit( ISLCObjectNode, GFLBMassNode, {
 
     /**
      * Redraws the white gradient on the mass objects with their radius.

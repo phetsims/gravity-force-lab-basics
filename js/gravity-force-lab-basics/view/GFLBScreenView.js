@@ -22,9 +22,9 @@ define( require => {
   const GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   const GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GravityForceLabBasicsAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsAlertManager' );
-  const GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
-  const GravityForceLabBasicsMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsMassNode' );
+  const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
+  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
+  const GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   const GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
@@ -77,10 +77,10 @@ define( require => {
   const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
   const spherePositionsDescriptionPatternString = GFLBA11yStrings.spherePositionsDescriptionPattern.value;
 
-  class GravityForceLabBasicsScreenView extends ScreenView {
+  class GFLBScreenView extends ScreenView {
 
     /**
-     * @param {GravityForceLabBasicsModel} model
+     * @param {GFLBModel} model
      * @param {Tandem} tandem
      */
     constructor( model, tandem ) {
@@ -93,7 +93,7 @@ define( require => {
       GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
       GFLBMassDescriber.initialize( model );
       GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
-      GravityForceLabBasicsAlertManager.initialize( model );
+      GFLBAlertManager.initialize( model );
 
       // Main
       const summaryNode = new GravityForceLabScreenSummaryNode( model, {
@@ -118,7 +118,7 @@ define( require => {
       );
 
       // add the mass nodes to the view
-      const mass1Node = new GravityForceLabBasicsMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
+      const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
         label: mass1LabelString,
         otherObjectLabel: mass2LabelString,
         defaultDirection: 'left',
@@ -127,7 +127,7 @@ define( require => {
         tandem: tandem.createTandem( 'mass1Node' )
       } );
 
-      const mass2Node = new GravityForceLabBasicsMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
+      const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
         label: mass2LabelString,
         otherObjectLabel: mass1LabelString,
         defaultDirection: 'right',
@@ -168,10 +168,10 @@ define( require => {
 
       // mass controls
       const massControl1 = new MassControl( mass1String, model.object1.valueProperty,
-        GravityForceLabBasicsConstants.MASS_RANGE, mass1ControlLabelString,
+        GFLBConstants.MASS_RANGE, mass1ControlLabelString,
         tandem.createTandem( 'massControl1' ) );
       const massControl2 = new MassControl( mass2String, model.object2.valueProperty,
-        GravityForceLabBasicsConstants.MASS_RANGE, mass2ControlLabelString,
+        GFLBConstants.MASS_RANGE, mass2ControlLabelString,
         tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
         } );
@@ -275,5 +275,5 @@ define( require => {
     }
   }
 
-  return gravityForceLabBasics.register( 'GravityForceLabBasicsScreenView', GravityForceLabBasicsScreenView );
+  return gravityForceLabBasics.register( 'GFLBScreenView', GFLBScreenView );
 } );

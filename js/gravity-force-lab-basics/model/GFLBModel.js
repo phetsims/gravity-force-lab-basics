@@ -14,7 +14,7 @@ define( function( require ) {
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  var GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCConstants = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCConstants' );
   var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
@@ -25,10 +25,10 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function GravityForceLabBasicsModel( tandem ) {
+  function GFLBModel( tandem ) {
 
     // initial masses
-    var massMultiplier = GravityForceLabBasicsConstants.BILLION_MULTIPLIER;
+    var massMultiplier = GFLBConstants.BILLION_MULTIPLIER;
     var value1 = 2 * massMultiplier;
     var value2 = 4 * massMultiplier;
 
@@ -36,7 +36,7 @@ define( function( require ) {
     var position1 = -2000;
     var position2 = 2000;
 
-    var valueRange = GravityForceLabBasicsConstants.MASS_RANGE;
+    var valueRange = GFLBConstants.MASS_RANGE;
     var density = 1.5; // kg/m^3
 
     // @public
@@ -49,11 +49,11 @@ define( function( require ) {
       tandem: tandem.createTandem( 'showDistanceProperty' )
     } );
 
-    var leftBoundary = GravityForceLabBasicsConstants.LEFT_MASS_BOUNDARY;
-    var rightBoundary = GravityForceLabBasicsConstants.RIGHT_MASS_BOUNDARY;
+    var leftBoundary = GFLBConstants.LEFT_MASS_BOUNDARY;
+    var rightBoundary = GFLBConstants.RIGHT_MASS_BOUNDARY;
 
     var massOptions = {
-      constantRadius: GravityForceLabBasicsConstants.CONSTANT_RADIUS,
+      constantRadius: GFLBConstants.CONSTANT_RADIUS,
       leftObjectBoundary: leftBoundary,
       rightObjectBoundary: rightBoundary
     };
@@ -68,7 +68,7 @@ define( function( require ) {
     );
 
     ISLCModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem, {
-      snapObjectsToNearest: GravityForceLabBasicsConstants.MASS_POSITION_DELTA,
+      snapObjectsToNearest: GFLBConstants.MASS_POSITION_DELTA,
       minSeparationBetweenObjects: 200 // in meters
     } );
 
@@ -88,12 +88,12 @@ define( function( require ) {
     );
   }
 
-  gravityForceLabBasics.register( 'GravityForceLabBasicsModel', GravityForceLabBasicsModel );
+  gravityForceLabBasics.register( 'GFLBModel', GFLBModel );
 
-  return inherit( ISLCModel, GravityForceLabBasicsModel, {
+  return inherit( ISLCModel, GFLBModel, {
 
     /**
-     * Reset the GravityForceLabBasicsModel.
+     * Reset the GFLBModel.
      * @public
      */
     reset: function() {

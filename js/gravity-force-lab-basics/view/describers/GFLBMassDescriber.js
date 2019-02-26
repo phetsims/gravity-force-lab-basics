@@ -6,7 +6,7 @@ define( require => {
   // modules
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GravityForceLabBasicsConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GravityForceLabBasicsConstants' );
+  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const LinearFunction = require( 'DOT/LinearFunction' );
   const MassDescriber = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/describers/MassDescriber' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
@@ -18,7 +18,7 @@ define( require => {
   const massBillionsPatternString = GFLBA11yStrings.massBillionsPattern.value;
 
   // constants
-  const { MASS_RANGE } = GravityForceLabBasicsConstants;
+  const { MASS_RANGE } = GFLBConstants;
   const massToIndex = new LinearFunction( MASS_RANGE.min, MASS_RANGE.max, 0, 6 );
 
   class GFLBMassDescriber extends MassDescriber {

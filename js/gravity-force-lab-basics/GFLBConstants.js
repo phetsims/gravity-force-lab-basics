@@ -20,7 +20,7 @@ define( function( require ) {
   var MAX_FORCE = 1070; // N
   var MAX_DISTANCE_FROM_CENTER = 4800; // meters, empirically determined boundary for masses
 
-  var GravityForceLabBasicsConstants = {
+  var GFLBConstants = {
     BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
     MASS_RANGE: new Range( MIN_MASS, MAX_MASS ),
     PULL_FORCE_RANGE: new Range( MIN_FORCE, MAX_FORCE ), // empirically determined for linear mapping of pull objects
@@ -31,7 +31,7 @@ define( function( require ) {
     MASS_STEP_SIZE: 500 // in m, each time the mass is moved with a keyboard
   };
 
-  gravityForceLabBasics.register( 'GravityForceLabBasicsConstants', GravityForceLabBasicsConstants );
+  gravityForceLabBasics.register( 'GFLBConstants', GFLBConstants );
 
-  return GravityForceLabBasicsConstants;
+  return GFLBConstants;
 } );

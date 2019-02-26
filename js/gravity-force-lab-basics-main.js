@@ -9,8 +9,8 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var GravityForceLabBasicsModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GravityForceLabBasicsModel' );
-  var GravityForceLabBasicsScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GravityForceLabBasicsScreenView' );
+  var GFLBModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GFLBModel' );
+  var GFLBScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBScreenView' );
   var GravityForceLabKeyboardHelpContent = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabKeyboardHelpContent' );
   var Property = require( 'AXON/Property' );
   var Screen = require( 'JOIST/Screen' );
@@ -46,10 +46,10 @@ define( function( require ) {
     var sim = new Sim( gravityForceLabBasicsTitleString,
       [ new Screen(
         function() {
-          return new GravityForceLabBasicsModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) );
+          return new GFLBModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) );
         },
         function( model ) {
-          return new GravityForceLabBasicsScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
+          return new GFLBScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
         },
         { backgroundColorProperty: new Property( '#ffffc2' ), tandem: gravityForceLabBasicsScreenTandem }
       )

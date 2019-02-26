@@ -15,7 +15,7 @@ define( function( require ) {
   class GFLBMassPDOMNode extends MassPDOMNode {
 
     /**
-     * @param {GravityForceLabBasicsModel} model
+     * @param {GFLBModel} model
      * @param {ISLCObjectEnum} objectEnum
      * @param {Object} [options]
      */

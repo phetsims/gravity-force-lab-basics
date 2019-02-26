@@ -28,7 +28,7 @@ define( function( require ) {
   var HEAD_HEIGHT = 6;
 
   /**
-   * @param {GravityForceLabBasicsModel} model
+   * @param {GFLBModel} model
    * @param {ModelViewTransform2} modelViewTransform
    * @param {Object} [options]
    * @constructor
