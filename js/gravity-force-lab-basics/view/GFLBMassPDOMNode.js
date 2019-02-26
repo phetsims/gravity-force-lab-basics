@@ -4,11 +4,10 @@
  * Responsible for MassPDOMNode content specific to GFLB
  * @author Michael Kauzmann (PhET Interactive Simulations)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  const Node = require( 'SCENERY/nodes/Node' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const MassPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassPDOMNode' );
 
@@ -22,16 +21,12 @@ define( function( require ) {
     constructor( model, objectEnum, options ) {
       super( model, objectEnum, options );
 
-      // @private
-      this.massSizeNode = new Node( { tagName: 'li' } );
-      this.addChild( this.massSizeNode );
-      this.massPositionNode = new Node( { tagName: 'li' } );
-      this.addChild( this.massPositionNode );
-
       // update the list items' PDOM content
       const listener = () => {
-        this.massSizeNode.innerContent = this.nodeDescriber.getSizeItemText();
-        this.massPositionNode.innerContent = this.nodeDescriber.getPositionItemText();
+
+        // if distance is showing, use quantitative distance descriptions.
+        this.massAndPositionNode.innerContent =
+          this.nodeDescriber.getSizeAndDistanceClause( model.showDistanceProperty.value );
       };
       this.linkToForceProperty( listener );
       this.model.showDistanceProperty.link( listener );
