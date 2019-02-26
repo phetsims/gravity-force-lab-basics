@@ -161,8 +161,7 @@ define( require => {
       massPositionsNode.addChild( mass1Node );
       massPositionsNode.addChild( mass2Node );
 
-      // the arrow nodes and their labels should be on top of the masses, but under the rest of the control
-      // panel
+      // the arrow nodes and their labels should be on top of the masses, but under the rest of the control panel
       massPositionsNode.addChild( mass1Node.arrowNode );
       massPositionsNode.addChild( mass2Node.arrowNode );
 

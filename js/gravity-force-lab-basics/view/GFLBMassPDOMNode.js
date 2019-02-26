@@ -19,17 +19,23 @@ define( require => {
      * @param {Object} [options]
      */
     constructor( model, objectEnum, options ) {
-      super( model, objectEnum, options );
 
-      // update the list items' PDOM content
-      const listener = () => {
+      super( model, objectEnum, _.extend( {
 
-        // if distance is showing, use quantitative distance descriptions.
-        this.massAndPositionNode.innerContent =
-          this.nodeDescriber.getSizeAndDistanceClause( model.showDistanceProperty.value );
-      };
-      this.linkToForceProperty( listener );
-      this.model.showDistanceProperty.link( listener );
+        // The only difference in basics is how the mass/position bullet is updated for this Mass.
+        wireUpMassAndPositionUpdates() {
+
+          // update the list items' PDOM content
+          const listener = () => {
+
+            // if distance is showing, use quantitative distance descriptions.
+            this.massAndPositionNode.innerContent =
+              this.nodeDescriber.getSizeAndDistanceClause( model.showDistanceProperty.value );
+          };
+          this.linkToForceProperty( listener );
+          this.model.showDistanceProperty.link( listener );
+        }
+      }, options ) );
     }
   }
 
