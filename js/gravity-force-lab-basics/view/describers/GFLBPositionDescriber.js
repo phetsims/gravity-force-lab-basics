@@ -4,9 +4,10 @@ define( require => {
   'use strict';
 
   // modules
-  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
+  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GravityForceLabPositionDescriber = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/describers/GravityForceLabPositionDescriber' );
+  const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Util = require( 'DOT/Util' );
 
@@ -14,7 +15,10 @@ define( require => {
   const kilometerString = GFLBA11yStrings.kilometer.value;
   const kilometersString = GFLBA11yStrings.kilometers.value;
 
+  // a11y strings
   const massesDistanceApartPatternString = GFLBA11yStrings.massesDistanceApartPattern.value;
+  const spherePositionsDescriptionPatternString = GFLBA11yStrings.spherePositionsDescriptionPattern.value;
+  const spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
 
   class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
 
@@ -35,8 +39,17 @@ define( require => {
       } );
     }
 
-    static getMassesDistanceApart( distance ) {
-      return StringUtils.fillIn( massesDistanceApartPatternString, { distance: distance } );
+    /**
+     * @public
+     * @returns {string} - the help text for the sphere positions heading/container node
+     */
+    getSpherePositionsHelpText() {
+      const quantitativeDistance = StringUtils.fillIn( massesDistanceApartPatternString, { distance: this.getDistanceAndUnits() } );
+
+      return StringUtils.fillIn( spherePositionsDescriptionPatternString, {
+        spherePositionsHelpText: spherePositionHelpTextString,
+        distanceApart: this.useQuantitativeDistance ? quantitativeDistance : this.getQualitativeDistanceFromEachOther()
+      } );
     }
 
     // @override

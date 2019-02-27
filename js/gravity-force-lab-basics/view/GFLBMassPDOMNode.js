@@ -28,7 +28,6 @@ define( require => {
 
           // update the list items' PDOM content
           const listener = () => {
-            console.log( 'updating the thing we care about' );
 
             // if distance is showing, use quantitative distance descriptions.
             this.massAndPositionNode.innerContent =

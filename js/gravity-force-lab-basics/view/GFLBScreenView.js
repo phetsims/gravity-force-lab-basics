@@ -16,15 +16,15 @@ define( require => {
   const ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
+  const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
+  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const GFLBForceDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBForceDescriber' );
   const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
+  const GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   const GFLBMassPDOMNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassPDOMNode' );
   const GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   const GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
-  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
-  const GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   const GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
@@ -38,10 +38,10 @@ define( require => {
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
+  const Property = require( 'AXON/Property' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   const ScreenView = require( 'JOIST/ScreenView' );
   const SpherePositionsPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsPDOMNode' );
-  const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -65,7 +65,6 @@ define( require => {
   // a11y strings
   const mass1ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1ControlLabel' );
   const mass2ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2ControlLabel' );
-  const spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
   const massControlsLabelString = GravityForceLabA11yStrings.massControlsLabel.value;
   const massControlsHelpTextBillionsString = GravityForceLabA11yStrings.massControlsHelpTextBillions.value;
   const massControlsHelpTextDensityBillionsString = GravityForceLabA11yStrings.massControlsHelpTextDensityBillions.value;
@@ -75,7 +74,6 @@ define( require => {
   const screenSummaryMainDescriptionString = GFLBA11yStrings.screenSummaryMainDescription.value;
   const screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySecondaryDescription.value;
   const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
-  const spherePositionsDescriptionPatternString = GFLBA11yStrings.spherePositionsDescriptionPattern.value;
 
   class GFLBScreenView extends ScreenView {
 
@@ -92,8 +90,8 @@ define( require => {
       // we don't need to keep references for all of them, just need to initialize
       GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
       GFLBMassDescriber.initialize( model );
-      GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
       GFLBAlertManager.initialize( model );
+      const positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
 
       // Main
       const summaryNode = new GravityForceLabScreenSummaryNode( model, {
@@ -144,13 +142,8 @@ define( require => {
       playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
-
-      model.distanceProperty.link( distance => {
-        massPositionsNode.descriptionContent =
-          StringUtils.fillIn( spherePositionsDescriptionPatternString, {
-            spherePositionsHelpText: spherePositionHelpTextString,
-            distanceApart: GFLBPositionDescriber.getMassesDistanceApart( distance )
-          } );
+      Property.multilink( [ model.distanceProperty, model.showDistanceProperty ], () => {
+        massPositionsNode.descriptionContent = positionDescriber.getSpherePositionsHelpText();
       } );
 
       playAreaNode.addChild( massPositionsNode );
