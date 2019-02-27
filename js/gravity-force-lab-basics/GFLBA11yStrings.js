@@ -23,7 +23,7 @@ define( function( require ) {
       value: 'Currently, force on mass 1 by mass 2 is of equal size and pointing directly opposite to the force on mass 2 by mass 1.'
     },
     massReadoutPattern: {
-      value: '{{value}} billion kg'
+      value: '{{value}} billion kilograms'
     },
     massesDistanceApartPattern: {
       value: '{{distance}} kilometers apart'
