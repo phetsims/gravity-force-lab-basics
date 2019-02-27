@@ -67,10 +67,12 @@ define( require => {
       if ( distance >= 1.4 ) {
         return 7;
       }
+
+      // This is less than, because while fuzzing the distance can somehow go to 1.2, not sure how.
       if ( distance <= 1.3 ) {
         return 8;
       }
-      assert && assert( false, 'Invalid distance value' );
+      assert && assert( false, `Invalid distance value: ${distance}` );
     }
 
     /**

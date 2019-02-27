@@ -10,6 +10,7 @@ define( require => {
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const MassPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassPDOMNode' );
+  const Property = require( 'AXON/Property' );
 
   class GFLBMassPDOMNode extends MassPDOMNode {
 
@@ -27,13 +28,21 @@ define( require => {
 
           // update the list items' PDOM content
           const listener = () => {
+            console.log( 'updating the thing we care about' );
 
             // if distance is showing, use quantitative distance descriptions.
             this.massAndPositionNode.innerContent =
-              this.nodeDescriber.getSizeAndDistanceClause( model.showDistanceProperty.value );
+              this.nodeDescriber.getSizeAndDistanceClause();
           };
-          this.linkToForceProperty( listener );
-          this.model.showDistanceProperty.link( listener );
+          Property.multilink( [
+            this.model.forceProperty,
+            this.model.showDistanceProperty,
+
+            // We need to link to these in addition to the forceProperty because of a listener order of ops issue found
+            // in https://github.com/phetsims/gravity-force-lab-basics/issues/103
+            this.model.object1.positionProperty,
+            this.model.object2.positionProperty
+          ], listener );
         }
       }, options ) );
     }
