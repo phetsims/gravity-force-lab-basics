@@ -40,7 +40,7 @@ define( require => {
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   const ScreenView = require( 'JOIST/ScreenView' );
-  const SpherePositionsPDOMHeading = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsPDOMHeading' );
+  const SpherePositionsPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsPDOMNode' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Vector2 = require( 'DOT/Vector2' );
 
@@ -143,7 +143,7 @@ define( require => {
       playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massPDOMNodeOptions ) );
       playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
 
-      const massPositionsNode = new SpherePositionsPDOMHeading();
+      const massPositionsNode = new SpherePositionsPDOMNode();
 
       model.distanceProperty.link( distance => {
         massPositionsNode.descriptionContent =
