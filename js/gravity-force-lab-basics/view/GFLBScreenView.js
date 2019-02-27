@@ -142,7 +142,13 @@ define( require => {
       playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
-      Property.multilink( [ model.distanceProperty, model.showDistanceProperty ], () => {
+      Property.multilink( [
+
+        // for some reason, linking to `model.distanceProperty` caused the same bug as in GFLB#103, so we are linking to
+        // both objects' positionProperty instead.
+        model.object1.positionProperty,
+        model.object2.positionProperty,
+        model.showDistanceProperty ], () => {
         massPositionsNode.descriptionContent = positionDescriber.getSpherePositionsHelpText();
       } );
 
