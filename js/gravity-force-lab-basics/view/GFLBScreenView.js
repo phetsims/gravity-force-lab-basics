@@ -40,6 +40,7 @@ define( require => {
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   const ScreenView = require( 'JOIST/ScreenView' );
+  const SpherePositionsPDOMHeading = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsPDOMHeading' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Vector2 = require( 'DOT/Vector2' );
 
@@ -64,7 +65,6 @@ define( require => {
   // a11y strings
   const mass1ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1ControlLabel' );
   const mass2ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2ControlLabel' );
-  const spherePositionsString = ISLCA11yStrings.spherePositions.value;
   const spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
   const massControlsLabelString = GravityForceLabA11yStrings.massControlsLabel.value;
   const massControlsHelpTextBillionsString = GravityForceLabA11yStrings.massControlsHelpTextBillions.value;
@@ -143,12 +143,8 @@ define( require => {
       playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massPDOMNodeOptions ) );
       playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
 
-      const massPositionsNode = new Node( {
-        tagName: 'ul',
-        labelTagName: 'h3',
-        labelContent: spherePositionsString
-        // NOTE: descriptionContent set below
-      } );
+      const massPositionsNode = new SpherePositionsPDOMHeading();
+
       model.distanceProperty.link( distance => {
         massPositionsNode.descriptionContent =
           StringUtils.fillIn( spherePositionsDescriptionPatternString, {
