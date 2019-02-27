@@ -44,7 +44,9 @@ define( require => {
      * @returns {string} - the help text for the sphere positions heading/container node
      */
     getSpherePositionsHelpText() {
-      const quantitativeDistance = StringUtils.fillIn( massesDistanceApartPatternString, { distance: this.getDistanceAndUnits() } );
+      const quantitativeDistance = StringUtils.fillIn( massesDistanceApartPatternString, {
+        distanceAndUnits: this.getDistanceAndUnits()
+      } );
 
       return StringUtils.fillIn( spherePositionsDescriptionPatternString, {
         spherePositionsHelpText: spherePositionHelpTextString,

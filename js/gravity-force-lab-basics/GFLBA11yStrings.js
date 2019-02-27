@@ -26,7 +26,7 @@ define( function( require ) {
       value: '{{value}} billion kilograms'
     },
     massesDistanceApartPattern: {
-      value: '{{distance}} kilometers apart'
+      value: '{{distanceAndUnits}} apart'
     },
     spherePositionsDescriptionPattern: {
       value: 'Centers of spheres, {{distanceApart}}. {{spherePositionsHelpText}}'
