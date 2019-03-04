@@ -28,7 +28,7 @@ define( require => {
       const options = {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString,
-        convertMassValue: mass => mass / 1e9,
+        convertMassValue: mass => mass / GFLBConstants.BILLION_MULTIPLIER,
         formatMassValue: mass => StringUtils.fillIn( massBillionsPatternString, { mass: mass } )
       };
 
