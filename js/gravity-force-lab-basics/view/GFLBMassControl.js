@@ -43,7 +43,7 @@ define( function( require ) {
    * @param {Object} [options]
    * @constructor
    */
-  function MassControl( titleString, valueProperty, massRange, labelContent, tandem, options ) {
+  function GFLBMassControl( titleString, valueProperty, massRange, labelContent, tandem, options ) {
 
     options = _.extend( {
       color: new Color( 0, 0, 255 )
@@ -117,7 +117,7 @@ define( function( require ) {
     } );
   }
 
-  gravityForceLabBasics.register( 'MassControl', MassControl );
+  gravityForceLabBasics.register( 'GFLBMassControl', GFLBMassControl );
 
-  return inherit( Panel, MassControl );
+  return inherit( Panel, GFLBMassControl );
 } );

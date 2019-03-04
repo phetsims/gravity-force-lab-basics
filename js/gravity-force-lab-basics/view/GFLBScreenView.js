@@ -34,7 +34,7 @@ define( require => {
   const ISLCGridNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCGridNode' );
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
   const ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
-  const MassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassControl' );
+  const GFLBMassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassControl' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
@@ -161,10 +161,10 @@ define( require => {
       massPositionsNode.addChild( mass2Node.arrowNode );
 
       // mass controls
-      const massControl1 = new MassControl( mass1String, model.object1.valueProperty,
+      const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
         GFLBConstants.MASS_RANGE, mass1ControlLabelString,
         tandem.createTandem( 'massControl1' ) );
-      const massControl2 = new MassControl( mass2String, model.object2.valueProperty,
+      const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
         GFLBConstants.MASS_RANGE, mass2ControlLabelString,
         tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
