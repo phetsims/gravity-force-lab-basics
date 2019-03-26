@@ -11,9 +11,10 @@ define( require => {
   // modules
   const Color = require( 'SCENERY/util/Color' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
-  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
+  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
+  const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
+  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   const Panel = require( 'SUN/Panel' );
@@ -40,16 +41,19 @@ define( require => {
      * @param {Property.<number>} valueProperty
      * @param {Range} massRange
      * @param {String} labelContent - a11y, the content of the label for the mass control
+     * @param {NumberProperty} forceProperty - used to keep descriptions up to date
+     * @param {ISLCObjectEnum} thisObjectEnum
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
-    constructor( titleString, valueProperty, massRange, labelContent, tandem, options ) {
+    constructor( titleString, valueProperty, massRange, labelContent, forceProperty, thisObjectEnum, tandem, options ) {
 
       options = _.extend( {
         color: new Color( 0, 0, 255 )
       }, options );
 
       const alertManager = GFLBAlertManager.getManager();
+      const massDescriber = GFLBMassDescriber.getDescriber();
 
       const titleText = new Text( titleString, {
         font: new PhetFont( 18 ),
@@ -76,13 +80,18 @@ define( require => {
         a11yPageValueDelta: GFLBConstants.BILLION_MULTIPLIER * 2,
         a11yValuePattern: massReadoutPatternString,
         labelContent: labelContent,
-        a11yMapValue: value => value / GFLBConstants.BILLION_MULTIPLIER
+        a11yMapValue: value => value / GFLBConstants.BILLION_MULTIPLIER,
+        a11yCreateOnFocusAriaValueText: () => massDescriber.getVerboseMassAriaValueText( thisObjectEnum )
       } );
       const numberPickerLabel = new Text( billionKgString, {
         font: new PhetFont( { size: 14 } ),
         maxWidth: MAX_TEXT_WIDTH,
         tandem: tandem.createTandem( 'numberPickerLabel' )
       } );
+
+      // whenever the force changes, update the aria-valuetext to keep the on focus text in sync
+      // exists for the lifetime of the sim, no need to dispose.
+      forceProperty.link( () => numberPicker.updateOnFocusAriaValueText() );
 
       // alert on focus
       numberPicker.addInputListener( {
