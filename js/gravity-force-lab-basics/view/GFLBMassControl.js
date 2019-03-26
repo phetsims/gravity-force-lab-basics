@@ -76,9 +76,7 @@ define( require => {
         a11yPageValueDelta: GFLBConstants.BILLION_MULTIPLIER * 2,
         a11yValuePattern: massReadoutPatternString,
         labelContent: labelContent,
-        a11yFormatValue: function( value ) {
-          return Util.toFixed( value / GFLBConstants.BILLION_MULTIPLIER, 0 );
-        }
+        a11yMapValue: value => value / GFLBConstants.BILLION_MULTIPLIER
       } );
       const numberPickerLabel = new Text( billionKgString, {
         font: new PhetFont( { size: 14 } ),
