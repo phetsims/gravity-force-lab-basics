@@ -160,12 +160,15 @@ define( require => {
       massPositionsNode.addChild( mass1Node.arrowNode );
       massPositionsNode.addChild( mass2Node.arrowNode );
 
+      // a list of Properties to that, when changed, should trigger an update in descriptions in the MassControl
+      const propertiesToMonitorForDescriptionChanges = [ model.forceProperty, model.constantRadiusProperty ];
+
       // mass controls
       const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
-        GFLBConstants.MASS_RANGE, mass1ControlLabelString, model.forceProperty, OBJECT_ONE,
+        GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, propertiesToMonitorForDescriptionChanges,
         tandem.createTandem( 'massControl1' ) );
       const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
-        GFLBConstants.MASS_RANGE, mass2ControlLabelString, model.forceProperty, OBJECT_TWO,
+        GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, propertiesToMonitorForDescriptionChanges,
         tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
         } );

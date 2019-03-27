@@ -41,12 +41,12 @@ define( require => {
      * @param {Property.<number>} valueProperty
      * @param {Range} massRange
      * @param {String} labelContent - a11y, the content of the label for the mass control
-     * @param {NumberProperty} forceProperty - used to keep descriptions up to date
      * @param {ISLCObjectEnum} thisObjectEnum
+     * @param {Property[]} updateDescriptionProperties - Properties to monitor to keep descriptions up to date
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
-    constructor( titleString, valueProperty, massRange, labelContent, forceProperty, thisObjectEnum, tandem, options ) {
+    constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum, updateDescriptionProperties, tandem, options ) {
 
       options = _.extend( {
         color: new Color( 0, 0, 255 )
@@ -89,9 +89,9 @@ define( require => {
         tandem: tandem.createTandem( 'numberPickerLabel' )
       } );
 
-      // whenever the force changes, update the aria-valuetext to keep the on focus text in sync
+      // whenever these Properties change, update the aria-valuetext to keep the on focus text in sync
       // exists for the lifetime of the sim, no need to dispose.
-      forceProperty.link( () => numberPicker.updateOnFocusAriaValueText() );
+      Property.multilink( updateDescriptionProperties, () => numberPicker.updateOnFocusAriaValueText() );
 
       // alert on focus
       numberPicker.addInputListener( {
