@@ -89,6 +89,8 @@ define( require => {
       this.alertPositionSliderFocused();
     }
 
+    // TODO: this is directly copied from GravityForceLabAlertManager, let's move it to the MassDescriber.js since it is
+    // TODO: just text anyways.
     getMassValueChangedAlertText( objectEnum ) {
 
       let massClause = this.massDescriber.getMassChangeClause( objectEnum );
