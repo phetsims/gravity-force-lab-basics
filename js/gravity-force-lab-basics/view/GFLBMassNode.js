@@ -64,7 +64,6 @@ define( function( require ) {
     this.addInputListener( {
       focus: () => {
         positionDescriber.lastMoveCloser = null;
-        this.ariaValueText = positionDescriber.getFocusAriaValueText( this.enum );
         alertManager.alertPositionSliderFocused();
       }
     } );
