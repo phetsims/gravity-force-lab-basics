@@ -67,8 +67,6 @@ define( function( require ) {
         alertManager.alertPositionSliderFocused();
       }
     } );
-
-    this.resetAriaValueText();
   }
 
   gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
@@ -85,20 +83,6 @@ define( function( require ) {
       this.objectCircle.fill = new RadialGradient( -radius * 0.6, -radius * 0.6, 1, -radius * 0.6, -radius * 0.6, radius )
         .addColorStop( 0, baseColor.colorUtilsBrighter( 0.5 ).toCSS() )
         .addColorStop( 1, baseColor.toCSS() );
-    },
-
-    /**
-     * TODO: this is copied from GFL/MassNode
-     * @private
-     */
-    resetAriaValueText: function() {
-      const positionDescriber = GFLBPositionDescriber.getDescriber();
-      if ( positionDescriber.objectTouchingBoundary( this.enum ) ) {
-        this.ariaValueText = positionDescriber.getBoundaryTouchingValueText( this.enum );
-      }
-      else {
-        this.ariaValueText = positionDescriber.getPositionAndDistanceFromOtherObjectText( this.enum );
-      }
     }
   } );
 } );
