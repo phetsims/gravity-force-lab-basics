@@ -9,10 +9,10 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
-  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   var GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
+  var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
+  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -60,6 +60,11 @@ define( function( require ) {
     var pullForceRange = GFLBConstants.PULL_FORCE_RANGE;
 
     ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, options );
+
+    // keep value text up to date when distances are toggled
+    model.showDistanceProperty.lazyLink( () => {
+      this.updateOnFocusAriaValueText();
+    } );
 
     this.addInputListener( {
       focus: () => {
