@@ -10,7 +10,6 @@ define( require => {
 
   // modules
   const Color = require( 'SCENERY/util/Color' );
-  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
@@ -26,9 +25,6 @@ define( require => {
 
   // strings
   const billionKgString = require( 'string!GRAVITY_FORCE_LAB_BASICS/billionKg' );
-
-  // a11y strings
-  const massReadoutPatternString = GFLBA11yStrings.massReadoutPattern.value;
 
   // constants
   const MIN_PANEL_WIDTH = 150;
@@ -78,9 +74,8 @@ define( require => {
 
         // a11y
         a11yPageValueDelta: GFLBConstants.BILLION_MULTIPLIER * 2,
-        a11yValuePattern: massReadoutPatternString,
         labelContent: labelContent,
-        a11yMapValue: value => value / GFLBConstants.BILLION_MULTIPLIER,
+        a11yCreateValueChangeAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
         a11yCreateOnFocusAriaValueText: () => massDescriber.getVerboseMassAriaValueText( thisObjectEnum )
       } );
       const numberPickerLabel = new Text( billionKgString, {
