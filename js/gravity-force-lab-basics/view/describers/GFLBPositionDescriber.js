@@ -22,6 +22,11 @@ define( require => {
 
   class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
 
+    /**
+     * @param {GFLBModel} model
+     * @param {string} object1Label
+     * @param {string} object2Label
+     */
     constructor( model, object1Label, object2Label ) {
 
       const options = {
@@ -37,6 +42,35 @@ define( require => {
       model.showDistanceProperty.link( showDistance => {
         this.useQuantitativeDistance = showDistance;
       } );
+    }
+
+    /**
+     * We need to override this function to provide a specific edge case when the showDistanceProperty is not checked
+     * @param {ISLCObjectEnum} objectEnum
+     * @returns {function}
+     * @override
+     *
+     */
+    getOnChangeAriaValueTextCreator( objectEnum ) {
+
+      // keep track of the previous value text
+      let previousText = '';
+
+      const superValueTextCreator = super.getOnChangeAriaValueTextCreator( objectEnum );
+      return () => {
+
+
+        let newAriaValueText = superValueTextCreator();
+
+        // When distance isn't checked, the qualitative alerts are the same between region changes, so add a space such
+        // that the AT will still read the value text each time. See https://github.com/phetsims/gravity-force-lab-basics/issues/113#issuecomment-481413715
+        if ( !this.model.showDistanceProperty.get() && previousText === newAriaValueText ) {
+          newAriaValueText = newAriaValueText + ' ';
+        }
+
+        previousText = newAriaValueText;
+        return newAriaValueText;
+      };
     }
 
     /**
