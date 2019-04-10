@@ -26,13 +26,15 @@ define( require => {
 
         // by default the REGULAR version is different from this because of scientific notation
         forceValuesListener: showValues => {
-          ISLCAlertManager.alertForceValues( showValues );
+          this.alertForceValues( showValues );
         }
-
       } );
 
+      // @private {Utterance}
+      this.distanceVisibleUtterance = new Utterance();
+
       model.showDistanceProperty.lazyLink( showDistance => {
-        GFLBAlertManager.alertDistanceVisible( showDistance );
+        this.alertDistanceVisible( showDistance );
       } );
     }
 
@@ -40,10 +42,10 @@ define( require => {
      * @private
      * @param {boolean} showDistance
      */
-    static alertDistanceVisible( showDistance ) {
+    alertDistanceVisible( showDistance ) {
       const alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
-      const utterance = new Utterance( { alert: alert, uniqueGroupId: 'distanceVisible' } );
-      utteranceQueue.addToBack( utterance );
+      this.distanceVisibleUtterance.alert = alert;
+      utteranceQueue.addToBack( this.distanceVisibleUtterance );
     }
 
     static getManager() {
