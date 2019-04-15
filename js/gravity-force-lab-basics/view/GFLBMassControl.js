@@ -29,6 +29,7 @@ define( require => {
   // constants
   const MIN_PANEL_WIDTH = 150;
   const MAX_TEXT_WIDTH = 125; // i18n
+  const BILLION_MULTIPLIER = GFLBConstants.BILLION_MULTIPLIER;
 
   class GFLBMassControl extends Panel {
 
@@ -61,11 +62,9 @@ define( require => {
         font: new PhetFont( 20 ),
         scale: 1.5,
         tandem: tandem.createTandem( 'numberPicker' ),
-        upFunction: function( mass ) { return mass + GFLBConstants.BILLION_MULTIPLIER; },
-        downFunction: function( mass ) { return mass - GFLBConstants.BILLION_MULTIPLIER; },
-        formatValue: function( value ) {
-          return Util.toFixed( value / GFLBConstants.BILLION_MULTIPLIER, 0 );
-        },
+        upFunction: mass => mass + BILLION_MULTIPLIER,
+        downFunction: mass => mass - BILLION_MULTIPLIER,
+        formatValue: value => Util.toFixed( value / BILLION_MULTIPLIER, 0 ),
 
         // arrow options
         arrowHeight: 3,
@@ -73,7 +72,7 @@ define( require => {
         color: options.color,
 
         // a11y
-        a11yPageValueDelta: GFLBConstants.BILLION_MULTIPLIER * 2,
+        a11yPageValueDelta: BILLION_MULTIPLIER * 2,
         labelContent: labelContent,
         a11yCreateValueChangeAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
         a11yCreateOnFocusAriaValueText: () => massDescriber.getVerboseMassAriaValueText( thisObjectEnum )
