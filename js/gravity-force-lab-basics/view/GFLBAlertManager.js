@@ -7,7 +7,6 @@ define( require => {
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GravityForceLabAlertManager = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabAlertManager' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const ISLCAlertManager = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCAlertManager' );
   const Utterance = require( 'SCENERY_PHET/accessibility/Utterance' );
   const utteranceQueue = require( 'SCENERY_PHET/accessibility/utteranceQueue' );
 
@@ -46,15 +45,6 @@ define( require => {
       const alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
       this.distanceVisibleUtterance.alert = alert;
       utteranceQueue.addToBack( this.distanceVisibleUtterance );
-    }
-
-    static getManager() {
-      return ISLCAlertManager.getManager();
-    }
-
-    static initialize( model ) {
-      const manager = new GFLBAlertManager( model );
-      return ISLCAlertManager.initialize( manager );
     }
   }
 

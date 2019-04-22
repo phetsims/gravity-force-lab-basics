@@ -90,7 +90,7 @@ define( require => {
       // we don't need to keep references for all of them, just need to initialize
       GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
       GFLBMassDescriber.initialize( model );
-      GFLBAlertManager.initialize( model );
+      const alertManager = new GFLBAlertManager( model );
       const positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
 
       // Main
@@ -116,7 +116,7 @@ define( require => {
       );
 
       // add the mass nodes to the view
-      const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, {
+      const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, alertManager, {
         label: mass1LabelString,
         otherObjectLabel: mass2LabelString,
         defaultDirection: 'left',
@@ -125,7 +125,7 @@ define( require => {
         tandem: tandem.createTandem( 'mass1Node' )
       } );
 
-      const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, {
+      const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, alertManager, {
         label: mass2LabelString,
         otherObjectLabel: mass1LabelString,
         defaultDirection: 'right',
@@ -166,10 +166,10 @@ define( require => {
       // mass controls
       const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
         GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, propertiesToMonitorForDescriptionChanges,
-        tandem.createTandem( 'massControl1' ) );
+        alertManager, tandem.createTandem( 'massControl1' ) );
       const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
         GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, propertiesToMonitorForDescriptionChanges,
-        tandem.createTandem( 'massControl2' ), {
+        alertManager, tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
         } );
 
