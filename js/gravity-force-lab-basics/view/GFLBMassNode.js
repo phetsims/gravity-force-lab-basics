@@ -10,7 +10,6 @@ define( function( require ) {
 
   // modules
   var GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
-  var GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
@@ -27,10 +26,11 @@ define( function( require ) {
    * @param {Bounds2} layoutBounds
    * @param {ModelViewTransform2} modelViewTransform
    * @param {GFLBAlertManager} alertManager
+   * @param {GFLBPositionDescriber} positionDescriber
    * @param {Object} [options]
    * @constructor
    */
-  function GFLBMassNode( model, massModel, layoutBounds, modelViewTransform, alertManager, options ) {
+  function GFLBMassNode( model, massModel, layoutBounds, modelViewTransform, alertManager, positionDescriber, options ) {
 
     options = _.extend( {
       arrowLabelFill: 'black',
@@ -49,8 +49,6 @@ define( function( require ) {
       tandem: Tandem.required
     }, options );
 
-    const positionDescriber = GFLBPositionDescriber.getDescriber();
-
     // @private
     this.modelViewTransform = modelViewTransform;
     this.model = model;
@@ -58,7 +56,7 @@ define( function( require ) {
 
     var pullForceRange = GFLBConstants.PULL_FORCE_RANGE;
 
-    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, alertManager, options );
+    ISLCObjectNode.call( this, model, massModel, layoutBounds, modelViewTransform, pullForceRange, alertManager, positionDescriber, options );
 
     // keep value text up to date when distances are toggled
     model.showDistanceProperty.lazyLink( () => {

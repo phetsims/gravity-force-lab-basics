@@ -20,9 +20,10 @@ define( require => {
      * @param {GFLBModel} model
      * @param {GFLBMassDescriber} massDescriber
      * @param {GFLBForceDescriber} forceDescriber
+     * @param {GFLBPositionDescriber} positionDescriber
      */
-    constructor( model, massDescriber, forceDescriber ) {
-      super( model, massDescriber, forceDescriber, {
+    constructor( model, massDescriber, forceDescriber, positionDescriber ) {
+      super( model, massDescriber, forceDescriber, positionDescriber, {
         linkToScientificNotationProperty: false, // opt out of REGULAR specific linking
 
         // by default the REGULAR version is different from this because of scientific notation

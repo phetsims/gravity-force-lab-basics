@@ -123,26 +123,6 @@ define( require => {
       }
       assert && assert( false, `Invalid distance value: ${distance}` );
     }
-
-    /**
-     * Uses the singleton pattern to keep one instance of this describer for the entire lifetime of the sim.
-     * @returns {GFLBPositionDescriber}
-     */
-    static getDescriber() {
-      // assert && assert( describer, 'describer has not yet been initialized' );
-      return GravityForceLabPositionDescriber.getDescriber();
-    }
-
-    /**
-     * Initialize the describer singleton
-     * @throws Error
-     * @returns {GFLBPositionDescriber}
-     */
-    static initialize( model, object1Label, object2Label ) {
-      // assert && assert( describer === null, 'cannot call initialize more than once per ForceDescriber instance' );
-      const describer = new GFLBPositionDescriber( model, object1Label, object2Label );
-      return GravityForceLabPositionDescriber.initialize( describer );
-    }
   }
 
   return gravityForceLabBasics.register( 'GFLBPositionDescriber', GFLBPositionDescriber );

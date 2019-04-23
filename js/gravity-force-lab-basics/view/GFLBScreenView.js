@@ -90,11 +90,11 @@ define( require => {
       // we don't need to keep references for all of them, just need to initialize
       const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString );
       const massDescriber = new GFLBMassDescriber( model );
-      const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber );
-      const positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
+      const positionDescriber = new GFLBPositionDescriber( model, mass1LabelString, mass2LabelString );
+      const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber, positionDescriber );
 
       // Main
-      const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, {
+      const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
         mainDescriptionContent: screenSummaryMainDescriptionString,
         secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
         simStateLabel: basicsSimStateLabelString,
@@ -116,7 +116,7 @@ define( require => {
       );
 
       // add the mass nodes to the view
-      const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, alertManager, {
+      const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, alertManager, positionDescriber, {
         label: mass1LabelString,
         otherObjectLabel: mass2LabelString,
         defaultDirection: 'left',
@@ -125,7 +125,7 @@ define( require => {
         tandem: tandem.createTandem( 'mass1Node' )
       } );
 
-      const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, alertManager, {
+      const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, alertManager, positionDescriber, {
         label: mass2LabelString,
         otherObjectLabel: mass1LabelString,
         defaultDirection: 'right',
@@ -138,8 +138,8 @@ define( require => {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString
       };
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, forceDescriber, massPDOMNodeOptions ) );
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, forceDescriber, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, forceDescriber, positionDescriber, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, forceDescriber, positionDescriber, massPDOMNodeOptions ) );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
       Property.multilink( [
