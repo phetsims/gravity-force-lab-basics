@@ -88,13 +88,13 @@ define( require => {
       } );
 
       // we don't need to keep references for all of them, just need to initialize
-      GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
+      const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString );
       const massDescriber = new GFLBMassDescriber( model );
-      const alertManager = new GFLBAlertManager( model, massDescriber );
+      const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber );
       const positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
 
       // Main
-      const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, {
+      const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, {
         mainDescriptionContent: screenSummaryMainDescriptionString,
         secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
         simStateLabel: basicsSimStateLabelString,
@@ -138,8 +138,8 @@ define( require => {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString
       };
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, massPDOMNodeOptions ) );
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, forceDescriber, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, forceDescriber, massPDOMNodeOptions ) );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
       Property.multilink( [
