@@ -89,12 +89,12 @@ define( require => {
 
       // we don't need to keep references for all of them, just need to initialize
       GFLBForceDescriber.initialize( model, mass1LabelString, mass2LabelString );
-      GFLBMassDescriber.initialize( model );
-      const alertManager = new GFLBAlertManager( model );
+      const massDescriber = new GFLBMassDescriber( model );
+      const alertManager = new GFLBAlertManager( model, massDescriber );
       const positionDescriber = GFLBPositionDescriber.initialize( model, mass1LabelString, mass2LabelString );
 
       // Main
-      const summaryNode = new GravityForceLabScreenSummaryNode( model, {
+      const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, {
         mainDescriptionContent: screenSummaryMainDescriptionString,
         secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
         simStateLabel: basicsSimStateLabelString,
@@ -138,8 +138,8 @@ define( require => {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString
       };
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massPDOMNodeOptions ) );
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, massPDOMNodeOptions ) );
+      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, massPDOMNodeOptions ) );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
       Property.multilink( [
@@ -166,10 +166,10 @@ define( require => {
       // mass controls
       const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
         GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, propertiesToMonitorForDescriptionChanges,
-        alertManager, tandem.createTandem( 'massControl1' ) );
+        alertManager, massDescriber, tandem.createTandem( 'massControl1' ) );
       const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
         GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, propertiesToMonitorForDescriptionChanges,
-        alertManager, tandem.createTandem( 'massControl2' ), {
+        alertManager, massDescriber, tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
         } );
 

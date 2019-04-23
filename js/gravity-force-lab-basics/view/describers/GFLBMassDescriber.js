@@ -39,24 +39,6 @@ define( require => {
     getMassSizeIndex( mass ) {
       return Util.roundSymmetric( massToIndex( mass ) );
     }
-
-    /**
-     * Uses the singleton pattern to keep one instance of this describer for the entire lifetime of the sim.
-     * @returns {GFLBMassDescriber}
-     */
-    static getDescriber() {
-      return MassDescriber.getDescriber();
-    }
-
-    /**
-     * Initialize the describer singleton
-     * @throws Error
-     * @returns {GFLBMassDescriber}
-     */
-    static initialize( model ) {
-      const describer = new GFLBMassDescriber( model );
-      return MassDescriber.initialize( describer );
-    }
   }
 
   return gravityForceLabBasics.register( 'GFLBMassDescriber', GFLBMassDescriber );

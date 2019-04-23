@@ -11,7 +11,6 @@ define( require => {
   // modules
   const Color = require( 'SCENERY/util/Color' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
-  const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
@@ -40,17 +39,16 @@ define( require => {
      * @param {ISLCObjectEnum} thisObjectEnum
      * @param {Property[]} updateDescriptionProperties - Properties to monitor to keep descriptions up to date
      * @param {GFLBAlertManager} alertManager
+     * @param {GFLBMassDescriber} massDescriber
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
     constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum, updateDescriptionProperties,
-                 alertManager, tandem, options ) {
+                 alertManager, massDescriber, tandem, options ) {
 
       options = _.extend( {
         color: new Color( 0, 0, 255 )
       }, options );
-
-      const massDescriber = GFLBMassDescriber.getDescriber();
 
       const titleText = new Text( titleString, {
         font: new PhetFont( 18 ),

@@ -19,9 +19,9 @@ define( require => {
      * @param {ISLCObjectEnum} objectEnum
      * @param {Object} [options]
      */
-    constructor( model, objectEnum, options ) {
+    constructor( model, objectEnum, massDescriber, options ) {
 
-      super( model, objectEnum, _.extend( {
+      super( model, objectEnum, massDescriber, _.extend( {
 
         // The only difference in basics is how the mass/position bullet is updated for this Mass.
         wireUpMassAndPositionUpdates() {
