@@ -24,7 +24,9 @@ define( function( require ) {
   // strings
   var gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
 
-  var keyboardHelpContent = new GravityForceLabKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ) );
+  var keyboardHelpContent = new GravityForceLabKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ), {
+    omitChangeMassSmallSteps: true // in basics, there is no way to change the mass in smaller steps
+  } );
 
   var simOptions = {
     credits: {
