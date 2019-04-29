@@ -16,10 +16,10 @@ define( function( require ) {
   var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   var GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var ISLCConstants = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCConstants' );
   var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
   var Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
   var NumberIO = require( 'TANDEM/types/NumberIO' );
+  var PhysicalConstants = require( 'PHET_CORE/PhysicalConstants' );
 
   /**
    * @param {Tandem} tandem
@@ -67,7 +67,7 @@ define( function( require ) {
       tandem.createTandem( 'mass2' ), massOptions
     );
 
-    ISLCModel.call( this, ISLCConstants.G, mass1, mass2, leftBoundary, rightBoundary, tandem, {
+    ISLCModel.call( this, PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, leftBoundary, rightBoundary, tandem, {
       snapObjectsToNearest: GFLBConstants.MASS_POSITION_DELTA,
       minSeparationBetweenObjects: 200 // in meters
     } );
