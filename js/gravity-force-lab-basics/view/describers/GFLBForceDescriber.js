@@ -20,7 +20,6 @@ define( require => {
 
   // constants
   const { PULL_FORCE_RANGE } = GFLBConstants;
-  const forceToIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max * 0.6, 0, 6, true );
   const forceToPullIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max, 6, 0, true );
 
   class GFLBForceDescriber extends ForceDescriber {
@@ -43,9 +42,35 @@ define( require => {
 
     }
 
-    // @override
+    /**
+     * @param {number} force in newtons
+     * @returns {number}
+     * @override
+     */
     getForceVectorIndex( force ) {
-      return Util.roundSymmetric( forceToIndex( force ) );
+      assert && assert( force >= .7, `unrecognized force value, smaller than expected: ${force}` );
+      if ( force <= 85.4 ) {
+        return 0;
+      }
+      if ( force <= 181.6 ) {
+        return 1;
+      }
+      if ( force <= 278.1 ) {
+        return 2;
+      }
+      if ( force <= 386.1 ) {
+        return 3;
+      }
+      if ( force <= 486.1 ) {
+        return 4;
+      }
+      if ( force <= 576.6 ) {
+        return 5;
+      }
+      if ( force <= 1070 ) {
+        return 6;
+      }
+      assert && assert( false, `unrecognized force value, larger than expected: ${force}` );
     }
 
     // @override
