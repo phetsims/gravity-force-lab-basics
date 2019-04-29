@@ -67,10 +67,7 @@ define( require => {
       if ( force <= 576.6 ) {
         return 5;
       }
-      if ( force <= 1070 ) {
-        return 6;
-      }
-      assert && assert( false, `unrecognized force value, larger than expected: ${force}` );
+      return 6;
     }
 
     // @override
