@@ -88,9 +88,9 @@ define( require => {
       } );
 
       // we don't need to keep references for all of them, just need to initialize
-      const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString );
-      const massDescriber = new GFLBMassDescriber( model );
       const positionDescriber = new GFLBPositionDescriber( model, mass1LabelString, mass2LabelString );
+      const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString, positionDescriber );
+      const massDescriber = new GFLBMassDescriber( model );
       const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber, positionDescriber );
 
       // Main

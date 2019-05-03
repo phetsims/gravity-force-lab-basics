@@ -24,7 +24,13 @@ define( require => {
 
   class GFLBForceDescriber extends ForceDescriber {
 
-    constructor( model, object1Label, object2Label ) {
+    /**
+     * @param {GFLBModel} model
+     * @param {string} object1Label
+     * @param {string} object2Label
+     * @param {PositionDescriber} positionDescriber
+     */
+    constructor( model, object1Label, object2Label, positionDescriber ) {
       const options = {
         convertForce: force => {
           return Util.toFixedNumber( force, 1 );
@@ -38,7 +44,7 @@ define( require => {
         vectorsString: arrowsString,
         vectorsCapitalizedString: forceArrowsString
       };
-      super( model, object1Label, object2Label, options );
+      super( model, object1Label, object2Label, positionDescriber, options );
 
     }
 
