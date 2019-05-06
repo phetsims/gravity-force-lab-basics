@@ -12,8 +12,8 @@ define( require => {
   const Util = require( 'DOT/Util' );
 
   // a11y strings
+  const forceArrowsCapitalizedString = GFLBA11yStrings.forceArrowsCapitalized.value;
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
-  const forceArrowsLowerString = GFLBA11yStrings.forceArrowsLower.value;
   const arrowsString = GFLBA11yStrings.arrows.value;
   const basicsForceAndVectorPatternString = GFLBA11yStrings.basicsForceAndVectorPattern.value;
   const basicsForceVectorMagnitudeUnitsPatternString = GFLBA11yStrings.basicsForceVectorMagnitudeUnitsPattern.value;
@@ -39,13 +39,12 @@ define( require => {
         forceAndVectorPatternString: basicsForceAndVectorPatternString,
         forceVectorMagnitudeUnitsPatternString: basicsForceVectorMagnitudeUnitsPatternString,
 
-        forceArrowsString: forceArrowsString,
-        forceArrowsLower: forceArrowsLowerString,
+        forceVectorsCapitalizedString: forceArrowsCapitalizedString,
+        forceVectorsString: forceArrowsString,
         vectorsString: arrowsString,
-        vectorsCapitalizedString: forceArrowsString
+        vectorsCapitalizedString: forceArrowsCapitalizedString
       };
       super( model, object1Label, object2Label, positionDescriber, options );
-
     }
 
     /**

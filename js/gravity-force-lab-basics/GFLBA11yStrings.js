@@ -49,10 +49,10 @@ define( function( require ) {
     distanceArrowRemoved: {
       value: 'Distance hidden.'
     },
-    forceArrows: {
+    forceArrowsCapitalized: {
       value: 'Force arrows'
     },
-    forceArrowsLower: {
+    forceArrows: {
       value: 'force arrows'
     },
     arrows: {
