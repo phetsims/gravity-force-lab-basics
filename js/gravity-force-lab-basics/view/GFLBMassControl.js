@@ -70,7 +70,7 @@ define( require => {
         color: options.color,
 
         // a11y
-        a11yPageValueDelta: BILLION_MULTIPLIER * 2,
+        pageKeyboardStep: BILLION_MULTIPLIER * 2,
         labelContent: labelContent,
         a11yCreateValueChangeAriaValueText: () => massDescriber.getVerboseMassAriaValueText( thisObjectEnum )
       } );
