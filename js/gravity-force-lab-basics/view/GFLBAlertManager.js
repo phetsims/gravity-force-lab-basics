@@ -45,8 +45,7 @@ define( require => {
      * @param {boolean} showDistance
      */
     alertDistanceVisible( showDistance ) {
-      const alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
-      this.distanceVisibleUtterance.alert = alert;
+      this.distanceVisibleUtterance.alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
       utteranceQueue.addToBack( this.distanceVisibleUtterance );
     }
   }

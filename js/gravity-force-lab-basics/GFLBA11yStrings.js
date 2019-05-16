@@ -44,10 +44,10 @@ define( function( require ) {
       value: 'kilometers'
     },
     distanceArrowVisible: {
-      value: 'Distance shown in kilometers.'
+      value: 'Distance measured in kilometers.'
     },
     distanceArrowRemoved: {
-      value: 'Distance hidden.'
+      value: 'Distance measurement hidden.'
     },
     forceArrowsCapitalized: {
       value: 'Force arrows'
