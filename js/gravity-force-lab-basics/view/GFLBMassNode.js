@@ -18,7 +18,6 @@ define( require => {
 
   // constants
   const MASS_NODE_Y_POSITION = 215;
-  const PULL_FORCE_RANGE = GFLBConstants.PULL_FORCE_RANGE;
 
   class GFLBMassNode extends ISLCObjectNode {
 
@@ -50,7 +49,7 @@ define( require => {
         tandem: Tandem.required
       }, options );
 
-      super( model, massModel, layoutBounds, modelViewTransform, PULL_FORCE_RANGE, alertManager, positionDescriber, options );
+      super( model, massModel, layoutBounds, modelViewTransform, alertManager, positionDescriber, options );
 
       // @private
       this.modelViewTransform = modelViewTransform;

@@ -7,8 +7,6 @@ define( require => {
   const ForceDescriber = require( 'INVERSE_SQUARE_LAW_COMMON/view/describers/ForceDescriber' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
-  const LinearFunction = require( 'DOT/LinearFunction' );
   const Util = require( 'DOT/Util' );
 
   // a11y strings
@@ -17,10 +15,6 @@ define( require => {
   const arrowsString = GFLBA11yStrings.arrows.value;
   const basicsForceAndVectorPatternString = GFLBA11yStrings.basicsForceAndVectorPattern.value;
   const basicsForceVectorMagnitudeUnitsPatternString = GFLBA11yStrings.basicsForceVectorMagnitudeUnitsPattern.value;
-
-  // constants
-  const { PULL_FORCE_RANGE } = GFLBConstants;
-  const forceToPullIndex = new LinearFunction( PULL_FORCE_RANGE.min, PULL_FORCE_RANGE.max, 6, 0, true );
 
   class GFLBForceDescriber extends ForceDescriber {
 
@@ -73,11 +67,6 @@ define( require => {
         return 5;
       }
       return 6;
-    }
-
-    // @override
-    getEffortIndex( force ) {
-      return Util.roundSymmetric( forceToPullIndex( force ) );
     }
   }
 

@@ -48,13 +48,10 @@ define( require => {
         tandem: tandem.createTandem( 'showDistanceProperty' )
       } );
 
-      const leftBoundary = GFLBConstants.LEFT_MASS_BOUNDARY;
-      const rightBoundary = GFLBConstants.RIGHT_MASS_BOUNDARY;
-
       const massOptions = {
         constantRadius: GFLBConstants.CONSTANT_RADIUS,
-        leftObjectBoundary: leftBoundary,
-        rightObjectBoundary: rightBoundary
+        leftObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.min,
+        rightObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.max
       };
       const mass1 = new Mass( value1, position1, valueRange, density,
         constantRadiusProperty, new Color( '#00f' ),
@@ -66,7 +63,7 @@ define( require => {
         tandem.createTandem( 'mass2' ), massOptions
       );
 
-      super( PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, leftBoundary, rightBoundary, tandem, {
+      super( PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, GFLBConstants.PULL_LOCATION_RANGE, tandem, {
         snapObjectsToNearest: GFLBConstants.MASS_POSITION_DELTA,
         minSeparationBetweenObjects: 200 // in meters
       } );
