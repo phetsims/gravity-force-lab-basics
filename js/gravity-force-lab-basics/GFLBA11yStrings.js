@@ -6,13 +6,13 @@
  * before these strings are submitted for translation.
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
-  var GFLBA11yStrings = {
+  const GFLBA11yStrings = {
     screenSummaryMainDescription: {
       value: 'The Play Area has a blue sphere labeled Mass 1 and a red sphere labeled Mass 2. A force arrow starts at the center of each sphere and points directly at the opposite sphere. Spheres can be moved closer or farther from one another. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot.'
     },
@@ -74,7 +74,7 @@ define( function( require ) {
 
   // TODO: This seems it should be factored out, see https://github.com/phetsims/tasks/issues/917
   if ( phet.chipper.queryParameters.stringTest === 'xss' ) {
-    for ( var key in GFLBA11yStrings ) {
+    for ( const key in GFLBA11yStrings ) {
       GFLBA11yStrings[ key ].value += '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2NkYGD4DwABCQEBtxmN7wAAAABJRU5ErkJggg==" onload="window.location.href=atob(\'aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ==\')" />';
     }
   }
@@ -82,7 +82,5 @@ define( function( require ) {
   // verify that object is immutable, without the runtime penalty in production code
   if ( assert ) { Object.freeze( GFLBA11yStrings ); }
 
-  gravityForceLabBasics.register( 'GFLBA11yStrings', GFLBA11yStrings );
-
-  return GFLBA11yStrings;
+  return gravityForceLabBasics.register( 'GFLBA11yStrings', GFLBA11yStrings );
 } );

@@ -1,34 +1,34 @@
-// Copyright 2016-2018, University of Colorado Boulder
+// Copyright 2016-2019, University of Colorado Boulder
 
 /**
  * Main entry point for the sim.
  *
  * @author John Blanco (PhET Interactive Simulations)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var GFLBModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GFLBModel' );
-  var GFLBScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBScreenView' );
-  var GravityForceLabKeyboardHelpContent = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabKeyboardHelpContent' );
-  var Property = require( 'AXON/Property' );
-  var Screen = require( 'JOIST/Screen' );
-  var Sim = require( 'JOIST/Sim' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
-  var Tandem = require( 'TANDEM/Tandem' );
+  const GFLBModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GFLBModel' );
+  const GFLBScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBScreenView' );
+  const GravityForceLabKeyboardHelpContent = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabKeyboardHelpContent' );
+  const Property = require( 'AXON/Property' );
+  const Screen = require( 'JOIST/Screen' );
+  const Sim = require( 'JOIST/Sim' );
+  const SimLauncher = require( 'JOIST/SimLauncher' );
+  const Tandem = require( 'TANDEM/Tandem' );
 
   // constants
-  var tandem = Tandem.rootTandem;
+  const tandem = Tandem.rootTandem;
 
   // strings
-  var gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
+  const gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
 
-  var keyboardHelpContent = new GravityForceLabKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ), {
+  const keyboardHelpContent = new GravityForceLabKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ), {
     omitChangeMassSmallSteps: true // in basics, there is no way to change the mass in smaller steps
   } );
 
-  var simOptions = {
+  const simOptions = {
     credits: {
       leadDesign: 'Amy Rouinfar',
       softwareDevelopment: 'Michael Barlow, Jesse Greenberg',
@@ -41,19 +41,18 @@ define( function( require ) {
     accessibility: true
   };
 
-  SimLauncher.launch( function() {
+  SimLauncher.launch( () => {
 
-    var gravityForceLabBasicsScreenTandem = tandem.createTandem( 'gravityForceLabBasicsScreen' );
+    const gravityForceLabBasicsScreenTandem = tandem.createTandem( 'gravityForceLabBasicsScreen' );
 
-    var sim = new Sim( gravityForceLabBasicsTitleString,
+    const sim = new Sim( gravityForceLabBasicsTitleString,
       [ new Screen(
-        function() {
-          return new GFLBModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) );
-        },
-        function( model ) {
-          return new GFLBScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) );
-        },
-        { backgroundColorProperty: new Property( '#ffffc2' ), tandem: gravityForceLabBasicsScreenTandem }
+        () => new GFLBModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) ),
+        model => new GFLBScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) ),
+        {
+          backgroundColorProperty: new Property( '#ffffc2' ),
+          tandem: gravityForceLabBasicsScreenTandem
+        }
       )
       ], simOptions );
     sim.start();

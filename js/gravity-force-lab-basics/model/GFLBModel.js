@@ -1,105 +1,101 @@
-// Copyright 2016-2019, University of Colorado Boulder
+// Copyright 2019, University of Colorado Boulder
 
 /**
  * Main model for gravity-force-lab-basics.
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var Color = require( 'SCENERY/util/Color' );
-  var DerivedProperty = require( 'AXON/DerivedProperty' );
-  var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
-  var gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  var GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
-  var Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
-  var NumberIO = require( 'TANDEM/types/NumberIO' );
-  var PhysicalConstants = require( 'PHET_CORE/PhysicalConstants' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const Color = require( 'SCENERY/util/Color' );
+  const DerivedProperty = require( 'AXON/DerivedProperty' );
+  const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
+  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
+  const ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
+  const Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
+  const NumberIO = require( 'TANDEM/types/NumberIO' );
+  const PhysicalConstants = require( 'PHET_CORE/PhysicalConstants' );
 
-  /**
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function GFLBModel( tandem ) {
+  class GFLBModel extends ISLCModel {
 
-    // initial masses
-    var massMultiplier = GFLBConstants.BILLION_MULTIPLIER;
-    var value1 = 2 * massMultiplier;
-    var value2 = 4 * massMultiplier;
+    /**
+     * @param {Tandem} tandem
+     */
+    constructor( tandem ) {
 
-    // initial positions, in meters
-    var position1 = -2000;
-    var position2 = 2000;
+      // initial masses
+      const massMultiplier = GFLBConstants.BILLION_MULTIPLIER;
+      const value1 = 2 * massMultiplier;
+      const value2 = 4 * massMultiplier;
 
-    var valueRange = GFLBConstants.MASS_RANGE;
-    var density = 1.5; // kg/m^3
+      // initial positions, in meters
+      const position1 = -2000;
+      const position2 = 2000;
 
-    // @public
-    this.constantRadiusProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'constantRadiusProperty' )
-    } );
+      const valueRange = GFLBConstants.MASS_RANGE;
+      const density = 1.5; // kg/m^3
 
-    // @public - Property driving the "show distance" checkbox
-    this.showDistanceProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'showDistanceProperty' )
-    } );
+      const constantRadiusProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'constantRadiusProperty' )
+      } );
 
-    var leftBoundary = GFLBConstants.LEFT_MASS_BOUNDARY;
-    var rightBoundary = GFLBConstants.RIGHT_MASS_BOUNDARY;
+      // Property driving the "show distance" checkbox
+      const showDistanceProperty = new BooleanProperty( true, {
+        tandem: tandem.createTandem( 'showDistanceProperty' )
+      } );
 
-    var massOptions = {
-      constantRadius: GFLBConstants.CONSTANT_RADIUS,
-      leftObjectBoundary: leftBoundary,
-      rightObjectBoundary: rightBoundary
-    };
-    var mass1 = new Mass( value1, position1, valueRange, density,
-      this.constantRadiusProperty, new Color( '#00f' ),
-      tandem.createTandem( 'mass1' ), massOptions
-    );
+      const leftBoundary = GFLBConstants.LEFT_MASS_BOUNDARY;
+      const rightBoundary = GFLBConstants.RIGHT_MASS_BOUNDARY;
 
-    var mass2 = new Mass( value2, position2, valueRange, density,
-      this.constantRadiusProperty, new Color( '#f00' ),
-      tandem.createTandem( 'mass2' ), massOptions
-    );
+      const massOptions = {
+        constantRadius: GFLBConstants.CONSTANT_RADIUS,
+        leftObjectBoundary: leftBoundary,
+        rightObjectBoundary: rightBoundary
+      };
+      const mass1 = new Mass( value1, position1, valueRange, density,
+        constantRadiusProperty, new Color( '#00f' ),
+        tandem.createTandem( 'mass1' ), massOptions
+      );
 
-    ISLCModel.call( this, PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, leftBoundary, rightBoundary, tandem, {
-      snapObjectsToNearest: GFLBConstants.MASS_POSITION_DELTA,
-      minSeparationBetweenObjects: 200 // in meters
-    } );
+      const mass2 = new Mass( value2, position2, valueRange, density,
+        constantRadiusProperty, new Color( '#f00' ),
+        tandem.createTandem( 'mass2' ), massOptions
+      );
 
-    // @public (read-only) {Property.<Number>} - distance between the centers of the two masses
-    this.distanceProperty = new DerivedProperty(
-      [
-        this.object1.positionProperty,
-        this.object2.positionProperty
-      ],
-      function( x1, x2 ) {
-        return Math.abs( x2 - x1 ) / 1000; // divided by 1000 to convert to kilometers
-      },
-      {
-        phetioType: DerivedPropertyIO( NumberIO ),
-        tandem: tandem.createTandem( 'distanceProperty' )
-      }
-    );
-  }
+      super( PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, leftBoundary, rightBoundary, tandem, {
+        snapObjectsToNearest: GFLBConstants.MASS_POSITION_DELTA,
+        minSeparationBetweenObjects: 200 // in meters
+      } );
 
-  gravityForceLabBasics.register( 'GFLBModel', GFLBModel );
+      // @public
+      this.constantRadiusProperty = constantRadiusProperty;
+      this.showDistanceProperty = showDistanceProperty;
 
-  return inherit( ISLCModel, GFLBModel, {
+      // @public (read-only) {Property.<Number>} - distance between the centers of the two masses
+      this.distanceProperty = new DerivedProperty(
+        [ this.object1.positionProperty, this.object2.positionProperty ],
+        ( x1, x2 ) => Math.abs( x2 - x1 ) / 1000, // divided by 1000 to convert to kilometers
+        {
+          phetioType: DerivedPropertyIO( NumberIO ),
+          tandem: tandem.createTandem( 'distanceProperty' )
+        }
+      );
+    }
 
     /**
      * Reset the GFLBModel.
      * @public
      */
-    reset: function() {
+    reset() {
       this.constantRadiusProperty.reset();
       this.showDistanceProperty.reset();
-      ISLCModel.prototype.reset.call( this );
+      super.reset();
     }
-  } );
+  }
+
+  return gravityForceLabBasics.register( 'GFLBModel', GFLBModel );
 } );
