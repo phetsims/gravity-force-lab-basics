@@ -66,7 +66,6 @@ define( function( require ) {
     this.addInputListener( {
       focus: () => {
         positionDescriber.lastMoveCloser = null;
-        alertManager.alertPositionSliderFocused();
       }
     } );
   }

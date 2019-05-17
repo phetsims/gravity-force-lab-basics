@@ -84,13 +84,6 @@ define( require => {
       // exists for the lifetime of the sim, no need to dispose.
       Property.multilink( updateDescriptionProperties, () => numberPicker.updateOnFocusAriaValueText() );
 
-      // alert on focus
-      numberPicker.addInputListener( {
-        focus() {
-          alertManager.alertMassControlFocused();
-        }
-      } );
-
       const numberPickerHBox = new HBox( {
         children: [ numberPicker, numberPickerLabel ],
         spacing: 10
