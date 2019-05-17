@@ -28,23 +28,19 @@ define( require => {
 
         // The only difference in basics is how the mass/position bullet is updated for this Mass.
         wireUpMassAndPositionUpdates() {
-
-          // update the list items' PDOM content
-          const listener = () => {
-
-            // if distance is showing, use quantitative distance descriptions.
-            this.massAndPositionNode.innerContent =
-              this.nodeDescriber.getSizeAndDistanceClause();
-          };
           Property.multilink( [
             this.model.forceProperty,
             this.model.showDistanceProperty,
+            this.model.constantRadiusProperty,
 
             // We need to link to these in addition to the forceProperty because of a listener order of ops issue found
             // in https://github.com/phetsims/gravity-force-lab-basics/issues/103
             this.model.object1.positionProperty,
             this.model.object2.positionProperty
-          ], listener );
+          ], () => {
+            this.massAndPositionNode.innerContent =
+              this.nodeDescriber.getMassAndPositionSentence();
+          } );
         }
       }, options ) );
     }
