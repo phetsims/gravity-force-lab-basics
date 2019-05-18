@@ -4,10 +4,10 @@ define( require => {
   'use strict';
 
   // modules
+  const ActivationUtterance = require( 'SCENERY_PHET/accessibility/ActivationUtterance' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GravityForceLabAlertManager = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabAlertManager' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const Utterance = require( 'SCENERY_PHET/accessibility/Utterance' );
   const utteranceQueue = require( 'SCENERY_PHET/accessibility/utteranceQueue' );
 
   // a11y strings
@@ -27,13 +27,13 @@ define( require => {
         linkToScientificNotationProperty: false, // opt out of REGULAR specific linking
 
         // by default the REGULAR version is different from this because of scientific notation
-        forceValuesListener: showValues => {
-          this.alertForceValues( showValues );
+        showForceValuesListener: showValues => {
+          this.alertShowForceValues( showValues );
         }
       } );
 
       // @private {Utterance}
-      this.distanceVisibleUtterance = new Utterance();
+      this.distanceVisibleUtterance = new ActivationUtterance();
 
       model.showDistanceProperty.lazyLink( showDistance => {
         this.alertDistanceVisible( showDistance );
