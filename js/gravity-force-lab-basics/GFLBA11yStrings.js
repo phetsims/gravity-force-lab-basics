@@ -14,7 +14,7 @@ define( require => {
 
   const GFLBA11yStrings = {
     screenSummaryMainDescription: {
-      value: 'The Play Area has a blue sphere labeled Mass 1 and a red sphere labeled Mass 2. A force arrow starts at the center of each sphere and points directly at the opposite sphere. Spheres can be moved closer or farther from one another. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot.'
+      value: 'The Play Area has two mass spheres, a blue sphere labeled mass 1 and a red sphere labeled mass 2. A force arrow starts at the center of each sphere and points directly at the opposite sphere. Spheres can be moved closer or farther from each other along a track. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot.'
     },
     screenSummarySecondaryDescription: {
       value: 'In the Control Area, checkboxes change what things are shown and how they behave, and a button resets the sim.'
