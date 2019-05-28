@@ -80,10 +80,6 @@ define( require => {
         tandem: tandem.createTandem( 'numberPickerLabel' )
       } );
 
-      // whenever these Properties change, update the aria-valuetext to keep the on focus text in sync
-      // exists for the lifetime of the sim, no need to dispose.
-      Property.multilink( updateDescriptionProperties, () => numberPicker.updateOnFocusAriaValueText() );
-
       const numberPickerHBox = new HBox( {
         children: [ numberPicker, numberPickerLabel ],
         spacing: 10

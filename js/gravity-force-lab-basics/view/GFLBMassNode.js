@@ -56,11 +56,6 @@ define( require => {
       this.model = model;
       this.objectModel = massModel;
 
-      // keep value text up to date when distances are toggled
-      model.showDistanceProperty.lazyLink( () => {
-        this.updateOnFocusAriaValueText();
-      } );
-
       this.addInputListener( {
         focus: () => {
           positionDescriber.lastMoveCloser = null;
