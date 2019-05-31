@@ -235,6 +235,11 @@ define( require => {
       const resetAllButton = new ResetAllButton( {
         listener: () => {
           model.reset();
+
+          // reset the view side (mostly a11y description related)
+          positionDescriber.reset();
+          mass1Node.reset();
+          mass2Node.reset();
         },
         right: this.layoutBounds.maxX - 10,
         bottom: this.layoutBounds.maxY - 10,
