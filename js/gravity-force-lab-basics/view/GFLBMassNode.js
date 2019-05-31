@@ -44,8 +44,13 @@ define( require => {
         labelShadowOffsetX: 0.9,
         labelShadowOffsetY: 0.9,
         y: MASS_NODE_Y_POSITION,
-        snapToNearest: model.snapObjectsToNearest, // in meters, charges will snap to the nearest 0.1 meters in model coordinates
+
+        // {number} In meters, charges will snap to the nearest 0.1 meters in model coordinates
+        snapToNearest: model.snapObjectsToNearest,
         stepSize: GFLBConstants.MASS_STEP_SIZE,
+
+        // recompute the PDOM descriptions when show distance is toggled
+        additionalA11yDependencies: [ model.showDistanceProperty ],
         tandem: Tandem.required
       }, options );
 
