@@ -31,10 +31,11 @@ define( require => {
   const simOptions = {
     credits: {
       leadDesign: 'Amy Rouinfar',
-      softwareDevelopment: 'Michael Barlow, Jesse Greenberg',
-      team: 'Ariel Paul, Kathy Perkins',
-      qualityAssurance: 'Steele Dalton',
+      softwareDevelopment: 'Michael Barlow, Jesse Greenberg, John Blanco, Michael Kauzmann',
+      team: 'Ariel Paul, Kathy Perkins, Emily Moore, Taliesin Smith',
+      qualityAssurance: 'Steele Dalton, Megan Lai, Liam Mulhall, Laura Rea, Jacob Romero, and Kathryn Woessner',
       graphicArts: 'Mariah Hermsmeyer',
+      soundDesign: 'Ashton Morris',
       thanks: ''
     },
     keyboardHelpNode: keyboardHelpContent,
