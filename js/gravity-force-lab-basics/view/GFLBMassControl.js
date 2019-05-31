@@ -100,7 +100,7 @@ define( require => {
         tandem: tandem,
 
         // a11y
-        tagName: 'li'
+        tagName: 'div' // Though not necessary, it is helpful for the a11y view to display the valuetext within this div.
       } );
     }
   }

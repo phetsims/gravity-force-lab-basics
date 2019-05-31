@@ -176,12 +176,12 @@ define( require => {
       const massControlsNode = new Node( {
         labelTagName: 'h3',
         labelContent: massControlsLabelString,
-        tagName: 'ul',
+        tagName: 'div',
         descriptionContent: massControlsHelpTextBillionsString
       } );
       playAreaNode.addChild( massControlsNode );
 
-      // the list of mass controls is aria-labelledby the its label sibling, see https://github.com/phetsims/gravity-force-lab/issues/132
+      // The list of mass controls is aria-labelledby the its label sibling, see https://github.com/phetsims/gravity-force-lab/issues/132
       massControlsNode.addAriaLabelledbyAssociation( {
         otherNode: massControlsNode,
         otherElementName: AccessiblePeer.LABEL_SIBLING,
