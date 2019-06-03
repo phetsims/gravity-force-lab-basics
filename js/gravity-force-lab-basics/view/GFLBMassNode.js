@@ -75,7 +75,8 @@ define( require => {
      */
     updateGradient( baseColor ) {
       const radius = this.modelViewTransform.modelToViewDeltaX( this.objectModel.radiusProperty.get() );
-      this.objectCircle.fill = new RadialGradient( -radius * 0.6, -radius * 0.6, 1, -radius * 0.6, -radius * 0.6, radius )
+      this.objectCircle.fill = new RadialGradient(
+        -radius * 0.6, -radius * 0.6, 1, -radius * 0.6, -radius * 0.6, radius )
         .addColorStop( 0, baseColor.colorUtilsBrighter( 0.5 ).toCSS() )
         .addColorStop( 1, baseColor.toCSS() );
     }

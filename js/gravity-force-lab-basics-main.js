@@ -24,7 +24,8 @@ define( require => {
   // strings
   const gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
 
-  const keyboardHelpContent = new GravityForceLabKeyboardHelpContent( Tandem.rootTandem.createTandem( 'keyboardHelpContent' ), {
+  const keybaordHelpTandem = Tandem.rootTandem.createTandem( 'keyboardHelpContent' );
+  const keyboardHelpContent = new GravityForceLabKeyboardHelpContent( keybaordHelpTandem, {
     omitChangeMassSmallSteps: true // in basics, there is no way to change the mass in smaller steps
   } );
 

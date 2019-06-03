@@ -36,14 +36,15 @@ define( require => {
     constructor( model, modelViewTransform, options ) {
       super( options );
 
-      const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0, model.object2.positionProperty.get(), 0, {
-        doubleHead: true,
-        tailWidth: 0.5,
-        headHeight: HEAD_HEIGHT,
-        headWidth: HEAD_WIDTH,
-        stroke: '#BFBFBF',
-        fill: '#BFBFBF'
-      } );
+      const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,
+        model.object2.positionProperty.get(), 0, {
+          doubleHead: true,
+          tailWidth: 0.5,
+          headHeight: HEAD_HEIGHT,
+          headWidth: HEAD_WIDTH,
+          stroke: '#BFBFBF',
+          fill: '#BFBFBF'
+        } );
       this.addChild( arrowNode );
 
       // the label
@@ -54,18 +55,21 @@ define( require => {
       } );
       this.addChild( labelText );
 
-      Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ], ( position1, position2 ) => {
+      Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],
+        ( position1, position2 ) => {
 
-        // update the arrow node width
-        const viewPosition1 = modelViewTransform.modelToViewX( position1 );
-        const viewPosition2 = modelViewTransform.modelToViewX( position2 );
-        arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
+          // update the arrow node width
+          const viewPosition1 = modelViewTransform.modelToViewX( position1 );
+          const viewPosition2 = modelViewTransform.modelToViewX( position2 );
+          arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
 
-        // update label text and center, distance in meters so divide by 1000 to read out in km
-        labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, { distance: model.distanceProperty.get() } ) );
+          // update label text and center, distance in meters so divide by 1000 to read out in km
+          labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, {
+            distance: model.distanceProperty.get()
+          } ) );
 
-        labelText.centerX = arrowNode.centerX;
-      } );
+          labelText.centerX = arrowNode.centerX;
+        } );
     }
   }
 

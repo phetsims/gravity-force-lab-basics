@@ -116,30 +116,38 @@ define( require => {
       );
 
       // add the mass nodes to the view
-      const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, alertManager, positionDescriber, {
-        label: mass1LabelString,
-        otherObjectLabel: mass2LabelString,
-        defaultDirection: 'left',
-        arrowColor: '#66F',
-        forceArrowHeight: 125,
-        tandem: tandem.createTandem( 'mass1Node' )
-      } );
+      const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, alertManager,
+        positionDescriber, {
+          label: mass1LabelString,
+          otherObjectLabel: mass2LabelString,
+          defaultDirection: 'left',
+          arrowColor: '#66F',
+          forceArrowHeight: 125,
+          tandem: tandem.createTandem( 'mass1Node' )
+        } );
 
-      const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, alertManager, positionDescriber, {
-        label: mass2LabelString,
-        otherObjectLabel: mass1LabelString,
-        defaultDirection: 'right',
-        arrowColor: '#F66',
-        forceArrowHeight: 175,
-        tandem: tandem.createTandem( 'mass2Node' )
-      } );
+      const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, alertManager,
+        positionDescriber, {
+          label: mass2LabelString,
+          otherObjectLabel: mass1LabelString,
+          defaultDirection: 'right',
+          arrowColor: '#F66',
+          forceArrowHeight: 175,
+          tandem: tandem.createTandem( 'mass2Node' )
+        } );
 
       const massPDOMNodeOptions = {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString
       };
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, forceDescriber, positionDescriber, massPDOMNodeOptions ) );
-      playAreaNode.addChild( new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, forceDescriber, positionDescriber, massPDOMNodeOptions ) );
+
+      const objectOneMassPDOMNode = new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, forceDescriber,
+        positionDescriber, massPDOMNodeOptions );
+      playAreaNode.addChild( objectOneMassPDOMNode );
+
+      const objectTwoMassPDOMNode = new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, forceDescriber,
+        positionDescriber, massPDOMNodeOptions );
+      playAreaNode.addChild( objectTwoMassPDOMNode );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
       Property.multilink( [
@@ -197,7 +205,9 @@ define( require => {
       massControlsNode.addChild( massControlBox );
 
       model.constantRadiusProperty.link( constantRadius => {
-        massControlsNode.descriptionContent = constantRadius ? massControlsHelpTextDensityBillionsString : massControlsHelpTextBillionsString;
+        massControlsNode.descriptionContent = constantRadius ?
+                                              massControlsHelpTextDensityBillionsString :
+                                              massControlsHelpTextBillionsString;
       } );
 
       const checkboxItems = [
