@@ -71,7 +71,7 @@ define( require => {
 
         // a11y
         pageKeyboardStep: BILLION_MULTIPLIER * 2,
-        labelContent: labelContent,
+        accessibleName: labelContent,
         a11yCreateValueChangeAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum )
       } );
       const numberPickerLabel = new Text( billionKgString, {
