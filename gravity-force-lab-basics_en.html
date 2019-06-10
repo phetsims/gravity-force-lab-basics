@@ -78,5 +78,20 @@
     loadURL( '../sherpa/lib/require-2.3.6.js', 'js/gravity-force-lab-basics-config.js' );
   } )();
 </script>
+<script>
+  window.addEventListener( 'message', event => {
+    if ( !event.data ) {
+      return;
+    }
+    console.log( 'message!!' );
+    const data = JSON.parse( event.data );
+
+    // if load is successful, create a visualization of the parallel DOM
+    if ( data.type === 'load' && event.source === window ) {
+      window.hello = phet.joist.sim.display.accessibleDOMElement.outerHTML;
+      console.log( localCopyPDOM );
+    }
+  } );
+</script>
 </body>
 </html>

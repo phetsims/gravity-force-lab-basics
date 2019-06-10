@@ -4,6 +4,7 @@ Model Notes
 This document describes the model for the Gravity Force Lab simulation. <br>
 @author Jesse Greenberg (PhET Interactive Simulations)
 @author Michael Barlow (PhET Interactive Simulations)
+@author Michael Kauzmann (PhET Interactive Simulations)
 
 The underlying model for gravitational forces between two masses depicted in this simulation is Newton's law of Gravitation.
 Please see
