@@ -244,8 +244,6 @@ define( require => {
         listener: () => {
           model.reset();
 
-          // reset the view side (mostly a11y description related)
-          positionDescriber.reset();
           mass1Node.reset();
           mass2Node.reset();
         },

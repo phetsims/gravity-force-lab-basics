@@ -51,13 +51,13 @@ define( require => {
      * @override
      * @public
      */
-    getOnChangeAriaValueTextCreator( objectEnum ) {
+    getPositionAriaValueTextCreator( objectEnum ) {
 
       // keep track of the previous value text
       let previousText = '';
 
-      const superValueTextCreator = super.getOnChangeAriaValueTextCreator( objectEnum );
-      return () => {
+      const superValueTextCreator = super.getPositionAriaValueTextCreator( objectEnum );
+      const valueTextCreator = () => {
 
 
         let newAriaValueText = superValueTextCreator();
@@ -71,6 +71,10 @@ define( require => {
         previousText = newAriaValueText;
         return newAriaValueText;
       };
+
+      // pass through the reset function call
+      valueTextCreator.reset = () => { superValueTextCreator.reset()};
+      return valueTextCreator;
     }
 
     /**
