@@ -53,7 +53,6 @@ define( require => {
   const OBJECT_TWO = ISLCObjectEnum.OBJECT_TWO;
 
   // strings
-  // const distanceUnitsPatternString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distanceUnitsPattern' );
   const constantSizeString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantSize' );
   const distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
   const forceValuesString = require( 'string!INVERSE_SQUARE_LAW_COMMON/forceValues' );
@@ -87,19 +86,21 @@ define( require => {
         addScreenSummaryNode: true
       } );
 
-      // we don't need to keep references for all of them, just need to initialize
+      // initialize a11y describers and alert manager
       const positionDescriber = new GFLBPositionDescriber( model, mass1LabelString, mass2LabelString );
       const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString, positionDescriber );
       const massDescriber = new GFLBMassDescriber( model );
       const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber, positionDescriber );
 
-      // Main
+      // The PDOM screen summary
       const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
         mainDescriptionContent: screenSummaryMainDescriptionString,
         secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
         simStateLabel: basicsSimStateLabelString,
         additionalMassDistanceProperties: [ model.showDistanceProperty ]
       } );
+
+      // Organize the top three Nodes in the a11y hierarchy
       const playAreaNode = new PlayAreaNode();
       const controlAreaNode = new ControlAreaNode();
       this.screenSummaryNode.addChild( summaryNode );
@@ -150,15 +151,6 @@ define( require => {
       playAreaNode.addChild( objectTwoMassPDOMNode );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
-      Property.multilink( [
-
-        // for some reason, linking to `model.distanceProperty` caused the same bug as in GFLB#103, so we are linking to
-        // both objects' positionProperty instead.
-        model.object1.positionProperty,
-        model.object2.positionProperty,
-        model.showDistanceProperty ], () => {
-        massPositionsNode.descriptionContent = positionDescriber.getSpherePositionsHelpText();
-      } );
 
       playAreaNode.addChild( massPositionsNode );
       massPositionsNode.addChild( mass1Node );
@@ -168,15 +160,21 @@ define( require => {
       massPositionsNode.addChild( mass1Node.arrowNode );
       massPositionsNode.addChild( mass2Node.arrowNode );
 
-      // a list of Properties to that, when changed, should trigger an update in descriptions in the MassControl
-      const propertiesToMonitorForDescriptionChanges = [ model.forceProperty, model.constantRadiusProperty ];
+      Property.multilink( [
+
+          // Linking to `model.distanceProperty` caused the same bug as in GFLB#103, so we are linking to
+          // both objects' positionProperty instead.
+          model.object1.positionProperty,
+          model.object2.positionProperty,
+          model.showDistanceProperty ],
+        () => massPositionsNode.setDescription( positionDescriber.getSpherePositionsHelpText() ) );
 
       // mass controls
       const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
-        GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, propertiesToMonitorForDescriptionChanges,
+        GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE,
         alertManager, massDescriber, tandem.createTandem( 'massControl1' ) );
       const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
-        GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, propertiesToMonitorForDescriptionChanges,
+        GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO,
         alertManager, massDescriber, tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
         } );

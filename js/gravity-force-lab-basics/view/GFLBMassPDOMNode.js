@@ -8,9 +8,15 @@ define( require => {
   'use strict';
 
   // modules
+  const GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const MassPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassPDOMNode' );
   const Property = require( 'AXON/Property' );
+  const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
+
+  // a11y strings
+  const sizePatternString = GravityForceLabA11yStrings.sizePattern.value;
+  const sizeAndDistancePatternString = GravityForceLabA11yStrings.sizeAndDistancePattern.value;
 
   class GFLBMassPDOMNode extends MassPDOMNode {
 
@@ -38,11 +44,31 @@ define( require => {
             this.model.object1.positionProperty,
             this.model.object2.positionProperty
           ], () => {
-            this.massAndPositionNode.innerContent =
-              this.nodeDescriber.getMassAndPositionSentence();
+
+            // The mass/position description in the PDOM differs between GFLB and REGULAR
+            this.massAndPositionNode.innerContent = this.getMassAndPositionSentence();
           } );
         }
       }, options ) );
+    }
+
+    /**
+     * @returns {string}
+     * @private
+     */
+    getMassAndPositionSentence() {
+      const sizeText = StringUtils.fillIn( sizePatternString, {
+        thisObjectLabel: this.massLabel,
+        massValue: this.getMassValue(),
+        unit: this.massDescriber.unit
+      } );
+
+      return StringUtils.fillIn( sizeAndDistancePatternString, {
+        size: sizeText,
+        distance: this.positionDescriber.getDistanceClause( this.objectEnum ),
+        relativeSize: this.massDescriber.getRelativeSizeOrDensity( this.objectEnum ),
+        otherObjectLabel: this.massDescriber.getOtherObjectLabelFromEnum( this.objectEnum )
+      } );
     }
   }
 

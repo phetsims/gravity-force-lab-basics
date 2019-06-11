@@ -20,6 +20,22 @@ define( require => {
   const NumberIO = require( 'TANDEM/types/NumberIO' );
   const PhysicalConstants = require( 'PHET_CORE/PhysicalConstants' );
 
+  // constants
+  const INITIAL_VALUE_1 = 2 * GFLBConstants.BILLION_MULTIPLIER;
+  const INITIAL_VALUE_2 = 4 * GFLBConstants.BILLION_MULTIPLIER;
+
+  const INITIAL_POTISION_1 = -2000;
+  const INITIAL_POTISION_2 = 2000;
+
+  const VALUE_RANGE = GFLBConstants.MASS_RANGE;
+  const DENSITY = 1.5; // kg/m^3
+
+  const MASS_OPTIONS = {
+    constantRadius: GFLBConstants.CONSTANT_RADIUS,
+    leftObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.min,
+    rightObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.max
+  };
+
   class GFLBModel extends ISLCModel {
 
     /**
@@ -27,18 +43,7 @@ define( require => {
      */
     constructor( tandem ) {
 
-      // initial masses
-      const massMultiplier = GFLBConstants.BILLION_MULTIPLIER;
-      const value1 = 2 * massMultiplier;
-      const value2 = 4 * massMultiplier;
-
-      // initial positions, in meters
-      const position1 = -2000;
-      const position2 = 2000;
-
-      const valueRange = GFLBConstants.MASS_RANGE;
-      const density = 1.5; // kg/m^3
-
+      // The Properties need to be passed to the Mass constructors, so store as local variables for now.
       const constantRadiusProperty = new BooleanProperty( false, {
         tandem: tandem.createTandem( 'constantRadiusProperty' )
       } );
@@ -48,19 +53,14 @@ define( require => {
         tandem: tandem.createTandem( 'showDistanceProperty' )
       } );
 
-      const massOptions = {
-        constantRadius: GFLBConstants.CONSTANT_RADIUS,
-        leftObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.min,
-        rightObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.max
-      };
-      const mass1 = new Mass( value1, position1, valueRange, density,
+      const mass1 = new Mass( INITIAL_VALUE_1, INITIAL_POTISION_1, VALUE_RANGE, DENSITY,
         constantRadiusProperty, new Color( '#00f' ),
-        tandem.createTandem( 'mass1' ), massOptions
+        tandem.createTandem( 'mass1' ), MASS_OPTIONS
       );
 
-      const mass2 = new Mass( value2, position2, valueRange, density,
+      const mass2 = new Mass( INITIAL_VALUE_2, INITIAL_POTISION_2, VALUE_RANGE, DENSITY,
         constantRadiusProperty, new Color( '#f00' ),
-        tandem.createTandem( 'mass2' ), massOptions
+        tandem.createTandem( 'mass2' ), MASS_OPTIONS
       );
 
       super( PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, GFLBConstants.PULL_LOCATION_RANGE, tandem, {

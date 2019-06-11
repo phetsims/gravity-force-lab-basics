@@ -37,13 +37,12 @@ define( require => {
      * @param {Range} massRange
      * @param {String} labelContent - a11y, the content of the label for the mass control
      * @param {ISLCObjectEnum} thisObjectEnum
-     * @param {Property[]} updateDescriptionProperties - Properties to monitor to keep descriptions up to date
      * @param {GFLBAlertManager} alertManager
      * @param {GFLBMassDescriber} massDescriber
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
-    constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum, updateDescriptionProperties,
+    constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum,
                  alertManager, massDescriber, tandem, options ) {
 
       options = _.extend( {

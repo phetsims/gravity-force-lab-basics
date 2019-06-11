@@ -45,11 +45,11 @@ define( require => {
     }
 
     /**
-     * We need to override this function to provide a specific edge case when the showDistanceProperty is not checked
+     * Override this function to provide a specific edge case when the showDistanceProperty is not checked
      * @param {ISLCObjectEnum} objectEnum
      * @returns {function}
      * @override
-     *
+     * @public
      */
     getOnChangeAriaValueTextCreator( objectEnum ) {
 
@@ -88,7 +88,11 @@ define( require => {
       } );
     }
 
-    // @override
+    /**
+     * @protected
+     * @param {number} distance
+     * @returns {number}
+     */
     getDistanceIndex( distance ) {
       assert && assert( distance > 0, 'Distance between spheres should always be positive.' );
 
