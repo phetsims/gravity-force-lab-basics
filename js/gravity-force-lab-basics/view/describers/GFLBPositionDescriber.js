@@ -92,6 +92,7 @@ define( require => {
      * @protected
      * @param {number} distance
      * @returns {number}
+     * @override
      */
     getDistanceIndex( distance ) {
       assert && assert( distance > 0, 'Distance between spheres should always be positive.' );
