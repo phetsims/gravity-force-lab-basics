@@ -73,7 +73,7 @@ define( require => {
       };
 
       // pass through the reset function call
-      valueTextCreator.reset = () => { superValueTextCreator.reset()};
+      valueTextCreator.reset = () => { superValueTextCreator.reset(); };
       return valueTextCreator;
     }
 
