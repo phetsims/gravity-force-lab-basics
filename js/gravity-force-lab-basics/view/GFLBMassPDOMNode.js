@@ -22,15 +22,15 @@ define( require => {
 
     /**
      * @param {GFLBModel} model
-     * @param {ISLCObjectEnum} objectEnum
+     * @param {ISLCObject} thisObject
      * @param {GFLBMassDescriber} massDescriber
      * @param {GFLBForceDescriber} forceDescriber
      * @param {GFLBPositionDescriber} positionDescriber
      * @param {Object} [options]
      */
-    constructor( model, objectEnum, massDescriber, forceDescriber, positionDescriber, options ) {
+    constructor( model, thisObject, massDescriber, forceDescriber, positionDescriber, options ) {
 
-      super( model, objectEnum, massDescriber, forceDescriber, positionDescriber, _.extend( {
+      super( model, thisObject, massDescriber, forceDescriber, positionDescriber, _.extend( {
 
         // The only difference in basics is how the mass/position bullet is updated for this Mass.
         wireUpMassAndPositionUpdates() {

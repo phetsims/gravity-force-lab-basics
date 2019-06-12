@@ -32,7 +32,6 @@ define( require => {
       const options = {
         unit: kilometerString,
         units: kilometersString,
-        centerOffset: 4800,
         convertDistanceMetric: distance => Util.toFixedNumber( distance / 1e3, 1 )
       };
 

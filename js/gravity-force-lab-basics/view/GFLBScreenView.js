@@ -142,11 +142,11 @@ define( require => {
         object2Label: mass2LabelString
       };
 
-      const objectOneMassPDOMNode = new GFLBMassPDOMNode( model, OBJECT_ONE, massDescriber, forceDescriber,
+      const objectOneMassPDOMNode = new GFLBMassPDOMNode( model, model.object1, massDescriber, forceDescriber,
         positionDescriber, massPDOMNodeOptions );
       playAreaNode.addChild( objectOneMassPDOMNode );
 
-      const objectTwoMassPDOMNode = new GFLBMassPDOMNode( model, OBJECT_TWO, massDescriber, forceDescriber,
+      const objectTwoMassPDOMNode = new GFLBMassPDOMNode( model, model.object2, massDescriber, forceDescriber,
         positionDescriber, massPDOMNodeOptions );
       playAreaNode.addChild( objectTwoMassPDOMNode );
 
