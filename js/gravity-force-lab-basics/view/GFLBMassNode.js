@@ -58,7 +58,6 @@ define( require => {
 
       // @private
       this.modelViewTransform = modelViewTransform;
-      this.model = model;
       this.objectModel = massModel;
 
       this.addInputListener( {

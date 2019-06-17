@@ -37,6 +37,9 @@ define( require => {
 
       super( model, object1Label, object2Label, options );
 
+      // private
+      this.showDistanceProperty = model.showDistanceProperty;
+
       // link GFLB property to whether or now we use quantitative distance for alerts and value text
       model.showDistanceProperty.link( showDistance => {
         this.useQuantitativeDistance = showDistance;
@@ -63,7 +66,7 @@ define( require => {
 
         // When distance isn't checked, the qualitative alerts are the same between region changes, so add a space such
         // that the AT will still read the value text each time. See https://github.com/phetsims/gravity-force-lab-basics/issues/113#issuecomment-481413715
-        if ( !this.model.showDistanceProperty.get() && previousText === newAriaValueText ) {
+        if ( !this.showDistanceProperty.get() && previousText === newAriaValueText ) {
           newAriaValueText = newAriaValueText + ' ';
         }
 

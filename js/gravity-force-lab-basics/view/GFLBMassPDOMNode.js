@@ -29,20 +29,19 @@ define( require => {
      * @param {Object} [options]
      */
     constructor( model, thisObject, massDescriber, forceDescriber, positionDescriber, options ) {
-
       super( model, thisObject, massDescriber, forceDescriber, positionDescriber, _.extend( {
 
         // The only difference in basics is how the mass/position bullet is updated for this Mass.
         wireUpMassAndPositionUpdates() {
           Property.multilink( [
-            this.model.forceProperty,
-            this.model.showDistanceProperty,
-            this.model.constantRadiusProperty,
+            model.forceProperty,
+            model.showDistanceProperty,
+            model.constantRadiusProperty,
 
             // We need to link to these in addition to the forceProperty because of a listener order of ops issue found
             // in https://github.com/phetsims/gravity-force-lab-basics/issues/103
-            this.model.object1.positionProperty,
-            this.model.object2.positionProperty
+            model.object1.positionProperty,
+            model.object2.positionProperty
           ], () => {
 
             // The mass/position description in the PDOM differs between GFLB and REGULAR
