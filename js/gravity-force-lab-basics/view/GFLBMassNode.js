@@ -23,14 +23,14 @@ define( require => {
 
     /**
      * @param {GFLBModel} model
-     * @param {Mass} massModel
+     * @param {Mass} mass
      * @param {Bounds2} layoutBounds
      * @param {ModelViewTransform2} modelViewTransform
      * @param {GFLBAlertManager} alertManager
      * @param {GFLBPositionDescriber} positionDescriber
      * @param {Object} [options]
      */
-    constructor( model, massModel, layoutBounds, modelViewTransform, alertManager, positionDescriber, options ) {
+    constructor( model, mass, layoutBounds, modelViewTransform, alertManager, positionDescriber, options ) {
 
       options = _.extend( {
         arrowLabelFill: 'black',
@@ -54,11 +54,7 @@ define( require => {
         tandem: Tandem.required
       }, options );
 
-      super( model, massModel, layoutBounds, modelViewTransform, alertManager, positionDescriber, options );
-
-      // @private
-      this.modelViewTransform = modelViewTransform;
-      this.objectModel = massModel;
+      super( model, mass, layoutBounds, modelViewTransform, alertManager, positionDescriber, options );
 
       this.addInputListener( {
         focus: () => {
