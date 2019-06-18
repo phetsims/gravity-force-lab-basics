@@ -11,15 +11,14 @@ define( require => {
   // modules
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const ISLCObjectNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectNode' );
+  const MassNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassNode' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  const RadialGradient = require( 'SCENERY/util/RadialGradient' );
   const Tandem = require( 'TANDEM/Tandem' );
 
   // constants
   const MASS_NODE_Y_POSITION = 215;
 
-  class GFLBMassNode extends ISLCObjectNode {
+  class GFLBMassNode extends MassNode {
 
     /**
      * @param {GFLBModel} model
@@ -49,9 +48,13 @@ define( require => {
         snapToNearest: model.snapObjectsToNearest,
         stepSize: GFLBConstants.MASS_STEP_SIZE,
 
-        // recompute the PDOM descriptions when show distance is toggled
-        additionalA11yDependencies: [ model.showDistanceProperty ],
-        tandem: Tandem.required
+        finishWiringListeners: _.noop,
+
+        // phet-io
+        tandem: Tandem.required,
+
+        // a11y recompute the PDOM descriptions when show distance is toggled
+        additionalA11yDependencies: [ model.showDistanceProperty ]
       }, options );
 
       super( model, mass, layoutBounds, modelViewTransform, alertManager, positionDescriber, options );
@@ -61,19 +64,6 @@ define( require => {
           positionDescriber.lastMoveCloser = null;
         }
       } );
-    }
-
-    /**
-     * Redraws the white gradient on the mass objects with their radius.
-     *
-     * @param baseColor
-     */
-    updateGradient( baseColor ) {
-      const radius = this.modelViewTransform.modelToViewDeltaX( this.objectModel.radiusProperty.get() );
-      this.objectCircle.fill = new RadialGradient(
-        -radius * 0.6, -radius * 0.6, 1, -radius * 0.6, -radius * 0.6, radius )
-        .addColorStop( 0, baseColor.colorUtilsBrighter( 0.5 ).toCSS() )
-        .addColorStop( 1, baseColor.toCSS() );
     }
   }
 
