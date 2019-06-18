@@ -59,6 +59,13 @@ define( require => {
       value: 'arrows'
     },
 
+    massControlsHelpTextBillions: {
+      value: 'Change mass of spheres in billions of kilograms.'
+    },
+    massControlsHelpTextDensityBillions: {
+      value: 'Change density of spheres in billions of kilograms per unit volume.'
+    },
+
     /////////////////////////////////////////////
     // Sphere positions
     /////////////////////////////////////////////
