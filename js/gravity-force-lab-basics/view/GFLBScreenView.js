@@ -90,7 +90,7 @@ define( require => {
       const positionDescriber = new GFLBPositionDescriber( model, mass1LabelString, mass2LabelString );
       const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString, positionDescriber );
       const massDescriber = new GFLBMassDescriber( model );
-      const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber, positionDescriber );
+      const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber );
 
       // The PDOM screen summary
       const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
