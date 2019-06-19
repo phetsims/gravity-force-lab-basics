@@ -142,17 +142,14 @@ define( require => {
         object2Label: mass2LabelString
       };
 
+      // PDOM representations of each Mass
       const objectOneMassPDOMNode = new GFLBMassPDOMNode( model, model.object1, massDescriber, forceDescriber,
         positionDescriber, massPDOMNodeOptions );
-      playAreaNode.addChild( objectOneMassPDOMNode );
-
       const objectTwoMassPDOMNode = new GFLBMassPDOMNode( model, model.object2, massDescriber, forceDescriber,
         positionDescriber, massPDOMNodeOptions );
-      playAreaNode.addChild( objectTwoMassPDOMNode );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
 
-      playAreaNode.addChild( massPositionsNode );
       massPositionsNode.addChild( mass1Node );
       massPositionsNode.addChild( mass2Node );
 
@@ -185,7 +182,6 @@ define( require => {
         tagName: 'div',
         descriptionContent: massControlsHelpTextBillionsString
       } );
-      playAreaNode.addChild( massControlsNode );
 
       // The list of mass controls is aria-labelledby the its label sibling, see https://github.com/phetsims/gravity-force-lab/issues/132
       massControlsNode.addAriaLabelledbyAssociation( {
@@ -229,7 +225,6 @@ define( require => {
         tandem: tandem.createTandem( 'parameterControlPanel' ),
         fill: '#f1f1f2'
       } );
-      controlAreaNode.addChild( parameterControlPanel );
 
       // arrow that shows distance between the two masses
       const distanceArrowNode = new DistanceArrowNode( model, modelViewTransform, {
@@ -251,7 +246,19 @@ define( require => {
         bottom: this.layoutBounds.maxY - 10,
         tandem: tandem.createTandem( 'resetAllButton' )
       } );
-      controlAreaNode.addChild( resetAllButton );
+
+      // children
+      playAreaNode.children = [
+        objectOneMassPDOMNode,
+        objectTwoMassPDOMNode,
+        massPositionsNode,
+        massControlsNode
+      ];
+
+      controlAreaNode.children = [
+        parameterControlPanel,
+        resetAllButton
+      ];
 
       // layout the view elements
       parameterControlPanel.right = this.layoutBounds.width - 15;

@@ -58,12 +58,6 @@ define( require => {
       }, options );
 
       super( model, mass, layoutBounds, modelViewTransform, alertManager, positionDescriber, options );
-
-      this.addInputListener( {
-        focus: () => {
-          positionDescriber.lastMoveCloser = null;
-        }
-      } );
     }
   }
 
