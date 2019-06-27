@@ -367,7 +367,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.general.navigationBar.a11yButtonsHBox.keyboardHelpButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -972,7 +972,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.constantRadiusCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -1203,7 +1203,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -1335,7 +1335,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.forceValuesCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -2490,7 +2490,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.massControl1.numberPicker.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -2710,7 +2710,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.massControl2.numberPicker.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -2919,7 +2919,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.resetAllButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
