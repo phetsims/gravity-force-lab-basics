@@ -17,6 +17,9 @@ define( require => {
 
   class GFLBMassDescriber extends MassDescriber {
 
+    /**
+     * @param {GFLBModel} model
+     */
     constructor( model ) {
 
       const options = {
