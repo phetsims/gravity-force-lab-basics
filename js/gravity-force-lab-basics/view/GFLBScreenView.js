@@ -172,10 +172,10 @@ define( require => {
       // mass controls
       const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
         GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE,
-        alertManager, massDescriber, tandem.createTandem( 'massControl1' ) );
+        massDescriber, tandem.createTandem( 'massControl1' ) );
       const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
         GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO,
-        alertManager, massDescriber, tandem.createTandem( 'massControl2' ), {
+        massDescriber, tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
         } );
 

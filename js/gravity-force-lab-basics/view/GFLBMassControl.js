@@ -37,13 +37,12 @@ define( require => {
      * @param {Range} massRange
      * @param {String} labelContent - a11y, the content of the label for the mass control
      * @param {ISLCObjectEnum} thisObjectEnum
-     * @param {GFLBAlertManager} alertManager
      * @param {GFLBMassDescriber} massDescriber
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
     constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum,
-                 alertManager, massDescriber, tandem, options ) {
+                 massDescriber, tandem, options ) {
 
       options = _.extend( {
         color: new Color( 0, 0, 255 )
