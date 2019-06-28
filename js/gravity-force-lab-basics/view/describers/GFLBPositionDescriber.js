@@ -41,6 +41,7 @@ define( require => {
       this.showDistanceProperty = model.showDistanceProperty;
 
       // link GFLB property to whether or now we use quantitative distance for alerts and value text
+      // the GFLBPositionDescriber persists for life of sim and does not require disposal
       model.showDistanceProperty.link( showDistance => {
         this.useQuantitativeDistance = showDistance;
       } );

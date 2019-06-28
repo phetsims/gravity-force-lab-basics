@@ -55,6 +55,7 @@ define( require => {
       } );
       this.addChild( labelText );
 
+      // DistanceArrowNode exists for life of sim and does not need disposal
       Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],
         ( position1, position2 ) => {
 
