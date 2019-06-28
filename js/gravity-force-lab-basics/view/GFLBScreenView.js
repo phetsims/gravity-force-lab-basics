@@ -118,6 +118,7 @@ define( require => {
 
       // add the mass nodes to the view
       const mass1Node = new GFLBMassNode( model, model.object1, this.layoutBounds, modelViewTransform, alertManager,
+        forceDescriber,
         positionDescriber, {
           label: mass1LabelString,
           otherObjectLabel: mass2LabelString,
@@ -128,6 +129,7 @@ define( require => {
         } );
 
       const mass2Node = new GFLBMassNode( model, model.object2, this.layoutBounds, modelViewTransform, alertManager,
+        forceDescriber,
         positionDescriber, {
           label: mass2LabelString,
           otherObjectLabel: mass1LabelString,

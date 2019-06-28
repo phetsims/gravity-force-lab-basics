@@ -26,10 +26,11 @@ define( require => {
      * @param {Bounds2} layoutBounds
      * @param {ModelViewTransform2} modelViewTransform
      * @param {GFLBAlertManager} alertManager
+     * @param {GFLBForceDescriber} forceDescriber
      * @param {GFLBPositionDescriber} positionDescriber
      * @param {Object} [options]
      */
-    constructor( model, mass, layoutBounds, modelViewTransform, alertManager, positionDescriber, options ) {
+    constructor( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options ) {
 
       options = _.extend( {
         arrowLabelFill: 'black',
@@ -57,7 +58,7 @@ define( require => {
         additionalA11yDependencies: [ model.showDistanceProperty ]
       }, options );
 
-      super( model, mass, layoutBounds, modelViewTransform, alertManager, positionDescriber, options );
+      super( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options );
     }
   }
 
