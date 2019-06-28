@@ -34,7 +34,7 @@ gravity-force-lab as "REGULAR".
 
 ## View
 
-The user will mainly be interacting with the ruler, the mass objects, and their control panel. The mass objects have 
+The user will mainly be interacting with the mass objects and their control panels. The mass objects have
 a minimum separation that is always maintained. When dragging one mass, the other's position will never change. Finally, 
 the arrows are added to the screenviews as siblings of the mass nodes themselves. This ensures that both arrows appear 
 in the top layer of the scene graph.
