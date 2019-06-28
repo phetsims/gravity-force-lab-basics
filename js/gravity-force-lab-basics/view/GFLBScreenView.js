@@ -144,7 +144,8 @@ define( require => {
         object2Label: mass2LabelString
       };
 
-      // PDOM representations of each Mass
+      // PDOM descriptions for each mass - the masses themselves leverage AccessibleValueHandler, but these
+      // form descriptive summaries for the state of each mass
       const objectOneMassPDOMNode = new GFLBMassPDOMNode( model, model.object1, massDescriber, forceDescriber,
         positionDescriber, massPDOMNodeOptions );
       const objectTwoMassPDOMNode = new GFLBMassPDOMNode( model, model.object2, massDescriber, forceDescriber,
