@@ -208,7 +208,7 @@ define( require => {
       } );
 
       const checkboxItems = [
-        new ISLCCheckboxItem( forceValuesString, model.forceValuesProperty, {
+        new ISLCCheckboxItem( forceValuesString, model.showForceValuesProperty, {
           accessibleName: 'Force Values',
           descriptionContent: forceValuesCheckboxHelpTextString,
           tandem: tandem.createTandem( 'forceValuesCheckbox' )

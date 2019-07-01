@@ -826,17 +826,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "DerivedPropertyIO.<NumberIO>"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.model.forceValuesProperty": {
-      "phetioDocumentation": "",
-      "phetioEventType": "model",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO.<BooleanIO>"
-    },
     "gravityForceLabBasics.gravityForceLabBasicsScreen.model.mass1.baseColorProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -948,6 +937,17 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "NumberPropertyIO"
     },
     "gravityForceLabBasics.gravityForceLabBasicsScreen.model.showDistanceProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.model.showForceValuesProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
       "phetioFeatured": false,
