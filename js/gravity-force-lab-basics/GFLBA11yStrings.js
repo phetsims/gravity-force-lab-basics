@@ -5,7 +5,6 @@
  * some work to provide translators with context for these strings, and we want to receive some community feedback
  * before these strings are submitted for translation.
  */
-
 define( require => {
   'use strict';
 

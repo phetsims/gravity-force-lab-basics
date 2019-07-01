@@ -1,5 +1,8 @@
 // Copyright 2019, University of Colorado Boulder
 
+/**
+ * This describer is responsible for all gravity-force-lab-basics specific string forming related to force.
+ */
 define( require => {
   'use strict';
 
