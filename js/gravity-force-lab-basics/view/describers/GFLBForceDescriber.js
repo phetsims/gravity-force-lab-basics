@@ -45,6 +45,7 @@ define( require => {
     }
 
     /**
+     * These empirically determined values were designed, see https://docs.google.com/document/d/1HdDG9ds2MdbCb21l9qk3cI8yBQxK6-wBWNXC4Tloji8/edit#heading=h.gnyv76vd5fvr
      * @param {number} force in newtons
      * @param {number} numberOfRegions - for crosscheck
      * @returns {number}
