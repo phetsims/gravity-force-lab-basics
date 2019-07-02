@@ -12,6 +12,7 @@ define( require => {
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const MassNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassNode' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Tandem = require( 'TANDEM/Tandem' );
 
@@ -32,15 +33,17 @@ define( require => {
      */
     constructor( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options ) {
 
-      options = _.extend( {
-        arrowLabelFill: 'black',
+      options = merge( {
         labelFill: '#F3F3F3',
         labelFont: new PhetFont( 25 ),
         labelMaxWidth: 35,
-        forceReadoutDecimalPlaces: 1,
-        arrowFill: 'black',
+        arrowNodeOptions: {
+          forceReadoutDecimalPlaces: 1,
+          arrowFill: 'black',
+          arrowLabelFill: 'black',
+          maxArrowWidth: 100
+        },
         arrowTailWidth: 2,
-        maxArrowWidth: 100,
         labelShadowOffsetX: 0.9,
         labelShadowOffsetY: 0.9,
         y: MASS_NODE_Y_POSITION,
