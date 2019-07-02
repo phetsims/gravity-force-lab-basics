@@ -950,7 +950,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.model.showForceValuesProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -1423,7 +1423,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.forceValuesCheckbox.property": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": true,
