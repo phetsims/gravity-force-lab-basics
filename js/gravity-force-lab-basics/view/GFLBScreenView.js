@@ -14,12 +14,13 @@ define( require => {
   const Bounds2 = require( 'DOT/Bounds2' );
   const Color = require( 'SCENERY/util/Color' );
   const ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
-  const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
+  const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const GFLBForceDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBForceDescriber' );
+  const GFLBMassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassControl' );
   const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
   const GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
   const GFLBMassPDOMNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassPDOMNode' );
@@ -29,13 +30,11 @@ define( require => {
   const GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
-  const ISLCCheckboxItem = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxItem' );
   const ISLCCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxPanel' );
   const ISLCDragBoundsNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCDragBoundsNode' );
   const ISLCGridNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCGridNode' );
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
   const ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
-  const GFLBMassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassControl' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
@@ -209,21 +208,30 @@ define( require => {
       } );
 
       const checkboxItems = [
-        new ISLCCheckboxItem( forceValuesString, model.showForceValuesProperty, {
-          accessibleName: 'Force Values',
-          descriptionContent: forceValuesCheckboxHelpTextString,
-          tandem: tandem.createTandem( 'forceValuesCheckbox' )
-        } ),
-        new ISLCCheckboxItem( distanceString, model.showDistanceProperty, {
-          accessibleName: 'Distance',
-          descriptionContent: distanceCheckboxHelpTextString,
-          tandem: tandem.createTandem( 'distanceCheckbox' )
-        } ),
-        new ISLCCheckboxItem( constantSizeString, model.constantRadiusProperty, {
-          accessibleName: 'Constant Size',
-          descriptionContent: constantSizeCheckboxHelpTextString,
-          tandem: tandem.createTandem( 'constantRadiusCheckbox' )
-        } )
+        {
+          label: forceValuesString, property: model.showForceValuesProperty,
+          tandem: tandem.createTandem( 'forceValuesCheckbox' ),
+          options: {
+            accessibleName: 'Force Values',
+            descriptionContent: forceValuesCheckboxHelpTextString
+          }
+        },
+        {
+          label: distanceString, property: model.showDistanceProperty,
+          tandem: tandem.createTandem( 'distanceCheckbox' ),
+          options: {
+            accessibleName: 'Distance',
+            descriptionContent: distanceCheckboxHelpTextString
+          }
+        },
+        {
+          label: constantSizeString, property: model.constantRadiusProperty,
+          tandem: tandem.createTandem( 'constantRadiusCheckbox' ),
+          options: {
+            accessibleName: 'Constant Size',
+            descriptionContent: constantSizeCheckboxHelpTextString
+          }
+        }
       ];
       const parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, {
         tandem: tandem.createTandem( 'parameterControlPanel' ),
