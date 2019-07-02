@@ -37,7 +37,7 @@ define( require => {
       const options = {
         unit: kilometerString,
         units: kilometersString,
-        convertDistanceMetric: distance => Util.toFixedNumber( distance / 1e3, 1 )
+        formatDisplayDistance: distance => Util.toFixedNumber( distance / 1e3, 1 )
       };
 
       super( model, object1Label, object2Label, options );
