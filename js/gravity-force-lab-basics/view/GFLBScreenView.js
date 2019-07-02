@@ -212,7 +212,7 @@ define( require => {
           label: forceValuesString, property: model.showForceValuesProperty,
           tandem: tandem.createTandem( 'forceValuesCheckbox' ),
           options: {
-            accessibleName: 'Force Values',
+            accessibleName: forceValuesString,
             descriptionContent: forceValuesCheckboxHelpTextString
           }
         },
@@ -220,7 +220,7 @@ define( require => {
           label: distanceString, property: model.showDistanceProperty,
           tandem: tandem.createTandem( 'distanceCheckbox' ),
           options: {
-            accessibleName: 'Distance',
+            accessibleName: distanceString,
             descriptionContent: distanceCheckboxHelpTextString
           }
         },
@@ -228,7 +228,7 @@ define( require => {
           label: constantSizeString, property: model.constantRadiusProperty,
           tandem: tandem.createTandem( 'constantRadiusCheckbox' ),
           options: {
-            accessibleName: 'Constant Size',
+            accessibleName: constantSizeString,
             descriptionContent: constantSizeCheckboxHelpTextString
           }
         }
