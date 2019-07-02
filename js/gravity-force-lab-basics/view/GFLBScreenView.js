@@ -15,6 +15,7 @@ define( require => {
   const Color = require( 'SCENERY/util/Color' );
   const ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
+  const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
@@ -122,7 +123,7 @@ define( require => {
         positionDescriber, {
           label: mass1LabelString,
           otherObjectLabel: mass2LabelString,
-          defaultDirection: 'left',
+          defaultDirection: DefaultDirection.LEFT,
           arrowColor: '#66F',
           forceArrowHeight: 125,
           tandem: tandem.createTandem( 'mass1Node' )
@@ -133,7 +134,7 @@ define( require => {
         positionDescriber, {
           label: mass2LabelString,
           otherObjectLabel: mass1LabelString,
-          defaultDirection: 'right',
+          defaultDirection: DefaultDirection.RIGHT,
           arrowColor: '#F66',
           forceArrowHeight: 175,
           tandem: tandem.createTandem( 'mass2Node' )
