@@ -33,7 +33,7 @@ define( require => {
     credits: {
       leadDesign: 'Amy Rouinfar',
       softwareDevelopment: 'Michael Barlow, Jesse Greenberg, John Blanco, Michael Kauzmann',
-      team: 'Ariel Paul, Kathy Perkins, Emily Moore, Taliesin Smith',
+      team: 'Ariel Paul, Kathy Perkins, Emily B. Moore, Taliesin Smith',
       qualityAssurance: 'Steele Dalton, Megan Lai, Liam Mulhall, Laura Rea, Jacob Romero, and Kathryn Woessner',
       graphicArts: 'Mariah Hermsmeyer',
       soundDesign: 'Ashton Morris',
