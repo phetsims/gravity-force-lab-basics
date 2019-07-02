@@ -9,10 +9,10 @@ define( require => {
   'use strict';
 
   // modules
+  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const GFLBModel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/model/GFLBModel' );
   const GFLBScreenView = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBScreenView' );
   const GravityForceLabKeyboardHelpContent = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabKeyboardHelpContent' );
-  const Property = require( 'AXON/Property' );
   const Screen = require( 'JOIST/Screen' );
   const Sim = require( 'JOIST/Sim' );
   const SimLauncher = require( 'JOIST/SimLauncher' );
@@ -52,7 +52,7 @@ define( require => {
         () => new GFLBModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) ),
         model => new GFLBScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) ),
         {
-          backgroundColorProperty: new Property( '#ffffc2' ),
+          backgroundColorProperty: GFLBConstants.BACKGROUND_COLOR_PROPERTY,
           tandem: gravityForceLabBasicsScreenTandem
         }
       )

@@ -41,7 +41,8 @@ define( require => {
           forceReadoutDecimalPlaces: 1,
           arrowFill: 'black',
           arrowLabelFill: 'black',
-          maxArrowWidth: 100
+          maxArrowWidth: 100,
+          backgroundFill: GFLBConstants.BACKGROUND_COLOR_PROPERTY
         },
         arrowTailWidth: 2,
         labelShadowOffsetX: 0.9,

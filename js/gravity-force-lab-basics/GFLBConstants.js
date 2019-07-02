@@ -10,6 +10,7 @@ define( require => {
 
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
 
   // constants
@@ -19,6 +20,7 @@ define( require => {
   const MAX_DISTANCE_FROM_CENTER = 4800; // meters, empirically determined boundary for masses
 
   const GFLBConstants = {
+    BACKGROUND_COLOR_PROPERTY: new Property( '#ffffc2' ),
     BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
     MASS_RANGE: new Range( MIN_MASS, MAX_MASS ),
     CONSTANT_RADIUS: 500, // meters
