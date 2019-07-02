@@ -53,39 +53,6 @@ define( require => {
     }
 
     /**
-     * Override this function to provide a specific edge case when the showDistanceProperty is not checked
-     * @param {ISLCObjectEnum} objectEnum
-     * @returns {function}
-     * @override
-     * @public
-     */
-    getPositionAriaValueTextCreator( objectEnum ) {
-
-      // keep track of the previous value text
-      let previousText = '';
-
-      const superValueTextCreator = super.getPositionAriaValueTextCreator( objectEnum );
-      const valueTextCreator = () => {
-
-
-        let newAriaValueText = superValueTextCreator();
-
-        // When distance isn't checked, the qualitative alerts are the same between region changes, so add a space such
-        // that the AT will still read the value text each time. See https://github.com/phetsims/gravity-force-lab-basics/issues/113#issuecomment-481413715
-        if ( !this.showDistanceProperty.get() && previousText === newAriaValueText ) {
-          newAriaValueText = newAriaValueText + ' ';
-        }
-
-        previousText = newAriaValueText;
-        return newAriaValueText;
-      };
-
-      // pass through the reset function call
-      valueTextCreator.reset = () => { superValueTextCreator.reset(); };
-      return valueTextCreator;
-    }
-
-    /**
      * @public
      * @returns {string} - the help text for the sphere positions heading/container node
      */
