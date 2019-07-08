@@ -53,7 +53,7 @@ define( require => {
   const OBJECT_TWO = ISLCObjectEnum.OBJECT_TWO;
 
   // strings
-  const constantSizeString = require( 'string!INVERSE_SQUARE_LAW_COMMON/constantSize' );
+  const constantSizeString = require( 'string!GRAVITY_FORCE_LAB/constantSize' );
   const distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
   const forceValuesString = require( 'string!INVERSE_SQUARE_LAW_COMMON/forceValues' );
   const mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
