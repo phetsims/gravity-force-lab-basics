@@ -57,9 +57,9 @@ define( require => {
   const distanceString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distance' );
   const forceValuesString = require( 'string!INVERSE_SQUARE_LAW_COMMON/forceValues' );
   const mass1LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1Label' );
-  const mass1String = require( 'string!INVERSE_SQUARE_LAW_COMMON/mass1' );
+  const mass1String = require( 'string!GRAVITY_FORCE_LAB/mass1' );
   const mass2LabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass2Label' );
-  const mass2String = require( 'string!INVERSE_SQUARE_LAW_COMMON/mass2' );
+  const mass2String = require( 'string!GRAVITY_FORCE_LAB/mass2' );
 
   // a11y strings
   const mass1ControlLabelString = require( 'string!GRAVITY_FORCE_LAB_BASICS/mass1ControlLabel' );
