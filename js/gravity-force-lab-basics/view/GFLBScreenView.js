@@ -12,6 +12,7 @@ define( require => {
   // modules
   const AccessiblePeer = require( 'SCENERY/accessibility/AccessiblePeer' );
   const Bounds2 = require( 'DOT/Bounds2' );
+  const CheckboxSoundGenerator = require( 'TAMBO/sound-generators/CheckboxSoundGenerator' );
   const Color = require( 'SCENERY/util/Color' );
   const ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
@@ -35,6 +36,7 @@ define( require => {
   const ISLCGridNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCGridNode' );
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
   const ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
+  const MassSoundGenerator = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassSoundGenerator' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
@@ -209,6 +211,16 @@ define( require => {
                                               massControlsHelpTextBillionsString;
       } );
 
+      // sound generation for the mass values
+      soundManager.addSoundGenerator( new MassSoundGenerator(
+        model.object1.valueProperty,
+        model.resetInProgressProperty )
+      );
+      soundManager.addSoundGenerator( new MassSoundGenerator(
+        model.object2.valueProperty,
+        model.resetInProgressProperty )
+      );
+
       const checkboxItems = [
         {
           label: forceValuesString, property: model.showForceValuesProperty,
@@ -238,6 +250,14 @@ define( require => {
       const parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, {
         tandem: tandem.createTandem( 'parameterControlPanel' ),
         fill: '#f1f1f2'
+      } );
+
+      // sound generation for check box items
+      checkboxItems.forEach( checkboxItem => {
+        soundManager.addSoundGenerator( new CheckboxSoundGenerator(
+          checkboxItem.property,
+          model.resetInProgressProperty
+        ) );
       } );
 
       // arrow that shows distance between the two masses
