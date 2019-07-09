@@ -40,7 +40,9 @@ define( require => {
   const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
   const Property = require( 'AXON/Property' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
+  const ResetAllSoundGenerator = require( 'TAMBO/sound-generators/ResetAllSoundGenerator' );
   const ScreenView = require( 'JOIST/ScreenView' );
+  const soundManager = require( 'TAMBO/soundManager' );
   const SpherePositionsPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsPDOMNode' );
   const Vector2 = require( 'DOT/Vector2' );
 
@@ -258,6 +260,10 @@ define( require => {
         bottom: this.layoutBounds.maxY - 10,
         tandem: tandem.createTandem( 'resetAllButton' )
       } );
+
+      soundManager.addSoundGenerator( new ResetAllSoundGenerator( model.resetInProgressProperty, {
+        initialOutputLevel: 0.7
+      } ) );
 
       // children
       playAreaNode.children = [

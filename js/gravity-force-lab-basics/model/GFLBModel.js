@@ -81,6 +81,11 @@ define( require => {
           tandem: tandem.createTandem( 'distanceProperty' )
         }
       );
+
+      // @public (read-only) - true when a reset is in progress
+      this.resetInProgressProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'resetInProgressProperty' )
+      } );
     }
 
     /**
@@ -88,9 +93,11 @@ define( require => {
      * @public
      */
     reset() {
+      this.resetInProgressProperty.set( true );
       this.constantRadiusProperty.reset();
       this.showDistanceProperty.reset();
       super.reset();
+      this.resetInProgressProperty.set( false );
     }
   }
 

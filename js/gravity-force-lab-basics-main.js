@@ -40,7 +40,8 @@ define( require => {
       thanks: ''
     },
     keyboardHelpNode: keyboardHelpContent,
-    accessibility: true
+    accessibility: true,
+    supportsSound: true
   };
 
   SimLauncher.launch( () => {
