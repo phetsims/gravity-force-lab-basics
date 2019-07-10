@@ -226,9 +226,9 @@ define( require => {
       ) );
       soundManager.addSoundGenerator( new MassSoundGenerator(
         model.object2.valueProperty,
-        model.resetInProgressProperty ),
+        model.resetInProgressProperty,
         { initialOutputLevel: 0.5 }
-      );
+      ) );
 
       // @private - sound generation for the force sound
       this.forceSoundGenerator = new ForceSoundGenerator(
