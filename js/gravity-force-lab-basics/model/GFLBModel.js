@@ -65,7 +65,7 @@ define( require => {
 
       super( PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, GFLBConstants.PULL_LOCATION_RANGE, tandem, {
         snapObjectsToNearest: GFLBConstants.MASS_POSITION_DELTA,
-        minSeparationBetweenObjects: 200 // in meters
+        minSeparationBetweenObjects: GFLBConstants.MIN_DISTANCE_BETWEEN_MASSES
       } );
 
       // @public

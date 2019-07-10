@@ -17,6 +17,7 @@ define( require => {
   const ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
   const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
+  const ForceSoundGenerator = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/ForceSoundGenerator' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
@@ -221,6 +222,14 @@ define( require => {
         model.resetInProgressProperty )
       );
 
+      // @private - sound generation for the force sound
+      this.forceSoundGenerator = new ForceSoundGenerator(
+        model.forceProperty,
+        model.resetInProgressProperty,
+        { initialOutputLevel: 0.15 }
+      );
+      soundManager.addSoundGenerator( this.forceSoundGenerator );
+
       const checkboxItems = [
         {
           label: forceValuesString, property: model.showForceValuesProperty,
@@ -272,9 +281,9 @@ define( require => {
       const resetAllButton = new ResetAllButton( {
         listener: () => {
           model.reset();
-
           mass1Node.reset();
           mass2Node.reset();
+          this.forceSoundGenerator.reset();
         },
         right: this.layoutBounds.maxX - 10,
         bottom: this.layoutBounds.maxY - 10,
@@ -325,6 +334,15 @@ define( require => {
         );
         this.addChild( gridNode );
       }
+    }
+
+    /**
+     * step the view
+     * @param {number} dt
+     * @public
+     */
+    step( dt ) {
+      this.forceSoundGenerator.step( dt );
     }
   }
 
