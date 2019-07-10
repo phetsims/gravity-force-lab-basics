@@ -45,8 +45,10 @@ define( require => {
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   const ResetAllSoundGenerator = require( 'TAMBO/sound-generators/ResetAllSoundGenerator' );
   const ScreenView = require( 'JOIST/ScreenView' );
+  const SoundClip = require( 'TAMBO/sound-generators/SoundClip' );
   const soundManager = require( 'TAMBO/soundManager' );
   const SpherePositionsPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsPDOMNode' );
+  const Util = require( 'DOT/Util' );
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -78,6 +80,10 @@ define( require => {
   const screenSummaryMainDescriptionString = GFLBA11yStrings.screenSummaryMainDescription.value;
   const screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySecondaryDescription.value;
   const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
+
+  // sounds
+  const innerBoundarySound = require( 'sound!GRAVITY_FORCE_LAB_BASICS/scrunched-mass-collision-sonic-womp.mp3' );
+  const outerBoundarySound = require( 'sound!TAMBO/boundary-reached.mp3' );
 
   class GFLBScreenView extends ScreenView {
 
@@ -229,6 +235,39 @@ define( require => {
         { initialOutputLevel: 0.15 }
       );
       soundManager.addSoundGenerator( this.forceSoundGenerator );
+
+      // sound generation for outer mass dragging limit
+      const outerBoundarySoundClip = new SoundClip( outerBoundarySound, { initialOutputLevel: 0.5 } );
+      soundManager.addSoundGenerator( outerBoundarySoundClip );
+      model.object1.positionProperty.link( position => {
+        if ( position === GFLBConstants.PULL_LOCATION_RANGE.min ) {
+          outerBoundarySoundClip.play();
+        }
+      } );
+      model.object2.positionProperty.link( position => {
+        if ( position === GFLBConstants.PULL_LOCATION_RANGE.max ) {
+          outerBoundarySoundClip.play();
+        }
+      } );
+
+      // sound generation for masses (almost) colliding with one another
+      const innerBoundarySoundClip = new SoundClip( innerBoundarySound, { initialOutputLevel: 0.5 } );
+      soundManager.addSoundGenerator( innerBoundarySoundClip );
+      model.distanceProperty.lazyLink( ( distance, previousDistance ) => {
+        if ( distance < previousDistance ) {
+
+          const distanceInMeters = distance * 1000;
+
+          // the distance value from the ISLC model is rounded to 100s of meters, so we do the same thing here
+          const minDistance = model.object1.radiusProperty.value + model.object2.radiusProperty.value +
+                              GFLBConstants.MIN_DISTANCE_BETWEEN_MASSES;
+          const roundedMinDistance = Util.roundToInterval( minDistance, 100 );
+          if ( distanceInMeters === roundedMinDistance ) {
+            console.log( 'play inner collision sound' );
+            innerBoundarySoundClip.play();
+          }
+        }
+      } );
 
       const checkboxItems = [
         {
