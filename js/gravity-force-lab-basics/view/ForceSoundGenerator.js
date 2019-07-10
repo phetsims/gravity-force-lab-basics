@@ -22,7 +22,7 @@ define( require => {
                     Math.pow( GFLBConstants.MASS_RANGE.max, 2 ) /
                     Math.pow( GFLBConstants.CONSTANT_RADIUS * 2 + GFLBConstants.MIN_DISTANCE_BETWEEN_MASSES, 2 );
   const FADE_START_DELAY = 0.2; // in seconds
-  const FADE_TIME = 0.5; // proportion per second
+  const FADE_TIME = 0.15; // in seconds
   const PITCH_RANGE_IN_SEMI_TONES = 36;
   const PITCH_CENTER_OFFSET = 2;
 
