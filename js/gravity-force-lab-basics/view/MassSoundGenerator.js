@@ -45,7 +45,7 @@ define( require => {
           this.play();
         }
       };
-      massProperty.link( massListener );
+      massProperty.lazyLink( massListener );
 
       // @private {function}
       this.disposeMassSoundGenerator = () => { massProperty.unlink( massListener ); };
