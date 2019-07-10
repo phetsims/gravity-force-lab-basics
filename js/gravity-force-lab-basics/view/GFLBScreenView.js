@@ -221,11 +221,13 @@ define( require => {
       // sound generation for the mass values
       soundManager.addSoundGenerator( new MassSoundGenerator(
         model.object1.valueProperty,
-        model.resetInProgressProperty )
-      );
+        model.resetInProgressProperty,
+        { initialOutputLevel: 0.5 }
+      ) );
       soundManager.addSoundGenerator( new MassSoundGenerator(
         model.object2.valueProperty,
-        model.resetInProgressProperty )
+        model.resetInProgressProperty ),
+        { initialOutputLevel: 0.5 }
       );
 
       // @private - sound generation for the force sound
@@ -251,7 +253,7 @@ define( require => {
       } );
 
       // sound generation for masses (almost) colliding with one another
-      const innerBoundarySoundClip = new SoundClip( innerBoundarySound, { initialOutputLevel: 0.5 } );
+      const innerBoundarySoundClip = new SoundClip( innerBoundarySound, { initialOutputLevel: 0.25 } );
       soundManager.addSoundGenerator( innerBoundarySoundClip );
       model.distanceProperty.lazyLink( ( distance, previousDistance ) => {
         if ( distance < previousDistance ) {
