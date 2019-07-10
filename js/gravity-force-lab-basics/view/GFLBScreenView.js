@@ -263,7 +263,6 @@ define( require => {
                               GFLBConstants.MIN_DISTANCE_BETWEEN_MASSES;
           const roundedMinDistance = Util.roundToInterval( minDistance, 100 );
           if ( distanceInMeters === roundedMinDistance ) {
-            console.log( 'play inner collision sound' );
             innerBoundarySoundClip.play();
           }
         }
