@@ -40,7 +40,7 @@ define( require => {
     constructor( forceProperty, resetInProgressProperty, options ) {
 
       // parameter checking
-      assert( !options || !options.loop || options.loop === true, 'must be a loop to work correctly' );
+      assert && assert( !options || !options.loop || options.loop === true, 'must be a loop to work correctly' );
 
       options = _.extend( {
         initialOutputLevel: 0.7,
