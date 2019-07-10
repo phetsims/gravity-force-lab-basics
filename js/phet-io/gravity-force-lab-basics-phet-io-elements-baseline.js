@@ -936,6 +936,17 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.model.resetInProgressProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
     "gravityForceLabBasics.gravityForceLabBasicsScreen.model.showDistanceProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
