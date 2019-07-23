@@ -232,8 +232,7 @@ define( require => {
 
       // @private - sound generation for the force sound
       this.forceSoundGenerator = new ForceSoundGenerator(
-        model.forceProperty,
-        model.resetInProgressProperty,
+        model,
         { initialOutputLevel: 0.15 }
       );
       soundManager.addSoundGenerator( this.forceSoundGenerator );

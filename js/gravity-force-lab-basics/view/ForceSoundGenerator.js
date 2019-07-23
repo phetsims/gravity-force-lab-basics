@@ -11,16 +11,8 @@ define( require => {
   // modules
   const SoundClip = require( 'TAMBO/sound-generators/SoundClip' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
-  const PhysicalConstants = require( 'PHET_CORE/PhysicalConstants' );
 
   // constants
-  const MIN_FORCE = PhysicalConstants.GRAVITATIONAL_CONSTANT *
-                    Math.pow( GFLBConstants.MASS_RANGE.min, 2 ) /
-                    Math.pow( GFLBConstants.PULL_LOCATION_RANGE.getLength(), 2 );
-  const MAX_FORCE = PhysicalConstants.GRAVITATIONAL_CONSTANT *
-                    Math.pow( GFLBConstants.MASS_RANGE.max, 2 ) /
-                    Math.pow( GFLBConstants.CONSTANT_RADIUS * 2 + GFLBConstants.MIN_DISTANCE_BETWEEN_MASSES, 2 );
   const FADE_START_DELAY = 0.2; // in seconds
   const FADE_TIME = 0.15; // in seconds
   const PITCH_RANGE_IN_SEMI_TONES = 36;
@@ -32,12 +24,12 @@ define( require => {
   class ForceSoundGenerator extends SoundClip {
 
     /**
-     * @param {NumberProperty} forceProperty
+     * @param {GFLBModel} forceProperty
      * @param {BooleanProperty} resetInProgressProperty
      * @param {Object} [options]
      * @constructor
      */
-    constructor( forceProperty, resetInProgressProperty, options ) {
+    constructor( model, options ) {
 
       // parameter checking
       assert && assert( !options || !options.loop || options.loop === true, 'must be a loop to work correctly' );
@@ -58,10 +50,10 @@ define( require => {
       // function for starting the force sound or adjusting the volume
       const forceListener = force => {
 
-        if ( !resetInProgressProperty.value ) {
+        if ( !model.resetInProgressProperty.value ) {
 
           // calculate the playback rate based on the amount of force, , see the design document for detailed explanation
-          const normalizedForce = Math.log( force / MIN_FORCE ) / Math.log( MAX_FORCE / MIN_FORCE );
+          const normalizedForce = Math.log( force / model.getMinForce() ) / Math.log( model.getMaxForce() / model.getMinForce() );
           const centerForce = normalizedForce - 0.5;
           const midiNote = PITCH_RANGE_IN_SEMI_TONES / 2 * centerForce + PITCH_CENTER_OFFSET;
           const playbackRate = Math.pow( 2, midiNote / 12 );
@@ -76,10 +68,10 @@ define( require => {
           this.fadeCountdownTime = FADE_START_DELAY + FADE_TIME;
         }
       };
-      forceProperty.lazyLink( forceListener );
+      model.forceProperty.lazyLink( forceListener );
 
       // @private {function}
-      this.disposeForceSoundGenerator = () => { forceProperty.unlink( forceListener ); };
+      this.disposeForceSoundGenerator = () => { model.forceProperty.unlink( forceListener ); };
     }
 
     /**
