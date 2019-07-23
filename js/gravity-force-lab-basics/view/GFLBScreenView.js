@@ -92,10 +92,6 @@ define( require => {
      * @param {Tandem} tandem
      */
     constructor( model, tandem ) {
-      super( {
-        layoutBounds: new Bounds2( 0, 0, 768, 464 ),
-        addScreenSummaryNode: true
-      } );
 
       // initialize a11y describers and alert manager
       const positionDescriber = new GFLBPositionDescriber( model, mass1LabelString, mass2LabelString );
@@ -103,18 +99,20 @@ define( require => {
       const massDescriber = new GFLBMassDescriber( model );
       const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber );
 
-      // The PDOM screen summary
-      const summaryNode = new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
-        mainDescriptionContent: screenSummaryMainDescriptionString,
-        secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
-        simStateLabel: basicsSimStateLabelString,
-        additionalMassDistanceProperties: [ model.showDistanceProperty ]
+      super( {
+        layoutBounds: new Bounds2( 0, 0, 768, 464 ),
+        screenSummaryContent: new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
+          mainDescriptionContent: screenSummaryMainDescriptionString,
+          secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
+          simStateLabel: basicsSimStateLabelString,
+          additionalMassDistanceProperties: [model.showDistanceProperty]
+        } )
       } );
+      // The PDOM screen summary
 
       // Organize the top three Nodes in the a11y hierarchy
       const playAreaNode = new PlayAreaNode();
       const controlAreaNode = new ControlAreaNode();
-      this.screenSummaryNode.addChild( summaryNode );
       this.addChild( playAreaNode );
       this.addChild( controlAreaNode );
 
@@ -177,7 +175,7 @@ define( require => {
           // both objects' positionProperty instead.
           model.object1.positionProperty,
           model.object2.positionProperty,
-          model.showDistanceProperty ],
+          model.showDistanceProperty],
         () => massPositionsNode.setDescription( positionDescriber.getSpherePositionsHelpText() ) );
 
       // mass controls
@@ -206,7 +204,7 @@ define( require => {
 
       // place mass controls in an HBox
       const massControlBox = new HBox( {
-        children: [ massControl1, massControl2 ],
+        children: [massControl1, massControl2],
         center: this.layoutBounds.center,
         spacing: PANEL_SPACING
       } );
