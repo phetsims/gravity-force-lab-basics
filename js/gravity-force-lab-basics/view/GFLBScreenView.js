@@ -14,7 +14,6 @@ define( require => {
   const Bounds2 = require( 'DOT/Bounds2' );
   const CheckboxSoundGenerator = require( 'TAMBO/sound-generators/CheckboxSoundGenerator' );
   const Color = require( 'SCENERY/util/Color' );
-  const ControlAreaNode = require( 'SCENERY_PHET/accessibility/nodes/ControlAreaNode' );
   const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
   const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
   const ForceSoundGenerator = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/ForceSoundGenerator' );
@@ -40,7 +39,6 @@ define( require => {
   const MassSoundGenerator = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassSoundGenerator' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
-  const PlayAreaNode = require( 'SCENERY_PHET/accessibility/nodes/PlayAreaNode' );
   const Property = require( 'AXON/Property' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   const ResetAllSoundGenerator = require( 'TAMBO/sound-generators/ResetAllSoundGenerator' );
@@ -108,13 +106,6 @@ define( require => {
           additionalMassDistanceProperties: [model.showDistanceProperty]
         } )
       } );
-      // The PDOM screen summary
-
-      // Organize the top three Nodes in the a11y hierarchy
-      const playAreaNode = new PlayAreaNode();
-      const controlAreaNode = new ControlAreaNode();
-      this.addChild( playAreaNode );
-      this.addChild( controlAreaNode );
 
       // Create the model-view transform.  The primary units used in the model are meters, so significant zoom is used.
       // The multipliers for the 2nd parameter can be used to adjust where the point (0, 0) in the model, which is
@@ -332,14 +323,14 @@ define( require => {
       } ) );
 
       // children
-      playAreaNode.children = [
+      this.playAreaNode.children = [
         objectOneMassPDOMNode,
         objectTwoMassPDOMNode,
         massPositionsNode,
         massControlsNode
       ];
 
-      controlAreaNode.children = [
+      this.controlAreaNode.children = [
         parameterControlPanel,
         resetAllButton
       ];
