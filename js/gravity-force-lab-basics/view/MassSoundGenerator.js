@@ -14,7 +14,7 @@ define( require => {
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
 
   // sounds
-  const massSound = require( 'sound!GRAVITY_FORCE_LAB_BASICS/rubber-band-v2-middle-c.mp3' );
+  const massSound = require( 'sound!GRAVITY_FORCE_LAB_BASICS/rubber-band-v3.mp3' );
 
   // constants
   const PITCH_RANGE_IN_SEMI_TONES = 30;
@@ -28,6 +28,9 @@ define( require => {
      * @constructor
      */
     constructor( massProperty, resetInProgressProperty, options ) {
+
+      // Rate changes should never affect the mass sound that is already playing.
+      options.rateChangesAffectPlayingSounds = false;
 
       super( massSound, options );
 
