@@ -25,7 +25,7 @@ define( require => {
   const gravityForceLabBasicsTitleString = require( 'string!GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics.title' );
 
   const keyboardHelpContent = new GravityForceLabKeyboardHelpContent( {
-    omitChangeMassSmallSteps: true // in basics, there is no way to change the mass in smaller steps
+    isBasics: true // in basics, there is no way to change the mass in smaller steps
   } );
 
   const simOptions = {
