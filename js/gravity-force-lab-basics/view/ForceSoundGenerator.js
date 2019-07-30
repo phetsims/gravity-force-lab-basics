@@ -24,7 +24,7 @@ define( require => {
   class ForceSoundGenerator extends SoundClip {
 
     /**
-     * @param {GFLBModel} forceProperty
+     * @param {GFLBModel} model
      * @param {BooleanProperty} resetInProgressProperty
      * @param {Object} [options]
      * @constructor
@@ -52,7 +52,7 @@ define( require => {
 
         if ( !model.resetInProgressProperty.value ) {
 
-          // calculate the playback rate based on the amount of force, , see the design document for detailed explanation
+          // calculate the playback rate based on the amount of force, see the design document for detailed explanation
           const normalizedForce = Math.log( force / model.getMinForce() ) / Math.log( model.getMaxForce() / model.getMinForce() );
           const centerForce = normalizedForce - 0.5;
           const midiNote = PITCH_RANGE_IN_SEMI_TONES / 2 * centerForce + PITCH_CENTER_OFFSET;
