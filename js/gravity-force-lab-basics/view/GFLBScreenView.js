@@ -211,23 +211,20 @@ define( require => {
       soundManager.addSoundGenerator( new MassSoundGenerator(
         model.object1.valueProperty,
         model.resetInProgressProperty,
-        { initialOutputLevel: 0.5 }
+        { initialOutputLevel: 0.7 }
       ) );
       soundManager.addSoundGenerator( new MassSoundGenerator(
         model.object2.valueProperty,
         model.resetInProgressProperty,
-        { initialOutputLevel: 0.5 }
+        { initialOutputLevel: 0.7 }
       ) );
 
       // @private - sound generation for the force sound
-      this.forceSoundGenerator = new ForceSoundGenerator(
-        model,
-        { initialOutputLevel: 0.15 }
-      );
+      this.forceSoundGenerator = new ForceSoundGenerator( model, { initialOutputLevel: 0.2 } );
       soundManager.addSoundGenerator( this.forceSoundGenerator );
 
       // sound generation for outer mass dragging limit
-      const outerBoundarySoundClip = new SoundClip( outerBoundarySound, { initialOutputLevel: 0.5 } );
+      const outerBoundarySoundClip = new SoundClip( outerBoundarySound, { initialOutputLevel: 1 } );
       soundManager.addSoundGenerator( outerBoundarySoundClip );
       model.object1.positionProperty.link( position => {
         if ( position === GFLBConstants.PULL_LOCATION_RANGE.min ) {
@@ -241,7 +238,7 @@ define( require => {
       } );
 
       // sound generation for masses (almost) colliding with one another
-      const innerBoundarySoundClip = new SoundClip( innerBoundarySound, { initialOutputLevel: 0.25 } );
+      const innerBoundarySoundClip = new SoundClip( innerBoundarySound, { initialOutputLevel: 0.5 } );
       soundManager.addSoundGenerator( innerBoundarySoundClip );
       model.distanceProperty.lazyLink( ( distance, previousDistance ) => {
         if ( distance < previousDistance ) {
