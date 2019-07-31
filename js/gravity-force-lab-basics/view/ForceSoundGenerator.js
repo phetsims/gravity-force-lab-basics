@@ -51,6 +51,9 @@ define( require => {
       // @private {number} - countdown time used for fade out
       this.fadeCountdownTime = 0;
 
+      // start with the output level at zero so that the initial sound generation has a bit of fade in
+      this.setOutputLevel( 0, 0 );
+
       // function for starting the force sound or adjusting the volume
       const forceListener = force => {
 
