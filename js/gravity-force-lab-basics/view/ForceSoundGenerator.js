@@ -19,6 +19,8 @@ define( require => {
   const PITCH_CENTER_OFFSET = 2;
 
   // sounds
+
+  // The saturated sine loop is precisely optimized for good looping, which is why it is a .wav and not a .mp2 file
   const forceSound = require( 'sound!GRAVITY_FORCE_LAB_BASICS/saturated-sine-loop-trimmed.wav' );
 
   class ForceSoundGenerator extends SoundClip {
