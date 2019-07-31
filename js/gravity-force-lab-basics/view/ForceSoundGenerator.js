@@ -19,7 +19,7 @@ define( require => {
   const PITCH_CENTER_OFFSET = 2;
 
   // sounds
-  const forceSound = require( 'sound!GRAVITY_FORCE_LAB_BASICS/saturated-sine.mp3' );
+  const forceSound = require( 'sound!GRAVITY_FORCE_LAB_BASICS/saturated-sine-loop-trimmed.wav' );
 
   class ForceSoundGenerator extends SoundClip {
 
@@ -96,7 +96,7 @@ define( require => {
 
         // fade out complete, stop playback
         if ( this.fadeCountdownTime === 0 ) {
-          this.stop();
+          this.stop( 0 );
         }
       }
     }
