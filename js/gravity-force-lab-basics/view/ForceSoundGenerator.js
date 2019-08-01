@@ -13,8 +13,9 @@ define( require => {
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
   // constants
-  const FADE_START_DELAY = 0.2; // in seconds
-  const FADE_TIME = 0.15; // in seconds
+  const FADE_START_DELAY = 0.2; // in seconds, time to wait before starting fade
+  const FADE_TIME = 0.15; // in seconds, duration of fade out
+  const DELAY_BEFORE_STOP = 0.1; // in seconds, amount of time from full fade to stop of sound, done to avoid glitches
   const PITCH_RANGE_IN_SEMI_TONES = 36;
   const PITCH_CENTER_OFFSET = 2;
 
@@ -33,13 +34,14 @@ define( require => {
      */
     constructor( model, options ) {
 
-      // parameter checking
-      assert && assert( !options || !options.loop || options.loop === true, 'must be a loop to work correctly' );
-
       options = _.extend( {
         initialOutputLevel: 0.7,
-        loop: true
+        loop: true,
+        trimSilence: false
       }, options );
+
+      // options checking
+      assert && assert( !options || !options.loop || options.loop === true, 'must be a loop to work correctly' );
 
       super( forceSound, options );
 
@@ -48,6 +50,9 @@ define( require => {
 
       // @private {number} - countdown time used for fade out
       this.fadeCountdownTime = 0;
+
+      // start with the output level at zero so that the initial sound generation has a bit of fade in
+      this.setOutputLevel( 0, 0 );
 
       // function for starting the force sound or adjusting the volume
       const forceListener = force => {
@@ -67,7 +72,7 @@ define( require => {
           }
 
           // reset the fade countdown
-          this.fadeCountdownTime = FADE_START_DELAY + FADE_TIME;
+          this.fadeCountdownTime = FADE_START_DELAY + FADE_TIME + DELAY_BEFORE_STOP;
         }
       };
       model.forceProperty.lazyLink( forceListener );
@@ -92,12 +97,18 @@ define( require => {
       if ( this.fadeCountdownTime > 0 ) {
         this.fadeCountdownTime = Math.max( this.fadeCountdownTime - dt, 0 );
 
-        if ( this.fadeCountdownTime < FADE_TIME ) {
-          this.setOutputLevel( this.fadeCountdownTime / FADE_TIME * this.nonFadedOutputLevel );
+        if ( this.fadeCountdownTime < FADE_TIME + DELAY_BEFORE_STOP && this.outputLevel > 0 ) {
+
+          // the sound is fading out, adjust the output level
+          const outputLevel = Math.max(
+            ( this.fadeCountdownTime - DELAY_BEFORE_STOP ) / FADE_TIME * this.nonFadedOutputLevel,
+            0
+          );
+          this.setOutputLevel( outputLevel );
         }
 
         // fade out complete, stop playback
-        if ( this.fadeCountdownTime === 0 ) {
+        if ( this.fadeCountdownTime === 0 && this.isPlaying ) {
           this.stop( 0 );
         }
       }
