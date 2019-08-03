@@ -950,7 +950,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "DerivedPropertyIO.<NumberIO>"
     },
     "gravityForceLabBasics.gravityForceLabBasicsScreen.model.mass1.valueProperty": {
-      "phetioDocumentation": "the value of the object",
+      "phetioDocumentation": "The value of the object",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -998,7 +998,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "DerivedPropertyIO.<NumberIO>"
     },
     "gravityForceLabBasics.gravityForceLabBasicsScreen.model.mass2.valueProperty": {
-      "phetioDocumentation": "the value of the object",
+      "phetioDocumentation": "The value of the object",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
