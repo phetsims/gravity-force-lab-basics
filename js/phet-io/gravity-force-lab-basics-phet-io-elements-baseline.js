@@ -1201,8 +1201,8 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelNode": {
-      "phetioDocumentation": "",
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelText": {
+      "phetioDocumentation": "The distance as text between the two masses",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -1213,7 +1213,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "TextIO"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelNode.opacityProperty": {
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelText.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1225,7 +1225,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelNode.pickableProperty": {
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -1237,19 +1237,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelNode.textProperty": {
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelText.textProperty": {
       "phetioDocumentation": "Property for the displayed text",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
-      "phetioReadOnly": false,
+      "phetioReadOnly": true,
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<StringIO>"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelNode.visibleProperty": {
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.distanceArrowNode.labelText.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
