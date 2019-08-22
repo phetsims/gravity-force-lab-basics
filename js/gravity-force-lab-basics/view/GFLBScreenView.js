@@ -103,7 +103,7 @@ define( require => {
           mainDescriptionContent: screenSummaryMainDescriptionString,
           secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
           simStateLabel: basicsSimStateLabelString,
-          additionalMassDistanceProperties: [model.showDistanceProperty]
+          additionalMassDistanceProperties: [ model.showDistanceProperty ]
         } )
       } );
 
@@ -162,11 +162,11 @@ define( require => {
 
       Property.multilink( [
 
-          // Linking to `model.distanceProperty` caused the same bug as in GFLB#103, so we are linking to
+          // Linking to `model.distanceProperty` (back when the distanceProperty was in GFLBModel) caused the same bug as in GFLB#103, so we are linking to
           // both objects' positionProperty instead.
           model.object1.positionProperty,
           model.object2.positionProperty,
-          model.showDistanceProperty],
+          model.showDistanceProperty ],
         () => massPositionsNode.setDescription( positionDescriber.getSpherePositionsHelpText() ) );
 
       // mass controls
@@ -195,7 +195,7 @@ define( require => {
 
       // place mass controls in an HBox
       const massControlBox = new HBox( {
-        children: [massControl1, massControl2],
+        children: [ massControl1, massControl2 ],
         center: this.layoutBounds.center,
         spacing: PANEL_SPACING
       } );
@@ -243,13 +243,11 @@ define( require => {
       model.distanceProperty.lazyLink( ( distance, previousDistance ) => {
         if ( distance < previousDistance ) {
 
-          const distanceInMeters = distance * 1000;
-
           // the distance value from the ISLC model is rounded to 100s of meters, so we do the same thing here
           const minDistance = model.object1.radiusProperty.value + model.object2.radiusProperty.value +
                               GFLBConstants.MIN_DISTANCE_BETWEEN_MASSES;
           const roundedMinDistance = Util.roundToInterval( minDistance, 100 );
-          if ( distanceInMeters === roundedMinDistance ) {
+          if ( distance === roundedMinDistance ) {
             innerBoundarySoundClip.play();
           }
         }

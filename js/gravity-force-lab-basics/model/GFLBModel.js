@@ -11,13 +11,10 @@ define( require => {
   // modules
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const Color = require( 'SCENERY/util/Color' );
-  const DerivedProperty = require( 'AXON/DerivedProperty' );
-  const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
   const Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
-  const NumberIO = require( 'TANDEM/types/NumberIO' );
   const PhysicalConstants = require( 'PHET_CORE/PhysicalConstants' );
 
   // constants
@@ -71,16 +68,6 @@ define( require => {
       // @public
       this.constantRadiusProperty = constantRadiusProperty;
       this.showDistanceProperty = showDistanceProperty;
-
-      // @public (read-only) {Property.<Number>} - distance between the centers of the two masses
-      this.distanceProperty = new DerivedProperty(
-        [ this.object1.positionProperty, this.object2.positionProperty ],
-        ( x1, x2 ) => Math.abs( x2 - x1 ) / 1000, // divided by 1000 to convert to kilometers
-        {
-          phetioType: DerivedPropertyIO( NumberIO ),
-          tandem: tandem.createTandem( 'distanceProperty' )
-        }
-      );
 
       // @public (read-only) - true when a reset is in progress
       this.resetInProgressProperty = new BooleanProperty( false, {

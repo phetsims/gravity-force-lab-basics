@@ -68,7 +68,7 @@ define( require => {
 
           // update label text and center, distance in meters so divide by 1000 to read out in km
           labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, {
-            distance: model.distanceProperty.get()
+            distance: model.distanceProperty.get() / 1000 // m to km
           } ) );
 
           labelText.centerX = arrowNode.centerX;
