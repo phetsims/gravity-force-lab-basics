@@ -162,7 +162,7 @@ define( require => {
 
       Property.multilink( [
 
-          // Linking to `model.distanceProperty` (back when the distanceProperty was in GFLBModel) caused the same bug as in GFLB#103, so we are linking to
+          // Linking to `model.separationProperty` caused the same bug as in GFLB#103, so we are linking to
           // both objects' positionProperty instead.
           model.object1.positionProperty,
           model.object2.positionProperty,
@@ -240,7 +240,7 @@ define( require => {
       // sound generation for masses (almost) colliding with one another
       const innerBoundarySoundClip = new SoundClip( innerBoundarySound, { initialOutputLevel: 0.5 } );
       soundManager.addSoundGenerator( innerBoundarySoundClip );
-      model.distanceProperty.lazyLink( ( distance, previousDistance ) => {
+      model.separationProperty.lazyLink( ( distance, previousDistance ) => {
         if ( distance < previousDistance ) {
 
           // the distance value from the ISLC model is rounded to 100s of meters, so we do the same thing here

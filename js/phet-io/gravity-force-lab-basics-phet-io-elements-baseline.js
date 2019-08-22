@@ -889,7 +889,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.model.distanceProperty": {
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.model.separationProperty": {
       "phetioDocumentation": "The distance between the two objects' centers",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
