@@ -26,7 +26,7 @@ define( require => {
 
   // constants
   const MIN_PANEL_WIDTH = 150;
-  const MAX_TEXT_WIDTH = 125; // i18n
+  const MAX_TEXT_WIDTH = 120; // i18n
   const BILLION_MULTIPLIER = GFLBConstants.BILLION_MULTIPLIER;
 
   class GFLBMassControl extends Panel {
@@ -87,6 +87,8 @@ define( require => {
         children: [ titleText, numberPickerHBox ],
         spacing: 10
       } );
+
+      titleText.on( 'text', () => { titleText.centerX = panelVBox.centerX; } );
 
       super( panelVBox, {
         fill: '#f1f1f2',
