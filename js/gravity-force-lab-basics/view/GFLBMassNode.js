@@ -42,6 +42,7 @@ define( require => {
           arrowFill: 'black',
           arrowLabelFill: 'black',
           maxArrowWidth: 100,
+          forceThresholdPercent: 7 * Math.pow( 10, -4),
           backgroundFill: GFLBConstants.BACKGROUND_COLOR_PROPERTY
         },
         arrowTailWidth: 2,
