@@ -1825,8 +1825,20 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass1Node.textProperty": {
-      "phetioDocumentation": "The text located on the puller object",
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass1Node.labelText": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "RichTextIO"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass1Node.labelText.opacityProperty": {
+      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -1835,7 +1847,43 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass1Node.labelText.pickableProperty": {
+      "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass1Node.labelText.textProperty": {
+      "phetioDocumentation": "Property for the displayed text",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<StringIO>"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass1Node.labelText.visibleProperty": {
+      "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass2Node.centerOfMassLineNode": {
       "phetioDocumentation": "",
@@ -2077,8 +2125,20 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass2Node.textProperty": {
-      "phetioDocumentation": "The text located on the puller object",
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass2Node.labelText": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "RichTextIO"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass2Node.labelText.opacityProperty": {
+      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -2087,7 +2147,43 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass2Node.labelText.pickableProperty": {
+      "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass2Node.labelText.textProperty": {
+      "phetioDocumentation": "Property for the displayed text",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<StringIO>"
+    },
+    "gravityForceLabBasics.gravityForceLabBasicsScreen.view.mass2Node.labelText.visibleProperty": {
+      "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "gravityForceLabBasics.gravityForceLabBasicsScreen.view.massControl1": {
       "phetioDocumentation": "",
