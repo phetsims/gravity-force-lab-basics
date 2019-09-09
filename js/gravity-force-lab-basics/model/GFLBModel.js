@@ -30,7 +30,8 @@ define( require => {
   const MASS_OPTIONS = {
     constantRadius: GFLBConstants.CONSTANT_RADIUS,
     leftObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.min,
-    rightObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.max
+    rightObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.max,
+    valueStep: GFLBConstants.BILLION_MULTIPLIER
   };
 
   class GFLBModel extends ISLCModel {
