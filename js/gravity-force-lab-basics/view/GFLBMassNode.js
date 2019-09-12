@@ -37,7 +37,7 @@ define( require => {
           forceReadoutDecimalPlaces: 1,
           arrowFill: 'black',
           arrowLabelFill: 'black',
-          maxArrowWidth: 100,
+          maxArrowWidth: 400,
           forceThresholdPercent: 7 * Math.pow( 10, -4 ),
           backgroundFill: GFLBConstants.BACKGROUND_COLOR_PROPERTY
         },
