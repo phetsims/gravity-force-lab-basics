@@ -41,9 +41,6 @@ define( require => {
           forceThresholdPercent: 7 * Math.pow( 10, -4 ),
           backgroundFill: GFLBConstants.BACKGROUND_COLOR_PROPERTY
         },
-        arrowTailWidth: 2,
-        labelShadowOffsetX: 0.9,
-        labelShadowOffsetY: 0.9,
         y: MASS_NODE_Y_POSITION,
 
         // {number} In meters, charges will snap to the nearest 0.1 meters in model coordinates

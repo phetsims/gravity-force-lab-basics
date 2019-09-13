@@ -23,7 +23,7 @@ define( require => {
     BACKGROUND_COLOR_PROPERTY: new Property( '#ffffc2' ),
     BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
     MASS_RANGE: new Range( MIN_MASS, MAX_MASS ),
-    CONSTANT_RADIUS: 500, // meters
+    CONSTANT_RADIUS: 600, // meters
     MIN_DISTANCE_BETWEEN_MASSES: 200, // meters
     PULL_LOCATION_RANGE: new Range( -MAX_DISTANCE_FROM_CENTER, MAX_DISTANCE_FROM_CENTER ),
     MASS_POSITION_DELTA: 100, // in m, masses can move in 0.1 km increments and will snap to these locations
