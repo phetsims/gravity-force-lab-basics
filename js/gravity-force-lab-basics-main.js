@@ -31,9 +31,9 @@ define( require => {
   const simOptions = {
     credits: {
       leadDesign: 'Amy Rouinfar',
-      softwareDevelopment: 'Michael Barlow, Jesse Greenberg, John Blanco, Michael Kauzmann',
+      softwareDevelopment: 'Michael Barlow, John Blanco, Jesse Greenberg, Michael Kauzmann',
       team: 'Ariel Paul, Kathy Perkins, Emily B. Moore, Taliesin Smith, Brianna Tomlinson',
-      qualityAssurance: 'Steele Dalton, Megan Lai, Liam Mulhall, Laura Rea, Jacob Romero, and Kathryn Woessner',
+      qualityAssurance: 'Logan Bray, Steele Dalton, Megan Lai, Liam Mulhall, Laura Rea, Jacob Romero, and Kathryn Woessner',
       graphicArts: 'Mariah Hermsmeyer',
       soundDesign: 'Ashton Morris',
       thanks: ''
