@@ -69,12 +69,11 @@ define( require => {
     // Sphere positions
     /////////////////////////////////////////////
 
-    basicsForceAndVectorPattern: {
-      value: 'Force arrow is {{size}}, and points directly at {{otherObjectLabel}}.'
+    forceArrow: {
+      value: 'Force arrow'
     },
-
-    basicsForceVectorMagnitudeUnitsPattern: {
-      value: 'Size of force on {{thisObjectLabel}} by {{otherObjectLabel}} is {{forceValue}} {{units}}.'
+    sizeOfForce: {
+      value: 'Size of force'
     }
   };
 

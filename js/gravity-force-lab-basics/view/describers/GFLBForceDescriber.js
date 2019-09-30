@@ -18,8 +18,8 @@ define( require => {
   const forceArrowsCapitalizedString = GFLBA11yStrings.forceArrowsCapitalized.value;
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
   const arrowsString = GFLBA11yStrings.arrows.value;
-  const basicsForceAndVectorPatternString = GFLBA11yStrings.basicsForceAndVectorPattern.value;
-  const basicsForceVectorMagnitudeUnitsPatternString = GFLBA11yStrings.basicsForceVectorMagnitudeUnitsPattern.value;
+  const forceArrowString = GFLBA11yStrings.forceArrow.value;
+  const sizeOfForceString = GFLBA11yStrings.sizeOfForce.value;
 
   class GFLBForceDescriber extends ForceDescriber {
 
@@ -35,9 +35,8 @@ define( require => {
           return Util.toFixedNumber( force, 1 );
         },
 
-        forceAndVectorPatternString: basicsForceAndVectorPatternString,
-        forceVectorMagnitudeUnitsPatternString: basicsForceVectorMagnitudeUnitsPatternString,
-
+        forceVectorString: forceArrowString,
+        forceMagnitudeString: sizeOfForceString,
         forceVectorsCapitalizedString: forceArrowsCapitalizedString,
         forceVectorsString: forceArrowsString,
         vectorsString: arrowsString,
