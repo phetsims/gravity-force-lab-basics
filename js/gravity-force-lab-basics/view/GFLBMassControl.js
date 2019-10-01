@@ -70,7 +70,7 @@ define( require => {
         // a11y
         pageKeyboardStep: BILLION_MULTIPLIER * 2,
         accessibleName: labelContent,
-        a11yCreateValueChangeAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum )
+        a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum )
       } );
       const numberPickerLabel = new Text( billionKgString, {
         font: new PhetFont( { size: 14 } ),
