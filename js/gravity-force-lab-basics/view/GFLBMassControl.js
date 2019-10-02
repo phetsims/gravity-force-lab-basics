@@ -61,6 +61,7 @@ define( require => {
         upFunction: mass => mass + BILLION_MULTIPLIER,
         downFunction: mass => mass - BILLION_MULTIPLIER,
         formatValue: value => Util.toFixed( value / BILLION_MULTIPLIER, 0 ),
+        a11yMapValue: value => Util.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
 
         // arrow options
         arrowHeight: 3,
