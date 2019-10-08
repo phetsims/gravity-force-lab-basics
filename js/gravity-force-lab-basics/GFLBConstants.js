@@ -10,6 +10,7 @@ define( require => {
 
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  const Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
   const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
 
@@ -18,12 +19,14 @@ define( require => {
   const MIN_MASS = 1.00 * BILLION_MULTIPLIER; // kg
   const MAX_MASS = 10.0 * BILLION_MULTIPLIER; // kg
   const MAX_DISTANCE_FROM_CENTER = 4800; // meters, empirically determined boundary for masses
+  const MASS_DENSITY = 1.5; // kg/m^3
 
   const GFLBConstants = {
     BACKGROUND_COLOR_PROPERTY: new Property( '#ffffc2' ),
     BILLION_MULTIPLIER: BILLION_MULTIPLIER, // a billion for scaling values (since basics version uses billions of kg)
     MASS_RANGE: new Range( MIN_MASS, MAX_MASS ),
-    CONSTANT_RADIUS: 600, // meters
+    MASS_DENSITY: MASS_DENSITY,
+    CONSTANT_RADIUS: Mass.calculateRadius( MIN_MASS, MASS_DENSITY ), // meters
     MIN_DISTANCE_BETWEEN_MASSES: 200, // meters
     PULL_LOCATION_RANGE: new Range( -MAX_DISTANCE_FROM_CENTER, MAX_DISTANCE_FROM_CENTER ),
     MASS_POSITION_DELTA: 100, // in m, masses can move in 0.1 km increments and will snap to these locations
