@@ -25,7 +25,7 @@ define( require => {
   const INITIAL_POTISION_2 = 2000;
 
   const VALUE_RANGE = GFLBConstants.MASS_RANGE;
-  const DENSITY = 1.5; // kg/m^3
+  const DENSITY = GFLBConstants.MASS_DENSITY;
 
   const MASS_OPTIONS = {
     constantRadius: GFLBConstants.CONSTANT_RADIUS,
