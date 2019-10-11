@@ -9,8 +9,9 @@ define( require => {
   'use strict';
 
   // modules
-  const SoundClip = require( 'TAMBO/sound-generators/SoundClip' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+  const merge = require( 'PHET_CORE/merge' );
+  const SoundClip = require( 'TAMBO/sound-generators/SoundClip' );
 
   // constants
   const FADE_START_DELAY = 0.2; // in seconds, time to wait before starting fade
@@ -34,7 +35,7 @@ define( require => {
      */
     constructor( model, options ) {
 
-      options = _.extend( {
+      options = merge( {
         initialOutputLevel: 0.7,
         loop: true,
         trimSilence: false

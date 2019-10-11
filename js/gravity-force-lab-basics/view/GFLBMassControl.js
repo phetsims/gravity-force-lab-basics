@@ -13,6 +13,7 @@ define( require => {
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const HBox = require( 'SCENERY/nodes/HBox' );
+  const merge = require( 'PHET_CORE/merge' );
   const NumberPicker = require( 'SCENERY_PHET/NumberPicker' );
   const Panel = require( 'SUN/Panel' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -44,7 +45,7 @@ define( require => {
     constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum,
                  massDescriber, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
         color: new Color( 0, 0, 255 )
       }, options );
 
