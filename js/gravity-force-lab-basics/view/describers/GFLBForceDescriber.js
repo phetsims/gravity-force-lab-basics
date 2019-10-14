@@ -56,25 +56,28 @@ define( require => {
       assert && assert( force >= .7, `unrecognized force value, smaller than expected: ${force}` );
       assert && assert( numberOfRegions === 7, 'If numberOfRegions changes, this function should too.' );
 
-      if ( force <= 85.4 ) {
+      if ( force <= 40.6 ) {
         return 0;
       }
-      if ( force <= 181.6 ) {
+      if ( force <= 250.3 ) {
         return 1;
       }
-      if ( force <= 278.1 ) {
+      if ( force <= 544.8 ) {
         return 2;
       }
-      if ( force <= 386.1 ) {
+      if ( force <= 888.6 ) {
         return 3;
       }
-      if ( force <= 486.1 ) {
+      if ( force <= 1261.6 ) {
         return 4;
       }
-      if ( force <= 576.6 ) {
+      if ( force <= 2059.9 ) {
         return 5;
       }
-      return 6;
+      if ( force <= 3949.2 ) {
+        return 6;
+      }
+      assert && assert( false, `unexpected force: ${force}` );
     }
   }
 
