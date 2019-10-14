@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.0.0-rc.1 Mon Oct 14 2019 13:40:48 GMT-0800 (Alaskan Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.0.0-rc.2 Mon Oct 14 2019 14:04:59 GMT-0800 (Alaskan Daylight Time)",
   "assert": {
     "sha": "201c50a840e082354b013f4ab9e9d45006f98cfe",
     "branch": "HEAD"
@@ -22,15 +22,15 @@
   },
   "gravity-force-lab": {
     "sha": "171b192e230dd1765e6fc00da875da6b891a9373",
-    "branch": "gravity-force-lab-basics-1.0"
+    "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "6c612932dfc01b12e1ba5f80205a0b2ba9c6066c",
+    "sha": "13d8a6b677bcfd9e61cc698f92470f679740ab0d",
     "branch": "1.0"
   },
   "inverse-square-law-common": {
     "sha": "0b6cbcd8cddeacb24ddeffa27c92d4db0fdfe187",
-    "branch": "gravity-force-lab-basics-1.0"
+    "branch": "HEAD"
   },
   "joist": {
     "sha": "6bf4c1b7b40c6b76bac9feb1034222981bbcdff8",
@@ -66,7 +66,7 @@
   },
   "scenery": {
     "sha": "6aafd5f2df91926c11d5f8e6c4870b8db1ccf00a",
-    "branch": "gravity-force-lab-basics-1.0"
+    "branch": "HEAD"
   },
   "scenery-phet": {
     "sha": "e52f8b70b8d9665cdf70ba0cea476efa7c6c37e2",
@@ -78,7 +78,7 @@
   },
   "sun": {
     "sha": "1744207f4ef5967a8a0727e81cb2fb96574a8f88",
-    "branch": "gravity-force-lab-basics-1.0"
+    "branch": "HEAD"
   },
   "tambo": {
     "sha": "e5d64ef617ab47894748fc09b1cb383292346c16",
