@@ -75,10 +75,7 @@ define( require => {
       if ( force <= 2059.9 ) {
         return 5;
       }
-      if ( force <= 3949.2 ) {
-        return 6;
-      }
-      assert && assert( false, `unexpected force: ${force}` );
+      return 6;
     }
   }
 
