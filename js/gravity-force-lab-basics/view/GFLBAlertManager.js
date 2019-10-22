@@ -9,11 +9,11 @@ define( require => {
   'use strict';
 
   // modules
-  const ActivationUtterance = require( 'SCENERY_PHET/accessibility/ActivationUtterance' );
+  const ActivationUtterance = require( 'UTTERANCE_QUEUE/ActivationUtterance' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GravityForceLabAlertManager = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabAlertManager' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const utteranceQueue = require( 'SCENERY_PHET/accessibility/utteranceQueue' );
+  const utteranceQueue = require( 'UTTERANCE_QUEUE/utteranceQueue' );
 
   // a11y strings
   const distanceArrowVisibleString = GFLBA11yStrings.distanceArrowVisible.value;
