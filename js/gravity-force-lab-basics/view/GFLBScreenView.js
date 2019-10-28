@@ -16,7 +16,7 @@ define( require => {
   const Color = require( 'SCENERY/util/Color' );
   const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
   const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
-  const ForceSoundGenerator = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/ForceSoundGenerator' );
+  const ForceSoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/ForceSoundGenerator' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
@@ -36,7 +36,7 @@ define( require => {
   const ISLCGridNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCGridNode' );
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
   const ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
-  const MassSoundGenerator = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/MassSoundGenerator' );
+  const MassSoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassSoundGenerator' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Property = require( 'AXON/Property' );
@@ -80,7 +80,7 @@ define( require => {
   const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
 
   // sounds
-  const innerBoundarySound = require( 'sound!GRAVITY_FORCE_LAB_BASICS/scrunched-mass-collision-sonic-womp.mp3' );
+  const innerBoundarySound = require( 'sound!GRAVITY_FORCE_LAB/scrunched-mass-collision-sonic-womp.mp3' );
   const outerBoundarySound = require( 'sound!TAMBO/boundary-reached.mp3' );
 
   class GFLBScreenView extends ScreenView {
@@ -210,11 +210,13 @@ define( require => {
       // sound generation for the mass values
       soundManager.addSoundGenerator( new MassSoundGenerator(
         model.object1.valueProperty,
+        GFLBConstants.MASS_RANGE,
         model.resetInProgressProperty,
         { initialOutputLevel: 0.7 }
       ) );
       soundManager.addSoundGenerator( new MassSoundGenerator(
         model.object2.valueProperty,
+        GFLBConstants.MASS_RANGE,
         model.resetInProgressProperty,
         { initialOutputLevel: 0.7 }
       ) );
