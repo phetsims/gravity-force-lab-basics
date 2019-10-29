@@ -327,7 +327,7 @@ define( require => {
         massControlsNode
       ];
 
-      this.controlAreaNode.children = [
+      this.pdomControlAreaNode.children = [
         parameterControlPanel,
         resetAllButton
       ];
