@@ -227,7 +227,10 @@ define( require => {
         model.forceProperty,
         new Range( model.getMinForce(), model.getMaxForce() ),
         model.resetInProgressProperty,
-        { initialOutputLevel: 0.2 }
+        {
+          initialOutputLevel: 0.2,
+          playbackRateCenterOffset: 0.122 // this is about 2 semitone, and was necessary to match original sound design
+        }
       );
       soundManager.addSoundGenerator( this.forceSoundGenerator );
 
