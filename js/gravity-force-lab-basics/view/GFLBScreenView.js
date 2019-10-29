@@ -40,6 +40,7 @@ define( require => {
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Property = require( 'AXON/Property' );
+  const Range = require( 'DOT/Range' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   const ResetAllSoundGenerator = require( 'TAMBO/sound-generators/ResetAllSoundGenerator' );
   const ScreenView = require( 'JOIST/ScreenView' );
@@ -222,7 +223,12 @@ define( require => {
       ) );
 
       // @private - sound generation for the force sound
-      this.forceSoundGenerator = new ForceSoundGenerator( model, { initialOutputLevel: 0.2 } );
+      this.forceSoundGenerator = new ForceSoundGenerator(
+        model.forceProperty,
+        new Range( model.getMinForce(), model.getMaxForce() ),
+        model.resetInProgressProperty,
+        { initialOutputLevel: 0.2 }
+      );
       soundManager.addSoundGenerator( this.forceSoundGenerator );
 
       // sound generation for outer mass dragging limit
