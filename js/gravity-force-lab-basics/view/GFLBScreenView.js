@@ -320,7 +320,7 @@ define( require => {
       } ) );
 
       // children
-      this.playAreaNode.children = [
+      this.pdomPlayAreaNode.children = [
         objectOneMassPDOMNode,
         objectTwoMassPDOMNode,
         massPositionsNode,
