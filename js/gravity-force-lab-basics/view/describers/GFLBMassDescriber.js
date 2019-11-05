@@ -24,8 +24,9 @@ define( require => {
 
     /**
      * @param {GFLBModel} model
+     * @param {ForceDescriber} forceDescriber
      */
-    constructor( model ) {
+    constructor( model, forceDescriber ) {
 
       const options = {
         object1Label: mass1LabelString,
@@ -34,7 +35,7 @@ define( require => {
         formatMassValue: mass => StringUtils.fillIn( massBillionsPatternString, { mass: mass } )
       };
 
-      super( model, options );
+      super( model, forceDescriber, options );
     }
   }
 

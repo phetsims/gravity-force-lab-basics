@@ -95,7 +95,7 @@ define( require => {
       // initialize a11y describers and alert manager
       const positionDescriber = new GFLBPositionDescriber( model, mass1LabelString, mass2LabelString );
       const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString, positionDescriber );
-      const massDescriber = new GFLBMassDescriber( model );
+      const massDescriber = new GFLBMassDescriber( model, forceDescriber );
       const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber );
 
       super( {
@@ -172,10 +172,10 @@ define( require => {
 
       // mass controls
       const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
-        GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE,
+        GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, alertManager,
         massDescriber, tandem.createTandem( 'massControl1' ) );
       const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
-        GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO,
+        GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, alertManager,
         massDescriber, tandem.createTandem( 'massControl2' ), {
           color: new Color( 255, 0, 0 )
         } );

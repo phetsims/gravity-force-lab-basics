@@ -38,11 +38,12 @@ define( require => {
      * @param {Range} massRange
      * @param {String} labelContent - a11y, the content of the label for the mass control
      * @param {ISLCObjectEnum} thisObjectEnum
+     * @param {GFLBAlertManager} alertManager
      * @param {GFLBMassDescriber} massDescriber
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
-    constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum,
+    constructor( titleString, valueProperty, massRange, labelContent, thisObjectEnum, alertManager,
                  massDescriber, tandem, options ) {
 
       options = merge( {
@@ -54,6 +55,9 @@ define( require => {
         maxWidth: MAX_TEXT_WIDTH,
         tandem: tandem.createTandem( 'titleText' )
       } );
+
+      // Keep track of the current mass between the start and end of an interaction to see if we should alert.
+      let currentMass = valueProperty.value;
 
       const numberPicker = new NumberPicker( valueProperty, new Property( massRange ), {
         font: new PhetFont( 20 ),
@@ -72,7 +76,20 @@ define( require => {
         // a11y
         pageKeyboardStep: BILLION_MULTIPLIER * 2,
         accessibleName: labelContent,
-        a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum )
+        a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
+
+        // on end interaction, if alert a special alert if the mass started at the min/max and didnt' change.
+        a11yCreateValueChangeAlert: () => {
+
+          // no change and at max or min
+          if ( currentMass === valueProperty.value && ( currentMass === massRange.max || currentMass === massRange.min ) ) {
+            return alertManager.alertMassMinMaxEdge( thisObjectEnum );
+          }
+          return null; // regular mass changed alerts come from model changes
+        },
+        startChange: () => {
+          currentMass = valueProperty.value;
+        }
       } );
       const numberPickerLabel = new Text( billionKgString, {
         font: new PhetFont( { size: 14 } ),
