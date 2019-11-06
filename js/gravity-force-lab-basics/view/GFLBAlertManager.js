@@ -13,7 +13,6 @@ define( require => {
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GravityForceLabAlertManager = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabAlertManager' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const utteranceQueue = require( 'UTTERANCE_QUEUE/utteranceQueue' );
 
   // a11y strings
   const distanceArrowVisibleString = GFLBA11yStrings.distanceArrowVisible.value;
@@ -50,7 +49,7 @@ define( require => {
      */
     alertDistanceVisible( showDistance ) {
       this.distanceVisibleUtterance.alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
-      utteranceQueue.addToBack( this.distanceVisibleUtterance );
+      phet.joist.sim.display.utteranceQueue.addToBack( this.distanceVisibleUtterance );
     }
   }
 
