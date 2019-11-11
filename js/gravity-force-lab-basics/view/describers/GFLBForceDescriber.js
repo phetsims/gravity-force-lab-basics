@@ -18,6 +18,7 @@ define( require => {
   const forceArrowsCapitalizedString = GFLBA11yStrings.forceArrowsCapitalized.value;
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
   const arrowsString = GFLBA11yStrings.arrows.value;
+  const forceArrowCapitalizedString = GFLBA11yStrings.forceArrowCapitalized.value;
   const forceArrowString = GFLBA11yStrings.forceArrow.value;
   const sizeOfForceString = GFLBA11yStrings.sizeOfForce.value;
 
@@ -35,6 +36,7 @@ define( require => {
           return Util.toFixedNumber( force, 1 );
         },
 
+        forceVectorCapitalizedString: forceArrowCapitalizedString,
         forceVectorString: forceArrowString,
         forceMagnitudeString: sizeOfForceString,
         forceVectorsCapitalizedString: forceArrowsCapitalizedString,
