@@ -11,7 +11,7 @@ define( require => {
 
   // modules
   const AccessiblePeer = require( 'SCENERY/accessibility/AccessiblePeer' );
-  const BoundarySoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/BoundarySoundGenerator' );
+  const MassBoundarySoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassBoundarySoundGenerator' );
   const Bounds2 = require( 'DOT/Bounds2' );
   const CheckboxSoundGenerator = require( 'TAMBO/sound-generators/CheckboxSoundGenerator' );
   const Color = require( 'SCENERY/util/Color' );
@@ -231,10 +231,10 @@ define( require => {
       soundManager.addSoundGenerator( this.forceSoundGenerator );
 
       // sound generation for masses reaching the inner or outer motion boundaries
-      soundManager.addSoundGenerator( new BoundarySoundGenerator( model.object1, model, {
+      soundManager.addSoundGenerator( new MassBoundarySoundGenerator( model.object1, model, {
         initialOutputLevel: BOUNDARY_SOUNDS_LEVEL
       } ) );
-      soundManager.addSoundGenerator( new BoundarySoundGenerator( model.object2, model, {
+      soundManager.addSoundGenerator( new MassBoundarySoundGenerator( model.object2, model, {
         initialOutputLevel: BOUNDARY_SOUNDS_LEVEL
       } ) );
 
