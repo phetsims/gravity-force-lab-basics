@@ -231,10 +231,10 @@ define( require => {
       soundManager.addSoundGenerator( this.forceSoundGenerator );
 
       // sound generation for masses reaching the inner or outer motion boundaries
-      soundManager.addSoundGenerator( new MassBoundarySoundGenerator( model.object1, model, {
+      soundManager.addSoundGenerator( new MassBoundarySoundGenerator( model.object1, model, 'left', {
         initialOutputLevel: BOUNDARY_SOUNDS_LEVEL
       } ) );
-      soundManager.addSoundGenerator( new MassBoundarySoundGenerator( model.object2, model, {
+      soundManager.addSoundGenerator( new MassBoundarySoundGenerator( model.object2, model, 'right', {
         initialOutputLevel: BOUNDARY_SOUNDS_LEVEL
       } ) );
 
