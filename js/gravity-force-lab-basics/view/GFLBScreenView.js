@@ -13,7 +13,6 @@ define( require => {
   const AccessiblePeer = require( 'SCENERY/accessibility/AccessiblePeer' );
   const MassBoundarySoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassBoundarySoundGenerator' );
   const Bounds2 = require( 'DOT/Bounds2' );
-  const CheckboxSoundGenerator = require( 'TAMBO/sound-generators/CheckboxSoundGenerator' );
   const Color = require( 'SCENERY/util/Color' );
   const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
   const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
@@ -267,14 +266,6 @@ define( require => {
       const parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, {
         tandem: tandem.createTandem( 'parameterControlPanel' ),
         fill: '#f1f1f2'
-      } );
-
-      // sound generation for check box items
-      checkboxItems.forEach( checkboxItem => {
-        soundManager.addSoundGenerator( new CheckboxSoundGenerator(
-          checkboxItem.property,
-          model.resetInProgressProperty
-        ) );
       } );
 
       // arrow that shows distance between the two masses
