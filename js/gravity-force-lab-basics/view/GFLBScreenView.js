@@ -42,7 +42,6 @@ define( require => {
   const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  const ResetAllSoundGenerator = require( 'TAMBO/sound-generators/ResetAllSoundGenerator' );
   const ScreenView = require( 'JOIST/ScreenView' );
   const soundManager = require( 'TAMBO/soundManager' );
   const SpherePositionsPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsPDOMNode' );
@@ -288,10 +287,6 @@ define( require => {
         bottom: this.layoutBounds.maxY - 10,
         tandem: tandem.createTandem( 'resetAllButton' )
       } );
-
-      soundManager.addSoundGenerator( new ResetAllSoundGenerator( model.resetInProgressProperty, {
-        initialOutputLevel: 0.7
-      } ) );
 
       // children
       this.pdomPlayAreaNode.children = [
