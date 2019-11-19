@@ -37,7 +37,6 @@ define( require => {
         },
 
         forceVectorCapitalizedString: forceArrowCapitalizedString,
-        forceVectorString: forceArrowString,
         forceMagnitudeString: sizeOfForceString,
         forceVectorsCapitalizedString: forceArrowsCapitalizedString,
         forceVectorsString: forceArrowsString,
