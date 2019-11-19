@@ -19,7 +19,6 @@ define( require => {
   const forceArrowsString = GFLBA11yStrings.forceArrows.value;
   const arrowsString = GFLBA11yStrings.arrows.value;
   const forceArrowCapitalizedString = GFLBA11yStrings.forceArrowCapitalized.value;
-  const forceArrowString = GFLBA11yStrings.forceArrow.value;
   const sizeOfForceString = GFLBA11yStrings.sizeOfForce.value;
 
   class GFLBForceDescriber extends ForceDescriber {

@@ -72,9 +72,6 @@ define( require => {
     forceArrowCapitalized: {
       value: 'Force arrow'
     },
-    forceArrow: {
-      value: 'force arrow'
-    },
     sizeOfForce: {
       value: 'Size of force'
     }
