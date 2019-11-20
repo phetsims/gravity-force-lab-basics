@@ -49,7 +49,7 @@ define( require => {
      */
     alertDistanceVisible( showDistance ) {
       this.distanceVisibleUtterance.alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
-      phet.joist.sim.display.utteranceQueue.addToBack( this.distanceVisibleUtterance );
+      phet.joist.sim.utteranceQueue.addToBack( this.distanceVisibleUtterance );
     }
   }
 
