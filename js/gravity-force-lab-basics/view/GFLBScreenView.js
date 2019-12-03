@@ -24,7 +24,7 @@ define( require => {
   const GFLBMassControl = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassControl' );
   const GFLBMassDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBMassDescriber' );
   const GFLBMassNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassNode' );
-  const GFLBMassPDOMNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassPDOMNode' );
+  const GFLBMassDescriptionNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBMassDescriptionNode' );
   const GFLBPositionDescriber = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/describers/GFLBPositionDescriber' );
   const GravityForceLabA11yStrings = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/GravityForceLabA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
@@ -134,17 +134,17 @@ define( require => {
           tandem: tandem.createTandem( 'mass2Node' )
         } );
 
-      const massPDOMNodeOptions = {
+      const massDescriptionNodeOptions = {
         object1Label: mass1LabelString,
         object2Label: mass2LabelString
       };
 
       // PDOM descriptions for each mass - the masses themselves leverage AccessibleValueHandler, but these
       // form descriptive summaries for the state of each mass
-      const objectOneMassPDOMNode = new GFLBMassPDOMNode( model, model.object1, massDescriber, forceDescriber,
-        positionDescriber, massPDOMNodeOptions );
-      const objectTwoMassPDOMNode = new GFLBMassPDOMNode( model, model.object2, massDescriber, forceDescriber,
-        positionDescriber, massPDOMNodeOptions );
+      const objectOneMassDescriptionNode = new GFLBMassDescriptionNode( model, model.object1, massDescriber, forceDescriber,
+        positionDescriber, massDescriptionNodeOptions );
+      const objectTwoMassDescriptionNode = new GFLBMassDescriptionNode( model, model.object2, massDescriber, forceDescriber,
+        positionDescriber, massDescriptionNodeOptions );
 
       const massPositionsNode = new SpherePositionsPDOMNode();
 
@@ -290,8 +290,8 @@ define( require => {
 
       // children
       this.pdomPlayAreaNode.children = [
-        objectOneMassPDOMNode,
-        objectTwoMassPDOMNode,
+        objectOneMassDescriptionNode,
+        objectTwoMassDescriptionNode,
         massPositionsNode,
         massControlsNode
       ];

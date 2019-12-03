@@ -1,7 +1,7 @@
 // Copyright 2019, University of Colorado Boulder
 
 /**
- * Responsible for MassPDOMNode content specific to GFLB
+ * Responsible for MassDescriptionNode content specific to GFLB
  * @author Michael Kauzmann (PhET Interactive Simulations)
  */
 define( require => {
@@ -9,9 +9,9 @@ define( require => {
 
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const MassPDOMNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassPDOMNode' );
+  const MassDescriptionNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassDescriptionNode' );
 
-  class GFLBMassPDOMNode extends MassPDOMNode {
+  class GFLBMassDescriptionNode extends MassDescriptionNode {
 
     /**
      * @param {GFLBModel} model
@@ -31,5 +31,5 @@ define( require => {
     }
   }
 
-  return gravityForceLabBasics.register( 'GFLBMassPDOMNode', GFLBMassPDOMNode );
+  return gravityForceLabBasics.register( 'GFLBMassDescriptionNode', GFLBMassDescriptionNode );
 } );
