@@ -11,12 +11,11 @@ define( require => {
 
   // modules
   const AccessiblePeer = require( 'SCENERY/accessibility/AccessiblePeer' );
-  const MassBoundarySoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassBoundarySoundGenerator' );
+  const ContinuousPropertySoundGenerator = require( 'TAMBO/sound-generators/ContinuousPropertySoundGenerator' );
   const Bounds2 = require( 'DOT/Bounds2' );
   const Color = require( 'SCENERY/util/Color' );
   const DefaultDirection = require( 'INVERSE_SQUARE_LAW_COMMON/view/DefaultDirection' );
   const DistanceArrowNode = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/DistanceArrowNode' );
-  const ForceSoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/ForceSoundGenerator' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const GFLBAlertManager = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBAlertManager' );
   const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
@@ -36,6 +35,7 @@ define( require => {
   const ISLCGridNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCGridNode' );
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
   const ISLCQueryParameters = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCQueryParameters' );
+  const MassBoundarySoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassBoundarySoundGenerator' );
   const MassSoundGenerator = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassSoundGenerator' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
@@ -46,15 +46,6 @@ define( require => {
   const soundManager = require( 'TAMBO/soundManager' );
   const SpherePositionsDescriptionNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/SpherePositionsDescriptionNode' );
   const Vector2 = require( 'DOT/Vector2' );
-
-  // constants
-  const MASS_CONTROLS_Y_POSITION = 385;
-  const PANEL_SPACING = 50;
-  const SHOW_GRID = ISLCQueryParameters.showGrid;
-  const SHOW_DRAG_BOUNDS = ISLCQueryParameters.showDragBounds;
-  const OBJECT_ONE = ISLCObjectEnum.OBJECT_ONE;
-  const OBJECT_TWO = ISLCObjectEnum.OBJECT_TWO;
-  const BOUNDARY_SOUNDS_LEVEL = 1;
 
   // strings
   const constantSizeString = require( 'string!GRAVITY_FORCE_LAB/constantSize' );
@@ -77,6 +68,18 @@ define( require => {
   const screenSummaryMainDescriptionString = GFLBA11yStrings.screenSummaryMainDescription.value;
   const screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySecondaryDescription.value;
   const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
+
+  // sounds
+  const forceSound = require( 'sound!GRAVITY_FORCE_LAB/saturated-sine-loop-trimmed.wav' );
+
+  // constants
+  const MASS_CONTROLS_Y_POSITION = 385;
+  const PANEL_SPACING = 50;
+  const SHOW_GRID = ISLCQueryParameters.showGrid;
+  const SHOW_DRAG_BOUNDS = ISLCQueryParameters.showDragBounds;
+  const OBJECT_ONE = ISLCObjectEnum.OBJECT_ONE;
+  const OBJECT_TWO = ISLCObjectEnum.OBJECT_TWO;
+  const BOUNDARY_SOUNDS_LEVEL = 1;
 
   class GFLBScreenView extends ScreenView {
 
@@ -217,8 +220,9 @@ define( require => {
       ) );
 
       // @private - sound generation for the force sound
-      this.forceSoundGenerator = new ForceSoundGenerator(
+      this.forceSoundGenerator = new ContinuousPropertySoundGenerator(
         model.forceProperty,
+        forceSound,
         new Range( model.getMinForce(), model.getMaxForce() ),
         model.resetInProgressProperty,
         {
