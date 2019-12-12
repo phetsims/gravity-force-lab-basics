@@ -50,7 +50,7 @@ define( require => {
         finishWiringListeners: _.noop,
 
         // phet-io
-        tandem: Tandem.required,
+        tandem: Tandem.REQUIRED,
 
         // a11y recompute the PDOM descriptions when show distance is toggled
         additionalA11yDependencies: [ model.showDistanceProperty ]
