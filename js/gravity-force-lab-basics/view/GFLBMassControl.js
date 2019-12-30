@@ -19,7 +19,7 @@ define( require => {
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Property = require( 'AXON/Property' );
   const Text = require( 'SCENERY/nodes/Text' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
   const VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
@@ -65,8 +65,8 @@ define( require => {
         tandem: tandem.createTandem( 'numberPicker' ),
         upFunction: mass => mass + BILLION_MULTIPLIER,
         downFunction: mass => mass - BILLION_MULTIPLIER,
-        formatValue: value => Util.toFixed( value / BILLION_MULTIPLIER, 0 ),
-        a11yMapValue: value => Util.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
+        formatValue: value => Utils.toFixed( value / BILLION_MULTIPLIER, 0 ),
+        a11yMapValue: value => Utils.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
 
         // arrow options
         arrowHeight: 3,

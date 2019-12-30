@@ -12,7 +12,7 @@ define( require => {
   const ForceDescriber = require( 'INVERSE_SQUARE_LAW_COMMON/view/describers/ForceDescriber' );
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
 
   // a11y strings
   const forceArrowsCapitalizedString = GFLBA11yStrings.forceArrowsCapitalized.value;
@@ -32,7 +32,7 @@ define( require => {
     constructor( model, object1Label, object2Label, positionDescriber ) {
       const options = {
         convertForce: force => {
-          return Util.toFixedNumber( force, 1 );
+          return Utils.toFixedNumber( force, 1 );
         },
 
         forceVectorCapitalizedString: forceArrowCapitalizedString,

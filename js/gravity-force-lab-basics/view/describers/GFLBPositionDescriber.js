@@ -14,7 +14,7 @@ define( require => {
   const GravityForceLabPositionDescriber = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/describers/GravityForceLabPositionDescriber' );
   const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
 
   // strings
   const kilometerString = GFLBA11yStrings.kilometer.value;
@@ -37,7 +37,7 @@ define( require => {
       const options = {
         unit: kilometerString,
         units: kilometersString,
-        formatDisplayDistance: distance => Util.toFixedNumber( distance / 1e3, 1 )
+        formatDisplayDistance: distance => Utils.toFixedNumber( distance / 1e3, 1 )
       };
 
       super( model, object1Label, object2Label, options );
