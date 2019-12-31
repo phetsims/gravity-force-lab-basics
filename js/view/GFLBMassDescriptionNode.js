@@ -9,7 +9,7 @@ define( require => {
 
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const MassDescriptionNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/MassDescriptionNode' );
+  const MassDescriptionNode = require( 'GRAVITY_FORCE_LAB/view/MassDescriptionNode' );
 
   class GFLBMassDescriptionNode extends MassDescriptionNode {
 

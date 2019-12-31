@@ -12,9 +12,9 @@ define( require => {
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const Color = require( 'SCENERY/util/Color' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBConstants' );
+  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBConstants' );
   const ISLCModel = require( 'INVERSE_SQUARE_LAW_COMMON/model/ISLCModel' );
-  const Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
+  const Mass = require( 'GRAVITY_FORCE_LAB/model/Mass' );
   const PhysicalConstants = require( 'PHET_CORE/PhysicalConstants' );
 
   // constants

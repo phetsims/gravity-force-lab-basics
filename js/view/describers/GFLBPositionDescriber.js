@@ -9,9 +9,9 @@ define( require => {
   'use strict';
 
   // modules
-  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
+  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const GravityForceLabPositionDescriber = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/describers/GravityForceLabPositionDescriber' );
+  const GravityForceLabPositionDescriber = require( 'GRAVITY_FORCE_LAB/view/describers/GravityForceLabPositionDescriber' );
   const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Utils = require( 'DOT/Utils' );

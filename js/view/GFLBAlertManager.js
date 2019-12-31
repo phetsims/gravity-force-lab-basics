@@ -10,8 +10,8 @@ define( require => {
 
   // modules
   const ActivationUtterance = require( 'UTTERANCE_QUEUE/ActivationUtterance' );
-  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/GFLBA11yStrings' );
-  const GravityForceLabAlertManager = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabAlertManager' );
+  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
+  const GravityForceLabAlertManager = require( 'GRAVITY_FORCE_LAB/view/GravityForceLabAlertManager' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
 
   // a11y strings

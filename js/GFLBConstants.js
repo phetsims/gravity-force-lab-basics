@@ -10,7 +10,7 @@ define( require => {
 
   // modules
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const Mass = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/model/Mass' );
+  const Mass = require( 'GRAVITY_FORCE_LAB/model/Mass' );
   const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
 
