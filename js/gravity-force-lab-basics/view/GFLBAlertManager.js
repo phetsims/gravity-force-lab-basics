@@ -27,7 +27,7 @@ define( require => {
      */
     constructor( model, massDescriber, forceDescriber ) {
       super( model, massDescriber, forceDescriber, {
-        linkToScientificNotationProperty: false, // opt out of REGULAR specific linking
+        linkToForceValuesDisplayProperty: false, // opt out of REGULAR specific linking
 
         // by default the REGULAR version is different from this because of scientific notation
         showForceValuesListener: showValues => {
