@@ -30,7 +30,7 @@ define( require => {
   const GravityForceLabScreenSummaryNode = require( 'GRAVITY_FORCE_LAB/gravity-force-lab/view/GravityForceLabScreenSummaryNode' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
-  const ISLCCheckboxPanel = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCCheckboxPanel' );
+  const GFLBCheckboxPanel = require( 'GRAVITY_FORCE_LAB_BASICS/gravity-force-lab-basics/view/GFLBCheckboxPanel' );
   const ISLCDragBoundsNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCDragBoundsNode' );
   const ISLCGridNode = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCGridNode' );
   const ISLCObjectEnum = require( 'INVERSE_SQUARE_LAW_COMMON/view/ISLCObjectEnum' );
@@ -266,7 +266,7 @@ define( require => {
           }
         }
       ];
-      const parameterControlPanel = new ISLCCheckboxPanel( checkboxItems, {
+      const parameterControlPanel = new GFLBCheckboxPanel( checkboxItems, {
         tandem: tandem.createTandem( 'parameterControlPanel' ),
         fill: '#f1f1f2'
       } );
