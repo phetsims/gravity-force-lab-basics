@@ -21,12 +21,6 @@ define( require => {
     basicsSimStateLabel: {
       value: 'Currently, force on mass 1 by mass 2 is of equal size and pointing directly opposite to the force on mass 2 by mass 1.'
     },
-    massesDistanceApartPattern: {
-      value: '{{distanceAndUnits}} apart'
-    },
-    spherePositionsDescriptionPattern: {
-      value: 'Centers of spheres, {{distanceApart}}. {{spherePositionsHelpText}}'
-    },
     distanceCheckboxHelpText: {
       value: 'Measure distance between spheres in kilometers.'
     },

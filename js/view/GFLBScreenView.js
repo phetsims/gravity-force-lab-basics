@@ -39,7 +39,6 @@ define( require => {
   const MassSoundGenerator = require( 'GRAVITY_FORCE_LAB/view/MassSoundGenerator' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
-  const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
   const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   const ScreenView = require( 'JOIST/ScreenView' );
@@ -149,7 +148,9 @@ define( require => {
       const objectTwoMassDescriptionNode = new GFLBMassDescriptionNode( model, model.object2, massDescriber, forceDescriber,
         positionDescriber, massDescriptionNodeOptions );
 
-      const massPositionsNode = new SpherePositionsDescriptionNode();
+      const massPositionsNode = new SpherePositionsDescriptionNode( model, positionDescriber, {
+        additionalDescriptionDependencies: [ model.showDistanceProperty ]
+      } );
 
       massPositionsNode.addChild( mass1Node );
       massPositionsNode.addChild( mass2Node );
@@ -157,15 +158,6 @@ define( require => {
       // the arrow nodes and their labels should be on top of the masses, but under the rest of the control panel
       massPositionsNode.addChild( mass1Node.arrowNode );
       massPositionsNode.addChild( mass2Node.arrowNode );
-
-      Property.multilink( [
-
-          // Linking to `model.separationProperty` caused the same bug as in GFLB#103, so we are linking to
-          // both objects' positionProperty instead.
-          model.object1.positionProperty,
-          model.object2.positionProperty,
-          model.showDistanceProperty ],
-        () => massPositionsNode.setDescription( positionDescriber.getSpherePositionsHelpText() ) );
 
       // mass controls
       const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,

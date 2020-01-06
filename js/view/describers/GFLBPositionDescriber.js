@@ -12,18 +12,11 @@ define( require => {
   const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
   const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
   const GravityForceLabPositionDescriber = require( 'GRAVITY_FORCE_LAB/view/describers/GravityForceLabPositionDescriber' );
-  const ISLCA11yStrings = require( 'INVERSE_SQUARE_LAW_COMMON/ISLCA11yStrings' );
-  const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Utils = require( 'DOT/Utils' );
 
   // strings
   const kilometerString = GFLBA11yStrings.kilometer.value;
   const kilometersString = GFLBA11yStrings.kilometers.value;
-
-  // a11y strings
-  const massesDistanceApartPatternString = GFLBA11yStrings.massesDistanceApartPattern.value;
-  const spherePositionsDescriptionPatternString = GFLBA11yStrings.spherePositionsDescriptionPattern.value;
-  const spherePositionHelpTextString = ISLCA11yStrings.spherePositionHelpText.value;
 
   class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
 
@@ -49,21 +42,6 @@ define( require => {
       // the GFLBPositionDescriber persists for life of sim and does not require disposal
       model.showDistanceProperty.link( showDistance => {
         this.useQuantitativeDistance = showDistance;
-      } );
-    }
-
-    /**
-     * @public
-     * @returns {string} - the help text for the sphere positions heading/container node
-     */
-    getSpherePositionsHelpText() {
-      const quantitativeDistance = StringUtils.fillIn( massesDistanceApartPatternString, {
-        distanceAndUnits: this.getDistanceAndUnits()
-      } );
-
-      return StringUtils.fillIn( spherePositionsDescriptionPatternString, {
-        spherePositionsHelpText: spherePositionHelpTextString,
-        distanceApart: this.useQuantitativeDistance ? quantitativeDistance : this.getQualitativeDistanceFromEachOther()
       } );
     }
 
