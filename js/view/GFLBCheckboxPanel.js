@@ -46,7 +46,7 @@ define( require => {
       checkboxItems = checkboxItems.map( item => {
         assert && assert( item.tandem );
         item.node = new Text( item.label, merge( {}, ISLCConstants.UI_TEXT_OPTIONS, {
-          tandem: options.tandem.createTandem( 'labelText' )
+          tandem: item.tandem.createTandem( 'labelText' )
         } ) );
         return item;
       } );
