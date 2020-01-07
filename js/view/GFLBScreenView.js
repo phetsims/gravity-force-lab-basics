@@ -251,7 +251,7 @@ define( require => {
         },
         {
           label: constantSizeString, property: model.constantRadiusProperty,
-          tandem: tandem.createTandem( 'constantRadiusCheckbox' ),
+          tandem: tandem.createTandem( 'constantSizeCheckbox' ),
           options: {
             accessibleName: constantSizeString,
             descriptionContent: constantSizeCheckboxHelpTextString
