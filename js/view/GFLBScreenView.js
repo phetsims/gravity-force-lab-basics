@@ -64,7 +64,8 @@ define( require => {
   const forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
   const constantSizeCheckboxHelpTextString = GravityForceLabA11yStrings.constantSizeCheckboxHelpText.value;
   const distanceCheckboxHelpTextString = GFLBA11yStrings.distanceCheckboxHelpText.value;
-  const screenSummaryMainDescriptionString = GFLBA11yStrings.screenSummaryMainDescription.value;
+  const screenSummaryPlayAreaOverviewString = GFLBA11yStrings.screenSummaryPlayAreaOverview.value;
+  const screenSummaryPlayAreaControlsString = GFLBA11yStrings.screenSummaryPlayAreaControls.value;
   const screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySecondaryDescription.value;
   const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
 
@@ -97,7 +98,8 @@ define( require => {
       super( {
         layoutBounds: new Bounds2( 0, 0, 768, 464 ),
         screenSummaryContent: new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
-          mainDescriptionContent: screenSummaryMainDescriptionString,
+          screenSummaryPlayAreaOverview: screenSummaryPlayAreaOverviewString,
+          screenSummaryPlayAreaControls: screenSummaryPlayAreaControlsString,
           secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
           simStateLabel: basicsSimStateLabelString,
           additionalMassDistanceProperties: [ model.showDistanceProperty ]
