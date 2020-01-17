@@ -25,8 +25,8 @@ This sim further simplifies the "regular" sim with changes to the control panel.
 is omitted, and an option to omit showing distance between the two masses is added. Toggling distance values off further 
 simplifies the output, and centers the focus of the sim around the force that the two masses are acting on each other.
 
-Despite the cognitive similarities between this simulation and `gravity-force-lab`, the basics version doesn't not 
-necessariliy inherit all things from the regular version. For example. `GFLBModel` extends `ISLCModel`, not 
+Despite the cognitive similarities between this simulation and `gravity-force-lab`, the basics version does not 
+necessarily inherit all things from the regular version. For example. `GFLBModel` extends `ISLCModel`, not 
 `GravityForceLabModel`. 
 
 NOTE: Often in documentation comments and github issues, this sim is referred to as "BASICS" in comparison to 
@@ -52,4 +52,4 @@ for the details on updating pullers, force values, and arrows.
 ## Disposal
 
 There are no dynamic pieces to this simulation, and as a result nothing is disposed.
-As a result no listeners need to be unlinked or removed.
+Therefore no listeners need to be unlinked or removed.
