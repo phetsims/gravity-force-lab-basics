@@ -28,8 +28,8 @@ define( require => {
     MASS_DENSITY: MASS_DENSITY,
     CONSTANT_RADIUS: Mass.calculateRadius( MIN_MASS, MASS_DENSITY ), // meters
     MIN_DISTANCE_BETWEEN_MASSES: 200, // meters
-    PULL_LOCATION_RANGE: new Range( -MAX_DISTANCE_FROM_CENTER, MAX_DISTANCE_FROM_CENTER ),
-    MASS_POSITION_DELTA: 100, // in m, masses can move in 0.1 km increments and will snap to these locations
+    PULL_POSITION_RANGE: new Range( -MAX_DISTANCE_FROM_CENTER, MAX_DISTANCE_FROM_CENTER ),
+    MASS_POSITION_DELTA: 100, // in m, masses can move in 0.1 km increments and will snap to these positions
     MASS_STEP_SIZE: 500 // in m, each time the mass is moved with a keyboard
   };
 

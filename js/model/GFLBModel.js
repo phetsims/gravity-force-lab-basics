@@ -29,8 +29,8 @@ define( require => {
 
   const MASS_OPTIONS = {
     constantRadius: GFLBConstants.CONSTANT_RADIUS,
-    leftObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.min,
-    rightObjectBoundary: GFLBConstants.PULL_LOCATION_RANGE.max,
+    leftObjectBoundary: GFLBConstants.PULL_POSITION_RANGE.min,
+    rightObjectBoundary: GFLBConstants.PULL_POSITION_RANGE.max,
     valueStep: GFLBConstants.BILLION_MULTIPLIER
   };
 
@@ -61,7 +61,7 @@ define( require => {
         tandem.createTandem( 'mass2' ), MASS_OPTIONS
       );
 
-      super( PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, GFLBConstants.PULL_LOCATION_RANGE, tandem, {
+      super( PhysicalConstants.GRAVITATIONAL_CONSTANT, mass1, mass2, GFLBConstants.PULL_POSITION_RANGE, tandem, {
         snapObjectsToNearest: GFLBConstants.MASS_POSITION_DELTA,
         minSeparationBetweenObjects: GFLBConstants.MIN_DISTANCE_BETWEEN_MASSES
       } );
