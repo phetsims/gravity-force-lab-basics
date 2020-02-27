@@ -5,60 +5,57 @@
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const GFLBConstants = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBConstants' );
-  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const MassNode = require( 'GRAVITY_FORCE_LAB/view/MassNode' );
-  const merge = require( 'PHET_CORE/merge' );
-  const Tandem = require( 'TANDEM/Tandem' );
+import MassNode from '../../../gravity-force-lab/js/view/MassNode.js';
+import merge from '../../../phet-core/js/merge.js';
+import Tandem from '../../../tandem/js/Tandem.js';
+import GFLBConstants from '../GFLBConstants.js';
+import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
-  // constants
-  const MASS_NODE_Y_POSITION = 215;
+// constants
+const MASS_NODE_Y_POSITION = 215;
 
-  class GFLBMassNode extends MassNode {
+class GFLBMassNode extends MassNode {
 
-    /**
-     * @param {GFLBModel} model
-     * @param {Mass} mass
-     * @param {Bounds2} layoutBounds
-     * @param {ModelViewTransform2} modelViewTransform
-     * @param {GFLBAlertManager} alertManager
-     * @param {GFLBForceDescriber} forceDescriber
-     * @param {GFLBPositionDescriber} positionDescriber
-     * @param {Object} [options]
-     */
-    constructor( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options ) {
+  /**
+   * @param {GFLBModel} model
+   * @param {Mass} mass
+   * @param {Bounds2} layoutBounds
+   * @param {ModelViewTransform2} modelViewTransform
+   * @param {GFLBAlertManager} alertManager
+   * @param {GFLBForceDescriber} forceDescriber
+   * @param {GFLBPositionDescriber} positionDescriber
+   * @param {Object} [options]
+   */
+  constructor( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options ) {
 
-      options = merge( {
-        arrowNodeOptions: {
-          forceReadoutDecimalPlaces: 1,
-          arrowFill: 'black',
-          arrowLabelFill: 'black',
-          maxArrowWidth: 400,
-          forceThresholdPercent: 7 * Math.pow( 10, -4 ),
-          backgroundFill: GFLBConstants.BACKGROUND_COLOR_PROPERTY
-        },
-        y: MASS_NODE_Y_POSITION,
+    options = merge( {
+      arrowNodeOptions: {
+        forceReadoutDecimalPlaces: 1,
+        arrowFill: 'black',
+        arrowLabelFill: 'black',
+        maxArrowWidth: 400,
+        forceThresholdPercent: 7 * Math.pow( 10, -4 ),
+        backgroundFill: GFLBConstants.BACKGROUND_COLOR_PROPERTY
+      },
+      y: MASS_NODE_Y_POSITION,
 
-        // {number} In meters, charges will snap to the nearest 0.1 meters in model coordinates
-        snapToNearest: model.snapObjectsToNearest,
-        stepSize: GFLBConstants.MASS_STEP_SIZE,
+      // {number} In meters, charges will snap to the nearest 0.1 meters in model coordinates
+      snapToNearest: model.snapObjectsToNearest,
+      stepSize: GFLBConstants.MASS_STEP_SIZE,
 
-        finishWiringListeners: _.noop,
+      finishWiringListeners: _.noop,
 
-        // phet-io
-        tandem: Tandem.REQUIRED,
+      // phet-io
+      tandem: Tandem.REQUIRED,
 
-        // a11y recompute the PDOM descriptions when show distance is toggled
-        additionalA11yDependencies: [ model.showDistanceProperty ]
-      }, options );
+      // a11y recompute the PDOM descriptions when show distance is toggled
+      additionalA11yDependencies: [ model.showDistanceProperty ]
+    }, options );
 
-      super( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options );
-    }
+    super( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options );
   }
+}
 
-  return gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
-} );
+gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
+export default GFLBMassNode;

@@ -7,74 +7,71 @@
  * @author Steele Dalton (PhET Interactive Simulations)
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
-  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
-  const Node = require( 'SCENERY/nodes/Node' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  const Property = require( 'AXON/Property' );
-  const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
-  const Text = require( 'SCENERY/nodes/Text' );
+import Property from '../../../axon/js/Property.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
+import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
+import PhetFont from '../../../scenery-phet/js/PhetFont.js';
+import Node from '../../../scenery/js/nodes/Node.js';
+import Text from '../../../scenery/js/nodes/Text.js';
+import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
+import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
-  // strings
-  const distanceUnitsPatternString = require( 'string!GRAVITY_FORCE_LAB_BASICS/distanceUnitsPattern' );
+const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
 
-  // constants
-  const HEAD_WIDTH = 6;
-  const HEAD_HEIGHT = 6;
+// constants
+const HEAD_WIDTH = 6;
+const HEAD_HEIGHT = 6;
 
-  class DistanceArrowNode extends Node {
+class DistanceArrowNode extends Node {
 
-    /**
-     * @param {GFLBModel} model
-     * @param {ModelViewTransform2} modelViewTransform
-     * @param {Object} [options]
-     */
-    constructor( model, modelViewTransform, options ) {
-      super( options );
+  /**
+   * @param {GFLBModel} model
+   * @param {ModelViewTransform2} modelViewTransform
+   * @param {Object} [options]
+   */
+  constructor( model, modelViewTransform, options ) {
+    super( options );
 
-      const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,
-        model.object2.positionProperty.get(), 0, {
-          doubleHead: true,
-          tailWidth: 0.5,
-          headHeight: HEAD_HEIGHT,
-          headWidth: HEAD_WIDTH,
-          stroke: '#BFBFBF',
-          fill: '#BFBFBF'
-        } );
-      this.addChild( arrowNode );
-
-      // the label
-      const labelText = new Text( StringUtils.fillIn( distanceUnitsPatternString, { distance: 0 } ), {
-        font: new PhetFont( 12 ),
-        bottom: arrowNode.top + ( 3 * HEAD_WIDTH / 4 ),
-        tandem: options.tandem.createTandem( 'labelText' ),
-        phetioComponentOptions: { textProperty: { phetioReadOnly: true } },
-        phetioDocumentation: 'The distance as text between the two masses'
+    const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,
+      model.object2.positionProperty.get(), 0, {
+        doubleHead: true,
+        tailWidth: 0.5,
+        headHeight: HEAD_HEIGHT,
+        headWidth: HEAD_WIDTH,
+        stroke: '#BFBFBF',
+        fill: '#BFBFBF'
       } );
-      this.addChild( labelText );
+    this.addChild( arrowNode );
 
-      // DistanceArrowNode exists for life of sim and does not need disposal
-      Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],
-        ( position1, position2 ) => {
+    // the label
+    const labelText = new Text( StringUtils.fillIn( distanceUnitsPatternString, { distance: 0 } ), {
+      font: new PhetFont( 12 ),
+      bottom: arrowNode.top + ( 3 * HEAD_WIDTH / 4 ),
+      tandem: options.tandem.createTandem( 'labelText' ),
+      phetioComponentOptions: { textProperty: { phetioReadOnly: true } },
+      phetioDocumentation: 'The distance as text between the two masses'
+    } );
+    this.addChild( labelText );
 
-          // update the arrow node width
-          const viewPosition1 = modelViewTransform.modelToViewX( position1 );
-          const viewPosition2 = modelViewTransform.modelToViewX( position2 );
-          arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
+    // DistanceArrowNode exists for life of sim and does not need disposal
+    Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],
+      ( position1, position2 ) => {
 
-          // update label text and center, distance in meters so divide by 1000 to read out in km
-          labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, {
-            distance: model.separationProperty.get() / 1000 // m to km
-          } ) );
+        // update the arrow node width
+        const viewPosition1 = modelViewTransform.modelToViewX( position1 );
+        const viewPosition2 = modelViewTransform.modelToViewX( position2 );
+        arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
 
-          labelText.centerX = arrowNode.centerX;
-        } );
-    }
+        // update label text and center, distance in meters so divide by 1000 to read out in km
+        labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, {
+          distance: model.separationProperty.get() / 1000 // m to km
+        } ) );
+
+        labelText.centerX = arrowNode.centerX;
+      } );
   }
+}
 
-  return gravityForceLabBasics.register( 'DistanceArrowNode', DistanceArrowNode );
-} );
+gravityForceLabBasics.register( 'DistanceArrowNode', DistanceArrowNode );
+export default DistanceArrowNode;

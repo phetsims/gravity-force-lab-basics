@@ -5,53 +5,50 @@
  *
  * @author Michael Kauzmann (PhET Interactive Simulations)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const ActivationUtterance = require( 'UTTERANCE_QUEUE/ActivationUtterance' );
-  const GFLBA11yStrings = require( 'GRAVITY_FORCE_LAB_BASICS/GFLBA11yStrings' );
-  const GravityForceLabAlertManager = require( 'GRAVITY_FORCE_LAB/view/GravityForceLabAlertManager' );
-  const gravityForceLabBasics = require( 'GRAVITY_FORCE_LAB_BASICS/gravityForceLabBasics' );
+import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
+import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
+import GFLBA11yStrings from '../GFLBA11yStrings.js';
+import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
-  // a11y strings
-  const distanceArrowVisibleString = GFLBA11yStrings.distanceArrowVisible.value;
-  const distanceArrowRemovedString = GFLBA11yStrings.distanceArrowRemoved.value;
+// a11y strings
+const distanceArrowVisibleString = GFLBA11yStrings.distanceArrowVisible.value;
+const distanceArrowRemovedString = GFLBA11yStrings.distanceArrowRemoved.value;
 
-  class GFLBAlertManager extends GravityForceLabAlertManager {
+class GFLBAlertManager extends GravityForceLabAlertManager {
 
-    /**
-     * @param {GFLBModel} model
-     * @param {GFLBMassDescriber} massDescriber
-     * @param {GFLBForceDescriber} forceDescriber
-     */
-    constructor( model, massDescriber, forceDescriber ) {
-      super( model, massDescriber, forceDescriber, {
-        linkToForceValuesDisplayProperty: false, // opt out of REGULAR specific linking
+  /**
+   * @param {GFLBModel} model
+   * @param {GFLBMassDescriber} massDescriber
+   * @param {GFLBForceDescriber} forceDescriber
+   */
+  constructor( model, massDescriber, forceDescriber ) {
+    super( model, massDescriber, forceDescriber, {
+      linkToForceValuesDisplayProperty: false, // opt out of REGULAR specific linking
 
-        // by default the REGULAR version is different from this because of scientific notation
-        showForceValuesListener: showValues => {
-          this.alertShowForceValues( showValues );
-        }
-      } );
+      // by default the REGULAR version is different from this because of scientific notation
+      showForceValuesListener: showValues => {
+        this.alertShowForceValues( showValues );
+      }
+    } );
 
-      // @private {Utterance}
-      this.distanceVisibleUtterance = new ActivationUtterance();
+    // @private {Utterance}
+    this.distanceVisibleUtterance = new ActivationUtterance();
 
-      model.showDistanceProperty.lazyLink( showDistance => {
-        this.alertDistanceVisible( showDistance );
-      } );
-    }
-
-    /**
-     * @private
-     * @param {boolean} showDistance
-     */
-    alertDistanceVisible( showDistance ) {
-      this.distanceVisibleUtterance.alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
-      phet.joist.sim.utteranceQueue.addToBack( this.distanceVisibleUtterance );
-    }
+    model.showDistanceProperty.lazyLink( showDistance => {
+      this.alertDistanceVisible( showDistance );
+    } );
   }
 
-  return gravityForceLabBasics.register( 'GFLBAlertManager', GFLBAlertManager );
-} );
+  /**
+   * @private
+   * @param {boolean} showDistance
+   */
+  alertDistanceVisible( showDistance ) {
+    this.distanceVisibleUtterance.alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
+    phet.joist.sim.utteranceQueue.addToBack( this.distanceVisibleUtterance );
+  }
+}
+
+gravityForceLabBasics.register( 'GFLBAlertManager', GFLBAlertManager );
+export default GFLBAlertManager;
