@@ -13,11 +13,11 @@ import SimLauncher from '../../joist/js/SimLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import GFLBConstants from './GFLBConstants.js';
 import gravityForceLabBasicsStrings from './gravity-force-lab-basics-strings.js';
-import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
+import webSpeaker from '../../inverse-square-law-common/js/view/webSpeaker.js';
 import GFLBModel from './model/GFLBModel.js';
 import GFLBScreenView from './view/GFLBScreenView.js';
-import ISLCQueryParameters from '../../../../inverse-square-law-common/js/ISLCQueryParameters.js';
-import WebSpeechDialogContent from '../../../../inverse-square-law-common/js/view/WebSpeechDialogContent.js';
+import ISLCQueryParameters from '../../inverse-square-law-common/js/ISLCQueryParameters.js';
+import WebSpeechDialogContent from '../../inverse-square-law-common/js/view/WebSpeechDialogContent.js';
 
 // constants
 const tandem = Tandem.ROOT;
