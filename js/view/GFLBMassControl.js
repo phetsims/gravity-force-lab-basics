@@ -19,6 +19,8 @@ import Panel from '../../../sun/js/Panel.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
 
@@ -44,7 +46,11 @@ class GFLBMassControl extends Panel {
                massDescriber, tandem, options ) {
 
     options = merge( {
-      color: new Color( 0, 0, 255 )
+      color: new Color( 0, 0, 255 ),
+
+      // {null|ShapeHitDetector} - a11y, to support prototype self-voicing feature set. If included browser
+      // will speak informatioon about the GFLBMassControl on certain user input
+      shapeHitDetector: null
     }, options );
 
     const titleText = new Text( titleString, {
@@ -118,6 +124,19 @@ class GFLBMassControl extends Panel {
       // a11y
       tagName: 'div' // Though not necessary, it is helpful for the a11y view to display the valuetext within this div.
     } );
+
+    // PROTOTYPE a11y code, for the self-voicing feature set
+    if ( options.shapeHitDetector ) {
+      options.shapeHitDetector.addNode( panelVBox );
+      options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
+        if ( hitTarget === panelVBox ) {
+          webSpeaker.speak( StringUtils.fillIn( 'Change {{labelContent}}, {{valueText}}', {
+            labelContent: labelContent,
+            valueText: numberPicker.ariaValueText
+          } ) );
+        }
+      } );
+    }
   }
 }
 

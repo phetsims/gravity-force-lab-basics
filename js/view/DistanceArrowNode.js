@@ -13,11 +13,17 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../scenery/js/nodes/Node.js';
+import GFLBA11yStrings from '../GFLBA11yStrings.js';
+import merge from '../../../phet-core/js/merge.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
+
+// a11y strings
+const verboseDistanceArrowDescriptionString = GFLBA11yStrings.verboseDistanceArrowDescription.value;
 
 // constants
 const HEAD_WIDTH = 6;
@@ -31,6 +37,14 @@ class DistanceArrowNode extends Node {
    * @param {Object} [options]
    */
   constructor( model, modelViewTransform, options ) {
+
+    options = merge( {
+
+      // {null|ShapeHitDetector} - a11y, to support prototype self-voicing feature set - if included, browser
+      // will speak information about disatnce upon certain user input
+      shapeHitDetector: null
+    }, options );
+
     super( options );
 
     const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,
@@ -53,6 +67,17 @@ class DistanceArrowNode extends Node {
       phetioDocumentation: 'The distance as text between the two masses'
     } );
     this.addChild( labelText );
+
+    if ( options.shapeHitDetector ) {
+      options.shapeHitDetector.addNode( this );
+      options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
+        if ( hitTarget === this ) {
+          webSpeaker.speak( StringUtils.fillIn( verboseDistanceArrowDescriptionString, {
+            distance: model.separationProperty.get() / 1000 // m to km
+          } ) );
+        }
+      } );
+    }
 
     // DistanceArrowNode exists for life of sim and does not need disposal
     Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],

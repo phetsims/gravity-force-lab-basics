@@ -13,9 +13,15 @@ import ISLCConstants from '../../../inverse-square-law-common/js/ISLCConstants.j
 import ISLCPanel from '../../../inverse-square-law-common/js/view/ISLCPanel.js';
 import merge from '../../../phet-core/js/merge.js';
 import Text from '../../../scenery/js/nodes/Text.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import VerticalCheckboxGroup from '../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../tandem/js/Tandem.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import GFLBA11yStrings from '../GFLBA11yStrings.js';
+
+// strings
+const verboseCheckboxPatternString = GFLBA11yStrings.verboseCheckboxPattern.value;
 
 class GFLBCheckboxPanel extends ISLCPanel {
 
@@ -35,6 +41,10 @@ class GFLBCheckboxPanel extends ISLCPanel {
       yMargin: 10,
       minWidth: 170,
 
+      // {null|ShapeHitDetector} - a11y, to support prototype self-voicing feature set - if included browser
+      // will speak information about check boxes upon certain user input
+      shapeHitDetector: null,
+
       // phet-io
       tandem: Tandem.REQUIRED
     }, options );
@@ -48,7 +58,24 @@ class GFLBCheckboxPanel extends ISLCPanel {
       return item;
     } );
 
-    super( new VerticalCheckboxGroup( checkboxItems, options.checkboxGroupOptions ), options );
+    const checkboxGroup = new VerticalCheckboxGroup( checkboxItems, options.checkboxGroupOptions );
+    super( checkboxGroup, options );
+
+    // PROTOTYPE a11y code, for the self-voicing feature set
+    if ( options.shapeHitDetector ) {
+      checkboxGroup.children.forEach( ( child, i ) => {
+        options.shapeHitDetector.addNode( child );
+        options.shapeHitDetector.hitShapeEmitter.addListener( node => {
+          if ( node === child ) {
+            const checkboxItem = checkboxItems[ i ];
+            webSpeaker.speak( StringUtils.fillIn( verboseCheckboxPatternString, {
+              accessibleName: checkboxItem.label,
+              interactionHint: checkboxItem.property.value ? checkboxItem.checkedInteractionHint : checkboxItem.uncheckedInteractionHint
+            } ) );
+          }
+        } );
+      } );
+    }
   }
 }
 

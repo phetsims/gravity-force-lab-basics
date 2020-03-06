@@ -68,6 +68,46 @@ const GFLBA11yStrings = {
   },
   sizeOfForce: {
     value: 'Size of force'
+  },
+
+  /////////////////////////////////////////////
+  // PROTOTYPE SELF VOICING STRINGS
+  /////////////////////////////////////////////
+
+  // Checkboxes
+  verboseCheckboxPattern: {
+    value: '{{accessibleName}}, {{interactionHint}}'
+  },
+  verboseCheckedForceValuesCheckboxInteractionHint: {
+    value: 'uncheck to hide newtons'
+  },
+  verboseUncheckedForceValuesCheckboxInteractionHint: {
+    value: 'check to explore value of forces in newtons'
+  },
+  verboseUncheckedDistanceCheckboxInteractionHint: {
+    value: 'check to measure distance between spheres in kilometers'
+  },
+  verboseCheckedDistanceCheckboxInteractionHint: {
+    value: 'uncheck to hide measurement between spheres'
+  },
+  verboseCheckedConstantSizeCheckboxInteractionHint: {
+    value: 'uncheck to compare size of spheres while changing mass'
+  },
+  verboseUncheckedConstantSizeCheckboxInteractionHint: {
+    value: 'check to keep size of spheres constant while changing mass'
+  },
+
+  // distance arrow
+  verboseDistanceArrowDescription: {
+    value: 'Centers of spheres, {{distance}} kilometers apart.'
+  },
+
+  // mass spheres
+  redColor: {
+    value: 'Red'
+  },
+  blueColor: {
+    value: 'Blue'
   }
 };
 
