@@ -39,8 +39,6 @@ const simOptions = {
     thanks: ''
   },
   keyboardHelpNode: keyboardHelpContent,
-  accessibility: true,
-
   createOptionsDialogContent: ISLCQueryParameters.selfVoicing ? () => new WebSpeechDialogContent() : null
 };
 
