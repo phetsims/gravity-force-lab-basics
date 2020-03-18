@@ -71,7 +71,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @public
    *
    * @param {boolean} showDistance
-   * @return {string}
+   * @returns {string}
    */
   getDistanceVisibleAlert( showDistance ) {
     return showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
