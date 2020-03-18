@@ -16,6 +16,7 @@ import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
+import GFLBA11yStrings from '../GFLBA11yStrings.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -23,6 +24,9 @@ import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
+
+// a11y strings
+const massChangeInteractionPatternString = GFLBA11yStrings.massChangeInteractionPattern.value;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -127,6 +131,7 @@ class GFLBMassControl extends Panel {
 
     // PROTOTYPE a11y code, for the self-voicing feature set
     if ( options.shapeHitDetector ) {
+      // explore mode, speak information about the control
       options.shapeHitDetector.addNode( panelVBox );
       options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
         if ( hitTarget === panelVBox ) {
@@ -135,6 +140,17 @@ class GFLBMassControl extends Panel {
             valueText: numberPicker.ariaValueText
           } ) );
         }
+      } );
+
+      // interaction mode, speak information about the change due to input
+      valueProperty.lazyLink( value => {
+        const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
+        const valueText = numberPicker.ariaValueText;
+
+        webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
+          valueText: valueText,
+          massAlert: massChangedUtterance.alert
+        } ) );
       } );
     }
   }

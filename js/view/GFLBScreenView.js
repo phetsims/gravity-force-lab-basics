@@ -24,6 +24,7 @@ import DefaultDirection from '../../../inverse-square-law-common/js/view/Default
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import ScreenView from '../../../joist/js/ScreenView.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
@@ -71,8 +72,8 @@ const screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySec
 const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
 const verboseCheckedForceValuesCheckboxInteractionHintString = GFLBA11yStrings.verboseCheckedForceValuesCheckboxInteractionHint.value;
 const verboseUncheckedForceValuesCheckboxInteractionHintString = GFLBA11yStrings.verboseUncheckedForceValuesCheckboxInteractionHint.value;
-const verboseUncheckedDistanceCheckboxInteractionHintString =  GFLBA11yStrings.verboseUncheckedDistanceCheckboxInteractionHint.value;
-const verboseCheckedDistanceCheckboxInteractionHintString =  GFLBA11yStrings.verboseCheckedDistanceCheckboxInteractionHint.value;
+const verboseUncheckedDistanceCheckboxInteractionHintString = GFLBA11yStrings.verboseUncheckedDistanceCheckboxInteractionHint.value;
+const verboseCheckedDistanceCheckboxInteractionHintString = GFLBA11yStrings.verboseCheckedDistanceCheckboxInteractionHint.value;
 const verboseCheckedConstantSizeCheckboxInteractionHintString = GFLBA11yStrings.verboseCheckedConstantSizeCheckboxInteractionHint.value;
 const verboseUncheckedConstantSizeCheckboxInteractionHintString = GFLBA11yStrings.verboseUncheckedConstantSizeCheckboxInteractionHint.value;
 const redColorString = GFLBA11yStrings.redColor.value;
@@ -308,10 +309,16 @@ class GFLBScreenView extends ScreenView {
     // Reset All button
     const resetAllButton = new ResetAllButton( {
       listener: () => {
+
+        // as the simulation resets, do no not speak about changes
+        webSpeaker.enabled = false;
+
         model.reset();
         mass1Node.reset();
         mass2Node.reset();
         this.forceSoundGenerator.reset();
+
+        webSpeaker.enabled = false;
       },
       right: this.layoutBounds.maxX - 10,
       bottom: this.layoutBounds.maxY - 10,
@@ -359,7 +366,7 @@ class GFLBScreenView extends ScreenView {
       this.addChild( gridNode );
     }
 
-    if ( SELF_VOICING )  {
+    if ( SELF_VOICING ) {
 
       // show the areas that would trigger speech output for the self-voicing prototype
       const hitPaths = this.shapeHitDetector.getDebugPaths();

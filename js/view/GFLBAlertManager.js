@@ -7,6 +7,8 @@
  */
 
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
+import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import GFLBA11yStrings from '../GFLBA11yStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -38,6 +40,21 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     model.showDistanceProperty.lazyLink( showDistance => {
       this.alertDistanceVisible( showDistance );
     } );
+
+    // PROTOTYPE SELF VOICING FEATURE - when these Properties change, alert change to the user
+    if ( ISLCQueryParameters.selfVoicing ) {
+      model.showForceValuesProperty.lazyLink( showForceValues => {
+        webSpeaker.speak( this.getShowForceValuesAlert( showForceValues ) );
+      } );
+
+      model.showDistanceProperty.lazyLink( showDistance => {
+        webSpeaker.speak( this.getDistanceVisibleAlert( showDistance ) );
+      } );
+
+      model.constantRadiusProperty.link( constantRadius => {
+        webSpeaker.speak( this.getConstantRadiusAlert( constantRadius ) );
+      } );
+    }
   }
 
   /**
@@ -45,8 +62,19 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @param {boolean} showDistance
    */
   alertDistanceVisible( showDistance ) {
-    this.distanceVisibleUtterance.alert = showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
+    this.distanceVisibleUtterance.alert = this.getDistanceVisibleAlert( showDistance );
     phet.joist.sim.utteranceQueue.addToBack( this.distanceVisibleUtterance );
+  }
+
+  /**
+   * Get an alert that describes the changing visibility of the distance value.
+   * @public
+   *
+   * @param {boolean} showDistance
+   * @return {string}
+   */
+  getDistanceVisibleAlert( showDistance ) {
+    return showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
   }
 }
 

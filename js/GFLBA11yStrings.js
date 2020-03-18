@@ -108,6 +108,11 @@ const GFLBA11yStrings = {
   },
   blueColor: {
     value: 'Blue'
+  },
+
+  // mass changes
+  massChangeInteractionPattern: {
+    value: '{{valueText}}. {{massAlert}}'
   }
 };
 
