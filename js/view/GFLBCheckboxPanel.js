@@ -22,6 +22,9 @@ import GFLBA11yStrings from '../GFLBA11yStrings.js';
 
 // strings
 const verboseCheckboxPatternString = GFLBA11yStrings.verboseCheckboxPattern.value;
+const briefCheckboxPatternString = GFLBA11yStrings.briefCheckboxPattern.value;
+const checkedString = GFLBA11yStrings.checked.value;
+const uncheckedString = GFLBA11yStrings.unchecked.value;
 
 class GFLBCheckboxPanel extends ISLCPanel {
 
@@ -67,11 +70,24 @@ class GFLBCheckboxPanel extends ISLCPanel {
         options.shapeHitDetector.addNode( child );
         options.shapeHitDetector.hitShapeEmitter.addListener( node => {
           if ( node === child ) {
-            const checkboxItem = checkboxItems[ i ];
-            webSpeaker.speak( StringUtils.fillIn( verboseCheckboxPatternString, {
-              accessibleName: checkboxItem.label,
-              interactionHint: checkboxItem.property.value ? checkboxItem.checkedInteractionHint : checkboxItem.uncheckedInteractionHint
-            } ) );
+            if ( webSpeaker.exploreModeProperty.get() ) {
+              const checkboxItem = checkboxItems[ i ];
+              const checked = checkboxItem.property.value;
+
+              if ( webSpeaker.getExploreModeVerbose() ) {
+                webSpeaker.speak( StringUtils.fillIn( verboseCheckboxPatternString, {
+                  accessibleName: checkboxItem.label,
+                  interactionHint: checked ? checkboxItem.checkedInteractionHint : checkboxItem.uncheckedInteractionHint
+                } ) );
+              }
+              else {
+                const stateString = checked ? checkedString : uncheckedString;
+                webSpeaker.speak( StringUtils.fillIn( briefCheckboxPatternString, {
+                  accessibleName: checkboxItem.label,
+                  checkedState: stateString
+                } ) );
+              }
+            }
           }
         } );
       } );

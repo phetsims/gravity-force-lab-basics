@@ -75,8 +75,17 @@ const GFLBA11yStrings = {
   /////////////////////////////////////////////
 
   // Checkboxes
+  checked: {
+    value: 'checked'
+  },
+  unchecked: {
+    value: 'unchecked'
+  },
   verboseCheckboxPattern: {
     value: '{{accessibleName}}, {{interactionHint}}'
+  },
+  briefCheckboxPattern: {
+    value: '{{accessibleName}}, {{checkedState}}'
   },
   verboseCheckedForceValuesCheckboxInteractionHint: {
     value: 'uncheck to hide newtons'
