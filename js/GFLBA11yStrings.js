@@ -101,6 +101,9 @@ const GFLBA11yStrings = {
   verboseDistanceArrowDescription: {
     value: 'Centers of spheres, {{distance}} kilometers apart.'
   },
+  briefDistanceArrowDescription: {
+    value: 'Centers {{distance}} kilometers apart.'
+  },
 
   // mass spheres
   redColor: {

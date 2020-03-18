@@ -24,6 +24,7 @@ const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPat
 
 // a11y strings
 const verboseDistanceArrowDescriptionString = GFLBA11yStrings.verboseDistanceArrowDescription.value;
+const briefDistanceArrowDescriptionString = GFLBA11yStrings.briefDistanceArrowDescription.value;
 
 // constants
 const HEAD_WIDTH = 6;
@@ -72,9 +73,14 @@ class DistanceArrowNode extends Node {
       options.shapeHitDetector.addNode( this );
       options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
         if ( hitTarget === this ) {
-          webSpeaker.speak( StringUtils.fillIn( verboseDistanceArrowDescriptionString, {
-            distance: model.separationProperty.get() / 1000 // m to km
-          } ) );
+          if ( webSpeaker.exploreModeProperty.get() ) {
+            const verboseMode = webSpeaker.exploreModeVerbosityProperty.get() === webSpeaker.Verbosity.VERBOSE;
+            const patternString = verboseMode ? verboseDistanceArrowDescriptionString : briefDistanceArrowDescriptionString;
+
+            webSpeaker.speak( StringUtils.fillIn( patternString, {
+              distance: model.separationProperty.get() / 1000 // m to km
+            } ) );
+          }
         }
       } );
     }
