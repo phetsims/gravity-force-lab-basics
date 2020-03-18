@@ -113,6 +113,14 @@ const GFLBA11yStrings = {
     value: 'Blue'
   },
 
+  // mass controls
+  verboseChangeMassHintPattern: {
+    value: 'Change {{labelContent}}, {{valueText}}'
+  },
+  briefChangeMassHintPattern: {
+    value: '{{labelContent}}, {{valueText}}'
+  },
+
   // mass changes
   massChangeInteractionPattern: {
     value: '{{valueText}}. {{massAlert}}'

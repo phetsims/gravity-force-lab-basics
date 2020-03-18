@@ -27,6 +27,8 @@ const billionKgString = gravityForceLabBasicsStrings.billionKg;
 
 // a11y strings
 const massChangeInteractionPatternString = GFLBA11yStrings.massChangeInteractionPattern.value;
+const verboseChangeMassHintPatternString = GFLBA11yStrings.verboseChangeMassHintPattern.value;
+const briefChangeMassHintPatternString = GFLBA11yStrings.briefChangeMassHintPattern.value;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -135,10 +137,13 @@ class GFLBMassControl extends Panel {
       options.shapeHitDetector.addNode( panelVBox );
       options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
         if ( hitTarget === panelVBox ) {
-          webSpeaker.speak( StringUtils.fillIn( 'Change {{labelContent}}, {{valueText}}', {
-            labelContent: labelContent,
-            valueText: numberPicker.ariaValueText
-          } ) );
+          if ( webSpeaker.exploreModeProperty.get() ) {
+            const patternString = webSpeaker.getExploreModeVerbose() ? verboseChangeMassHintPatternString : briefChangeMassHintPatternString;
+            webSpeaker.speak( StringUtils.fillIn( patternString, {
+              labelContent: labelContent,
+              valueText: numberPicker.ariaValueText
+            } ) );
+          }
         }
       } );
 
