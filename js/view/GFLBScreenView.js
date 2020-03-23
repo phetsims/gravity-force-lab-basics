@@ -17,7 +17,6 @@ import MassSoundGenerator from '../../../gravity-force-lab/js/view/MassSoundGene
 import SpherePositionsDescriptionNode from '../../../gravity-force-lab/js/view/SpherePositionsDescriptionNode.js';
 import forceSound from '../../../gravity-force-lab/sounds/saturated-sine-loop-trimmed_wav.js';
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverse-square-law-common-strings.js';
-import ISLCA11yStrings from '../../../inverse-square-law-common/js/ISLCA11yStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import DefaultDirection from '../../../inverse-square-law-common/js/view/DefaultDirection.js';
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
@@ -59,7 +58,7 @@ const mass2ControlLabelString = gravityForceLabBasicsStrings.mass2ControlLabel;
 const massControlsLabelString = gravityForceLabStrings.a11y.controls.massControlsLabel;
 const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
 const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
-const forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
+const forceValuesCheckboxHelpTextString = inverseSquareLawCommonStrings.a11y.forceValuesCheckboxHelpText;
 const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
 const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
 const screenSummaryPlayAreaOverviewString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverview;
