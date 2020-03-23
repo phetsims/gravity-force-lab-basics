@@ -20,8 +20,8 @@ import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
-const verboseDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.verboseDistanceArrowDescription;
-const briefDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.briefDistanceArrowDescription;
+const verboseDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseDistanceArrowDescription;
+const briefDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefDistanceArrowDescription;
 
 // constants
 const HEAD_WIDTH = 6;

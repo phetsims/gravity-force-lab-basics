@@ -23,9 +23,9 @@ import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
-const massChangeInteractionPatternString = gravityForceLabBasicsStrings.a11y.massChangeInteractionPattern;
-const verboseChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.verboseChangeMassHintPattern;
-const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.briefChangeMassHintPattern;
+const massChangeInteractionPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.massChangeInteractionPattern;
+const verboseChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseChangeMassHintPattern;
+const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefChangeMassHintPattern;
 
 // constants
 const MIN_PANEL_WIDTH = 150;

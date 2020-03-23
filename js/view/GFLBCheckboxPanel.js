@@ -20,10 +20,10 @@ import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 
-const verboseCheckboxPatternString = gravityForceLabBasicsStrings.a11y.verboseCheckboxPattern;
-const briefCheckboxPatternString = gravityForceLabBasicsStrings.a11y.briefCheckboxPattern;
-const checkedString = gravityForceLabBasicsStrings.a11y.checked;
-const uncheckedString = gravityForceLabBasicsStrings.a11y.unchecked;
+const verboseCheckboxPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckboxPattern;
+const briefCheckboxPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefCheckboxPattern;
+const checkedString = gravityForceLabBasicsStrings.a11y.selfVoicing.checked;
+const uncheckedString = gravityForceLabBasicsStrings.a11y.selfVoicing.unchecked;
 
 class GFLBCheckboxPanel extends ISLCPanel {
 
