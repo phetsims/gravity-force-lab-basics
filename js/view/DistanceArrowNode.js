@@ -13,7 +13,6 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../scenery/js/nodes/Node.js';
-import GFLBA11yStrings from '../GFLBA11yStrings.js';
 import merge from '../../../phet-core/js/merge.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
@@ -21,10 +20,8 @@ import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
-
-// a11y strings
-const verboseDistanceArrowDescriptionString = GFLBA11yStrings.verboseDistanceArrowDescription.value;
-const briefDistanceArrowDescriptionString = GFLBA11yStrings.briefDistanceArrowDescription.value;
+const verboseDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.verboseDistanceArrowDescription;
+const briefDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.briefDistanceArrowDescription;
 
 // constants
 const HEAD_WIDTH = 6;

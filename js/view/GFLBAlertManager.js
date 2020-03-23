@@ -10,12 +10,12 @@ import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/Grav
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
-import GFLBA11yStrings from '../GFLBA11yStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 
 // a11y strings
-const distanceArrowVisibleString = GFLBA11yStrings.distanceArrowVisible.value;
-const distanceArrowRemovedString = GFLBA11yStrings.distanceArrowRemoved.value;
+const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
+const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
 
 class GFLBAlertManager extends GravityForceLabAlertManager {
 

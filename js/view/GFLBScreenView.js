@@ -33,7 +33,6 @@ import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
 import ContinuousPropertySoundGenerator from '../../../tambo/js/sound-generators/ContinuousPropertySoundGenerator.js';
 import soundManager from '../../../tambo/js/soundManager.js';
-import GFLBA11yStrings from '../GFLBA11yStrings.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -55,29 +54,26 @@ const mass1LabelString = gravityForceLabBasicsStrings.mass1Label;
 const mass1String = gravityForceLabStrings.mass1;
 const mass2LabelString = gravityForceLabBasicsStrings.mass2Label;
 const mass2String = gravityForceLabStrings.mass2;
-
-// a11y strings
 const mass1ControlLabelString = gravityForceLabBasicsStrings.mass1ControlLabel;
 const mass2ControlLabelString = gravityForceLabBasicsStrings.mass2ControlLabel;
 const massControlsLabelString = gravityForceLabStrings.a11y.controls.massControlsLabel;
-const massControlsHelpTextBillionsString = GFLBA11yStrings.massControlsHelpTextBillions.value;
-const massControlsHelpTextDensityBillionsString = GFLBA11yStrings.massControlsHelpTextDensityBillions.value;
+const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
+const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
 const forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
 const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
-const distanceCheckboxHelpTextString = GFLBA11yStrings.distanceCheckboxHelpText.value;
-const screenSummaryPlayAreaOverviewString = GFLBA11yStrings.screenSummaryPlayAreaOverview.value;
-const screenSummaryPlayAreaControlsString = GFLBA11yStrings.screenSummaryPlayAreaControls.value;
-const screenSummarySecondaryDescriptionString = GFLBA11yStrings.screenSummarySecondaryDescription.value;
-const basicsSimStateLabelString = GFLBA11yStrings.basicsSimStateLabel.value;
-const verboseCheckedForceValuesCheckboxInteractionHintString = GFLBA11yStrings.verboseCheckedForceValuesCheckboxInteractionHint.value;
-const verboseUncheckedForceValuesCheckboxInteractionHintString = GFLBA11yStrings.verboseUncheckedForceValuesCheckboxInteractionHint.value;
-const verboseUncheckedDistanceCheckboxInteractionHintString = GFLBA11yStrings.verboseUncheckedDistanceCheckboxInteractionHint.value;
-const verboseCheckedDistanceCheckboxInteractionHintString = GFLBA11yStrings.verboseCheckedDistanceCheckboxInteractionHint.value;
-const verboseCheckedConstantSizeCheckboxInteractionHintString = GFLBA11yStrings.verboseCheckedConstantSizeCheckboxInteractionHint.value;
-const verboseUncheckedConstantSizeCheckboxInteractionHintString = GFLBA11yStrings.verboseUncheckedConstantSizeCheckboxInteractionHint.value;
-const redColorString = GFLBA11yStrings.redColor.value;
-const blueColorString = GFLBA11yStrings.blueColor.value;
-
+const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
+const screenSummaryPlayAreaOverviewString = gravityForceLabBasicsStrings.a11y.screenSummaryPlayAreaOverview;
+const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummaryPlayAreaControls;
+const screenSummarySecondaryDescriptionString = gravityForceLabBasicsStrings.a11y.screenSummarySecondaryDescription;
+const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.basicsSimStateLabel;
+const verboseCheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.verboseCheckedForceValuesCheckboxInteractionHint;
+const verboseUncheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.verboseUncheckedForceValuesCheckboxInteractionHint;
+const verboseUncheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.verboseUncheckedDistanceCheckboxInteractionHint;
+const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.verboseCheckedDistanceCheckboxInteractionHint;
+const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.verboseCheckedConstantSizeCheckboxInteractionHint;
+const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.verboseUncheckedConstantSizeCheckboxInteractionHint;
+const redColorString = gravityForceLabBasicsStrings.a11y.redColor;
+const blueColorString = gravityForceLabBasicsStrings.a11y.blueColor;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;

@@ -16,7 +16,6 @@ import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
-import GFLBA11yStrings from '../GFLBA11yStrings.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -24,11 +23,9 @@ import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
-
-// a11y strings
-const massChangeInteractionPatternString = GFLBA11yStrings.massChangeInteractionPattern.value;
-const verboseChangeMassHintPatternString = GFLBA11yStrings.verboseChangeMassHintPattern.value;
-const briefChangeMassHintPatternString = GFLBA11yStrings.briefChangeMassHintPattern.value;
+const massChangeInteractionPatternString = gravityForceLabBasicsStrings.a11y.massChangeInteractionPattern;
+const verboseChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.verboseChangeMassHintPattern;
+const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.briefChangeMassHintPattern;
 
 // constants
 const MIN_PANEL_WIDTH = 150;

@@ -22,5 +22,119 @@
   },
   "mass2ControlLabel": {
     "value": "Mass 2"
+  },
+  "a11y": {
+    "screenSummaryPlayAreaOverview": {
+      "value": "The Play Area has two mass spheres, a blue sphere labeled mass 1 and a red sphere labeled mass 2. A force arrow starts at the center of each sphere and points directly at the opposite sphere."
+    },
+    "screenSummaryPlayAreaControls": {
+      "value": "Spheres can be moved closer or farther from each other along a track. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot."
+    },
+    "screenSummarySecondaryDescription": {
+      "value": "In the Control Area, checkboxes change what things are shown and how they behave, and a button resets the sim."
+    },
+    "basicsSimStateLabel": {
+      "value": "Currently, force on mass 1 by mass 2 is of equal size and pointing directly opposite to the force on mass 2 by mass 1."
+    },
+    "distanceCheckboxHelpText": {
+      "value": "Measure distance between spheres in kilometers."
+    },
+    "massBillionsPattern": {
+      "value": "{{mass}} billion"
+    },
+    "positionKilometerPattern": {
+      "value": "{{position}} kilometer"
+    },
+    "kilometer": {
+      "value": "kilometer"
+    },
+    "kilometers": {
+      "value": "kilometers"
+    },
+    "distanceArrowVisible": {
+      "value": "Distance measured in kilometers."
+    },
+    "distanceArrowRemoved": {
+      "value": "Distance measurement hidden."
+    },
+    "forceArrowsCapitalized": {
+      "value": "Force arrows"
+    },
+    "forceArrows": {
+      "value": "force arrows"
+    },
+    "arrows": {
+      "value": "arrows"
+    },
+
+    "massControlsHelpTextBillions": {
+      "value": "Change mass of spheres in billions of kilograms."
+    },
+    "massControlsHelpTextDensityBillions": {
+      "value": "Change density of spheres in billions of kilograms per unit volume."
+    },
+
+    "forceArrowCapitalized": {
+      "value": "Force arrow"
+    },
+    "sizeOfForce": {
+      "value": "Size of force"
+    },
+
+    "checked": {
+      "value": "checked"
+    },
+    "unchecked": {
+      "value": "unchecked"
+    },
+    "verboseCheckboxPattern": {
+      "value": "{{accessibleName}}, {{interactionHint}}"
+    },
+    "briefCheckboxPattern": {
+      "value": "{{accessibleName}}, {{checkedState}}"
+    },
+    "verboseCheckedForceValuesCheckboxInteractionHint": {
+      "value": "uncheck to hide newtons"
+    },
+    "verboseUncheckedForceValuesCheckboxInteractionHint": {
+      "value": "check to explore value of forces in newtons"
+    },
+    "verboseUncheckedDistanceCheckboxInteractionHint": {
+      "value": "check to measure distance between spheres in kilometers"
+    },
+    "verboseCheckedDistanceCheckboxInteractionHint": {
+      "value": "uncheck to hide measurement between spheres"
+    },
+    "verboseCheckedConstantSizeCheckboxInteractionHint": {
+      "value": "uncheck to compare size of spheres while changing mass"
+    },
+    "verboseUncheckedConstantSizeCheckboxInteractionHint": {
+      "value": "check to keep size of spheres constant while changing mass"
+    },
+
+    "verboseDistanceArrowDescription": {
+      "value": "Centers of spheres, {{distance}} kilometers apart."
+    },
+    "briefDistanceArrowDescription": {
+      "value": "Centers {{distance}} kilometers apart."
+    },
+
+    "redColor": {
+      "value": "Red"
+    },
+    "blueColor": {
+      "value": "Blue"
+    },
+
+    "verboseChangeMassHintPattern": {
+      "value": "Change {{labelContent}}, {{valueText}}"
+    },
+    "briefChangeMassHintPattern": {
+      "value": "{{labelContent}}, {{valueText}}"
+    },
+
+    "massChangeInteractionPattern": {
+      "value": "{{valueText}}. {{massAlert}}"
+    }
   }
 }

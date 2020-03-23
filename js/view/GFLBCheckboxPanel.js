@@ -18,13 +18,12 @@ import VerticalCheckboxGroup from '../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import GFLBA11yStrings from '../GFLBA11yStrings.js';
+import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
 
-// strings
-const verboseCheckboxPatternString = GFLBA11yStrings.verboseCheckboxPattern.value;
-const briefCheckboxPatternString = GFLBA11yStrings.briefCheckboxPattern.value;
-const checkedString = GFLBA11yStrings.checked.value;
-const uncheckedString = GFLBA11yStrings.unchecked.value;
+const verboseCheckboxPatternString = gravityForceLabBasicsStrings.a11y.verboseCheckboxPattern;
+const briefCheckboxPatternString = gravityForceLabBasicsStrings.a11y.briefCheckboxPattern;
+const checkedString = gravityForceLabBasicsStrings.a11y.checked;
+const uncheckedString = gravityForceLabBasicsStrings.a11y.unchecked;
 
 class GFLBCheckboxPanel extends ISLCPanel {
 

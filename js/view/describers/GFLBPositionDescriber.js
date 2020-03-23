@@ -9,12 +9,12 @@
 import Utils from '../../../../dot/js/Utils.js';
 import GravityForceLabPositionDescriber
   from '../../../../gravity-force-lab/js/view/describers/GravityForceLabPositionDescriber.js';
-import GFLBA11yStrings from '../../GFLBA11yStrings.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
+import gravityForceLabBasicsStrings from '../../gravity-force-lab-basics-strings.js';
 
 // strings
-const kilometerString = GFLBA11yStrings.kilometer.value;
-const kilometersString = GFLBA11yStrings.kilometers.value;
+const kilometerString = gravityForceLabBasicsStrings.a11y.kilometer;
+const kilometersString = gravityForceLabBasicsStrings.a11y.kilometers;
 
 class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
 

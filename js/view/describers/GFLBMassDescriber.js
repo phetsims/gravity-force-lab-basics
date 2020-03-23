@@ -8,7 +8,6 @@
 
 import MassDescriber from '../../../../gravity-force-lab/js/view/describers/MassDescriber.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
-import GFLBA11yStrings from '../../GFLBA11yStrings.js';
 import GFLBConstants from '../../GFLBConstants.js';
 import gravityForceLabBasicsStrings from '../../gravity-force-lab-basics-strings.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
@@ -16,7 +15,7 @@ import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 // string
 const mass1LabelString = gravityForceLabBasicsStrings.mass1Label;
 const mass2LabelString = gravityForceLabBasicsStrings.mass2Label;
-const massBillionsPatternString = GFLBA11yStrings.massBillionsPattern.value;
+const massBillionsPatternString = gravityForceLabBasicsStrings.a11y.massBillionsPattern;
 
 class GFLBMassDescriber extends MassDescriber {
 

@@ -8,15 +8,14 @@
 
 import Utils from '../../../../dot/js/Utils.js';
 import ForceDescriber from '../../../../inverse-square-law-common/js/view/describers/ForceDescriber.js';
-import GFLBA11yStrings from '../../GFLBA11yStrings.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
+import gravityForceLabBasicsStrings from '../../gravity-force-lab-basics-strings.js';
 
-// a11y strings
-const forceArrowsCapitalizedString = GFLBA11yStrings.forceArrowsCapitalized.value;
-const forceArrowsString = GFLBA11yStrings.forceArrows.value;
-const arrowsString = GFLBA11yStrings.arrows.value;
-const forceArrowCapitalizedString = GFLBA11yStrings.forceArrowCapitalized.value;
-const sizeOfForceString = GFLBA11yStrings.sizeOfForce.value;
+const forceArrowsCapitalizedString = gravityForceLabBasicsStrings.a11y.forceArrowsCapitalized;
+const forceArrowsString = gravityForceLabBasicsStrings.a11y.forceArrows;
+const arrowsString = gravityForceLabBasicsStrings.a11y.arrows;
+const forceArrowCapitalizedString = gravityForceLabBasicsStrings.a11y.forceArrowCapitalized;
+const sizeOfForceString = gravityForceLabBasicsStrings.a11y.sizeOfForce;
 
 class GFLBForceDescriber extends ForceDescriber {
 
