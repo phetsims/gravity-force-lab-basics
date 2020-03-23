@@ -59,11 +59,11 @@ const mass2String = gravityForceLabStrings.mass2;
 // a11y strings
 const mass1ControlLabelString = gravityForceLabBasicsStrings.mass1ControlLabel;
 const mass2ControlLabelString = gravityForceLabBasicsStrings.mass2ControlLabel;
-const massControlsLabelString = gravityForceLabStrings.a11y.massControlsLabel;
+const massControlsLabelString = gravityForceLabStrings.a11y.controls.massControlsLabel;
 const massControlsHelpTextBillionsString = GFLBA11yStrings.massControlsHelpTextBillions.value;
 const massControlsHelpTextDensityBillionsString = GFLBA11yStrings.massControlsHelpTextDensityBillions.value;
 const forceValuesCheckboxHelpTextString = ISLCA11yStrings.forceValuesCheckboxHelpText.value;
-const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.constantSizeCheckboxHelpText;
+const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
 const distanceCheckboxHelpTextString = GFLBA11yStrings.distanceCheckboxHelpText.value;
 const screenSummaryPlayAreaOverviewString = GFLBA11yStrings.screenSummaryPlayAreaOverview.value;
 const screenSummaryPlayAreaControlsString = GFLBA11yStrings.screenSummaryPlayAreaControls.value;
