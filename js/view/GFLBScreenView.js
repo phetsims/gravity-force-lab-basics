@@ -312,7 +312,7 @@ class GFLBScreenView extends ScreenView {
         mass2Node.reset();
         this.forceSoundGenerator.reset();
 
-        webSpeaker.enabled = false;
+        webSpeaker.enabled = true;
       },
       right: this.layoutBounds.maxX - 10,
       bottom: this.layoutBounds.maxY - 10,

@@ -145,14 +145,21 @@ class GFLBMassControl extends Panel {
       } );
 
       // interaction mode, speak information about the change due to input
-      valueProperty.lazyLink( value => {
-        const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-        const valueText = numberPicker.ariaValueText;
+      valueProperty.lazyLink( ( value, oldValue ) => {
+        if ( webSpeaker.getInteractiveModeVerbose() ) {
+          const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
+          const valueText = numberPicker.ariaValueText;
 
-        webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
-          valueText: valueText,
-          massAlert: massChangedUtterance.alert
-        } ) );
+          webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
+            valueText: valueText,
+            massAlert: massChangedUtterance.alert
+          } ) );
+        }
+        else if ( webSpeaker.getInteractiveModeBrief() ) {
+          const otherObjectLabel = massDescriber.getOtherObjectLabelFromEnum( thisObjectEnum );
+          const content = alertManager.getSelfVoicingForceChangeFromMassAlert( thisObjectEnum, value, oldValue, otherObjectLabel );
+          webSpeaker.speak( content );
+        }
       } );
     }
   }

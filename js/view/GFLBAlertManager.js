@@ -21,7 +21,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
 
   /**
    * @param {GFLBModel} model
-   * @param {GFLBMassDescriber} massDescriber
+   * @param {GFLBf} massDescriber
    * @param {GFLBForceDescriber} forceDescriber
    */
   constructor( model, massDescriber, forceDescriber ) {
@@ -44,15 +44,21 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     // PROTOTYPE SELF VOICING FEATURE - when these Properties change, alert change to the user
     if ( ISLCQueryParameters.selfVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        webSpeaker.speak( this.getShowForceValuesAlert( showForceValues ) );
+        if ( webSpeaker.getExploreModeVerbose() ) {
+          webSpeaker.speak( this.getShowForceValuesAlert( showForceValues ) );
+        }
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        webSpeaker.speak( this.getDistanceVisibleAlert( showDistance ) );
+        if ( webSpeaker.getExploreModeVerbose() ) {
+          webSpeaker.speak( this.getDistanceVisibleAlert( showDistance ) );
+        }
       } );
 
       model.constantRadiusProperty.link( constantRadius => {
-        webSpeaker.speak( this.getConstantRadiusAlert( constantRadius ) );
+        if ( webSpeaker.getExploreModeVerbose() ) {
+          webSpeaker.speak( this.getConstantRadiusAlert( constantRadius ) );
+        }
       } );
     }
   }
