@@ -55,7 +55,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
         }
       } );
 
-      model.constantRadiusProperty.link( constantRadius => {
+      model.constantRadiusProperty.lazyLink( constantRadius => {
         if ( webSpeaker.getExploreModeVerbose() ) {
           webSpeaker.speak( this.getConstantRadiusAlert( constantRadius ) );
         }
