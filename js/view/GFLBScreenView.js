@@ -79,7 +79,6 @@ const MASS_CONTROLS_Y_POSITION = 385;
 const PANEL_SPACING = 50;
 const SHOW_GRID = ISLCQueryParameters.showGrid;
 const SHOW_DRAG_BOUNDS = ISLCQueryParameters.showDragBounds;
-const SELF_VOICING = ISLCQueryParameters.selfVoicing;
 const OBJECT_ONE = ISLCObjectEnum.OBJECT_ONE;
 const OBJECT_TWO = ISLCObjectEnum.OBJECT_TWO;
 const BOUNDARY_SOUNDS_LEVEL = 1;
@@ -359,14 +358,6 @@ class GFLBScreenView extends ScreenView {
       );
       this.addChild( gridNode );
     }
-
-    if ( SELF_VOICING ) {
-
-      // show the areas that would trigger speech output for the self-voicing prototype
-      const hitPaths = this.shapeHitDetector.getDebugPaths();
-      hitPaths.forEach( path => { this.addChild( path ); } );
-    }
-
   }
 
   /**
