@@ -9,7 +9,7 @@
 import MassDescriber from '../../../../gravity-force-lab/js/view/describers/MassDescriber.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import GFLBConstants from '../../GFLBConstants.js';
-import gravityForceLabBasicsStrings from '../../gravity-force-lab-basics-strings.js';
+import gravityForceLabBasicsStrings from '../../gravityForceLabBasicsStrings.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 
 // string

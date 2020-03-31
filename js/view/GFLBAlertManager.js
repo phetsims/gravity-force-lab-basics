@@ -11,7 +11,7 @@ import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQuery
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
+import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 // a11y strings
 const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;

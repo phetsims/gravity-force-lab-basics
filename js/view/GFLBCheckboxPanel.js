@@ -18,7 +18,7 @@ import VerticalCheckboxGroup from '../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../gravity-force-lab-basics-strings.js';
+import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const verboseCheckboxPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckboxPattern;
 const briefCheckboxPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefCheckboxPattern;

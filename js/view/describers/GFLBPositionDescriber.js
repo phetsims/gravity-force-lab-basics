@@ -10,7 +10,7 @@ import Utils from '../../../../dot/js/Utils.js';
 import GravityForceLabPositionDescriber
   from '../../../../gravity-force-lab/js/view/describers/GravityForceLabPositionDescriber.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../../gravity-force-lab-basics-strings.js';
+import gravityForceLabBasicsStrings from '../../gravityForceLabBasicsStrings.js';
 
 // strings
 const kilometerString = gravityForceLabBasicsStrings.a11y.kilometer;

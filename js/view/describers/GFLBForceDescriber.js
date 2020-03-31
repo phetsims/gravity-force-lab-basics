@@ -9,7 +9,7 @@
 import Utils from '../../../../dot/js/Utils.js';
 import ForceDescriber from '../../../../inverse-square-law-common/js/view/describers/ForceDescriber.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../../gravity-force-lab-basics-strings.js';
+import gravityForceLabBasicsStrings from '../../gravityForceLabBasicsStrings.js';
 
 const forceArrowsCapitalizedString = gravityForceLabBasicsStrings.a11y.forceArrowsCapitalized;
 const forceArrowsString = gravityForceLabBasicsStrings.a11y.forceArrows;

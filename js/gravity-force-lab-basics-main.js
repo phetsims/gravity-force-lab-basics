@@ -12,7 +12,7 @@ import Sim from '../../joist/js/Sim.js';
 import SimLauncher from '../../joist/js/SimLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import GFLBConstants from './GFLBConstants.js';
-import gravityForceLabBasicsStrings from './gravity-force-lab-basics-strings.js';
+import gravityForceLabBasicsStrings from './gravityForceLabBasicsStrings.js';
 import webSpeaker from '../../inverse-square-law-common/js/view/webSpeaker.js';
 import GFLBModel from './model/GFLBModel.js';
 import GFLBScreenView from './view/GFLBScreenView.js';
