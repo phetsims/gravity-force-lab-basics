@@ -44,9 +44,6 @@
     "massBillionsPattern": {
       "value": "{{mass}} billion"
     },
-    "positionKilometerPattern": {
-      "value": "{{position}} kilometer"
-    },
     "kilometer": {
       "value": "kilometer"
     },
