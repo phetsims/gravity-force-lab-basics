@@ -49,7 +49,7 @@ class GFLBMassNode extends MassNode {
       // phet-io
       tandem: Tandem.REQUIRED,
 
-      // a11y recompute the PDOM descriptions when show distance is toggled
+      // pdom recompute the PDOM descriptions when show distance is toggled
       additionalA11yDependencies: [ model.showDistanceProperty ]
     }, options );
 

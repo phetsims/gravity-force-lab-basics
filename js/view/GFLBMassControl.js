@@ -79,7 +79,7 @@ class GFLBMassControl extends Panel {
       arrowYSpacing: 2,
       color: options.color,
 
-      // a11y
+      // pdom
       pageKeyboardStep: BILLION_MULTIPLIER * 2,
       accessibleName: labelContent,
       a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
@@ -124,7 +124,7 @@ class GFLBMassControl extends Panel {
       align: 'center',
       tandem: tandem,
 
-      // a11y
+      // pdom
       tagName: 'div' // Though not necessary, it is helpful for the a11y view to display the valuetext within this div.
     } );
 
