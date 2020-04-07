@@ -13,7 +13,6 @@ import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
-// a11y strings
 const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
 const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
 
