@@ -26,7 +26,7 @@ import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js
 import ScreenView from '../../../joist/js/ScreenView.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
-import AccessiblePeer from '../../../scenery/js/accessibility/pdom/AccessiblePeer.js';
+import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
@@ -199,8 +199,8 @@ class GFLBScreenView extends ScreenView {
     // The list of mass controls is aria-labelledby the its label sibling, see https://github.com/phetsims/gravity-force-lab/issues/132
     massControlsNode.addAriaLabelledbyAssociation( {
       otherNode: massControlsNode,
-      otherElementName: AccessiblePeer.LABEL_SIBLING,
-      thisElementName: AccessiblePeer.PRIMARY_SIBLING
+      otherElementName: PDOMPeer.LABEL_SIBLING,
+      thisElementName: PDOMPeer.PRIMARY_SIBLING
     } );
 
     // place mass controls in an HBox
