@@ -113,7 +113,7 @@ class GFLBMassControl extends Panel {
       spacing: 10
     } );
 
-    titleText.on( 'text', () => { titleText.centerX = panelVBox.centerX; } );
+    titleText.textProperty.lazyLink( () => { titleText.centerX = panelVBox.centerX; } );
 
     super( panelVBox, {
       fill: '#f1f1f2',
