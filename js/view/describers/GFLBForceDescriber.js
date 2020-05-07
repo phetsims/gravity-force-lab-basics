@@ -46,6 +46,7 @@ class GFLBForceDescriber extends ForceDescriber {
    * @param {number} force in newtons
    * @param {number} numberOfRegions - for crosscheck
    * @returns {number}
+   * @protected
    * @override
    */
   getForceVectorIndex( force, numberOfRegions ) {
