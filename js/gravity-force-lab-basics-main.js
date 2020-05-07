@@ -9,7 +9,7 @@
 import GravityForceLabKeyboardHelpContent from '../../gravity-force-lab/js/view/GravityForceLabKeyboardHelpContent.js';
 import Screen from '../../joist/js/Screen.js';
 import Sim from '../../joist/js/Sim.js';
-import SimLauncher from '../../joist/js/SimLauncher.js';
+import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import GFLBConstants from './GFLBConstants.js';
 import gravityForceLabBasicsStrings from './gravityForceLabBasicsStrings.js';
@@ -42,7 +42,7 @@ const simOptions = {
   createOptionsDialogContent: ISLCQueryParameters.selfVoicing ? () => new WebSpeechDialogContent() : null
 };
 
-SimLauncher.launch( () => {
+simLauncher.launch( () => {
 
   const gravityForceLabBasicsScreenTandem = tandem.createTandem( 'gravityForceLabBasicsScreen' );
 
