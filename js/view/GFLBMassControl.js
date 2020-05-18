@@ -146,9 +146,10 @@ class GFLBMassControl extends Panel {
 
       // interaction mode, speak information about the change due to input
       valueProperty.lazyLink( ( value, oldValue ) => {
+        const valueText = numberPicker.ariaValueText;
+
         if ( webSpeaker.getInteractiveModeVerbose() ) {
           const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-          const valueText = numberPicker.ariaValueText;
 
           webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
             valueText: valueText,
@@ -158,7 +159,10 @@ class GFLBMassControl extends Panel {
         else if ( webSpeaker.getInteractiveModeBrief() ) {
           const otherObjectLabel = massDescriber.getOtherObjectLabelFromEnum( thisObjectEnum );
           const content = alertManager.getSelfVoicingForceChangeFromMassAlert( thisObjectEnum, value, oldValue, otherObjectLabel );
-          webSpeaker.speak( content );
+          webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
+            valueText: valueText,
+            massAlert: content
+          } ) );
         }
       } );
     }
