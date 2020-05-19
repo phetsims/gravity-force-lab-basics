@@ -43,19 +43,19 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     // PROTOTYPE SELF VOICING FEATURE - when these Properties change, alert change to the user
     if ( ISLCQueryParameters.selfVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        if ( webSpeaker.getExploreModeVerbose() ) {
+        if ( webSpeaker.getInteractiveModeVerbose() ) {
           webSpeaker.speak( this.getShowForceValuesAlert( showForceValues ) );
         }
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        if ( webSpeaker.getExploreModeVerbose() ) {
+        if ( webSpeaker.getInteractiveModeVerbose() ) {
           webSpeaker.speak( this.getDistanceVisibleAlert( showDistance ) );
         }
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
-        if ( webSpeaker.getExploreModeVerbose() ) {
+        if ( webSpeaker.getInteractiveModeVerbose() ) {
           webSpeaker.speak( this.getConstantRadiusAlert( constantRadius ) );
         }
       } );
