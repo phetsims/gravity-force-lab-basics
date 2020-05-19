@@ -1,99 +1,99 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.2 Wed Mar 25 2020 20:19:08 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.3 Tue May 19 2020 16:05:54 GMT-0400 (Eastern Daylight Time)",
   "assert": {
-    "sha": "a99a9ce9ee0774bf3ef509bf3e31ca7383f67478",
+    "sha": "0b7a48c6b9ba48af48ae7419bd30c280c785f2cc",
     "branch": "master"
   },
   "axon": {
-    "sha": "80100758674420bb80385119d8f4331eb628a737",
+    "sha": "433e4f9e3252fce1a28ba2ec3977b22b46cf112c",
     "branch": "master"
   },
   "brand": {
-    "sha": "a9a72bd2fd274b04251819f2816546e428dc9687",
+    "sha": "5ba1212c316fb0ccc5da963cde84239837586dc1",
     "branch": "master"
   },
   "chipper": {
-    "sha": "9c0740a62bf6c31743c6b2599a509c0f5bae389b",
+    "sha": "ebe0e90278d6a440705817644bfcf444ae05f8ac",
     "branch": "master"
   },
   "dot": {
-    "sha": "c5c7732cb6cc60ab66e1c1c1ff76d169c488ab25",
+    "sha": "5231c2d5239e27e04238372c2b817d4543d41bcb",
     "branch": "master"
   },
   "gravity-force-lab": {
-    "sha": "b24a093a58fc53f5c36abe81528defade10d29c2",
+    "sha": "4e72f99c9301a4b59b99d0a993c56df9f8bf4ccc",
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "3a35d75b8f9f82e81b812f45c22dede07af16019",
+    "sha": "61f4c894678c471289ae1119fa31cf47c3ef510f",
     "branch": "master"
   },
   "inverse-square-law-common": {
-    "sha": "7b10a361f00e501b867b1748389a66c1f08999b5",
+    "sha": "9944424a3e769f4dfc9f369a22964d600cbb0f00",
     "branch": "master"
   },
   "joist": {
-    "sha": "06b2beea75fd8e1067d7e2e09b29eba69fd22d2d",
+    "sha": "f65c5a183d013ef3dee700a1b0d2b5b2c629071c",
     "branch": "master"
   },
   "kite": {
-    "sha": "54e06212e5989f90a4a41e61f8a9b60eabe5a543",
+    "sha": "a9b7b15bd054a992d443e41da44d19d9d5ae60e3",
     "branch": "master"
   },
   "phet-core": {
-    "sha": "e486375bfff79651b514344a79e91b6df12aec73",
+    "sha": "3eb8fd02c5d2eb376e9145826433c1fa063dd78d",
     "branch": "master"
   },
   "phet-io": {
-    "sha": "0c6c877b1772d835c8c7bb1c139d1dc7e9ed3ebb",
+    "sha": "65b6c0c0fc30e20ac8419a7f19c53d3acb772c5b",
     "branch": "master"
   },
   "phet-io-wrappers": {
-    "sha": "3ee4a71770086a4ce9236641b47b0289470579b8",
+    "sha": "2e9f0cd87012efe5ee272b15c56d147f1ceac030",
     "branch": "master"
   },
   "phetcommon": {
-    "sha": "721b9ddfcc2b7486c1d94649554cf0dc65045420",
+    "sha": "ce44ceba05f950c98d153e48367ad31471fa682d",
     "branch": "master"
   },
   "phetmarks": {
-    "sha": "88ad4ecd50957d048d0dbd121c4b955baa07ad5d",
+    "sha": "70e01d455eee3238a32ebe13f7a027eec36ba584",
     "branch": "master"
   },
   "query-string-machine": {
-    "sha": "83d209fdd9ebbe6ded4ed4a30ba8c1380ce7b925",
+    "sha": "150a7557b16bfde47df03fc5a3808bd8bc8c2117",
     "branch": "master"
   },
   "scenery": {
-    "sha": "b9901b686eaa90cb5fbc037e33ecb77bb2332b07",
+    "sha": "37b7daeb8dfa1be9ee9796584b6799cfad0921ea",
     "branch": "master"
   },
   "scenery-phet": {
-    "sha": "31d067ec758c1f8ff3c2263ae9a75e90fee58515",
+    "sha": "65d2e1a66e1e99faab47e241542290a65f392ea9",
     "branch": "master"
   },
   "sherpa": {
-    "sha": "ca8704c07c9b27bd8e67c1d2945bdb3c1e05615e",
+    "sha": "e77f262e5d5ee9e9fd8171d44c6aa14550bb3239",
     "branch": "master"
   },
   "studio": {
-    "sha": "c5bc7bbcd846bcba848547b86266ac56ef0c9dbf",
+    "sha": "a8eeb9f52b05bbf4451049017e1a1db4d68b8771",
     "branch": "master"
   },
   "sun": {
-    "sha": "24a53bf50989529d3c6c8ebd94a8741142967225",
+    "sha": "88bf3b4111f274d0e22568836277061ef14edb75",
     "branch": "master"
   },
   "tambo": {
-    "sha": "1d0232f1277f3789bb7fb51ab3eaad7d60a3dc2a",
+    "sha": "97349e4cb46591c1a3a7795c5020530c1710e53c",
     "branch": "master"
   },
   "tandem": {
-    "sha": "a59c8abdabe95418282dafbdb2be6fb85a6b0824",
+    "sha": "d5f6cecc013156b04c34a46b37ac8339dc86ba70",
     "branch": "master"
   },
   "utterance-queue": {
-    "sha": "2772560db2d1a1262a3530813f37835a298a913c",
+    "sha": "79db189ac8e9926b88f1a174a70f816aa8130dd1",
     "branch": "master"
   }
 }
