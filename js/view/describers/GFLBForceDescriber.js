@@ -50,7 +50,6 @@ class GFLBForceDescriber extends ForceDescriber {
    * @override
    */
   getForceVectorIndex( force, numberOfRegions ) {
-    assert && assert( force >= .7, `unrecognized force value, smaller than expected: ${force}` );
     assert && assert( numberOfRegions === 7, 'If numberOfRegions changes, this function should too.' );
 
     if ( force <= 40.6 ) {
