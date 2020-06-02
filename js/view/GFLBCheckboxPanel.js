@@ -10,6 +10,8 @@
  */
 
 import ISLCConstants from '../../../inverse-square-law-common/js/ISLCConstants.js';
+import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
+import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import ISLCPanel from '../../../inverse-square-law-common/js/view/ISLCPanel.js';
 import merge from '../../../phet-core/js/merge.js';
 import Text from '../../../scenery/js/nodes/Text.js';
@@ -64,16 +66,16 @@ class GFLBCheckboxPanel extends ISLCPanel {
     super( checkboxGroup, options );
 
     // PROTOTYPE a11y code, for the self-voicing feature set
-    if ( options.shapeHitDetector ) {
+    if ( options.shapeHitDetector && ISLCQueryParameters.selfVoicing === 'cursor' ) {
       checkboxGroup.children.forEach( ( child, i ) => {
         options.shapeHitDetector.addNode( child );
         options.shapeHitDetector.hitShapeEmitter.addListener( node => {
           if ( node === child ) {
-            if ( webSpeaker.exploreModeProperty.get() ) {
+            if ( cursorSpeakerModel.exploreModeProperty.get() ) {
               const checkboxItem = checkboxItems[ i ];
               const checked = checkboxItem.property.value;
 
-              if ( webSpeaker.getExploreModeVerbose() ) {
+              if ( cursorSpeakerModel.getExploreModeVerbose() ) {
                 webSpeaker.speak( StringUtils.fillIn( verboseCheckboxPatternString, {
                   accessibleName: checkboxItem.label,
                   interactionHint: checked ? checkboxItem.checkedInteractionHint : checkboxItem.uncheckedInteractionHint

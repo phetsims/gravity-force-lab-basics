@@ -12,6 +12,7 @@ import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
+import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 
 const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
 const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
@@ -41,21 +42,21 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     } );
 
     // PROTOTYPE SELF VOICING FEATURE - when these Properties change, alert change to the user
-    if ( ISLCQueryParameters.selfVoicing ) {
+    if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        if ( webSpeaker.getInteractiveModeVerbose() ) {
+        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
           webSpeaker.speak( this.getShowForceValuesAlert( showForceValues ) );
         }
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        if ( webSpeaker.getInteractiveModeVerbose() ) {
+        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
           webSpeaker.speak( this.getDistanceVisibleAlert( showDistance ) );
         }
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
-        if ( webSpeaker.getInteractiveModeVerbose() ) {
+        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
           webSpeaker.speak( this.getConstantRadiusAlert( constantRadius ) );
         }
       } );

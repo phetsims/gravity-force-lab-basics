@@ -8,6 +8,8 @@
 
 import Property from '../../../axon/js/Property.js';
 import Utils from '../../../dot/js/Utils.js';
+import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
+import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import merge from '../../../phet-core/js/merge.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
@@ -129,13 +131,13 @@ class GFLBMassControl extends Panel {
     } );
 
     // PROTOTYPE a11y code, for the self-voicing feature set
-    if ( options.shapeHitDetector ) {
+    if ( options.shapeHitDetector && ISLCQueryParameters.selfVoicing === 'cursor' ) {
       // explore mode, speak information about the control
       options.shapeHitDetector.addNode( panelVBox );
       options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
         if ( hitTarget === panelVBox ) {
-          if ( webSpeaker.exploreModeProperty.get() ) {
-            const patternString = webSpeaker.getExploreModeVerbose() ? verboseChangeMassHintPatternString : briefChangeMassHintPatternString;
+          if ( cursorSpeakerModel.exploreModeProperty.get() ) {
+            const patternString = cursorSpeakerModel.getExploreModeVerbose() ? verboseChangeMassHintPatternString : briefChangeMassHintPatternString;
             webSpeaker.speak( StringUtils.fillIn( patternString, {
               labelContent: labelContent,
               valueText: numberPicker.ariaValueText
@@ -148,7 +150,7 @@ class GFLBMassControl extends Panel {
       valueProperty.lazyLink( ( value, oldValue ) => {
         const valueText = numberPicker.ariaValueText;
 
-        if ( webSpeaker.getInteractiveModeVerbose() ) {
+        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
           const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
 
           webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
@@ -156,7 +158,7 @@ class GFLBMassControl extends Panel {
             massAlert: massChangedUtterance.alert
           } ) );
         }
-        else if ( webSpeaker.getInteractiveModeBrief() ) {
+        else if ( cursorSpeakerModel.getInteractiveModeBrief() ) {
           const otherObjectLabel = massDescriber.getOtherObjectLabelFromEnum( thisObjectEnum );
           const content = alertManager.getSelfVoicingForceChangeFromMassAlert( thisObjectEnum, value, oldValue, otherObjectLabel );
           webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {

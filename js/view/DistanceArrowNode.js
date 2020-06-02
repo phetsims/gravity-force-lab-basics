@@ -9,6 +9,8 @@
  */
 
 import Property from '../../../axon/js/Property.js';
+import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
+import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
@@ -66,12 +68,12 @@ class DistanceArrowNode extends Node {
     } );
     this.addChild( labelText );
 
-    if ( options.shapeHitDetector ) {
+    if ( options.shapeHitDetector && ISLCQueryParameters.selfVoicing === 'cursor' ) {
       options.shapeHitDetector.addNode( this );
       options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
         if ( hitTarget === this ) {
-          if ( webSpeaker.exploreModeProperty.get() ) {
-            const verboseMode = webSpeaker.exploreModeVerbosityProperty.get() === webSpeaker.Verbosity.VERBOSE;
+          if ( cursorSpeakerModel.exploreModeProperty.get() ) {
+            const verboseMode = cursorSpeakerModel.exploreModeVerbosityProperty.get() === cursorSpeakerModel.Verbosity.VERBOSE;
             const patternString = verboseMode ? verboseDistanceArrowDescriptionString : briefDistanceArrowDescriptionString;
 
             webSpeaker.speak( StringUtils.fillIn( patternString, {
