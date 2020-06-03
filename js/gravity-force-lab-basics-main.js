@@ -7,17 +7,18 @@
  */
 
 import GravityForceLabKeyboardHelpContent from '../../gravity-force-lab/js/view/GravityForceLabKeyboardHelpContent.js';
+import ISLCQueryParameters from '../../inverse-square-law-common/js/ISLCQueryParameters.js';
+import SpeakerHighlighter from '../../inverse-square-law-common/js/view/SpeakerHighlighter.js';
+import webSpeaker from '../../inverse-square-law-common/js/view/webSpeaker.js';
+import WebSpeechDialogContent from '../../inverse-square-law-common/js/view/WebSpeechDialogContent.js';
 import Screen from '../../joist/js/Screen.js';
 import Sim from '../../joist/js/Sim.js';
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import GFLBConstants from './GFLBConstants.js';
 import gravityForceLabBasicsStrings from './gravityForceLabBasicsStrings.js';
-import webSpeaker from '../../inverse-square-law-common/js/view/webSpeaker.js';
 import GFLBModel from './model/GFLBModel.js';
 import GFLBScreenView from './view/GFLBScreenView.js';
-import ISLCQueryParameters from '../../inverse-square-law-common/js/ISLCQueryParameters.js';
-import WebSpeechDialogContent from '../../inverse-square-law-common/js/view/WebSpeechDialogContent.js';
 
 // constants
 const tandem = Tandem.ROOT;
@@ -46,12 +47,6 @@ simLauncher.launch( () => {
 
   const gravityForceLabBasicsScreenTandem = tandem.createTandem( 'gravityForceLabBasicsScreen' );
 
-
-  // initialize prototypal web speech, if requested by query parameter
-  if ( ISLCQueryParameters.selfVoicing ) {
-    webSpeaker.initialize();
-  }
-
   const sim = new Sim( gravityForceLabBasicsTitleString,
     [ new Screen(
       () => new GFLBModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) ),
@@ -63,4 +58,23 @@ simLauncher.launch( () => {
     )
     ], simOptions );
   sim.start();
+
+  // initialize prototypal web speech, if requested by query parameter
+  if ( ISLCQueryParameters.selfVoicing ) {
+    webSpeaker.initialize();
+
+    if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+
+      sim.isConstructionCompleteProperty.link( complete => {
+        if ( complete ) {
+
+          // for the 'levels' prototype, create and add SpeakerHighlighter, which draws arounds the bounds of things
+          // that have self-voicing content
+          const screenView = sim.screens[ 0 ].view;
+          const highlighter = new SpeakerHighlighter( screenView.shapeHitDetector, webSpeaker );
+          sim.rootNode.addChild( highlighter );
+        }
+      } );
+    }
+  }
 } );

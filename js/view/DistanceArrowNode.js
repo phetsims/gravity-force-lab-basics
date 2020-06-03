@@ -9,8 +9,10 @@
  */
 
 import Property from '../../../axon/js/Property.js';
+import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
+import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
@@ -24,6 +26,7 @@ import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
 const verboseDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseDistanceArrowDescription;
 const briefDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefDistanceArrowDescription;
+const selfVoicingLevelsDistanceArrowPatternString = gravityForceLabStrings.a11y.selfVoicing.levels.distanceArrowPattern;
 
 // constants
 const HEAD_WIDTH = 6;
@@ -68,20 +71,34 @@ class DistanceArrowNode extends Node {
     } );
     this.addChild( labelText );
 
-    if ( options.shapeHitDetector && ISLCQueryParameters.selfVoicing === 'cursor' ) {
+    if ( options.shapeHitDetector ) {
       options.shapeHitDetector.addNode( this );
-      options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
-        if ( hitTarget === this ) {
-          if ( cursorSpeakerModel.exploreModeProperty.get() ) {
-            const verboseMode = cursorSpeakerModel.exploreModeVerbosityProperty.get() === cursorSpeakerModel.Verbosity.VERBOSE;
-            const patternString = verboseMode ? verboseDistanceArrowDescriptionString : briefDistanceArrowDescriptionString;
 
-            webSpeaker.speak( StringUtils.fillIn( patternString, {
-              distance: model.separationProperty.get() / 1000 // m to km
-            } ) );
+      if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
+        options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
+          if ( hitTarget === this ) {
+            if ( cursorSpeakerModel.exploreModeProperty.get() ) {
+              const verboseMode = cursorSpeakerModel.exploreModeVerbosityProperty.get() === cursorSpeakerModel.Verbosity.VERBOSE;
+              const patternString = verboseMode ? verboseDistanceArrowDescriptionString : briefDistanceArrowDescriptionString;
+
+              webSpeaker.speak( StringUtils.fillIn( patternString, {
+                distance: model.separationProperty.get() / 1000 // m to km
+              } ) );
+            }
           }
+        } );
+      }
+      else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+          options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
+            if ( hitTarget === this ) {
+              webSpeaker.speak( StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
+                distance: model.separationProperty.get() / 1000 // m to km
+              } ) );
+            }
+          } );
         }
-      } );
+      }
     }
 
     // DistanceArrowNode exists for life of sim and does not need disposal

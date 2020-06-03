@@ -66,31 +66,33 @@ class GFLBCheckboxPanel extends ISLCPanel {
     super( checkboxGroup, options );
 
     // PROTOTYPE a11y code, for the self-voicing feature set
-    if ( options.shapeHitDetector && ISLCQueryParameters.selfVoicing === 'cursor' ) {
+    if ( options.shapeHitDetector ) {
       checkboxGroup.children.forEach( ( child, i ) => {
         options.shapeHitDetector.addNode( child );
-        options.shapeHitDetector.hitShapeEmitter.addListener( node => {
-          if ( node === child ) {
-            if ( cursorSpeakerModel.exploreModeProperty.get() ) {
-              const checkboxItem = checkboxItems[ i ];
-              const checked = checkboxItem.property.value;
+        if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
+          options.shapeHitDetector.hitShapeEmitter.addListener( node => {
+            if ( node === child ) {
+              if ( cursorSpeakerModel.exploreModeProperty.get() ) {
+                const checkboxItem = checkboxItems[ i ];
+                const checked = checkboxItem.property.value;
 
-              if ( cursorSpeakerModel.getExploreModeVerbose() ) {
-                webSpeaker.speak( StringUtils.fillIn( verboseCheckboxPatternString, {
-                  accessibleName: checkboxItem.label,
-                  interactionHint: checked ? checkboxItem.checkedInteractionHint : checkboxItem.uncheckedInteractionHint
-                } ) );
-              }
-              else {
-                const stateString = checked ? checkedString : uncheckedString;
-                webSpeaker.speak( StringUtils.fillIn( briefCheckboxPatternString, {
-                  accessibleName: checkboxItem.label,
-                  checkedState: stateString
-                } ) );
+                if ( cursorSpeakerModel.getExploreModeVerbose() ) {
+                  webSpeaker.speak( StringUtils.fillIn( verboseCheckboxPatternString, {
+                    accessibleName: checkboxItem.label,
+                    interactionHint: checked ? checkboxItem.checkedInteractionHint : checkboxItem.uncheckedInteractionHint
+                  } ) );
+                }
+                else {
+                  const stateString = checked ? checkedString : uncheckedString;
+                  webSpeaker.speak( StringUtils.fillIn( briefCheckboxPatternString, {
+                    accessibleName: checkboxItem.label,
+                    checkedState: stateString
+                  } ) );
+                }
               }
             }
-          }
-        } );
+          } );
+        }
       } );
     }
   }

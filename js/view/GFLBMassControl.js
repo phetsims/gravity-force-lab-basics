@@ -131,42 +131,55 @@ class GFLBMassControl extends Panel {
     } );
 
     // PROTOTYPE a11y code, for the self-voicing feature set
-    if ( options.shapeHitDetector && ISLCQueryParameters.selfVoicing === 'cursor' ) {
+    if ( options.shapeHitDetector ) {
       // explore mode, speak information about the control
       options.shapeHitDetector.addNode( panelVBox );
-      options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
-        if ( hitTarget === panelVBox ) {
-          if ( cursorSpeakerModel.exploreModeProperty.get() ) {
-            const patternString = cursorSpeakerModel.getExploreModeVerbose() ? verboseChangeMassHintPatternString : briefChangeMassHintPatternString;
-            webSpeaker.speak( StringUtils.fillIn( patternString, {
+
+      if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
+        options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
+          if ( hitTarget === panelVBox ) {
+            if ( cursorSpeakerModel.exploreModeProperty.get() ) {
+              const patternString = cursorSpeakerModel.getExploreModeVerbose() ? verboseChangeMassHintPatternString : briefChangeMassHintPatternString;
+              webSpeaker.speak( StringUtils.fillIn( patternString, {
+                labelContent: labelContent,
+                valueText: numberPicker.ariaValueText
+              } ) );
+            }
+          }
+        } );
+
+        // interaction mode, speak information about the change due to input
+        valueProperty.lazyLink( ( value, oldValue ) => {
+          const valueText = numberPicker.ariaValueText;
+
+          if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
+            const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
+
+            webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
+              valueText: valueText,
+              massAlert: massChangedUtterance.alert
+            } ) );
+          }
+          else if ( cursorSpeakerModel.getInteractiveModeBrief() ) {
+            const otherObjectLabel = massDescriber.getOtherObjectLabelFromEnum( thisObjectEnum );
+            const content = alertManager.getSelfVoicingForceChangeFromMassAlert( thisObjectEnum, value, oldValue, otherObjectLabel );
+            webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
+              valueText: valueText,
+              massAlert: content
+            } ) );
+          }
+        } );
+      }
+      else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+        options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
+          if ( hitTarget === panelVBox ) {
+            webSpeaker.speak( StringUtils.fillIn( briefChangeMassHintPatternString, {
               labelContent: labelContent,
               valueText: numberPicker.ariaValueText
             } ) );
           }
-        }
-      } );
-
-      // interaction mode, speak information about the change due to input
-      valueProperty.lazyLink( ( value, oldValue ) => {
-        const valueText = numberPicker.ariaValueText;
-
-        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
-          const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-
-          webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
-            valueText: valueText,
-            massAlert: massChangedUtterance.alert
-          } ) );
-        }
-        else if ( cursorSpeakerModel.getInteractiveModeBrief() ) {
-          const otherObjectLabel = massDescriber.getOtherObjectLabelFromEnum( thisObjectEnum );
-          const content = alertManager.getSelfVoicingForceChangeFromMassAlert( thisObjectEnum, value, oldValue, otherObjectLabel );
-          webSpeaker.speak( StringUtils.fillIn( massChangeInteractionPatternString, {
-            valueText: valueText,
-            massAlert: content
-          } ) );
-        }
-      } );
+        } );
+      }
     }
   }
 }

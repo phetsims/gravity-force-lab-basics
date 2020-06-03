@@ -8,6 +8,7 @@
 
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
+import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -16,6 +17,14 @@ import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/Curso
 
 const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
 const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
+
+const selfVoicingForceValuesShownString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.forceValuesShown;
+const selfVoicingForceValuesHiddenString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.forceValuesHidden;
+const selfVoicingDistanceShownString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.distanceShown;
+const selfVoicingDistanceHiddenString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.distanceHidden;
+const selfVoicingConstantSizeSetString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.constantSizeSet;
+const selfVoicingConstantSizeOffString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.constantSizeOff;
+
 
 class GFLBAlertManager extends GravityForceLabAlertManager {
 
@@ -61,6 +70,25 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
         }
       } );
     }
+    else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+      model.showForceValuesProperty.lazyLink( showForceValues => {
+        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+          webSpeaker.speak( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
+        }
+      } );
+
+      model.showDistanceProperty.lazyLink( showDistance => {
+        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+          webSpeaker.speak( this.getSelfVoicingDistanceVisibleAlert( showDistance ) );
+        }
+      } );
+
+      model.constantRadiusProperty.lazyLink( constantRadius => {
+        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+          webSpeaker.speak( this.getSelfVoicingConstantRadiusAlert( constantRadius ) );
+        }
+      } );
+    }
   }
 
   /**
@@ -81,6 +109,36 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    */
   getDistanceVisibleAlert( showDistance ) {
     return showDistance ? distanceArrowVisibleString : distanceArrowRemovedString;
+  }
+
+  /**
+   * Get a string for the self voicing prototype that describes the changing visibility of force values.
+   * @private
+   * @param {boolean} showForceValues
+   * @returns {string}
+   */
+  getSelfVoicingShowForceValuesAlert( showForceValues ) {
+    return showForceValues ? selfVoicingForceValuesShownString : selfVoicingForceValuesHiddenString;
+  }
+
+  /**
+   * Get a string for the self voicing prototype that describes the changing visibility of distance.
+   * @private
+   * @param {boolean} showDistance
+   * @returns {string}
+   */
+  getSelfVoicingDistanceVisibleAlert( showDistance ) {
+    return showDistance ? selfVoicingDistanceShownString : selfVoicingDistanceHiddenString;
+  }
+
+  /**
+   * Get a string for the self voicing prototype that describes the changing visibility of distance.
+   * @private
+   * @param {boolean} constantRadius
+   * @returns {string}
+   */
+  getSelfVoicingConstantRadiusAlert( constantRadius ) {
+    return constantRadius ? selfVoicingConstantSizeSetString : selfVoicingConstantSizeOffString;
   }
 }
 

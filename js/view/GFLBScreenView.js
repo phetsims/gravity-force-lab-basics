@@ -22,6 +22,7 @@ import DefaultDirection from '../../../inverse-square-law-common/js/view/Default
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
+import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import ScreenView from '../../../joist/js/ScreenView.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
@@ -71,6 +72,7 @@ const verboseUncheckedDistanceCheckboxInteractionHintString = gravityForceLabBas
 const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckedDistanceCheckboxInteractionHint;
 const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckedConstantSizeCheckboxInteractionHint;
 const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
+const selfVoicingResetString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.resetAll;
 const redColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.redColor;
 const blueColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.blueColor;
 
@@ -357,6 +359,20 @@ class GFLBScreenView extends ScreenView {
         { stroke: 'rgba( 250, 100, 100, 0.6 )' }
       );
       this.addChild( gridNode );
+    }
+
+    //------------------------------------------------
+    // self-voicing prototype
+    //------------------------------------------------
+    if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+      this.shapeHitDetector.addNode( resetAllButton );
+      this.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
+        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+          if ( hitTarget === resetAllButton ) {
+            webSpeaker.speak( selfVoicingResetString );
+          }
+        }
+      } );
     }
   }
 
