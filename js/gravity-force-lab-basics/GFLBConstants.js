@@ -18,7 +18,7 @@ define( require => {
   const BILLION_MULTIPLIER = 1000000000;
   const MIN_MASS = 1.00 * BILLION_MULTIPLIER; // kg
   const MAX_MASS = 10.0 * BILLION_MULTIPLIER; // kg
-  const MAX_DISTANCE_FROM_CENTER = 4800; // meters, empirically determined boundary for masses
+  const MAX_DISTANCE_FROM_CENTER = 5000; // meters, empirically determined boundary for masses
   const MASS_DENSITY = 1.5; // kg/m^3
 
   const GFLBConstants = {
