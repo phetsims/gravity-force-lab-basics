@@ -72,19 +72,19 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     }
     else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+        if ( levelSpeakerModel.objectChangesProperty.get() ) {
           webSpeaker.speak( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
         }
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+        if ( levelSpeakerModel.objectChangesProperty.get() ) {
           webSpeaker.speak( this.getSelfVoicingDistanceVisibleAlert( showDistance ) );
         }
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
-        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+        if ( levelSpeakerModel.objectChangesProperty.get() ) {
           webSpeaker.speak( this.getSelfVoicingConstantRadiusAlert( constantRadius ) );
         }
       } );

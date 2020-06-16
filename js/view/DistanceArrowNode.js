@@ -89,7 +89,7 @@ class DistanceArrowNode extends Node {
         } );
       }
       else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
-        if ( levelSpeakerModel.basicReadingProperty.get() ) {
+        if ( levelSpeakerModel.objectChangesProperty.get() ) {
           options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
             if ( hitTarget === this ) {
               webSpeaker.speak( StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
