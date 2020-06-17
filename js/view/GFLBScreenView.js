@@ -19,6 +19,7 @@ import forceSound from '../../../gravity-force-lab/sounds/saturated-sine-loop-tr
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import DefaultDirection from '../../../inverse-square-law-common/js/view/DefaultDirection.js';
+import focusSpeaker from '../../../inverse-square-law-common/js/view/FocusSpeaker.js';
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
@@ -374,6 +375,12 @@ class GFLBScreenView extends ScreenView {
           }
         }
       } );
+
+      // distance arrow node is 'focusable' in this prototype
+      focusSpeaker.addNode( distanceArrowNode );
+
+      // in this mode, focus just goes from top to bottom
+      massPositionsNode.accessibleOrder = [ mass2Node.arrowNode, mass1Node.arrowNode, distanceArrowNode, null ];
     }
   }
 
