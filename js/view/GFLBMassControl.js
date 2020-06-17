@@ -135,6 +135,7 @@ class GFLBMassControl extends Panel {
     if ( options.shapeHitDetector ) {
       // explore mode, speak information about the control
       options.shapeHitDetector.addNode( panelVBox );
+      options.shapeHitDetector.addNode( numberPicker );
 
       if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
         options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
@@ -172,7 +173,7 @@ class GFLBMassControl extends Panel {
         } );
       }
       else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
-        levelSpeakerModel.setNodeInteractive( panelVBox, true );
+        levelSpeakerModel.setNodeInteractive( numberPicker, true );
         options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
             webSpeaker.speak( StringUtils.fillIn( briefChangeMassHintPatternString, {
@@ -180,6 +181,11 @@ class GFLBMassControl extends Panel {
               valueText: numberPicker.ariaValueText
             } ) );
           }
+        } );
+
+        valueProperty.lazyLink( ( value, oldValue ) => {
+          const valueText = numberPicker.ariaValueText;
+          webSpeaker.speak( valueText );
         } );
       }
     }
