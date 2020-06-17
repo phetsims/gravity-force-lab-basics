@@ -10,6 +10,7 @@ import Property from '../../../axon/js/Property.js';
 import Utils from '../../../dot/js/Utils.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
+import focusSpeaker from '../../../inverse-square-law-common/js/view/FocusSpeaker.js';
 import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
 import merge from '../../../phet-core/js/merge.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
@@ -174,8 +175,20 @@ class GFLBMassControl extends Panel {
       }
       else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
         levelSpeakerModel.setNodeInteractive( numberPicker, true );
+        focusSpeaker.addNode( panelVBox );
+
         options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
+            webSpeaker.speak( StringUtils.fillIn( briefChangeMassHintPatternString, {
+              labelContent: labelContent,
+              valueText: numberPicker.ariaValueText
+            } ) );
+          }
+        } );
+
+        // hit from the shape hit detector while it has keyboard focus, read name and value
+        options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
+          if ( hitTarget === numberPicker && hitTarget.isFocused() ) {
             webSpeaker.speak( StringUtils.fillIn( briefChangeMassHintPatternString, {
               labelContent: labelContent,
               valueText: numberPicker.ariaValueText

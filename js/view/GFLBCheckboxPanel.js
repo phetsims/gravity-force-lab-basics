@@ -99,6 +99,13 @@ class GFLBCheckboxPanel extends ISLCPanel {
           // mark that checkboxes are "interactive" for the levels prototype, so that highlights don't show up
           // around them
           levelSpeakerModel.setNodeInteractive( child, true );
+
+          // hit from the shape hit detector while it has keyboard focus, read name and value
+          options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
+            if ( hitTarget === child && hitTarget.isFocused() ) {
+              webSpeaker.speak( checkboxItems[ i ].label );
+            }
+          } );
         }
       } );
     }

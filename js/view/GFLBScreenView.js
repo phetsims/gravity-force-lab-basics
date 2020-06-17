@@ -376,6 +376,13 @@ class GFLBScreenView extends ScreenView {
         }
       } );
 
+      // hit from the shape hit detector while it has keyboard focus, read name and value
+      this.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
+        if ( hitTarget === resetAllButton && hitTarget.isFocused() ) {
+          webSpeaker.speak( resetAllButton.innerContent );
+        }
+      } );
+
       // distance arrow node is 'focusable' in this prototype
       focusSpeaker.addNode( distanceArrowNode );
 
