@@ -10,6 +10,7 @@ import Property from '../../../axon/js/Property.js';
 import Utils from '../../../dot/js/Utils.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
+import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
 import merge from '../../../phet-core/js/merge.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
@@ -171,6 +172,7 @@ class GFLBMassControl extends Panel {
         } );
       }
       else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+        levelSpeakerModel.setNodeInteractive( panelVBox, true );
         options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
             webSpeaker.speak( StringUtils.fillIn( briefChangeMassHintPatternString, {

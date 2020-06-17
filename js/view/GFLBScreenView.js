@@ -366,6 +366,7 @@ class GFLBScreenView extends ScreenView {
     //------------------------------------------------
     if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
       this.shapeHitDetector.addNode( resetAllButton );
+      levelSpeakerModel.setNodeInteractive( resetAllButton, true );
       this.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           if ( hitTarget === resetAllButton ) {
