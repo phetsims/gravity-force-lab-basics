@@ -365,7 +365,10 @@ class GFLBScreenView extends ScreenView {
     //------------------------------------------------
     // self-voicing prototype
     //------------------------------------------------
-    if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+    if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
+
+      // the 'levels' and 'minimalLevels' prototype behave the same, except that the distanceArrowNode is removed from
+      // focus order in '
       this.shapeHitDetector.addNode( resetAllButton );
       levelSpeakerModel.setNodeInteractive( resetAllButton, true );
       this.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
@@ -383,8 +386,10 @@ class GFLBScreenView extends ScreenView {
         }
       } );
 
-      // distance arrow node is 'focusable' in this prototype
-      focusSpeaker.addNode( distanceArrowNode );
+      // distance arrow node is not focusable in the 'minimal' levels prototype
+      if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+        focusSpeaker.addNode( distanceArrowNode );
+      }
 
       // in this mode, focus just goes from top to bottom
       massPositionsNode.accessibleOrder = [ mass2Node.arrowNode, mass1Node.arrowNode, distanceArrowNode, null ];

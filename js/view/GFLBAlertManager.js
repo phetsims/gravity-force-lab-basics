@@ -70,7 +70,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
         }
       } );
     }
-    else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+    else if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           webSpeaker.speak( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );

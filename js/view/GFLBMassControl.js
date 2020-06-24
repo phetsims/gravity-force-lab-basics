@@ -173,9 +173,13 @@ class GFLBMassControl extends Panel {
           }
         } );
       }
-      else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+      else if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
         levelSpeakerModel.setNodeInteractive( numberPicker, true );
-        focusSpeaker.addNode( panelVBox );
+
+        // in the 'minimalLevels' prototype, this component is not added to the navigation order
+        if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+          focusSpeaker.addNode( panelVBox );
+        }
 
         options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
