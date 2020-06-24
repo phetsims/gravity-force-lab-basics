@@ -88,7 +88,7 @@ class DistanceArrowNode extends Node {
           }
         } );
       }
-      else if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+      else if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
             if ( hitTarget === this ) {
