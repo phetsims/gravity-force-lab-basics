@@ -63,7 +63,7 @@ simLauncher.launch( () => {
   if ( ISLCQueryParameters.selfVoicing ) {
     webSpeaker.initialize();
 
-    if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
+    if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
 
       sim.isConstructionCompleteProperty.link( complete => {
         if ( complete ) {

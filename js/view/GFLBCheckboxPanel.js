@@ -70,7 +70,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
     if ( options.shapeHitDetector ) {
       checkboxGroup.children.forEach( ( child, i ) => {
         options.shapeHitDetector.addNode( child );
-        if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
+        if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
           options.shapeHitDetector.hitShapeEmitter.addListener( node => {
             if ( node === child ) {
               if ( cursorSpeakerModel.exploreModeProperty.get() ) {

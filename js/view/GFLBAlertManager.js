@@ -51,7 +51,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     } );
 
     // PROTOTYPE SELF VOICING FEATURE - when these Properties change, alert change to the user
-    if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
+    if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
         if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
           webSpeaker.speak( this.getShowForceValuesAlert( showForceValues ) );
@@ -70,7 +70,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
         }
       } );
     }
-    else if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
+    else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           webSpeaker.speak( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );

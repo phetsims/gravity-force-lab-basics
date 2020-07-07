@@ -138,7 +138,7 @@ class GFLBMassControl extends Panel {
       options.shapeHitDetector.addNode( panelVBox );
       options.shapeHitDetector.addNode( numberPicker );
 
-      if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
+      if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
         options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
             if ( cursorSpeakerModel.exploreModeProperty.get() ) {
@@ -173,11 +173,11 @@ class GFLBMassControl extends Panel {
           }
         } );
       }
-      else if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
+      else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
         levelSpeakerModel.setNodeInteractive( numberPicker, true );
 
         // in the 'minimalLevels' prototype, this component is not added to the navigation order
-        if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+        if ( ISLCQueryParameters.selfVoicing === 'paradigm2' ) {
           focusSpeaker.addNode( panelVBox );
         }
 

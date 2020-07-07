@@ -365,7 +365,7 @@ class GFLBScreenView extends ScreenView {
     //------------------------------------------------
     // self-voicing prototype
     //------------------------------------------------
-    if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
+    if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
 
       // the 'levels' and 'minimalLevels' prototype behave the same, except that the distanceArrowNode is removed from
       // focus order in '
@@ -387,7 +387,7 @@ class GFLBScreenView extends ScreenView {
       } );
 
       // distance arrow node is not focusable in the 'minimal' levels prototype
-      if ( ISLCQueryParameters.selfVoicing === 'levels' ) {
+      if ( ISLCQueryParameters.selfVoicing === 'paradigm2' ) {
         focusSpeaker.addNode( distanceArrowNode );
       }
 
