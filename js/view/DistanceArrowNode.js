@@ -74,7 +74,7 @@ class DistanceArrowNode extends Node {
     if ( options.shapeHitDetector ) {
       options.shapeHitDetector.addNode( this );
 
-      if ( ISLCQueryParameters.selfVoicing === 'cursor' ) {
+      if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
         options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
           if ( hitTarget === this ) {
             if ( cursorSpeakerModel.exploreModeProperty.get() ) {
@@ -88,7 +88,7 @@ class DistanceArrowNode extends Node {
           }
         } );
       }
-      else if ( ISLCQueryParameters.selfVoicing === 'levels' || ISLCQueryParameters.selfVoicing === 'minimalLevels' ) {
+      else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
             if ( hitTarget === this ) {
