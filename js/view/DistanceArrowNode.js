@@ -37,9 +37,10 @@ class DistanceArrowNode extends Node {
   /**
    * @param {GFLBModel} model
    * @param {ModelViewTransform2} modelViewTransform
+   * @param {PositionDescriber} positionDescriber
    * @param {Object} [options]
    */
-  constructor( model, modelViewTransform, options ) {
+  constructor( model, modelViewTransform, positionDescriber, options ) {
 
     options = merge( {
 
@@ -92,9 +93,14 @@ class DistanceArrowNode extends Node {
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
             if ( hitTarget === this ) {
-              webSpeaker.speak( StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
-                distance: model.separationProperty.get() / 1000 // m to km
-              } ) );
+              if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
+                webSpeaker.speak( StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
+                  distance: model.separationProperty.get() / 1000 // m to km
+                } ) );
+              }
+              else {
+                webSpeaker.speak( positionDescriber.getCentersApartDistance() );
+              }
             }
           } );
         }
