@@ -71,20 +71,27 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
       } );
     }
     else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
+
+      // the checkbox context responses are spoken in BOTH the "object" responses and "context" responses
+      // mode
+      const speakCheckboxChange = () => {
+        return levelSpeakerModel.objectChangesProperty.get() || levelSpeakerModel.contextChangesProperty.get();
+      };
+
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        if ( levelSpeakerModel.objectChangesProperty.get() ) {
+        if ( speakCheckboxChange() ) {
           webSpeaker.speak( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
         }
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        if ( levelSpeakerModel.objectChangesProperty.get() ) {
+        if ( speakCheckboxChange() ) {
           webSpeaker.speak( this.getSelfVoicingDistanceVisibleAlert( showDistance ) );
         }
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
-        if ( levelSpeakerModel.objectChangesProperty.get() ) {
+        if ( speakCheckboxChange() ) {
           webSpeaker.speak( this.getSelfVoicingConstantRadiusAlert( constantRadius ) );
         }
       } );

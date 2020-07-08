@@ -134,11 +134,13 @@ class GFLBMassControl extends Panel {
 
     // PROTOTYPE a11y code, for the self-voicing feature set
     if ( options.shapeHitDetector ) {
-      // explore mode, speak information about the control
-      options.shapeHitDetector.addNode( panelVBox );
       options.shapeHitDetector.addNode( numberPicker );
 
       if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
+
+        // explore mode, speak information about the control
+        options.shapeHitDetector.addNode( panelVBox );
+
         options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
             if ( cursorSpeakerModel.exploreModeProperty.get() ) {
@@ -174,6 +176,8 @@ class GFLBMassControl extends Panel {
         } );
       }
       else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
+        levelSpeakerModel.addHitDetectionForObjectResponses( panelVBox, options.shapeHitDetector );
+
         levelSpeakerModel.setNodeInteractive( numberPicker, true );
 
         // in the 'minimalLevels' prototype, this component is not added to the navigation order

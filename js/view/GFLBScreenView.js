@@ -392,7 +392,7 @@ class GFLBScreenView extends ScreenView {
         }
       } );
 
-      // distance arrow node is not focusable in the 'minimal' levels prototype
+      // distance arrow node is not focusable in the 'minimal' paradigm 3 prototype
       if ( ISLCQueryParameters.selfVoicing === 'paradigm2' ) {
         focusSpeaker.addNode( distanceArrowNode );
       }
