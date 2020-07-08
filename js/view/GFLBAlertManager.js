@@ -118,7 +118,13 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @returns {string}
    */
   getSelfVoicingShowForceValuesAlert( showForceValues ) {
-    return showForceValues ? selfVoicingForceValuesShownString : selfVoicingForceValuesHiddenString;
+    const version1 = ISLCQueryParameters.selfVoicingVersion === 1;
+
+    // if not version 1, we are trying to sound more like the PDOM string
+    const shownString = version1 ? selfVoicingForceValuesShownString :
+                        this.forceDescriber.getValuesInUnitsText();
+
+    return showForceValues ? shownString : selfVoicingForceValuesHiddenString;
   }
 
   /**
@@ -128,7 +134,12 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @returns {string}
    */
   getSelfVoicingDistanceVisibleAlert( showDistance ) {
-    return showDistance ? selfVoicingDistanceShownString : selfVoicingDistanceHiddenString;
+    if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
+      return showDistance ? selfVoicingDistanceShownString : selfVoicingDistanceHiddenString;
+    }
+    else {
+      return this.getDistanceVisibleAlert( showDistance );
+    }
   }
 
   /**
@@ -138,7 +149,14 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @returns {string}
    */
   getSelfVoicingConstantRadiusAlert( constantRadius ) {
-    return constantRadius ? selfVoicingConstantSizeSetString : selfVoicingConstantSizeOffString;
+    if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
+      return constantRadius ? selfVoicingConstantSizeSetString : selfVoicingConstantSizeOffString;
+    }
+    else {
+
+      // if not version 1, we are trying to sound more like the PDOM string
+      return this.getConstantRadiusAlert( constantRadius );
+    }
   }
 }
 

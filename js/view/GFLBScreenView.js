@@ -74,6 +74,7 @@ const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasic
 const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckedConstantSizeCheckboxInteractionHint;
 const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
 const selfVoicingResetString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.resetAll;
+const selfVoicingResetVerboseString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.resetAllVerbose;
 const redColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.redColor;
 const blueColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.blueColor;
 
@@ -294,7 +295,7 @@ class GFLBScreenView extends ScreenView {
     } );
 
     // arrow that shows distance between the two masses
-    const distanceArrowNode = new DistanceArrowNode( model, modelViewTransform, {
+    const distanceArrowNode = new DistanceArrowNode( model, modelViewTransform, positionDescriber, {
       tandem: tandem.createTandem( 'distanceArrowNode' ),
       y: 145,
       shapeHitDetector: this.shapeHitDetector
@@ -374,7 +375,12 @@ class GFLBScreenView extends ScreenView {
       this.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           if ( hitTarget === resetAllButton ) {
-            webSpeaker.speak( selfVoicingResetString );
+            if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
+              webSpeaker.speak( selfVoicingResetString );
+            }
+            else {
+              webSpeaker.speak( selfVoicingResetVerboseString );
+            }
           }
         }
       } );
