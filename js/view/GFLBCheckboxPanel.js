@@ -121,7 +121,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
               const objectContent = checkboxItems[ i ].label;
               const hintContent = itemHintList[ i ];
 
-              levelSpeakerModel.speakAllResponses( objectContent, hintContent );
+              levelSpeakerModel.speakAllResponses( objectContent, null, hintContent );
             }
           } );
         }
