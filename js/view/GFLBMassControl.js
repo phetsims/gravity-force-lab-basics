@@ -207,7 +207,7 @@ class GFLBMassControl extends Panel {
         valueProperty.lazyLink( ( value, oldValue ) => {
           const valueText = numberPicker.ariaValueText;
           const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-          levelSpeakerModel.speakObjectAndContextResponse( valueText, massChangedUtterance.alert );
+          levelSpeakerModel.speakAllResponses( valueText, massChangedUtterance.alert );
         } );
       }
     }
