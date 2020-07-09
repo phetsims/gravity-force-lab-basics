@@ -9,17 +9,19 @@
  * @author Michael Kauzmann (PhET Interactive Simulations)
  */
 
+import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
+import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCConstants from '../../../inverse-square-law-common/js/ISLCConstants.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import ISLCPanel from '../../../inverse-square-law-common/js/view/ISLCPanel.js';
 import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import merge from '../../../phet-core/js/merge.js';
-import Text from '../../../scenery/js/nodes/Text.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
+import Text from '../../../scenery/js/nodes/Text.js';
 import VerticalCheckboxGroup from '../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
@@ -27,6 +29,9 @@ const verboseCheckboxPatternString = gravityForceLabBasicsStrings.a11y.selfVoici
 const briefCheckboxPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefCheckboxPattern;
 const checkedString = gravityForceLabBasicsStrings.a11y.selfVoicing.checked;
 const uncheckedString = gravityForceLabBasicsStrings.a11y.selfVoicing.unchecked;
+const forceValuesCheckboxHelpTextString = inverseSquareLawCommonStrings.a11y.forceValuesCheckboxHelpText;
+const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
+const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
 
 class GFLBCheckboxPanel extends ISLCPanel {
 
@@ -68,6 +73,16 @@ class GFLBCheckboxPanel extends ISLCPanel {
 
     // PROTOTYPE a11y code, for the self-voicing feature set
     if ( options.shapeHitDetector ) {
+
+      // list of interaction hints to be read upon focus, in the order of checkboxes. Pretty rough, but better
+      // than looking inside of CheckboxItem for this. IF we want to invest more in this feature we can
+      // make this more robust
+      const itemHintList = [
+        forceValuesCheckboxHelpTextString,
+        distanceCheckboxHelpTextString,
+        constantSizeCheckboxHelpTextString
+      ];
+
       checkboxGroup.children.forEach( ( child, i ) => {
         options.shapeHitDetector.addNode( child );
         if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
@@ -103,7 +118,10 @@ class GFLBCheckboxPanel extends ISLCPanel {
           // hit from the shape hit detector while it has keyboard focus, read name and value
           options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
             if ( hitTarget === child && hitTarget.isFocused() ) {
-              webSpeaker.speak( checkboxItems[ i ].label );
+              const objectContent = checkboxItems[ i ].label;
+              const hintContent = itemHintList[ i ];
+
+              levelSpeakerModel.speakAllResponses( objectContent, null, hintContent );
             }
           } );
         }

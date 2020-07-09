@@ -10,6 +10,7 @@
 
 import Property from '../../../axon/js/Property.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
+import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
@@ -27,6 +28,7 @@ const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPat
 const verboseDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseDistanceArrowDescription;
 const briefDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefDistanceArrowDescription;
 const selfVoicingLevelsDistanceArrowPatternString = gravityForceLabStrings.a11y.selfVoicing.levels.distanceArrowPattern;
+const selfVoicingLevelsMoveSpheresHintString = inverseSquareLawCommonStrings.a11y.selfVoicing.levels.moveSpheresHintString;
 
 // constants
 const HEAD_WIDTH = 6;
@@ -89,18 +91,22 @@ class DistanceArrowNode extends Node {
         } );
       }
       else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
-        levelSpeakerModel.addHitDetectionForObjectResponses( this, options.shapeHitDetector );
+        levelSpeakerModel.addHitDetectionForObjectResponsesAndHelpText( this, options.shapeHitDetector );
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
           options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
             if ( hitTarget === this ) {
+              let objectResponse;
               if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
-                webSpeaker.speak( StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
+                objectResponse = StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
                   distance: model.separationProperty.get() / 1000 // m to km
-                } ) );
+                } );
               }
               else {
-                webSpeaker.speak( positionDescriber.getCentersApartDistance() );
+                objectResponse = positionDescriber.getCentersApartDistance();
               }
+
+              const interactionHint = selfVoicingLevelsMoveSpheresHintString;
+              levelSpeakerModel.speakAllResponses( objectResponse, null, interactionHint );
             }
           } );
         }

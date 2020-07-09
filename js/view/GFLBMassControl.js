@@ -30,6 +30,8 @@ const billionKgString = gravityForceLabBasicsStrings.billionKg;
 const massChangeInteractionPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.massChangeInteractionPattern;
 const verboseChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseChangeMassHintPattern;
 const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefChangeMassHintPattern;
+const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
+const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -176,7 +178,7 @@ class GFLBMassControl extends Panel {
         } );
       }
       else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
-        levelSpeakerModel.addHitDetectionForObjectResponses( panelVBox, options.shapeHitDetector );
+        levelSpeakerModel.addHitDetectionForObjectResponsesAndHelpText( panelVBox, options.shapeHitDetector );
 
         levelSpeakerModel.setNodeInteractive( numberPicker, true );
 
@@ -187,10 +189,14 @@ class GFLBMassControl extends Panel {
 
         options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
-            webSpeaker.speak( StringUtils.fillIn( briefChangeMassHintPatternString, {
+            const objectResponse = StringUtils.fillIn( briefChangeMassHintPatternString, {
               labelContent: labelContent,
               valueText: numberPicker.ariaValueText
-            } ) );
+            } );
+            const helpText = alertManager.model.constantRadiusProperty.get() ? massControlsHelpTextDensityBillionsString :
+                             massControlsHelpTextBillionsString;
+
+            levelSpeakerModel.speakAllResponses( objectResponse, null, helpText );
           }
         } );
 
