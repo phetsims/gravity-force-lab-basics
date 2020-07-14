@@ -20,6 +20,7 @@ import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
+import Playable from '../../../tambo/js/Playable.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -84,6 +85,10 @@ class GFLBMassControl extends Panel {
       arrowHeight: 3,
       arrowYSpacing: 2,
       color: options.color,
+
+      // sound
+      valueChangedSoundPlayer: Playable.NO_SOUND,
+      boundarySoundPlayer: Playable.NO_SOUND,
 
       // pdom
       pageKeyboardStep: BILLION_MULTIPLIER * 2,
