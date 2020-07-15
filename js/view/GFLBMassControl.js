@@ -192,26 +192,29 @@ class GFLBMassControl extends Panel {
           focusSpeaker.addNode( panelVBox );
         }
 
+        // prepare and speak value text and help text for the control - spoken with mouse input on the containing
+        // panel, and on keyboard focus of the actual number picker
+        const speakValueAndHelpText = () => {
+          const objectResponse = StringUtils.fillIn( briefChangeMassHintPatternString, {
+            labelContent: labelContent,
+            valueText: numberPicker.ariaValueText
+          } );
+          const helpText = alertManager.model.constantRadiusProperty.get() ? massControlsHelpTextDensityBillionsString :
+                           massControlsHelpTextBillionsString;
+
+          levelSpeakerModel.speakAllResponses( objectResponse, null, helpText );
+        };
+
         options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
           if ( hitTarget === panelVBox ) {
-            const objectResponse = StringUtils.fillIn( briefChangeMassHintPatternString, {
-              labelContent: labelContent,
-              valueText: numberPicker.ariaValueText
-            } );
-            const helpText = alertManager.model.constantRadiusProperty.get() ? massControlsHelpTextDensityBillionsString :
-                             massControlsHelpTextBillionsString;
-
-            levelSpeakerModel.speakAllResponses( objectResponse, null, helpText );
+            speakValueAndHelpText();
           }
         } );
 
         // hit from the shape hit detector while it has keyboard focus, read name and value
         options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
           if ( hitTarget === numberPicker && hitTarget.isFocused() ) {
-            webSpeaker.speak( StringUtils.fillIn( briefChangeMassHintPatternString, {
-              labelContent: labelContent,
-              valueText: numberPicker.ariaValueText
-            } ) );
+            speakValueAndHelpText();
           }
         } );
 
