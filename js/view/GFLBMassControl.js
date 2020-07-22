@@ -212,8 +212,8 @@ class GFLBMassControl extends Panel {
         } );
 
         // hit from the shape hit detector while it has keyboard focus, read name and value
-        options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
-          if ( hitTarget === numberPicker && hitTarget.isFocused() ) {
+        options.shapeHitDetector.focusHitEmitter.addListener( hitTarget => {
+          if ( hitTarget === numberPicker ) {
             speakValueAndHelpText();
           }
         } );

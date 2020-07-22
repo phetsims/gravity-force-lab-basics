@@ -386,8 +386,8 @@ class GFLBScreenView extends ScreenView {
       } );
 
       // hit from the shape hit detector while it has keyboard focus, read name and value
-      this.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
-        if ( hitTarget === resetAllButton && hitTarget.isFocused() ) {
+      this.shapeHitDetector.focusHitEmitter.addListener( hitTarget => {
+        if ( hitTarget === resetAllButton ) {
           webSpeaker.speak( resetAllButton.innerContent );
         }
       } );

@@ -115,9 +115,8 @@ class GFLBCheckboxPanel extends ISLCPanel {
           // around them
           levelSpeakerModel.setNodeInteractive( child, true );
 
-          // hit from the shape hit detector while it has keyboard focus, read name and value
-          options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
-            if ( hitTarget === child && hitTarget.isFocused() ) {
+          options.shapeHitDetector.focusHitEmitter.addListener( hitTarget => {
+            if ( hitTarget === child ) {
               const objectContent = checkboxItems[ i ].label;
               const hintContent = itemHintList[ i ];
 
