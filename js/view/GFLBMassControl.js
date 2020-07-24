@@ -12,7 +12,11 @@ import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQuery
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import focusSpeaker from '../../../inverse-square-law-common/js/view/FocusSpeaker.js';
 import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
+import Shape from '../../../kite/js/Shape.js';
+import Path from '../../../scenery/js/nodes/Path.js';
 import merge from '../../../phet-core/js/merge.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
@@ -22,10 +26,8 @@ import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
 import Playable from '../../../tambo/js/Playable.js';
 import GFLBConstants from '../GFLBConstants.js';
-import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
-import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
+import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
 const massChangeInteractionPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.massChangeInteractionPattern;
@@ -141,7 +143,6 @@ class GFLBMassControl extends Panel {
 
     // PROTOTYPE a11y code, for the self-voicing feature set
     if ( options.shapeHitDetector ) {
-      options.shapeHitDetector.addNode( numberPicker );
 
       if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
 
@@ -183,13 +184,26 @@ class GFLBMassControl extends Panel {
         } );
       }
       else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
-        levelSpeakerModel.addHitDetectionForObjectResponsesAndHelpText( panelVBox, options.shapeHitDetector );
+
+        // create a hit shape that will capture events on the panel and also exclude hits on the picker when
+        // pointer is over the panel. Ideally, the ShapeHitDetector will be smart enough to exclude children when
+        // necessary, but this was pretty difficult because listeners on the NumberPicker don't attach
+        // to the pointer and the vBox has infinite self bounds so it cannot be used itself. This is a temp solution,
+        // but there is likely a more general solution in the future - this is the only case of this in this prototype
+        // so far.
+        const panelHitShape = Shape.bounds( panelVBox.bounds ).shapeDifference( Shape.bounds( panelVBox.globalToParentBounds( numberPicker.globalBounds ).dilated( 15 ) ) );
+        const panelHitPath = new Path( panelHitShape, { pickable: true } );
+        this.addChild( panelHitPath );
+
+        levelSpeakerModel.addHitDetectionForObjectResponsesAndHelpText( panelHitPath, options.shapeHitDetector, {
+          useHitTest: true
+        } );
 
         levelSpeakerModel.setNodeInteractive( numberPicker, true );
 
         // in the 'minimalLevels' prototype, this component is not added to the navigation order
         if ( ISLCQueryParameters.selfVoicing === 'paradigm2' ) {
-          focusSpeaker.addNode( panelVBox );
+          focusSpeaker.addNode( panelHitPath );
         }
 
         // prepare and speak value text and help text for the control - spoken with mouse input on the containing
@@ -206,7 +220,7 @@ class GFLBMassControl extends Panel {
         };
 
         options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
-          if ( hitTarget === panelVBox ) {
+          if ( hitTarget === panelHitPath ) {
             speakValueAndHelpText();
           }
         } );
