@@ -143,6 +143,7 @@ class GFLBMassControl extends Panel {
 
     // PROTOTYPE a11y code, for the self-voicing feature set
     if ( options.shapeHitDetector ) {
+      options.shapeHitDetector.addNode( numberPicker );
 
       if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
 
