@@ -7,6 +7,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../axon/js/BooleanProperty.js';
 import Bounds2 from '../../../dot/js/Bounds2.js';
 import Range from '../../../dot/js/Range.js';
 import Vector2 from '../../../dot/js/Vector2.js';
@@ -47,6 +48,7 @@ import GFLBMassControl from './GFLBMassControl.js';
 import GFLBMassDescriptionNode from './GFLBMassDescriptionNode.js';
 import GFLBMassNode from './GFLBMassNode.js';
 import ShapeHitDetector from '../../../tappi/js/view/ShapeHitDetector.js';
+import SelfVoicingQuickControl from './SelfVoicingQuickControl.js';
 
 const constantSizeString = gravityForceLabStrings.constantSize;
 const distanceString = gravityForceLabBasicsStrings.distance;
@@ -367,6 +369,12 @@ class GFLBScreenView extends ScreenView {
     // self-voicing prototype
     //------------------------------------------------
     if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
+
+      // this paradigm has extra controls that pop up
+      const selfVoicingQuickControl = new SelfVoicingQuickControl( new BooleanProperty( false ), {
+        rightTop: resetAllButton.leftTop.plusXY( -15, 0 )
+      } );
+      this.addChild( selfVoicingQuickControl );
 
       // the 'levels' and 'minimalLevels' prototype behave the same, except that the distanceArrowNode is removed from
       // focus order in '
