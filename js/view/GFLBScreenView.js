@@ -371,7 +371,7 @@ class GFLBScreenView extends ScreenView {
     if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
 
       // this paradigm has extra controls that pop up
-      const selfVoicingQuickControl = new SelfVoicingQuickControl( new BooleanProperty( false ), {
+      const selfVoicingQuickControl = new SelfVoicingQuickControl( webSpeaker, {
         rightTop: resetAllButton.leftTop.plusXY( -15, 0 )
       } );
       this.addChild( selfVoicingQuickControl );

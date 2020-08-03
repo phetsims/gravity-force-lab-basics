@@ -10,7 +10,9 @@
  */
 
 import BooleanProperty from '../../../axon/js/BooleanProperty.js';
+import DynamicProperty from '../../../axon/js/DynamicProperty.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
+import Property from '../../../axon/js/Property.js';
 import AlignGroup from '../../../scenery/js/nodes/AlignGroup.js';
 import Rectangle from '../../../scenery/js/nodes/Rectangle.js';
 import Spacer from '../../../scenery/js/nodes/Spacer.js';
@@ -25,7 +27,12 @@ import Node from '../../../scenery/js/nodes/Node.js';
 import ExpandCollapseButton from '../../../sun/js/ExpandCollapseButton.js';
 
 class SelfVoicingQuickControl extends Node {
-  constructor( speechMutedProperty, options ) {
+
+  /**
+   * @param {WebSpeaker} webSpeaker
+   * @param options
+   */
+  constructor( webSpeaker, options ) {
     super();
 
     // The icon for the rectangular box indicating this is for
@@ -75,12 +82,20 @@ class SelfVoicingQuickControl extends Node {
       } );
     };
 
+    // the webSpeaker uses enabledProperty, the push button uses "muted" terminology -
+    // dynamic Property maps between the two so that the button can be pressed when
+    // it it is actually not enabled
+    const dynamicProperty = new DynamicProperty( new Property( webSpeaker.enabledProperty ), {
+      bidirectional: true,
+      map: enabled => !enabled,
+      inverseMap: muted => !muted
+    } );
+
     const hintButton = createSpeechButton( hintButtonContent, () => {} );
     const overviewButton = createSpeechButton( simOverviewContent, () => {} );
     const detailsButton = createSpeechButton( detailsContent, () => {} );
-    const muteSpeechButton = new BooleanRectangularStickyToggleButton( speechMutedProperty, {
-      content: stopSpeechContent,
-      listener: () => {}
+    const muteSpeechButton = new BooleanRectangularStickyToggleButton( dynamicProperty, {
+      content: stopSpeechContent
     } );
 
     // spacer is required to make room for the ExpandCollapseButton in the panel
