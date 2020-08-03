@@ -310,14 +310,14 @@ class GFLBScreenView extends ScreenView {
       listener: () => {
 
         // as the simulation resets, do no not speak about changes
-        webSpeaker.enabled = false;
+        webSpeaker.onHold = true;
 
         model.reset();
         mass1Node.reset();
         mass2Node.reset();
         this.forceSoundGenerator.reset();
 
-        webSpeaker.enabled = true;
+        webSpeaker.onHold = false;
       },
       right: this.layoutBounds.maxX - 10,
       bottom: this.layoutBounds.maxY - 10,
