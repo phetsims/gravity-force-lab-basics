@@ -7,7 +7,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import BooleanProperty from '../../../axon/js/BooleanProperty.js';
+import Property from '../../../axon/js/Property.js';
 import Bounds2 from '../../../dot/js/Bounds2.js';
 import Range from '../../../dot/js/Range.js';
 import Vector2 from '../../../dot/js/Vector2.js';
@@ -370,11 +370,21 @@ class GFLBScreenView extends ScreenView {
     //------------------------------------------------
     if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
 
-      // this paradigm has extra controls that pop up
+      // this paradigm has extra controls in a menu, when some portion
+      // of the speaking is enabled
       const selfVoicingQuickControl = new SelfVoicingQuickControl( webSpeaker, {
         rightTop: resetAllButton.leftTop.plusXY( -15, 0 )
       } );
       this.addChild( selfVoicingQuickControl );
+
+      Property.multilink(
+        [
+          levelSpeakerModel.objectChangesProperty,
+          levelSpeakerModel.contextChangesProperty,
+          levelSpeakerModel.hintsProperty
+        ], ( objectChanges, contextChanges, hints ) => {
+          selfVoicingQuickControl.visible = objectChanges || contextChanges || hints;
+        } );
 
       // the 'levels' and 'minimalLevels' prototype behave the same, except that the distanceArrowNode is removed from
       // focus order in '
