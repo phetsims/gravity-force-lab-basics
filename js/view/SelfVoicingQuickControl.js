@@ -40,6 +40,8 @@ const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.simS
 const screenSummaryPlayAreaOverviewString = gravityForceLabStrings.a11y.screenSummary.playAreaOverview;
 const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
 const screenSummarySecondaryDescriptionString = gravityForceLabStrings.a11y.screenSummary.secondaryDescription;
+const detailsPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.detailsPattern;
+const overviewPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.overviewPattern;
 
 class SelfVoicingQuickControl extends Node {
 
@@ -171,7 +173,6 @@ class SelfVoicingQuickControl extends Node {
     const controlsDescriptionString = screenSummaryPlayAreaControlsString;
     const controlAreaDescriptionString = screenSummarySecondaryDescriptionString;
 
-    const overviewPatternString = '{{simDescription}} {{playArea}} {{controls}} {{controlArea}}';
     const overviewContent = StringUtils.fillIn( overviewPatternString, {
       simDescription: simDescriptionString,
       playArea: playAreaDescriptionString,
@@ -194,8 +195,7 @@ class SelfVoicingQuickControl extends Node {
     const massText = this.massDescriber.getMassValuesSummaryText();
     const robotText = this.forceDescriber.getRobotEffortSummaryText();
 
-    const detailsStringPattern = '{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}';
-    const detailsContent = StringUtils.fillIn( detailsStringPattern,{
+    const detailsContent = StringUtils.fillIn( detailsPatternString,{
       simState: simStateText,
       summary: summaryText,
       distance: distanceText,

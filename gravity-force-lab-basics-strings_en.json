@@ -153,6 +153,12 @@
         },
         "resetAllVerbose": {
           "value": "Reset All. Sim screen restarted. Everything reset."
+        },
+        "detailsPattern": {
+          "value": "{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}"
+        },
+        "overviewPattern": {
+          "value": "{{simDescription}} {{playArea}} {{controls}} {{controlArea}}"
         }
       }
     }
