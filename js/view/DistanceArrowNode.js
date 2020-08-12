@@ -31,8 +31,8 @@ const selfVoicingLevelsDistanceArrowPatternString = gravityForceLabStrings.a11y.
 const selfVoicingLevelsMoveSpheresHintString = inverseSquareLawCommonStrings.a11y.selfVoicing.levels.moveSpheresHintString;
 
 // constants
-const HEAD_WIDTH = 6;
-const HEAD_HEIGHT = 6;
+const HEAD_WIDTH = 8;
+const HEAD_HEIGHT = 8;
 
 class DistanceArrowNode extends Node {
 
