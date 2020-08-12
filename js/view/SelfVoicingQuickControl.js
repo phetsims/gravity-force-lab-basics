@@ -16,6 +16,7 @@ import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLa
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
+import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import AlignGroup from '../../../scenery/js/nodes/AlignGroup.js';
 import Image from '../../../scenery/js/nodes/Image.js';
@@ -64,6 +65,13 @@ class SelfVoicingQuickControl extends Node {
       scale: 0.18
     } );
 
+    // visible when the webSpeaker is disabled to indicate that there will be no speech output
+    const disabledIndicator = new Text( 'X', {
+      fill: 'red',
+      font: new PhetFont( { size: 24 } ),
+      center: iconImage.rightCenter.minusXY( iconImage.width / 3.5, iconImage.height / 7 )
+    } );
+
     // the ion contained in a rectangle grey rectangle
     const rectangleDimension = Math.max( iconImage.width, iconImage.height ) + 5;
     const iconRectangle = new Rectangle( 0, 0, rectangleDimension, rectangleDimension, 5, 5, {
@@ -89,6 +97,7 @@ class SelfVoicingQuickControl extends Node {
     const simOverviewContent = createSpeechButtonContent( 'Sim Overview' );
     const detailsContent = createSpeechButtonContent( 'Current Details' );
     const stopSpeechContent = createSpeechButtonContent( 'Stop Speech' );
+    const muteSpeechContent = createSpeechButtonContent( 'Mute Speech' );
 
     // creates the actual button with provided content and behavior
     const createSpeechButton = ( buttonContent, listener ) => {
@@ -110,8 +119,9 @@ class SelfVoicingQuickControl extends Node {
     const hintButton = createSpeechButton( hintButtonContent, this.speakHintContent );
     const overviewButton = createSpeechButton( simOverviewContent, this.speakOverviewContent );
     const detailsButton = createSpeechButton( detailsContent, this.speakDetailsContent.bind( this ) );
+    const stopSpeechButton = createSpeechButton( stopSpeechContent, webSpeaker.cancel.bind( webSpeaker ) );
     const muteSpeechButton = new BooleanRectangularStickyToggleButton( dynamicProperty, {
-      content: stopSpeechContent
+      content: muteSpeechContent
     } );
 
     // spacer is required to make room for the ExpandCollapseButton in the panel
@@ -121,6 +131,7 @@ class SelfVoicingQuickControl extends Node {
         hintButton,
         overviewButton,
         detailsButton,
+        stopSpeechButton,
         muteSpeechButton,
         spacer
       ],
@@ -142,8 +153,19 @@ class SelfVoicingQuickControl extends Node {
     this.children = [
       iconRectangle,
       buttonsPanel,
+      disabledIndicator,
       expandCollapseButton
     ];
+
+    // when the webSpeaker becomes disabled the various content buttons should also be disabled
+    webSpeaker.enabledProperty.link( enabled => {
+      hintButton.enabled = enabled;
+      overviewButton.enabled = enabled;
+      detailsButton.enabled = enabled;
+      stopSpeechButton.enabled = enabled;
+
+      disabledIndicator.visible = !enabled;
+    } );
 
     // mutate with options after Node has been assembled
     this.mutate( options );
@@ -195,7 +217,7 @@ class SelfVoicingQuickControl extends Node {
     const massText = this.massDescriber.getMassValuesSummaryText();
     const robotText = this.forceDescriber.getRobotEffortSummaryText();
 
-    const detailsContent = StringUtils.fillIn( detailsPatternString,{
+    const detailsContent = StringUtils.fillIn( detailsPatternString, {
       simState: simStateText,
       summary: summaryText,
       distance: distanceText,
