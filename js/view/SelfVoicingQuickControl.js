@@ -37,9 +37,9 @@ const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.screenSummar
 const massString = gravityForceLabStrings.a11y.mass;
 const summaryInteractionHintPatternString = inverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
 const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.simSection.screenSummary.singleScreenIntroPattern;
-const screenSummaryPlayAreaOverviewString = gravityForceLabStrings.a11y.screenSummary.playAreaOverview;
+const screenSummaryPlayAreaOverviewString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverview;
 const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
-const screenSummarySecondaryDescriptionString = gravityForceLabStrings.a11y.screenSummary.secondaryDescription;
+const screenSummarySecondaryDescriptionString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescription;
 const detailsPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.detailsPattern;
 const overviewPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.overviewPattern;
 
