@@ -12,6 +12,11 @@
 import BooleanProperty from '../../../axon/js/BooleanProperty.js';
 import DynamicProperty from '../../../axon/js/DynamicProperty.js';
 import Property from '../../../axon/js/Property.js';
+import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
+import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
+import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
+import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import AlignGroup from '../../../scenery/js/nodes/AlignGroup.js';
 import Image from '../../../scenery/js/nodes/Image.js';
 import Node from '../../../scenery/js/nodes/Node.js';
@@ -25,15 +30,32 @@ import ExpandCollapseButton from '../../../sun/js/ExpandCollapseButton.js';
 import Panel from '../../../sun/js/Panel.js';
 import selfVoicingIconImage from '../../images/self-voicing-icon_png.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
+
+const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
+
+const massString = gravityForceLabStrings.a11y.mass;
+const summaryInteractionHintPatternString = inverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
+const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.simSection.screenSummary.singleScreenIntroPattern;
+const screenSummaryPlayAreaOverviewString = gravityForceLabStrings.a11y.screenSummary.playAreaOverview;
+const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
+const screenSummarySecondaryDescriptionString = gravityForceLabStrings.a11y.screenSummary.secondaryDescription;
 
 class SelfVoicingQuickControl extends Node {
 
   /**
    * @param {WebSpeaker} webSpeaker
+   * @param {ForceDescriber} forceDescriber
+   * @param {MassDescriber} massDescriber
+   * @param {PositionDescriber} positionDescriber
    * @param options
    */
-  constructor( webSpeaker, options ) {
+  constructor( webSpeaker, forceDescriber, massDescriber, positionDescriber, options ) {
     super();
+
+    this.forceDescriber = forceDescriber;
+    this.massDescriber = massDescriber;
+    this.positionDescriber = positionDescriber;
 
     // a placeholder icon until we get a more thorough design
     const iconImage = new Image( selfVoicingIconImage, {
@@ -83,9 +105,9 @@ class SelfVoicingQuickControl extends Node {
       inverseMap: muted => !muted
     } );
 
-    const hintButton = createSpeechButton( hintButtonContent, () => {} );
-    const overviewButton = createSpeechButton( simOverviewContent, () => {} );
-    const detailsButton = createSpeechButton( detailsContent, () => {} );
+    const hintButton = createSpeechButton( hintButtonContent, this.speakHintContent );
+    const overviewButton = createSpeechButton( simOverviewContent, this.speakOverviewContent );
+    const detailsButton = createSpeechButton( detailsContent, this.speakDetailsContent.bind( this ) );
     const muteSpeechButton = new BooleanRectangularStickyToggleButton( dynamicProperty, {
       content: stopSpeechContent
     } );
@@ -123,6 +145,65 @@ class SelfVoicingQuickControl extends Node {
 
     // mutate with options after Node has been assembled
     this.mutate( options );
+  }
+
+  // @private
+  speakHintContent() {
+    const hintContent = StringUtils.fillIn(
+      summaryInteractionHintPatternString,
+      { massOrCharge: massString }
+    );
+
+    webSpeaker.speak( hintContent );
+  }
+
+  // speak an overview summary - this is the content
+  /**
+   * Speak an overview summary for the sim, generally the content from GravityForceLabScreenSummaryNode
+   * @private
+   */
+  speakOverviewContent() {
+    const simDescriptionString = StringUtils.fillIn( screenSummarySingleScreenIntroPatternString, {
+      sim: phet.joist.sim.simNameProperty.get()
+    } );
+
+    const playAreaDescriptionString = screenSummaryPlayAreaOverviewString;
+    const controlsDescriptionString = screenSummaryPlayAreaControlsString;
+    const controlAreaDescriptionString = screenSummarySecondaryDescriptionString;
+
+    const overviewPatternString = '{{simDescription}} {{playArea}} {{controls}} {{controlArea}}';
+    const overviewContent = StringUtils.fillIn( overviewPatternString, {
+      simDescription: simDescriptionString,
+      playArea: playAreaDescriptionString,
+      controls: controlsDescriptionString,
+      controlArea: controlAreaDescriptionString
+    } );
+
+    webSpeaker.speak( overviewContent );
+  }
+
+  /**
+   * Speak details about the current state of the simulation. Pulls content that is used
+   * in the screen summary and puts them together in a single paragraph.
+   * @private
+   */
+  speakDetailsContent() {
+    const simStateText = basicsSimStateLabelString;
+    const summaryText = this.forceDescriber.getForceVectorsSummaryText();
+    const distanceText = this.positionDescriber.getObjectDistanceSummary();
+    const massText = this.massDescriber.getMassValuesSummaryText();
+    const robotText = this.forceDescriber.getRobotEffortSummaryText();
+
+    const detailsStringPattern = '{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}';
+    const detailsContent = StringUtils.fillIn( detailsStringPattern,{
+      simState: simStateText,
+      summary: summaryText,
+      distance: distanceText,
+      mass: massText,
+      robot: robotText
+    } );
+
+    webSpeaker.speak( detailsContent );
   }
 }
 
