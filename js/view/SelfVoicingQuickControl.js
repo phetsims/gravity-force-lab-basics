@@ -11,20 +11,20 @@
 
 import BooleanProperty from '../../../axon/js/BooleanProperty.js';
 import DynamicProperty from '../../../axon/js/DynamicProperty.js';
-import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Property from '../../../axon/js/Property.js';
 import AlignGroup from '../../../scenery/js/nodes/AlignGroup.js';
+import Image from '../../../scenery/js/nodes/Image.js';
+import Node from '../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../scenery/js/nodes/Rectangle.js';
 import Spacer from '../../../scenery/js/nodes/Spacer.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
 import BooleanRectangularStickyToggleButton from '../../../sun/js/buttons/BooleanRectangularStickyToggleButton.js';
-import FontAwesomeNode from '../../../sun/js/FontAwesomeNode.js';
-import Panel from '../../../sun/js/Panel.js';
 import RectangularPushButton from '../../../sun/js/buttons/RectangularPushButton.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import Node from '../../../scenery/js/nodes/Node.js';
 import ExpandCollapseButton from '../../../sun/js/ExpandCollapseButton.js';
+import Panel from '../../../sun/js/Panel.js';
+import selfVoicingIconImage from '../../images/self-voicing-icon_png.js';
+import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 class SelfVoicingQuickControl extends Node {
 
@@ -35,26 +35,18 @@ class SelfVoicingQuickControl extends Node {
   constructor( webSpeaker, options ) {
     super();
 
-    // The icon for the rectangular box indicating this is for
-    // self-voicing features
-    const tIconText = new Text( 'T', {
-      font: new PhetFont( { size: 30, family: 'Times' } ),
-      fill: 'white'
+    // a placeholder icon until we get a more thorough design
+    const iconImage = new Image( selfVoicingIconImage, {
+      scale: 0.18
     } );
-    const commentIcon = new FontAwesomeNode( 'comment', {
-      leftBottom: tIconText.rightTop,
-      fill: 'white',
-      scale: 0.50
-    } );
-    const iconNode = new Node( { children: [ tIconText, commentIcon ] } );
 
     // the ion contained in a rectangle grey rectangle
-    const rectangleDimension = Math.max( iconNode.width, iconNode.height ) + 5;
+    const rectangleDimension = Math.max( iconImage.width, iconImage.height ) + 5;
     const iconRectangle = new Rectangle( 0, 0, rectangleDimension, rectangleDimension, 5, 5, {
       fill: 'rgba(99,99,99,1)'
     } );
-    iconNode.center = iconRectangle.center;
-    iconRectangle.addChild( iconNode );
+    iconImage.center = iconRectangle.center;
+    iconRectangle.addChild( iconImage );
 
     // the button expands/collapses the controls
     const openProperty = new BooleanProperty( false );

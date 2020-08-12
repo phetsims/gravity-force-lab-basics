@@ -1,0 +1,10 @@
+{
+  "self-voicing-icon.png": {
+    "text": [
+      "Copyright 2020 University of Colorado Boulder"
+    ],
+    "projectURL": "http://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "created by Taliesin Smith to work on progressing the self-voicing prototype"
+  }
+}
