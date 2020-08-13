@@ -220,11 +220,13 @@ class GFLBMassControl extends Panel {
           levelSpeakerModel.speakAllResponses( objectResponse, null, helpText );
         };
 
-        options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
+        const panelHitListener = hitTarget => {
           if ( hitTarget === panelHitPath ) {
             speakValueAndHelpText();
           }
-        } );
+        };
+        options.shapeHitDetector.downOnHittableEmitter.addListener( panelHitListener );
+        options.shapeHitDetector.focusHitEmitter.addListener( panelHitListener );
 
         // hit from the shape hit detector while it has keyboard focus, read name and value
         options.shapeHitDetector.focusHitEmitter.addListener( hitTarget => {
