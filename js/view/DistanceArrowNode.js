@@ -93,7 +93,7 @@ class DistanceArrowNode extends Node {
       else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
         levelSpeakerModel.addHitDetectionForObjectResponsesAndHelpText( this, options.shapeHitDetector );
         if ( levelSpeakerModel.objectChangesProperty.get() ) {
-          options.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
+          const arrowHitListener = hitTarget => {
             if ( hitTarget === this ) {
               let objectResponse;
               if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
@@ -108,7 +108,9 @@ class DistanceArrowNode extends Node {
               const interactionHint = selfVoicingLevelsMoveSpheresHintString;
               levelSpeakerModel.speakAllResponses( objectResponse, null, interactionHint );
             }
-          } );
+          };
+          options.shapeHitDetector.downOnHittableEmitter.addListener( arrowHitListener );
+          options.shapeHitDetector.focusHitEmitter.addListener( arrowHitListener );
         }
       }
     }
