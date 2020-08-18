@@ -242,10 +242,11 @@ class GFLBScreenView extends ScreenView {
       model.forceProperty,
       forceSound,
       new Range( model.getMinForce(), model.getMaxForce() ),
-      model.resetInProgressProperty,
       {
         initialOutputLevel: 0.2,
-        playbackRateCenterOffset: 0.122 // this is about 2 semitone, and was necessary to match original sound design
+        playbackRateCenterOffset: 0.122, // this is about 2 semitone, and was necessary to match original sound design
+        resetInProgressProperty: model.resetInProgressProperty,
+        trimSilence: false // a very precise sound file is used, so make sure it doesn't get changed
       }
     );
     soundManager.addSoundGenerator( this.forceSoundGenerator );
