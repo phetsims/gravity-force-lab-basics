@@ -1,11 +1,11 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.11 Mon Jul 27 2020 12:32:12 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.12 Wed Aug 19 2020 14:35:07 GMT-0400 (Eastern Daylight Time)",
   "assert": {
     "sha": "1a41cef653bbed1025af5768bea958d7e3e0f8ae",
     "branch": "master"
   },
   "axon": {
-    "sha": "571ed8f322a9815e3634a041cafe79a66bbcbf95",
+    "sha": "d38928dae0a0b5bf825127483d1b4a5948f9226d",
     "branch": "master"
   },
   "brand": {
@@ -13,91 +13,91 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "8c544f807e913d2520af4d774647da08353205da",
+    "sha": "f84b8eea87b347e96fae47413ba97c396cd1dda9",
     "branch": "master"
   },
   "dot": {
-    "sha": "ecaa90f14199cffc426cc9098fcfeb69a086b982",
+    "sha": "60312e5cc6023257d4734a61001edbd439685fc2",
     "branch": "master"
   },
   "gravity-force-lab": {
-    "sha": "048ec86a6baca767731d66805c7ed319f7a1fc7d",
+    "sha": "451bb28eae17c5d7ad09f20cc19865eef43c3a77",
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "806b6a1365d0f590c10c82fdb7441002e52ca974",
+    "sha": "8c1e22bdef4b622108952fb3260e8708e919abd9",
     "branch": "master"
   },
   "inverse-square-law-common": {
-    "sha": "973eee1d4eb1d0350655a53201f3e1cc4a1b8c11",
+    "sha": "45bf005fd9b0165a2ffe2f847dc360f9c731c985",
     "branch": "master"
   },
   "joist": {
-    "sha": "87ae3a422a575c4e361ab5b3e40da7d4ee85cfeb",
+    "sha": "fde53086e1ad77c58a5249788b6bd7c5002589f2",
     "branch": "master"
   },
   "kite": {
-    "sha": "ed0c49f276c62558ca1d695362807ee4dcaed80c",
+    "sha": "4029303a5a0ccae2db68b13bff9aaccbe691172c",
     "branch": "master"
   },
   "phet-core": {
-    "sha": "5f73ea3056fbe8d852f9aca0328e26c75d458467",
+    "sha": "6a0ce0fa27145b68ef6f31f1c898a2bab03e4699",
     "branch": "master"
   },
   "phet-io": {
-    "sha": "675b683ee10353c13d7c162beaede92a47fe6dff",
+    "sha": "d2a63be11af7b71a16909f03739b0018e4d3e959",
     "branch": "master"
   },
   "phet-io-client-guides": {
-    "sha": "1a74dfd0695525d0cb95a1212b18d4cde73b1466",
+    "sha": "1298c81c43d0078d64a08210695225f2fafe7a5d",
     "branch": "master"
   },
   "phet-io-wrappers": {
-    "sha": "a8c9c49f7a543ef84f3a3c1f9e9d4c43e100edde",
+    "sha": "3e8368293628108337895ec1b3d8e011bbc8b7ff",
     "branch": "master"
   },
   "phetcommon": {
-    "sha": "7efe73b2044421640a7a2c71a9a41d3e37ecd0bb",
+    "sha": "219060b55fd4c38dc5526173167930bcf62212ff",
     "branch": "master"
   },
   "phetmarks": {
-    "sha": "6bd57c29c52507cc00213f3eb51629fc468f38b8",
+    "sha": "39d4535cedabdbf6487ff190b336329e1e07c6ff",
     "branch": "master"
   },
   "query-string-machine": {
-    "sha": "d76da51bbdf471f780f691a6f05ac25ffd7132c9",
+    "sha": "7f3ccebb4232a2e3eccdb68b1ea051cff3b5fa45",
     "branch": "master"
   },
   "scenery": {
-    "sha": "40eb3c92a6ae990a0142a6c4a81ae71abc5e503b",
+    "sha": "414d42199d1e05b7d6d556462e908b006e623033",
     "branch": "master"
   },
   "scenery-phet": {
-    "sha": "a78d82a83b4f9aa3fbf3b974b01a0141ecb1e97f",
+    "sha": "a9970fcf1da0af108528a7282e840c9c87b53035",
     "branch": "master"
   },
   "sherpa": {
-    "sha": "c351f9babb7af524b2eb713b82b11fd4379b466c",
+    "sha": "258ab6305bc415aeada5b4ed6ad70442f9cb7ca0",
     "branch": "master"
   },
   "studio": {
-    "sha": "f847cd4763c7619f731a24a0ec281134f48aa0ef",
+    "sha": "d29bce63a5029d06f29168da5e48581fdb38cb9b",
     "branch": "master"
   },
   "sun": {
-    "sha": "e8f067c20290d63e3d2e416e0089fe6f8a0e7c0d",
+    "sha": "ef901e4e0999b9a2322b886f5ce1190716f17ad5",
     "branch": "master"
   },
   "tambo": {
-    "sha": "2577976a57e8f3fe16f42e50e61d44c56576b9b4",
+    "sha": "26cd64ef79f3ace09612327921ed3d68f32822f6",
     "branch": "master"
   },
   "tandem": {
-    "sha": "73deca55fb27e7473122e6f952b696c7ec2818bb",
+    "sha": "8f7a642bdc58b69b0988eb2309bcb1d9a0d921d8",
     "branch": "master"
   },
   "utterance-queue": {
-    "sha": "c2b44d1ca355707b2c2bae2a173c6ad26b5e6613",
+    "sha": "8384acaf31748495161fdce14eb30e95f1465db2",
     "branch": "master"
   }
 }
