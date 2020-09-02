@@ -25,7 +25,7 @@ import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCD
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
 import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
-import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
+import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import ScreenView from '../../../joist/js/ScreenView.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';

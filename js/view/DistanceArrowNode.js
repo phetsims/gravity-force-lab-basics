@@ -22,7 +22,7 @@ import merge from '../../../phet-core/js/merge.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
+import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
 const verboseDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseDistanceArrowDescription;

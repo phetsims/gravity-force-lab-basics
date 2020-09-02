@@ -14,7 +14,7 @@ import DynamicProperty from '../../../axon/js/DynamicProperty.js';
 import Property from '../../../axon/js/Property.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
-import webSpeaker from '../../../inverse-square-law-common/js/view/webSpeaker.js';
+import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';

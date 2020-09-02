@@ -9,7 +9,7 @@
 import GravityForceLabKeyboardHelpContent from '../../gravity-force-lab/js/view/GravityForceLabKeyboardHelpContent.js';
 import ISLCQueryParameters from '../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import SpeakerHighlighter from '../../inverse-square-law-common/js/view/SpeakerHighlighter.js';
-import webSpeaker from '../../inverse-square-law-common/js/view/webSpeaker.js';
+import webSpeaker from '../../scenery/js/accessibility/speaker/webSpeaker.js';
 import WebSpeechDialogContent from '../../inverse-square-law-common/js/view/WebSpeechDialogContent.js';
 import Screen from '../../joist/js/Screen.js';
 import Sim from '../../joist/js/Sim.js';
@@ -72,6 +72,7 @@ simLauncher.launch( () => {
           // that have self-voicing content
           const screenView = sim.screens[ 0 ].view;
           const highlighter = new SpeakerHighlighter( screenView.shapeHitDetector, webSpeaker );
+
           sim.rootNode.addChild( highlighter );
         }
       } );
