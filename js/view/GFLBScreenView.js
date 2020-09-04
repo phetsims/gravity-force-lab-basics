@@ -24,7 +24,7 @@ import focusSpeaker from '../../../inverse-square-law-common/js/view/FocusSpeake
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
-import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import ScreenView from '../../../joist/js/ScreenView.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';

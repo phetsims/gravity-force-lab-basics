@@ -13,7 +13,7 @@ import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLa
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
-import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';

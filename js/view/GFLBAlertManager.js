@@ -8,7 +8,7 @@
 
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
-import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';

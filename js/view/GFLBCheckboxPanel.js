@@ -15,7 +15,7 @@ import ISLCConstants from '../../../inverse-square-law-common/js/ISLCConstants.j
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import ISLCPanel from '../../../inverse-square-law-common/js/view/ISLCPanel.js';
-import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';

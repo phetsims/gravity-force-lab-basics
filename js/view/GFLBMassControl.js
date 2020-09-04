@@ -11,7 +11,7 @@ import Utils from '../../../dot/js/Utils.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 import focusSpeaker from '../../../inverse-square-law-common/js/view/FocusSpeaker.js';
-import levelSpeakerModel from '../../../inverse-square-law-common/js/view/levelSpeakerModel.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import Shape from '../../../kite/js/Shape.js';
 import Path from '../../../scenery/js/nodes/Path.js';
