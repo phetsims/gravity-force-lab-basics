@@ -19,6 +19,7 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import AlignGroup from '../../../scenery/js/nodes/AlignGroup.js';
+import HBox from '../../../scenery/js/nodes/HBox.js';
 import Image from '../../../scenery/js/nodes/Image.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../scenery/js/nodes/Rectangle.js';
@@ -124,18 +125,19 @@ class SelfVoicingQuickControl extends Node {
       content: muteSpeechContent
     } );
 
-    // spacer is required to make room for the ExpandCollapseButton in the panel
-    const spacer = new Spacer( 0, expandCollapseButton.height );
-    const buttonGroup = new VBox( {
-      children: [
-        hintButton,
-        overviewButton,
-        detailsButton,
-        stopSpeechButton,
-        muteSpeechButton,
-        spacer
-      ],
+    const topRow = new HBox( {
+      children: [ hintButton, overviewButton, stopSpeechButton ],
       spacing: 5
+    } );
+    const bottomRow = new HBox( {
+      children: [ detailsButton, muteSpeechButton ],
+      spacing: 5
+    } );
+
+    const buttonGroup = new VBox( {
+      children: [ topRow, bottomRow ],
+      spacing: 5,
+      align: 'right'
     } );
     const buttonsPanel = new Panel( buttonGroup, {
       backgroundPickable: true
@@ -147,7 +149,7 @@ class SelfVoicingQuickControl extends Node {
     // in layout so that this Node can be positioned relative to the always-visible
     // content, the panel can occlude other things
     this.excludeInvisibleChildrenFromBounds = true;
-    expandCollapseButton.leftTop = iconRectangle.rightTop.plusXY( 6, 0 );
+    expandCollapseButton.leftBottom = iconRectangle.rightBottom.plusXY( 6, 0 );
     buttonsPanel.leftBottom = expandCollapseButton.leftBottom.plusXY( -4, 4 );
 
     this.children = [

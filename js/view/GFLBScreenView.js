@@ -374,7 +374,7 @@ class GFLBScreenView extends ScreenView {
       // this paradigm has extra controls in a menu, when some portion
       // of the speaking is enabled
       const selfVoicingQuickControl = new SelfVoicingQuickControl( webSpeaker, forceDescriber, massDescriber, positionDescriber,{
-        leftBottom: this.layoutBounds.leftBottom.minusXY( -5, 5 )
+        leftBottom: this.layoutBounds.leftBottom.minusXY( -8, 8 )
       } );
       this.addChild( selfVoicingQuickControl );
 
