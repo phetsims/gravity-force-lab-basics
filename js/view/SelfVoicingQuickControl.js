@@ -14,6 +14,7 @@ import DynamicProperty from '../../../axon/js/DynamicProperty.js';
 import Property from '../../../axon/js/Property.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
@@ -43,17 +44,31 @@ const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.sc
 const screenSummarySecondaryDescriptionString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescription;
 const detailsPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.detailsPattern;
 const overviewPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.overviewPattern;
+const hintPleaseString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.hintPlease;
+const overviewString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.overview;
+const detailsString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.details;
+const stopSpeechString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.stopSpeech;
+const muteSpeechString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.muteSpeech;
+const hideString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.hide;
+const showString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.show;
+const hiddenString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.hidden;
+const shownString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.shown;
+const focusResponsePatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.focusResponsePattern;
+const pressResponsePatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.quickMenu.pressResponsePattern;
+
+
 
 class SelfVoicingQuickControl extends Node {
 
   /**
    * @param {WebSpeaker} webSpeaker
+   * @param {ShapeHitDetector} shapeHitDetector
    * @param {ForceDescriber} forceDescriber
    * @param {MassDescriber} massDescriber
    * @param {PositionDescriber} positionDescriber
    * @param options
    */
-  constructor( webSpeaker, forceDescriber, massDescriber, positionDescriber, options ) {
+  constructor( webSpeaker, shapeHitDetector, forceDescriber, massDescriber, positionDescriber, options ) {
     super();
 
     this.forceDescriber = forceDescriber;
@@ -93,18 +108,25 @@ class SelfVoicingQuickControl extends Node {
       return alignGroup.createBox( new Text( buttonString ) );
     };
 
-    const hintButtonContent = createSpeechButtonContent( 'Hint Please!' );
-    const simOverviewContent = createSpeechButtonContent( 'Sim Overview' );
-    const detailsContent = createSpeechButtonContent( 'Current Details' );
-    const stopSpeechContent = createSpeechButtonContent( 'Stop Speech' );
-    const muteSpeechContent = createSpeechButtonContent( 'Mute Speech' );
+    const hintButtonContent = createSpeechButtonContent( hintPleaseString );
+    const simOverviewContent = createSpeechButtonContent( overviewString );
+    const detailsContent = createSpeechButtonContent( detailsString );
+    const stopSpeechContent = createSpeechButtonContent( stopSpeechString );
+    const muteSpeechContent = createSpeechButtonContent( muteSpeechString );
 
     // creates the actual button with provided content and behavior
     const createSpeechButton = ( buttonContent, listener ) => {
-      return new RectangularPushButton( {
+      const button = new RectangularPushButton( {
         content: buttonContent,
         listener: listener
       } );
+
+      // button behavior, so that focus highlight will appear around it
+      // with pointer input
+      shapeHitDetector.addNode( button );
+      levelSpeakerModel.setNodeInteractive( button, true );
+
+      return button;
     };
 
     // the webSpeaker uses enabledProperty, the push button uses "muted" terminology -
@@ -123,6 +145,10 @@ class SelfVoicingQuickControl extends Node {
     const muteSpeechButton = new BooleanRectangularStickyToggleButton( dynamicProperty, {
       content: muteSpeechContent
     } );
+
+    // others are added in createSpeechButton
+    shapeHitDetector.addNode( muteSpeechButton );
+    levelSpeakerModel.setNodeInteractive( muteSpeechButton, true );
 
     const topRow = new HBox( {
       children: [ hintButton, overviewButton, stopSpeechButton ],
@@ -158,6 +184,8 @@ class SelfVoicingQuickControl extends Node {
       expandCollapseButton
     ];
 
+    this.accessibleOrder = [ expandCollapseButton ];
+
     // when the webSpeaker becomes disabled the various content buttons should also be disabled
     webSpeaker.enabledProperty.link( enabled => {
       hintButton.enabled = enabled;
@@ -166,6 +194,43 @@ class SelfVoicingQuickControl extends Node {
       stopSpeechButton.enabled = enabled;
 
       disabledIndicator.visible = !enabled;
+    } );
+
+    // self-voicing features for the menu itself
+    shapeHitDetector.addNode( expandCollapseButton );
+    levelSpeakerModel.setNodeInteractive( expandCollapseButton, true );
+
+    shapeHitDetector.focusHitEmitter.addListener( target => {
+      let buttonString;
+      if ( target === hintButton ) {
+        buttonString = hintPleaseString;
+      }
+      else if ( target === overviewButton ) {
+        buttonString = overviewString;
+      }
+      else if ( target === detailsButton ) {
+        buttonString = detailsString;
+      }
+      else if ( target === stopSpeechButton ) {
+        buttonString = stopSpeechString;
+      }
+      else if ( target === muteSpeechButton ) {
+        buttonString = muteSpeechString;
+      }
+      else if ( target === expandCollapseButton ) {
+        buttonString = StringUtils.fillIn( focusResponsePatternString, {
+          action: openProperty.get() ? hideString : showString
+        } );
+      }
+
+      buttonString && levelSpeakerModel.speakAllResponses( buttonString );
+    } );
+
+    openProperty.lazyLink( open => {
+      const response = StringUtils.fillIn( pressResponsePatternString, {
+        state: open ? shownString : hiddenString
+      } );
+      levelSpeakerModel.speakAllResponses( response );
     } );
 
     // mutate with options after Node has been assembled

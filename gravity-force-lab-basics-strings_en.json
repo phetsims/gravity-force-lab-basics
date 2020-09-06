@@ -159,6 +159,41 @@
         },
         "overviewPattern": {
           "value": "{{simDescription}} {{playArea}} {{controls}} {{controlArea}}"
+        },
+        "quickMenu": {
+          "hintPlease": {
+            "value": "Hint Please!"
+          },
+          "overview": {
+            "value": "Sim Overview"
+          },
+          "details": {
+            "value": "Current Details"
+          },
+          "stopSpeech": {
+            "value": "Stop Speech"
+          },
+          "muteSpeech": {
+            "value": "Mute Speech"
+          },
+          "hide": {
+            "value": "Hide"
+          },
+          "show": {
+            "value": "Show"
+          },
+          "hidden": {
+            "value": "hidden"
+          },
+          "shown": {
+            "value": "shown"
+          },
+          "focusResponsePattern": {
+            "value": "{{action}} Self-Voicing Quick Menu"
+          },
+          "pressResponsePattern": {
+            "value": "Self-Voicing Quick Menu {{state}}"
+          }
         }
       }
     }
