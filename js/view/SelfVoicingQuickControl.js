@@ -233,6 +233,10 @@ class SelfVoicingQuickControl extends Node {
       levelSpeakerModel.speakAllResponses( response );
     } );
 
+    levelSpeakerModel.showQuickMenuProperty.link( shown => {
+      this.visible = shown;
+    } );
+
     // mutate with options after Node has been assembled
     this.mutate( options );
   }

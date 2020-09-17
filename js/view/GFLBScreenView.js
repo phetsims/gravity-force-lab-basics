@@ -7,7 +7,6 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import Property from '../../../axon/js/Property.js';
 import Bounds2 from '../../../dot/js/Bounds2.js';
 import Range from '../../../dot/js/Range.js';
 import Vector2 from '../../../dot/js/Vector2.js';
@@ -377,15 +376,6 @@ class GFLBScreenView extends ScreenView {
         leftBottom: this.layoutBounds.leftBottom.minusXY( -8, 8 )
       } );
       this.addChild( selfVoicingQuickControl );
-
-      Property.multilink(
-        [
-          levelSpeakerModel.objectChangesProperty,
-          levelSpeakerModel.contextChangesProperty,
-          levelSpeakerModel.hintsProperty
-        ], ( objectChanges, contextChanges, hints ) => {
-          selfVoicingQuickControl.visible = objectChanges || contextChanges || hints;
-        } );
 
       // the 'levels' and 'minimalLevels' prototype behave the same, except that the distanceArrowNode is removed from
       // focus order in '
