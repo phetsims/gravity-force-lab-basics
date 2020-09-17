@@ -151,11 +151,11 @@ class SelfVoicingQuickControl extends Node {
     levelSpeakerModel.setNodeInteractive( muteSpeechButton, true );
 
     const topRow = new HBox( {
-      children: [ hintButton, overviewButton, stopSpeechButton ],
+      children: [ hintButton, overviewButton, detailsButton ],
       spacing: 5
     } );
     const bottomRow = new HBox( {
-      children: [ detailsButton, muteSpeechButton ],
+      children: [ stopSpeechButton, muteSpeechButton ],
       spacing: 5
     } );
 
