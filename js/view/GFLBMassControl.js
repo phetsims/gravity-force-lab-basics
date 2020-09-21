@@ -78,8 +78,8 @@ class GFLBMassControl extends Panel {
       font: new PhetFont( 20 ),
       scale: 1.5,
       tandem: tandem.createTandem( 'numberPicker' ),
-      upFunction: mass => mass + BILLION_MULTIPLIER,
-      downFunction: mass => mass - BILLION_MULTIPLIER,
+      incrementFunction: mass => mass + BILLION_MULTIPLIER,
+      decrementFunction: mass => mass - BILLION_MULTIPLIER,
       formatValue: value => Utils.toFixed( value / BILLION_MULTIPLIER, 0 ),
       a11yMapValue: value => Utils.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
 
