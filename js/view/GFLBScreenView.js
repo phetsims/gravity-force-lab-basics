@@ -19,11 +19,14 @@ import forceSound from '../../../gravity-force-lab/sounds/saturated-sine-loop-tr
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import DefaultDirection from '../../../inverse-square-law-common/js/view/DefaultDirection.js';
-import focusSpeaker from '../../../inverse-square-law-common/js/view/FocusSpeaker.js';
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
+import speakerHighlighter from '../../../inverse-square-law-common/js/view/speakerHighlighter.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
+import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingInputListener.js';
+import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import ScreenView from '../../../joist/js/ScreenView.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
@@ -47,7 +50,7 @@ import GFLBMassControl from './GFLBMassControl.js';
 import GFLBMassDescriptionNode from './GFLBMassDescriptionNode.js';
 import GFLBMassNode from './GFLBMassNode.js';
 import ShapeHitDetector from '../../../tappi/js/view/ShapeHitDetector.js';
-import SelfVoicingQuickControl from './SelfVoicingQuickControl.js';
+import SelfVoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingQuickControl.js';
 
 const constantSizeString = gravityForceLabStrings.constantSize;
 const distanceString = gravityForceLabBasicsStrings.distance;
@@ -78,6 +81,12 @@ const selfVoicingResetString = gravityForceLabBasicsStrings.a11y.selfVoicing.lev
 const selfVoicingResetVerboseString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.resetAllVerbose;
 const redColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.redColor;
 const blueColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.blueColor;
+const resetAllString = sceneryPhetStrings.a11y.resetAll.label;
+const detailsPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.detailsPattern;
+const overviewPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.overviewPattern;
+const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.simSection.screenSummary.singleScreenIntroPattern;
+const summaryInteractionHintPatternString = inverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
+const massString = gravityForceLabStrings.a11y.mass;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;
@@ -318,6 +327,15 @@ class GFLBScreenView extends ScreenView {
         this.forceSoundGenerator.reset();
 
         webSpeaker.onHold = false;
+
+        if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+          if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
+            webSpeaker.speak( selfVoicingResetString );
+          }
+          else {
+            webSpeaker.speak( selfVoicingResetVerboseString );
+          }
+        }
       },
       right: this.layoutBounds.maxX - 10,
       bottom: this.layoutBounds.maxY - 10,
@@ -368,46 +386,69 @@ class GFLBScreenView extends ScreenView {
     //------------------------------------------------
     // self-voicing prototype
     //------------------------------------------------
-    if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
+    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+      webSpeaker.initialize();
+      speakerHighlighter.initialize();
 
-      // this paradigm has extra controls in a menu, when some portion
-      // of the speaking is enabled
-      const selfVoicingQuickControl = new SelfVoicingQuickControl( webSpeaker, this.shapeHitDetector, forceDescriber, massDescriber, positionDescriber,{
+      // extra controls to speak about various things in the sim or quickly disable
+      // the feature
+      const selfVoicingQuickControl = new SelfVoicingQuickControl( webSpeaker, {
+        createHintContent: () => {
+          return StringUtils.fillIn(
+            summaryInteractionHintPatternString,
+            { massOrCharge: massString }
+          );
+        },
+        createDetailsContent: () => {
+          const simStateText = basicsSimStateLabelString;
+          const summaryText = forceDescriber.getForceVectorsSummaryText();
+          const distanceText = positionDescriber.getObjectDistanceSummary();
+          const massText = massDescriber.getMassValuesSummaryText();
+          const robotText = forceDescriber.getRobotEffortSummaryText();
+
+          return StringUtils.fillIn( detailsPatternString, {
+            simState: simStateText,
+            summary: summaryText,
+            distance: distanceText,
+            mass: massText,
+            robot: robotText
+          } );
+        },
+        createOverviewContent: () => {
+          const simDescriptionString = StringUtils.fillIn( screenSummarySingleScreenIntroPatternString, {
+            sim: phet.joist.sim.simNameProperty.get()
+          } );
+
+          const playAreaDescriptionString = screenSummaryPlayAreaOverviewString;
+          const controlsDescriptionString = screenSummaryPlayAreaControlsString;
+          const controlAreaDescriptionString = screenSummarySecondaryDescriptionString;
+
+          return StringUtils.fillIn( overviewPatternString, {
+            simDescription: simDescriptionString,
+            playArea: playAreaDescriptionString,
+            controls: controlsDescriptionString,
+            controlArea: controlAreaDescriptionString
+          } );
+        },
         leftBottom: this.layoutBounds.leftBottom.minusXY( -8, 8 )
       } );
       this.addChild( selfVoicingQuickControl );
 
-      // the 'levels' and 'minimalLevels' prototype behave the same, except that the distanceArrowNode is removed from
-      // focus order in '
-      this.shapeHitDetector.addNode( resetAllButton );
-      levelSpeakerModel.setNodeInteractive( resetAllButton, true );
-      this.shapeHitDetector.downOnHittableEmitter.addListener( hitTarget => {
-        if ( levelSpeakerModel.objectChangesProperty.get() ) {
-          if ( hitTarget === resetAllButton ) {
-            if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
-              webSpeaker.speak( selfVoicingResetString );
-            }
-            else {
-              webSpeaker.speak( selfVoicingResetVerboseString );
-            }
-          }
-        }
-      } );
+      resetAllButton.addInputListener( new SelfVoicingInputListener( {
+        onFocusIn: () => {
 
-      // hit from the shape hit detector while it has keyboard focus, read name and value
-      this.shapeHitDetector.focusHitEmitter.addListener( hitTarget => {
-        if ( hitTarget === resetAllButton ) {
-          webSpeaker.speak( resetAllButton.innerContent );
-        }
-      } );
+          // on focus, speak the name of the reset all button
+          levelSpeakerModel.speakAllResponses( resetAllString );
+        },
+        highlightTarget: resetAllButton
+      } ) );
 
-      // distance arrow node is not focusable in the 'minimal' paradigm 3 prototype
-      if ( ISLCQueryParameters.selfVoicing === 'paradigm2' ) {
-        focusSpeaker.addNode( distanceArrowNode );
-      }
+      this.addChild( mass1Node.selfVoicingWrapper );
+      this.addChild( mass2Node.selfVoicingWrapper );
+      this.addChild( distanceArrowNode.selfVoicingWrapper );
 
       // in this mode, focus just goes from top to bottom
-      massPositionsNode.accessibleOrder = [ mass2Node.arrowNode, mass1Node.arrowNode, distanceArrowNode, null ];
+      massPositionsNode.accessibleOrder = [ mass2Node.selfVoicingWrapper, mass1Node.selfVoicingWrapper, distanceArrowNode.selfVoicingWrapper, null ];
     }
   }
 

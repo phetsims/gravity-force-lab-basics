@@ -12,21 +12,18 @@ import Property from '../../../axon/js/Property.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
-import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
-import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
+import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
+import SelfVoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingWrapperNode.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../scenery/js/nodes/Node.js';
-import merge from '../../../phet-core/js/merge.js';
 import Text from '../../../scenery/js/nodes/Text.js';
-import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
+import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
-const verboseDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseDistanceArrowDescription;
-const briefDistanceArrowDescriptionString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefDistanceArrowDescription;
 const selfVoicingLevelsDistanceArrowPatternString = gravityForceLabStrings.a11y.selfVoicing.levels.distanceArrowPattern;
 const selfVoicingLevelsMoveSpheresHintString = inverseSquareLawCommonStrings.a11y.selfVoicing.levels.moveSpheresHintString;
 
@@ -74,44 +71,29 @@ class DistanceArrowNode extends Node {
     } );
     this.addChild( labelText );
 
-    if ( options.shapeHitDetector ) {
-      if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
-        options.shapeHitDetector.addNode( this );
-        options.shapeHitDetector.hitShapeEmitter.addListener( hitTarget => {
-          if ( hitTarget === this ) {
-            if ( cursorSpeakerModel.exploreModeProperty.get() ) {
-              const verboseMode = cursorSpeakerModel.exploreModeVerbosityProperty.get() === cursorSpeakerModel.Verbosity.VERBOSE;
-              const patternString = verboseMode ? verboseDistanceArrowDescriptionString : briefDistanceArrowDescriptionString;
+    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+      if ( levelSpeakerModel.objectChangesProperty.get() ) {
+        const arrowHitListener = () => {
+          let objectResponse;
+          if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
+            objectResponse = StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
+              distance: model.separationProperty.get() / 1000 // m to km
+            } );
+          }
+          else {
+            objectResponse = positionDescriber.getCentersApartDistance();
+          }
 
-              webSpeaker.speak( StringUtils.fillIn( patternString, {
-                distance: model.separationProperty.get() / 1000 // m to km
-              } ) );
-            }
+          const interactionHint = selfVoicingLevelsMoveSpheresHintString;
+          levelSpeakerModel.speakAllResponses( objectResponse, null, interactionHint );
+        };
+
+        this.selfVoicingWrapper = new SelfVoicingWrapperNode( this, {
+          focusable: false,
+          listenerOptions: {
+            onPress: arrowHitListener
           }
         } );
-      }
-      else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
-        levelSpeakerModel.addHitDetectionForObjectResponsesAndHelpText( this, options.shapeHitDetector );
-        if ( levelSpeakerModel.objectChangesProperty.get() ) {
-          const arrowHitListener = hitTarget => {
-            if ( hitTarget === this ) {
-              let objectResponse;
-              if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
-                objectResponse = StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
-                  distance: model.separationProperty.get() / 1000 // m to km
-                } );
-              }
-              else {
-                objectResponse = positionDescriber.getCentersApartDistance();
-              }
-
-              const interactionHint = selfVoicingLevelsMoveSpheresHintString;
-              levelSpeakerModel.speakAllResponses( objectResponse, null, interactionHint );
-            }
-          };
-          options.shapeHitDetector.downOnHittableEmitter.addListener( arrowHitListener );
-          options.shapeHitDetector.focusHitEmitter.addListener( arrowHitListener );
-        }
       }
     }
 

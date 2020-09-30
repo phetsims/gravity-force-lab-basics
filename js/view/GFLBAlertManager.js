@@ -9,11 +9,9 @@
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
-import cursorSpeakerModel from '../../../inverse-square-law-common/js/view/CursorSpeakerModel.js';
 
 const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
 const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
@@ -50,50 +48,18 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
       this.alertDistanceVisible( showDistance );
     } );
 
-    // PROTOTYPE SELF VOICING FEATURE - when these Properties change, alert change to the user
-    if ( ISLCQueryParameters.selfVoicing === 'paradigm1' ) {
+
+    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
-          webSpeaker.speak( this.getShowForceValuesAlert( showForceValues ) );
-        }
+        levelSpeakerModel.speakAllResponses( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
-          webSpeaker.speak( this.getDistanceVisibleAlert( showDistance ) );
-        }
+        levelSpeakerModel.speakAllResponses( this.getSelfVoicingDistanceVisibleAlert( showDistance ) );
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
-        if ( cursorSpeakerModel.getInteractiveModeVerbose() ) {
-          webSpeaker.speak( this.getConstantRadiusAlert( constantRadius ) );
-        }
-      } );
-    }
-    else if ( ISLCQueryParameters.selfVoicing === 'paradigm2' || ISLCQueryParameters.selfVoicing === 'paradigm3' ) {
-
-      // the checkbox context responses are spoken in BOTH the "object" responses and "context" responses
-      // mode
-      const speakCheckboxChange = () => {
-        return levelSpeakerModel.objectChangesProperty.get() || levelSpeakerModel.contextChangesProperty.get();
-      };
-
-      model.showForceValuesProperty.lazyLink( showForceValues => {
-        if ( speakCheckboxChange() ) {
-          webSpeaker.speak( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
-        }
-      } );
-
-      model.showDistanceProperty.lazyLink( showDistance => {
-        if ( speakCheckboxChange() ) {
-          webSpeaker.speak( this.getSelfVoicingDistanceVisibleAlert( showDistance ) );
-        }
-      } );
-
-      model.constantRadiusProperty.lazyLink( constantRadius => {
-        if ( speakCheckboxChange() ) {
-          webSpeaker.speak( this.getSelfVoicingConstantRadiusAlert( constantRadius ) );
-        }
+        levelSpeakerModel.speakAllResponses( this.getSelfVoicingConstantRadiusAlert( constantRadius ) );
       } );
     }
   }
