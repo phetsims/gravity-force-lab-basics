@@ -91,7 +91,8 @@ class DistanceArrowNode extends Node {
         this.selfVoicingWrapper = new SelfVoicingWrapperNode( this, {
           focusable: false,
           listenerOptions: {
-            onPress: arrowHitListener
+            onPress: arrowHitListener,
+            representedNode: this
           }
         } );
       }
