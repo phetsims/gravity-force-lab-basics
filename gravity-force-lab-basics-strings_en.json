@@ -25,17 +25,23 @@
   },
   "a11y": {
     "screenSummary": {
-      "playAreaOverview": {
-        "value": "The Play Area has two mass spheres, a blue sphere labeled mass 1 and a red sphere labeled mass 2. A force arrow starts at the center of each sphere and points directly at the opposite sphere."
+      "playAreaOverviewPattern": {
+        "value": "{{playArea}} two mass spheres, a blue sphere labeled mass 1 and a red sphere labeled mass 2. A force arrow starts at the center of each sphere and points directly at the opposite sphere."
       },
       "playAreaControls": {
         "value": "Spheres can be moved closer or farther from each other along a track. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot."
       },
-      "secondaryDescription": {
-        "value": "In the Control Area, checkboxes change what things are shown and how they behave, and a button resets the sim."
+      "secondaryDescriptionPattern": {
+        "value": "{{controlArea}}, checkboxes change what things are shown and how they behave, and a button resets the sim."
       },
       "basicsSimStateLabel": {
         "value": "Currently, force on mass 1 by mass 2 is of equal size and pointing directly opposite to the force on mass 2 by mass 1."
+      },
+      "thePlayAreaHas": {
+        "value": "The Play Area has"
+      },
+      "inTheControlArea": {
+        "value": "In the Control Area"
       }
     },
     "distanceCheckboxHelpText": {
@@ -159,6 +165,12 @@
         },
         "overviewPattern": {
           "value": "{{simDescription}} {{playArea}} {{controls}} {{controlArea}}"
+        },
+        "thereAre": {
+          "value": "There are"
+        },
+        "inAddition": {
+          "value": "In addition"
         },
         "quickMenu": {
           "hintPlease": {

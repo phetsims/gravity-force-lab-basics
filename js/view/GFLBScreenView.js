@@ -67,7 +67,6 @@ const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a
 const forceValuesCheckboxHelpTextString = inverseSquareLawCommonStrings.a11y.forceValuesCheckboxHelpText;
 const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
 const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
-const screenSummaryPlayAreaOverviewString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverview;
 const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
 const screenSummarySecondaryDescriptionString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescription;
 const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
@@ -84,9 +83,15 @@ const blueColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.blueColor;
 const resetAllString = sceneryPhetStrings.a11y.resetAll.label;
 const detailsPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.detailsPattern;
 const overviewPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.overviewPattern;
-const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.simSection.screenSummary.singleScreenIntroPattern;
+const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.selfVoicing.simSection.screenSummary.singleScreenIntroPattern;
 const summaryInteractionHintPatternString = inverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
 const massString = gravityForceLabStrings.a11y.mass;
+const screenSummaryPlayAreaOverviewPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
+const screenSummarySecondaryDescriptionPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
+const thePlayAreaHasString = gravityForceLabBasicsStrings.a11y.screenSummary.thePlayAreaHas;
+const thereAreString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.thereAre;
+const inTheControlAreaString = gravityForceLabBasicsStrings.a11y.screenSummary.inTheControlArea;
+const inAdditionString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.inAddition;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;
@@ -111,12 +116,20 @@ class GFLBScreenView extends ScreenView {
     const massDescriber = new GFLBMassDescriber( model, forceDescriber );
     const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber );
 
+    const playAreaOverviewString = StringUtils.fillIn( screenSummaryPlayAreaOverviewPatternString, {
+      playArea: thePlayAreaHasString
+    } );
+
+    const secondaryOverviewString = StringUtils.fillIn( screenSummarySecondaryDescriptionPatternString, {
+      controlArea: inTheControlAreaString
+    } );
+
     super( {
       layoutBounds: new Bounds2( 0, 0, 768, 464 ),
       screenSummaryContent: new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
-        screenSummaryPlayAreaOverview: screenSummaryPlayAreaOverviewString,
+        screenSummaryPlayAreaOverview: playAreaOverviewString,
         screenSummaryPlayAreaControls: screenSummaryPlayAreaControlsString,
-        secondaryDescriptionContent: screenSummarySecondaryDescriptionString,
+        secondaryDescriptionContent: secondaryOverviewString,
         simStateLabel: basicsSimStateLabelString,
         additionalMassDistanceProperties: [ model.showDistanceProperty ]
       } )
@@ -419,8 +432,14 @@ class GFLBScreenView extends ScreenView {
             sim: phet.joist.sim.simNameProperty.get()
           } );
 
-          const playAreaDescriptionString = screenSummaryPlayAreaOverviewString;
-          const controlsDescriptionString = screenSummaryPlayAreaControlsString;
+          const playAreaDescriptionString = StringUtils.fillIn( screenSummaryPlayAreaOverviewPatternString, {
+            playArea: thereAreString
+          } );
+
+          const controlsDescriptionString = StringUtils.fillIn( screenSummarySecondaryDescriptionPatternString, {
+            controlArea: inAdditionString
+          } );
+
           const controlAreaDescriptionString = screenSummarySecondaryDescriptionString;
 
           return StringUtils.fillIn( overviewPatternString, {
