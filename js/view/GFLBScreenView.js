@@ -22,7 +22,7 @@ import DefaultDirection from '../../../inverse-square-law-common/js/view/Default
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
-import speakerHighlighter from '../../../inverse-square-law-common/js/view/speakerHighlighter.js';
+import speakerHighlighter from '../../../scenery-phet/js/accessibility/speaker/speakerHighlighter.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingInputListener.js';
