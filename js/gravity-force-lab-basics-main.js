@@ -23,7 +23,7 @@ const SELF_VOICING = phet.chipper.queryParameters.supportsSelfVoicing;
 
 const gravityForceLabBasicsTitleString = gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].title;
 
-const keyboardHelpContent = new GravityForceLabKeyboardHelpContent( {
+const keyboardHelpNode = new GravityForceLabKeyboardHelpContent( {
   isBasics: true // in basics, there is no way to change the mass in smaller steps
 } );
 
@@ -37,7 +37,7 @@ const simOptions = {
     soundDesign: 'Ashton Morris',
     thanks: ''
   },
-  keyboardHelpNode: keyboardHelpContent,
+  hasKeyboardHelpContent: true,
   createOptionsDialogContent: SELF_VOICING ? () => new WebSpeechDialogContent() : null
 };
 
@@ -51,7 +51,8 @@ simLauncher.launch( () => {
       model => new GFLBScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) ),
       {
         backgroundColorProperty: GFLBConstants.BACKGROUND_COLOR_PROPERTY,
-        tandem: gravityForceLabBasicsScreenTandem
+        tandem: gravityForceLabBasicsScreenTandem,
+        keyboardHelpNode: keyboardHelpNode
       }
     )
     ], simOptions );
