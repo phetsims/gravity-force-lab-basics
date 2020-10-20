@@ -332,14 +332,14 @@ class GFLBScreenView extends ScreenView {
       listener: () => {
 
         // as the simulation resets, do no not speak about changes
-        webSpeaker.onHold = true;
+        phet.joist.sim.selfVoicingUtteranceQueue.enabled = false;
 
         model.reset();
         mass1Node.reset();
         mass2Node.reset();
         this.forceSoundGenerator.reset();
 
-        webSpeaker.onHold = false;
+        phet.joist.sim.selfVoicingUtteranceQueue.enabled = false;
 
         if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
           if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
@@ -457,7 +457,7 @@ class GFLBScreenView extends ScreenView {
         onFocusIn: () => {
 
           // on focus, speak the name of the reset all button
-          levelSpeakerModel.speakAllResponses( resetAllString );
+          phet.joist.sim.selfVoicingUtteranceQueue.addToBack( levelSpeakerModel.collectResponses( resetAllString ) );
         },
         highlightTarget: resetAllButton
       } ) );

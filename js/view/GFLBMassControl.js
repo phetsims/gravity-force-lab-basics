@@ -174,7 +174,8 @@ class GFLBMassControl extends Panel {
         const helpText = alertManager.model.constantRadiusProperty.get() ? massControlsHelpTextDensityBillionsString :
                          massControlsHelpTextBillionsString;
 
-        levelSpeakerModel.speakAllResponses( objectResponse, null, helpText );
+        const response = levelSpeakerModel.collectResponses( objectResponse, null, helpText );
+        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
       };
 
       numberPicker.addInputListener( new SelfVoicingInputListener( {
@@ -189,7 +190,8 @@ class GFLBMassControl extends Panel {
       valueProperty.lazyLink( ( value, oldValue ) => {
         const valueText = numberPicker.ariaValueText;
         const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-        levelSpeakerModel.speakAllResponses( valueText, massChangedUtterance.alert );
+        const response = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
+        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
       } );
     }
   }

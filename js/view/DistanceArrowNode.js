@@ -85,7 +85,8 @@ class DistanceArrowNode extends Node {
           }
 
           const interactionHint = selfVoicingLevelsMoveSpheresHintString;
-          levelSpeakerModel.speakAllResponses( objectResponse, null, interactionHint );
+          const response = levelSpeakerModel.collectResponses( objectResponse, null, interactionHint );
+          phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
         };
 
         this.selfVoicingWrapper = new SelfVoicingWrapperNode( this, {
