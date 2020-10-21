@@ -138,7 +138,7 @@ class GFLBMassControl extends Panel {
     } );
 
     // PROTOTYPE a11y code, for the self-voicing feature set
-    if ( options.shapeHitDetector ) {
+    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
       options.shapeHitDetector.addNode( numberPicker );
 
       // create a hit shape that will capture events on the panel and also exclude hits on the picker when
