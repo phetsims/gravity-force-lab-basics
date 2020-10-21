@@ -8,6 +8,7 @@
 
 import MassNode from '../../../gravity-force-lab/js/view/MassNode.js';
 import merge from '../../../phet-core/js/merge.js';
+import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -54,6 +55,38 @@ class GFLBMassNode extends MassNode {
     }, options );
 
     super( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options );
+  }
+
+  /**
+   * Forward the beginning of a press and hold swipe gesture to the drag listener, as
+   * this indicates that the focused node should be dragged from wherever the pointer
+   * is.
+   * @public (called by scenery)
+   *
+   * @param event
+   * @param listener
+   */
+  swipeStart( event, listener ) {
+    const response = levelSpeakerModel.collectResponses( 'Grabbed' );
+    phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+
+    // we are going to forward the event to the dragListener rather than continuing
+    // with swipe gestures detach the listener that is observing press and hold
+    // gestures
+    listener.detachPointerListener();
+
+    // forward the event to the drag listener
+    this.dragListener.press( event, this );
+  }
+
+  /**
+   * Part of the self-voicing prototype. User has ended a drag of the appendage.
+   * @public (called by SwipeListener)
+   *
+   * @param {SceneryEvent} event
+   */
+  swipeEnd( event ) {
+    phet.joist.sim.selfVoicingUtteranceQueue.addToFront( 'Released' );
   }
 }
 

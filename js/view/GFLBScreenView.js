@@ -32,6 +32,7 @@ import ScreenView from '../../../joist/js/ScreenView.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
+import SwipeListener from '../../../scenery/js/listeners/SwipeListener.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
@@ -402,6 +403,9 @@ class GFLBScreenView extends ScreenView {
     if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
       webSpeaker.initialize();
       speakerHighlighter.initialize();
+
+      // add the swipe listener for gesture control
+      phet.joist.sim.display.addInputListener( new SwipeListener() );
 
       // extra controls to speak about various things in the sim or quickly disable
       // the feature
