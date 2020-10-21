@@ -12,9 +12,12 @@ import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/le
 import Tandem from '../../../tandem/js/Tandem.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 // constants
 const MASS_NODE_Y_POSITION = 215;
+
+const dragHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.dragHint;
 
 class GFLBMassNode extends MassNode {
 
@@ -55,6 +58,18 @@ class GFLBMassNode extends MassNode {
     }, options );
 
     super( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options );
+
+    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+
+      // when we receive a click event from a 'double tap', describe to the
+      // user how to drag the appendage
+      this.addInputListener( {
+        click: event => {
+          const response = levelSpeakerModel.collectResponses( dragHintString );
+          phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        }
+      } );
+    }
   }
 
   /**

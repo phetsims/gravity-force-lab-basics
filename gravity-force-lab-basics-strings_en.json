@@ -175,6 +175,9 @@
         "inAddition": {
           "value": "In addition"
         },
+        "dragHint": {
+          "value": "Tap and hold to grab and drag."
+        },
         "quickMenu": {
           "hintPlease": {
             "value": "Hint Please!"
