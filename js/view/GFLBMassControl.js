@@ -185,6 +185,39 @@ class GFLBMassControl extends Panel {
         highlightTarget: numberPicker
       } ) );
 
+      // swipe gestures control mass, see SwipeListener. The SwipeListener assumes that
+      // these functions are implemented on the focused node - perhaps a better
+      // way to do this would be to create new SceneryEvents, which you could directly
+      // add listeners to
+      let swipePositionOnValueChange = null;
+      numberPicker.swipeStart = ( event, listener ) => {
+        swipePositionOnValueChange = event.pointer.point;
+      };
+
+      numberPicker.swipeMove = ( event, listener ) => {
+        const delta = event.pointer.point.minus( swipePositionOnValueChange );
+        const distance = event.pointer.point.distance( swipePositionOnValueChange );
+
+        if ( distance > 50 ) {
+
+          let increment;
+          if ( Math.abs( delta.x ) > 25 ) {
+
+            // likely horizontal swipe
+            increment = delta.x > 0;
+          }
+          else if ( Math.abs( delta.y ) > 25 ) {
+
+            // more likely a vertical swipe
+            increment = delta.y < 0;
+          }
+
+          const valueChange = increment ? BILLION_MULTIPLIER : -BILLION_MULTIPLIER;
+          valueProperty.set( massRange.constrainValue( valueProperty.get() + valueChange ) );
+          swipePositionOnValueChange = event.pointer.point;
+        }
+      };
+
       // read new value - note that this gets overridden by a different alert in GravityForceLabAlertManager
       // if the change in value pushes the other object away, with the positionChangedFromSecondarySourceEmitter
       valueProperty.lazyLink( ( value, oldValue ) => {
