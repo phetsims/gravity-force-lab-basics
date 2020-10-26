@@ -407,8 +407,16 @@ class GFLBScreenView extends ScreenView {
       webSpeaker.initialize();
       speakerHighlighter.initialize();
 
-      // add the swipe listener for gesture control
-      phet.joist.sim.display.addInputListener( new SwipeListener() );
+      // add the swipe listener
+      const swipeListener = new SwipeListener();
+      levelSpeakerModel.gestureControlProperty.link( gestureControl => {
+        if ( gestureControl ) {
+          phet.joist.sim.display.addInputListener( swipeListener );
+        }
+        else {
+          phet.joist.sim.display.removeInputListener( swipeListener );
+        }
+      } );
 
       // extra controls to speak about various things in the sim or quickly disable
       // the feature
