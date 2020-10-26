@@ -31,6 +31,7 @@ const billionKgString = gravityForceLabBasicsStrings.billionKg;
 const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefChangeMassHintPattern;
 const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
 const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
+const dragHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.dragHint;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -217,6 +218,18 @@ class GFLBMassControl extends Panel {
           swipePositionOnValueChange = event.pointer.point;
         }
       };
+
+      if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+
+        // when we receive a click event from a 'double tap', describe to the
+        // user how to drag the appendage
+        this.addInputListener( {
+          click: event => {
+            const response = levelSpeakerModel.collectResponses( dragHintString );
+            phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+          }
+        } );
+      }
 
       // read new value - note that this gets overridden by a different alert in GravityForceLabAlertManager
       // if the change in value pushes the other object away, with the positionChangedFromSecondarySourceEmitter
