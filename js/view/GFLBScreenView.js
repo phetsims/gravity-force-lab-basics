@@ -145,8 +145,6 @@ class GFLBScreenView extends ScreenView {
     } );
     phet.joist.sim.display.addInputListener( this.shapeHitDetector );
 
-    console.log( phet.chipper.queryParameters.vibrationParadigm );
-
     // Create the model-view transform.  The primary units used in the model are meters, so significant zoom is used.
     // The multipliers for the 2nd parameter can be used to adjust where the point (0, 0) in the model, which is
     // between the two masses.
