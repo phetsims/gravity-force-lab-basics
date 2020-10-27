@@ -31,9 +31,6 @@
       "playAreaControls": {
         "value": "Spheres can be moved closer or farther from each other along a track. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot."
       },
-      "secondaryDescription": {
-        "value": "In the Control Area, checkboxes change what things are shown and how they behave, and a button resets the sim."
-      },
       "secondaryDescriptionPattern": {
         "value": "{{controlArea}}, checkboxes change what things are shown and how they behave, and a button resets the sim."
       },
@@ -167,7 +164,7 @@
           "value": "{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}"
         },
         "overviewPattern": {
-          "value": "{{simDescription}} {{playArea}} {{controls}} {{controlArea}}"
+          "value": "{{simDescription}} {{playArea}} {{controls}}"
         },
         "thereAre": {
           "value": "There are"

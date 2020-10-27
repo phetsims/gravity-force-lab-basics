@@ -69,7 +69,6 @@ const forceValuesCheckboxHelpTextString = inverseSquareLawCommonStrings.a11y.for
 const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
 const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
 const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
-const screenSummarySecondaryDescriptionString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescription;
 const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
 const verboseCheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckedForceValuesCheckboxInteractionHint;
 const verboseUncheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseUncheckedForceValuesCheckboxInteractionHint;
@@ -455,13 +454,10 @@ class GFLBScreenView extends ScreenView {
             controlArea: inAdditionString
           } );
 
-          const controlAreaDescriptionString = screenSummarySecondaryDescriptionString;
-
           return StringUtils.fillIn( overviewPatternString, {
             simDescription: simDescriptionString,
             playArea: playAreaDescriptionString,
-            controls: controlsDescriptionString,
-            controlArea: controlAreaDescriptionString
+            controls: controlsDescriptionString
           } );
         },
         leftBottom: this.layoutBounds.leftBottom.minusXY( -8, 8 )
