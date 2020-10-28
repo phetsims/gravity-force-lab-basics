@@ -457,6 +457,7 @@ class GFLBScreenView extends ScreenView {
           return StringUtils.fillIn( overviewPatternString, {
             simDescription: simDescriptionString,
             playArea: playAreaDescriptionString,
+            spheres: screenSummaryPlayAreaControlsString,
             controls: controlsDescriptionString
           } );
         },

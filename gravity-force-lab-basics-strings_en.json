@@ -164,7 +164,7 @@
           "value": "{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}"
         },
         "overviewPattern": {
-          "value": "{{simDescription}} {{playArea}} {{controls}}"
+          "value": "{{simDescription}} {{playArea}} {{spheres}} {{controls}}"
         },
         "thereAre": {
           "value": "There are"
