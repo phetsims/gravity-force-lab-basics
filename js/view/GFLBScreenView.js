@@ -13,6 +13,7 @@ import Vector2 from '../../../dot/js/Vector2.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import GravityForceLabScreenSummaryNode from '../../../gravity-force-lab/js/view/GravityForceLabScreenSummaryNode.js';
 import MassBoundarySoundGenerator from '../../../gravity-force-lab/js/view/MassBoundarySoundGenerator.js';
+import VibrationManageriOS from '../../../../tappi/js/VibrationManageriOS.js';
 import MassSoundGenerator from '../../../gravity-force-lab/js/view/MassSoundGenerator.js';
 import SpherePositionsDescriptionNode from '../../../gravity-force-lab/js/view/SpherePositionsDescriptionNode.js';
 import forceSound from '../../../gravity-force-lab/sounds/saturated-sine-loop-trimmed_wav.js';
@@ -38,6 +39,7 @@ import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
 import ContinuousPropertySoundGenerator from '../../../tambo/js/sound-generators/ContinuousPropertySoundGenerator.js';
 import soundManager from '../../../tambo/js/soundManager.js';
+import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTestEventRecorder.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -480,6 +482,15 @@ class GFLBScreenView extends ScreenView {
 
       // in this mode, focus just goes from top to bottom
       massPositionsNode.accessibleOrder = [ mass2Node.selfVoicingWrapper, mass1Node.selfVoicingWrapper, distanceArrowNode.selfVoicingWrapper, null ];
+    }
+
+    if ( phet.chipper.queryParameters.vibrationParadigm ) {
+
+      // sends messages to the containing Swift app
+      const vibrationManager = new VibrationManageriOS();
+
+      // collection of input and simulation events that will be recorded during user interaction
+      this.eventRecorder = new VibrationTestEventRecorder( vibrationManager );
     }
   }
 
