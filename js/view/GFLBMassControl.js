@@ -33,6 +33,8 @@ const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfV
 const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
 const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
 const dragHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.dragHint;
+const grabbedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.grabbed;
+const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -194,6 +196,14 @@ class GFLBMassControl extends Panel {
       let swipePositionOnValueChange = null;
       numberPicker.swipeStart = ( event, listener ) => {
         swipePositionOnValueChange = event.pointer.point;
+
+        const response = levelSpeakerModel.collectResponses( grabbedString );
+        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+      };
+
+      numberPicker.swipeEnd = ( event, listener ) => {
+        const response = levelSpeakerModel.collectResponses( releasedString );
+        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
       };
 
       numberPicker.swipeMove = ( event, listener ) => {

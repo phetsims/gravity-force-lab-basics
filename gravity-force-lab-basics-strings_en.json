@@ -175,6 +175,12 @@
         "dragHint": {
           "value": "Tap and hold to grab and drag."
         },
+        "grabbed": {
+          "value": "Grabbed."
+        },
+        "released": {
+          "value": "Released."
+        },
         "quickMenu": {
           "hintPlease": {
             "value": "Hint Please!"

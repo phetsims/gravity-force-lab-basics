@@ -10,6 +10,7 @@ import MassNode from '../../../gravity-force-lab/js/view/MassNode.js';
 import merge from '../../../phet-core/js/merge.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import Tandem from '../../../tandem/js/Tandem.js';
+import SelfVoicingUtterance from '../../../utterance-queue/js/SelfVoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -18,6 +19,8 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 const MASS_NODE_Y_POSITION = 215;
 
 const dragHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.dragHint;
+const grabbedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.grabbed;
+const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
 
 class GFLBMassNode extends MassNode {
 
@@ -82,7 +85,7 @@ class GFLBMassNode extends MassNode {
    * @param listener
    */
   swipeStart( event, listener ) {
-    const response = levelSpeakerModel.collectResponses( 'Grabbed' );
+    const response = levelSpeakerModel.collectResponses( grabbedString );
     phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
 
     // we are going to forward the event to the dragListener rather than continuing
@@ -101,7 +104,11 @@ class GFLBMassNode extends MassNode {
    * @param {SceneryEvent} event
    */
   swipeEnd( event ) {
-    phet.joist.sim.selfVoicingUtteranceQueue.addToFront( 'Released' );
+    const releasedUtterance = new SelfVoicingUtterance( {
+      alert: releasedString,
+      cancelOther: false
+    } );
+    phet.joist.sim.selfVoicingUtteranceQueue.addToFront( releasedUtterance );
   }
 }
 
