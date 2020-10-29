@@ -23,6 +23,7 @@ import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
 import Playable from '../../../tambo/js/Playable.js';
+import SelfVoicingUtterance from '../../../utterance-queue/js/SelfVoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -175,8 +176,8 @@ class GFLBMassControl extends Panel {
         const helpText = alertManager.model.constantRadiusProperty.get() ? massControlsHelpTextDensityBillionsString :
                          massControlsHelpTextBillionsString;
 
-        const response = levelSpeakerModel.collectResponses( objectResponse, null, helpText );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        const alertContent = levelSpeakerModel.collectResponses( objectResponse, null, helpText );
+        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( alertContent );
       };
 
       numberPicker.addInputListener( new SelfVoicingInputListener( {
@@ -233,11 +234,13 @@ class GFLBMassControl extends Panel {
 
       // read new value - note that this gets overridden by a different alert in GravityForceLabAlertManager
       // if the change in value pushes the other object away, with the positionChangedFromSecondarySourceEmitter
+      const selfVoicingUtterance = new SelfVoicingUtterance();
+
       valueProperty.lazyLink( ( value, oldValue ) => {
         const valueText = numberPicker.ariaValueText;
         const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-        const response = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        selfVoicingUtterance.alert = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
+        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( selfVoicingUtterance );
       } );
     }
   }
