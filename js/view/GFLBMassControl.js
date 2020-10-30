@@ -98,7 +98,7 @@ class GFLBMassControl extends Panel {
       a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
 
       // on end interaction, if alert a special alert if the mass started at the min/max and didnt' change.
-      a11yCreateValueChangeAlert: () => {
+      a11yCreateContextResponseAlert: () => {
 
         // no change and at max or min
         if ( currentMass === valueProperty.value && ( currentMass === massRange.max || currentMass === massRange.min ) ) {
