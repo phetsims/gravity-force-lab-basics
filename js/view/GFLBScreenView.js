@@ -13,7 +13,7 @@ import Vector2 from '../../../dot/js/Vector2.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import GravityForceLabScreenSummaryNode from '../../../gravity-force-lab/js/view/GravityForceLabScreenSummaryNode.js';
 import MassBoundarySoundGenerator from '../../../gravity-force-lab/js/view/MassBoundarySoundGenerator.js';
-import VibrationManageriOS from '../../../../tappi/js/VibrationManageriOS.js';
+import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
 import MassSoundGenerator from '../../../gravity-force-lab/js/view/MassSoundGenerator.js';
 import SpherePositionsDescriptionNode from '../../../gravity-force-lab/js/view/SpherePositionsDescriptionNode.js';
 import forceSound from '../../../gravity-force-lab/sounds/saturated-sine-loop-trimmed_wav.js';
