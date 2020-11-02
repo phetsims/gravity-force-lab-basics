@@ -202,8 +202,11 @@ class GFLBMassControl extends Panel {
       };
 
       numberPicker.swipeEnd = ( event, listener ) => {
-        const response = levelSpeakerModel.collectResponses( releasedString );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        const releasedUtterance = new SelfVoicingUtterance( {
+          alert: releasedString,
+          cancelOther: false
+        } );
+        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( releasedUtterance );
       };
 
       numberPicker.swipeMove = ( event, listener ) => {
