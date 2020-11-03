@@ -42,6 +42,7 @@ import soundManager from '../../../tambo/js/soundManager.js';
 import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTestEventRecorder.js';
 import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
 import ShapeHitDetector from '../../../tappi/js/view/ShapeHitDetector.js';
+import tappiDialogController from '../../../tappi/js/view/tappiDialogController.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -485,6 +486,9 @@ class GFLBScreenView extends ScreenView {
 
       // in this mode, focus just goes from top to bottom
       massPositionsNode.accessibleOrder = [ mass2Node.selfVoicingWrapper, mass1Node.selfVoicingWrapper, distanceArrowNode.selfVoicingWrapper, null ];
+
+      // dialogs to enable the feature and introduce custom gestures
+      tappiDialogController.initialize( selfVoicingQuickControl );
     }
 
     if ( phet.chipper.queryParameters.vibrationParadigm ) {
@@ -497,7 +501,6 @@ class GFLBScreenView extends ScreenView {
 
       // collection of input and simulation events that will be recorded during user interaction
       this.eventRecorder = new VibrationTestEventRecorder( vibrationManager );
-
     }
   }
 
