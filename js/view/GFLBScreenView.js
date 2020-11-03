@@ -416,7 +416,9 @@ class GFLBScreenView extends ScreenView {
           phet.joist.sim.display.addInputListener( swipeListener );
         }
         else {
-          phet.joist.sim.display.removeInputListener( swipeListener );
+          if ( phet.joist.sim.display.inputListeners.includes( swipeListener ) ) {
+            phet.joist.sim.display.removeInputListener( swipeListener );
+          }
         }
       } );
 
