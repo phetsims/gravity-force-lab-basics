@@ -13,7 +13,6 @@ import Vector2 from '../../../dot/js/Vector2.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import GravityForceLabScreenSummaryNode from '../../../gravity-force-lab/js/view/GravityForceLabScreenSummaryNode.js';
 import MassBoundarySoundGenerator from '../../../gravity-force-lab/js/view/MassBoundarySoundGenerator.js';
-import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
 import MassSoundGenerator from '../../../gravity-force-lab/js/view/MassSoundGenerator.js';
 import SpherePositionsDescriptionNode from '../../../gravity-force-lab/js/view/SpherePositionsDescriptionNode.js';
 import forceSound from '../../../gravity-force-lab/sounds/saturated-sine-loop-trimmed_wav.js';
@@ -23,16 +22,17 @@ import DefaultDirection from '../../../inverse-square-law-common/js/view/Default
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
 import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
-import speakerHighlighter from '../../../scenery-phet/js/accessibility/speaker/speakerHighlighter.js';
+import ScreenView from '../../../joist/js/ScreenView.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
+import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingInputListener.js';
-import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
-import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
-import ScreenView from '../../../joist/js/ScreenView.js';
-import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
+import SelfVoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingQuickControl.js';
+import speakerHighlighter from '../../../scenery-phet/js/accessibility/speaker/speakerHighlighter.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
+import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
+import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import SwipeListener from '../../../scenery/js/listeners/SwipeListener.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Node from '../../../scenery/js/nodes/Node.js';
@@ -40,9 +40,11 @@ import Color from '../../../scenery/js/util/Color.js';
 import ContinuousPropertySoundGenerator from '../../../tambo/js/sound-generators/ContinuousPropertySoundGenerator.js';
 import soundManager from '../../../tambo/js/soundManager.js';
 import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTestEventRecorder.js';
+import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
+import ShapeHitDetector from '../../../tappi/js/view/ShapeHitDetector.js';
 import GFLBConstants from '../GFLBConstants.js';
-import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import GFLBForceDescriber from './describers/GFLBForceDescriber.js';
 import GFLBMassDescriber from './describers/GFLBMassDescriber.js';
 import GFLBPositionDescriber from './describers/GFLBPositionDescriber.js';
@@ -52,8 +54,7 @@ import GFLBCheckboxPanel from './GFLBCheckboxPanel.js';
 import GFLBMassControl from './GFLBMassControl.js';
 import GFLBMassDescriptionNode from './GFLBMassDescriptionNode.js';
 import GFLBMassNode from './GFLBMassNode.js';
-import ShapeHitDetector from '../../../tappi/js/view/ShapeHitDetector.js';
-import SelfVoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingQuickControl.js';
+import vibrationController from './vibrationController.js';
 
 const constantSizeString = gravityForceLabStrings.constantSize;
 const distanceString = gravityForceLabBasicsStrings.distance;
@@ -489,8 +490,12 @@ class GFLBScreenView extends ScreenView {
       // sends messages to the containing Swift app
       const vibrationManager = new VibrationManageriOS();
 
+      // the vibration controller for this simulation
+      vibrationController.initialize( vibrationManager, model );
+
       // collection of input and simulation events that will be recorded during user interaction
       this.eventRecorder = new VibrationTestEventRecorder( vibrationManager );
+
     }
   }
 
@@ -501,6 +506,10 @@ class GFLBScreenView extends ScreenView {
    */
   step( dt ) {
     this.forceSoundGenerator.step( dt );
+
+    if ( phet.chipper.queryParameters.vibrationParadigm ) {
+      vibrationController.step( dt );
+    }
   }
 }
 
