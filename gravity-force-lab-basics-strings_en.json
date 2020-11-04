@@ -181,8 +181,11 @@
         "moveMass2Hint": {
           "value": "move mass 2, red sphere"
         },
-        "changeMassHint": {
-          "value": "change mass"
+        "changeMass1Hint": {
+          "value": "change mass of mass 1"
+        },
+        "changeMass2Hint": {
+          "value": "change mass of mass 2"
         },
         "grabbed": {
           "value": "Grabbed."

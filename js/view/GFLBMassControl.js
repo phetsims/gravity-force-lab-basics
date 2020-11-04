@@ -35,7 +35,6 @@ const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.mas
 const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
 const draggableAlertString = sceneryPhetStrings.a11y.selfVoicing.draggableAlert;
 const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
-const changeMassHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.changeMassHint;
 const grabDragHintPatternString = sceneryPhetStrings.a11y.selfVoicing.grabDragHintPattern;
 
 // constants
@@ -67,7 +66,7 @@ class GFLBMassControl extends Panel {
       shapeHitDetector: null,
 
       // {null|string} (self-voicing) custom content to guide the user to dragging with custom gesture
-      gestureDragHint: null
+      changeMassHintString: null
     }, options );
 
     const titleText = new Text( titleString, {
@@ -245,7 +244,7 @@ class GFLBMassControl extends Panel {
         this.addInputListener( {
           click: event => {
             const hint = StringUtils.fillIn( grabDragHintPatternString, {
-              manipulation: changeMassHintString
+              manipulation: options.changeMassHintString
             } );
 
             const response = levelSpeakerModel.collectResponses( hint );

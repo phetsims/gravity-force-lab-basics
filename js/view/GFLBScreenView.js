@@ -98,6 +98,8 @@ const inTheControlAreaString = gravityForceLabBasicsStrings.a11y.screenSummary.i
 const inAdditionString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.inAddition;
 const moveMass1HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.moveMass1Hint;
 const moveMass2HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.moveMass2Hint;
+const changeMass1HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.changeMass1Hint;
+const changeMass2HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.changeMass2Hint;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;
@@ -215,13 +217,15 @@ class GFLBScreenView extends ScreenView {
     const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
       GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, alertManager,
       massDescriber, tandem.createTandem( 'massControl1' ), {
-        shapeHitDetector: this.shapeHitDetector
+        shapeHitDetector: this.shapeHitDetector,
+        changeMassHintString: changeMass1HintString
       } );
     const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
       GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, alertManager,
       massDescriber, tandem.createTandem( 'massControl2' ), {
         color: new Color( 255, 0, 0 ),
-        shapeHitDetector: this.shapeHitDetector
+        shapeHitDetector: this.shapeHitDetector,
+        changeMassHintString: changeMass2HintString
       } );
 
     const massControlsNode = new Node( {
