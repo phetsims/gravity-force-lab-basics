@@ -8,7 +8,9 @@
 
 import MassNode from '../../../gravity-force-lab/js/view/MassNode.js';
 import merge from '../../../phet-core/js/merge.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
+import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import SelfVoicingUtterance from '../../../utterance-queue/js/SelfVoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
@@ -18,9 +20,9 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 // constants
 const MASS_NODE_Y_POSITION = 215;
 
-const dragHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.dragHint;
 const grabbedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.grabbed;
 const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
+const grabDragHintPatternString = sceneryPhetStrings.a11y.selfVoicing.grabDragHintPattern;
 
 class GFLBMassNode extends MassNode {
 
@@ -57,7 +59,10 @@ class GFLBMassNode extends MassNode {
       tandem: Tandem.REQUIRED,
 
       // pdom recompute the PDOM descriptions when show distance is toggled
-      additionalA11yDependencies: [ model.showDistanceProperty ]
+      additionalA11yDependencies: [ model.showDistanceProperty ],
+
+      // self-voicing
+      grabHintLabel: null
     }, options );
 
     super( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options );
@@ -68,7 +73,11 @@ class GFLBMassNode extends MassNode {
       // user how to drag the appendage
       this.addInputListener( {
         click: event => {
-          const response = levelSpeakerModel.collectResponses( dragHintString );
+          const hint = StringUtils.fillIn( grabDragHintPatternString, {
+            manipulation: options.grabHintLabel
+          } );
+
+          const response = levelSpeakerModel.collectResponses( hint );
           phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
         }
       } );
