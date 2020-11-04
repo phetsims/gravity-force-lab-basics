@@ -484,8 +484,9 @@ class GFLBScreenView extends ScreenView {
       this.addChild( mass2Node.selfVoicingWrapper );
       this.addChild( distanceArrowNode.selfVoicingWrapper );
 
-      // in this mode, focus just goes from top to bottom
-      massPositionsNode.accessibleOrder = [ mass2Node.selfVoicingWrapper, mass1Node.selfVoicingWrapper, distanceArrowNode.selfVoicingWrapper, null ];
+      // in this mode, focus just goes from top to bottom, but starting with the quick control
+      // to guide the user to hear details about the simulation first
+      massPositionsNode.accessibleOrder = [ selfVoicingQuickControl, mass2Node.selfVoicingWrapper, mass1Node.selfVoicingWrapper, distanceArrowNode.selfVoicingWrapper, null ];
 
       // dialogs to enable the feature and introduce custom gestures
       tappiDialogController.initialize( selfVoicingQuickControl );
