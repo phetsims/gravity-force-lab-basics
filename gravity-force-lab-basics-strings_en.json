@@ -175,11 +175,14 @@
         "dragHint": {
           "value": "Tap and hold to grab and drag."
         },
-        "mass1HintLabel": {
+        "moveMass1Hint": {
           "value": "move mass 1, blue sphere"
         },
-        "mass2HintLabel": {
+        "moveMass2Hint": {
           "value": "move mass 2, red sphere"
+        },
+        "changeMassHint": {
+          "value": "change mass"
         },
         "grabbed": {
           "value": "Grabbed."

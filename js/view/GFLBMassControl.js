@@ -16,6 +16,7 @@ import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/spe
 import SelfVoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingWrapperNode.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
+import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Path from '../../../scenery/js/nodes/Path.js';
 import Text from '../../../scenery/js/nodes/Text.js';
@@ -32,9 +33,10 @@ const billionKgString = gravityForceLabBasicsStrings.billionKg;
 const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefChangeMassHintPattern;
 const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
 const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
-const dragHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.dragHint;
-const grabbedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.grabbed;
+const draggableAlertString = sceneryPhetStrings.a11y.selfVoicing.draggableAlert;
 const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
+const changeMassHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.changeMassHint;
+const grabDragHintPatternString = sceneryPhetStrings.a11y.selfVoicing.grabDragHintPattern;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -62,7 +64,10 @@ class GFLBMassControl extends Panel {
 
       // {null|ShapeHitDetector} - a11y, to support prototype self-voicing feature set. If included browser
       // will speak informatioon about the GFLBMassControl on certain user input
-      shapeHitDetector: null
+      shapeHitDetector: null,
+
+      // {null|string} (self-voicing) custom content to guide the user to dragging with custom gesture
+      gestureDragHint: null
     }, options );
 
     const titleText = new Text( titleString, {
@@ -197,7 +202,7 @@ class GFLBMassControl extends Panel {
       numberPicker.swipeStart = ( event, listener ) => {
         swipePositionOnValueChange = event.pointer.point;
 
-        const response = levelSpeakerModel.collectResponses( grabbedString );
+        const response = levelSpeakerModel.collectResponses( draggableAlertString );
         phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
       };
 
@@ -239,7 +244,11 @@ class GFLBMassControl extends Panel {
         // user how to drag the appendage
         this.addInputListener( {
           click: event => {
-            const response = levelSpeakerModel.collectResponses( dragHintString );
+            const hint = StringUtils.fillIn( grabDragHintPatternString, {
+              manipulation: changeMassHintString
+            } );
+
+            const response = levelSpeakerModel.collectResponses( hint );
             phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
           }
         } );

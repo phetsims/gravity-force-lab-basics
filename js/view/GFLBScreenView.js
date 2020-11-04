@@ -96,8 +96,8 @@ const thePlayAreaHasString = gravityForceLabBasicsStrings.a11y.screenSummary.the
 const thereAreString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.thereAre;
 const inTheControlAreaString = gravityForceLabBasicsStrings.a11y.screenSummary.inTheControlArea;
 const inAdditionString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.inAddition;
-const mass1HintLabelString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.mass1HintLabel;
-const mass2HintLabelString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.mass2HintLabel;
+const moveMass1HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.moveMass1Hint;
+const moveMass2HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.moveMass2Hint;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;
@@ -170,7 +170,7 @@ class GFLBScreenView extends ScreenView {
         forceArrowHeight: 125,
         shapeHitDetector: this.shapeHitDetector,
         objectColor: blueColorString,
-        grabHintLabel: mass1HintLabelString,
+        grabHintLabel: moveMass1HintString,
         tandem: tandem.createTandem( 'mass1Node' )
       } );
 
@@ -184,7 +184,7 @@ class GFLBScreenView extends ScreenView {
         forceArrowHeight: 175,
         shapeHitDetector: this.shapeHitDetector,
         objectColor: redColorString,
-        grabHintLabel: mass2HintLabelString,
+        grabHintLabel: moveMass2HintString,
         tandem: tandem.createTandem( 'mass2Node' )
       } );
 
