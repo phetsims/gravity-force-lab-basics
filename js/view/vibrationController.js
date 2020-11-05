@@ -18,11 +18,11 @@ const LOW_FORCE_PATTERN = .200;
 const HIGH_FORCE_PATTERN = .050;
 
 // extreme intervals for the intensity of vibration pattern representing mass
-const LOW_MASS_INTENSITY = 0.1;
+const LOW_MASS_INTENSITY = 0.4;
 const HIGH_MASS_INTENSITY = 1;
 
 // extreme intervals for the sharpness of vibration pattern representing mass
-const LOW_MASS_SHARPNESS = 0.1;
+const LOW_MASS_SHARPNESS = 0.5;
 const HIGH_MASS_SHARPNESS = 1;
 
 // the pattern for vibration indicating mass - pattern is static, the intensity and sharpness
@@ -79,7 +79,6 @@ class VibrationController {
 
       model.separationProperty.link( separation=> {
         const forcePatternValue = positionPatternFunction( separation);
-        console.log( separation, forcePatternValue );
         this.forcePatternManager.setPattern( [ forcePatternValue, forcePatternValue ] );
       } );
 
