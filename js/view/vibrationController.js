@@ -60,6 +60,7 @@ class VibrationController {
 
       Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
         if ( object1Dragging || object2Dragging ) {
+          this.massVibrationController.stop();
           vibrationManageriOS.vibrateContinuous();
           vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
         }
@@ -85,6 +86,7 @@ class VibrationController {
 
       Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
         if ( object1Dragging || object2Dragging ) {
+          this.massVibrationController.stop();
           vibrationManageriOS.vibrateContinuous();
           vibrationManageriOS.setVibrationIntensity( intensityValue );
         }
