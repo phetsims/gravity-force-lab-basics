@@ -114,17 +114,7 @@ class VibrationController {
       this.massVibrationController.setIntensity( massIntensityFunction( mass ) );
       this.massVibrationController.setSharpness( massSharpnessFunction( mass ) );
 
-      // if ( !this.massVibrationController.runningPattern ) {
-      //   this.massVibrationController.start();
-      // }
       this.massVibrationController.start();
-
-      // vibrationManageriOS.vibrateContinuous( {
-      //   pattern: pattern,
-      //   duration: _.sum( pattern ),
-      //   intensity: massIntensityFunction( mass ),
-      //   sharpness: massSharpnessFunction( mass )
-      // } );
     };
     model.object1.valueProperty.lazyLink( massVibrationListener );
     model.object2.valueProperty.lazyLink( massVibrationListener );
