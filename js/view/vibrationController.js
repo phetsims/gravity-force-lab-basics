@@ -8,14 +8,14 @@
 
 import Property from '../../../axon/js/Property.js';
 import LinearFunction from '../../../dot/js/LinearFunction.js';
-import ContinuousPatternVibrationController from '../../../tappi/js/ContinuousPatternVibrationController.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
 // extreme intervals for the vibration pattern representing force value - in seconds
-const LOW_FORCE_PATTERN = .200;
-const HIGH_FORCE_PATTERN = .050;
+
+const LOW_FORCE_INTENSITY = 0.2;
+const HIGH_FORCE_INTENSITY = 1;
 
 // extreme intervals for the intensity of vibration pattern representing mass
 const LOW_MASS_INTENSITY = 0.4;
@@ -44,7 +44,9 @@ class VibrationController {
     const paradigmChoice = phet.chipper.queryParameters.vibrationParadigm;
 
     // @private {ContinuousPatternVibrationController}
-    this.forcePatternManager = new ContinuousPatternVibrationController();
+    // this.forcePatternManager = new ContinuousPatternVibrationController( {
+    //   activePattern: [ 0.100, 0 ]
+    // } );
 
     const minForce = model.getMinForceMagnitude();
     const maxForce = model.getMaxForce();
@@ -52,19 +54,21 @@ class VibrationController {
     if ( paradigmChoice === '1' ) {
 
       // maps force to the vibration pattern that will represent its value
-      const forcePatternFunction = new LinearFunction( minForce, maxForce, LOW_FORCE_PATTERN, HIGH_FORCE_PATTERN );
+      const forceIntensityFunction = new LinearFunction( minForce, maxForce, LOW_FORCE_INTENSITY, HIGH_FORCE_INTENSITY );
 
+      let forceIntensityValue = null;
       model.forceProperty.link( force => {
-        const forcePatternValue = forcePatternFunction( force );
-        this.forcePatternManager.setPattern( [ forcePatternValue, forcePatternValue ] );
+        forceIntensityValue = forceIntensityFunction( force );
+        vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
       } );
 
       Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
         if ( object1Dragging || object2Dragging ) {
-          this.forcePatternManager.start();
+          vibrationManageriOS.vibrateContinuous();
+          vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
         }
         else {
-          this.forcePatternManager.stop();
+          vibrationManageriOS.stop();
         }
       } );
     }
@@ -75,19 +79,21 @@ class VibrationController {
       // of forces in this sim is so large that it is difficult to feel changes in force
       // unless you are at extreme values. As it turns out, this means that vibration
       // is tied to mass position
-      const positionPatternFunction = new LinearFunction( 10000, 1300, LOW_FORCE_PATTERN, HIGH_FORCE_PATTERN, true );
+      const positionIntensityFunction = new LinearFunction( 10000, 1300, LOW_FORCE_INTENSITY, HIGH_FORCE_INTENSITY, true );
 
-      model.separationProperty.link( separation=> {
-        const forcePatternValue = positionPatternFunction( separation);
-        this.forcePatternManager.setPattern( [ forcePatternValue, forcePatternValue ] );
+      let intensityValue;
+      model.separationProperty.link( separation => {
+        intensityValue = positionIntensityFunction( separation );
+        vibrationManageriOS.setVibrationIntensity( intensityValue );
       } );
 
       Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
         if ( object1Dragging || object2Dragging ) {
-          this.forcePatternManager.start();
+          vibrationManageriOS.vibrateContinuous();
+          vibrationManageriOS.setVibrationIntensity( intensityValue );
         }
         else {
-          this.forcePatternManager.stop();
+          vibrationManageriOS.stop();
         }
       } );
     }
@@ -115,7 +121,7 @@ class VibrationController {
    * @param {number} dt - in seconds
    */
   step( dt ) {
-    this.forcePatternManager.step( dt );
+    // this.forcePatternManager.step( dt );
   }
 }
 
