@@ -8,26 +8,27 @@
 
 import Property from '../../../axon/js/Property.js';
 import LinearFunction from '../../../dot/js/LinearFunction.js';
+import ContinuousPatternVibrationController from '../../../tappi/js/ContinuousPatternVibrationController.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
-// extreme intervals for the vibration pattern representing force value - in seconds
-
+// extreme values for for the vibration pattern representing force value - in seconds
 const LOW_FORCE_INTENSITY = 0.2;
 const HIGH_FORCE_INTENSITY = 1;
 
-// extreme intervals for the intensity of vibration pattern representing mass
+// extreme values for the intensity of vibration pattern representing mass
 const LOW_MASS_INTENSITY = 0.4;
 const HIGH_MASS_INTENSITY = 1;
 
 // extreme intervals for the sharpness of vibration pattern representing mass
-const LOW_MASS_SHARPNESS = 0.5;
+const LOW_MASS_SHARPNESS = 1;
 const HIGH_MASS_SHARPNESS = 1;
 
 // the pattern for vibration indicating mass - pattern is static, the intensity and sharpness
 // change with mass value - itervals in seconds
-const MASS_CHANGE_PATTERN = [ 0.015, 0.015, 0.010, 0.020 ];
+const LOW_MASS_INTERVAL = 0.030;
+const HIGH_MASS_INTERVAL = 0.180;
 
 const minMass = GFLBConstants.MASS_RANGE.min;
 const maxMass = GFLBConstants.MASS_RANGE.max;
@@ -42,11 +43,6 @@ class VibrationController {
    */
   initialize( vibrationManageriOS, model ) {
     const paradigmChoice = phet.chipper.queryParameters.vibrationParadigm;
-
-    // @private {ContinuousPatternVibrationController}
-    // this.forcePatternManager = new ContinuousPatternVibrationController( {
-    //   activePattern: [ 0.100, 0 ]
-    // } );
 
     const minForce = model.getMinForceMagnitude();
     const maxForce = model.getMaxForce();
@@ -104,13 +100,31 @@ class VibrationController {
     // maps the mass value to the sharpness of vibration
     const massSharpnessFunction = new LinearFunction( minMass, maxMass, LOW_MASS_SHARPNESS, HIGH_MASS_SHARPNESS );
 
+    // maps the mass value to the interval of vibration
+    const massIntervalFunction = new LinearFunction( minMass, maxMass, LOW_MASS_INTERVAL, HIGH_MASS_INTERVAL, true );
+
+    this.massVibrationController = new ContinuousPatternVibrationController( {
+      repeat: false
+    } );
+
     const massVibrationListener = mass => {
-      vibrationManageriOS.vibrateContinuous( {
-        pattern: MASS_CHANGE_PATTERN,
-        duration: _.sum( MASS_CHANGE_PATTERN ),
-        intensity: massIntensityFunction( mass ),
-        sharpness: massSharpnessFunction( mass )
-      } );
+      const massInterval = massIntervalFunction( mass );
+      this.massVibrationController.setPattern( [ massInterval, massInterval, massInterval, massInterval ] );
+
+      this.massVibrationController.setIntensity( massIntensityFunction( mass ) );
+      this.massVibrationController.setSharpness( massSharpnessFunction( mass ) );
+
+      // if ( !this.massVibrationController.runningPattern ) {
+      //   this.massVibrationController.start();
+      // }
+      this.massVibrationController.start();
+
+      // vibrationManageriOS.vibrateContinuous( {
+      //   pattern: pattern,
+      //   duration: _.sum( pattern ),
+      //   intensity: massIntensityFunction( mass ),
+      //   sharpness: massSharpnessFunction( mass )
+      // } );
     };
     model.object1.valueProperty.lazyLink( massVibrationListener );
     model.object2.valueProperty.lazyLink( massVibrationListener );
@@ -122,6 +136,7 @@ class VibrationController {
    */
   step( dt ) {
     // this.forcePatternManager.step( dt );
+    this.massVibrationController.step( dt );
   }
 }
 
