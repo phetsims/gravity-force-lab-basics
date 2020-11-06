@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.22 Thu Nov 05 2020 00:01:37 GMT-0500 (Eastern Standard Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.23 Fri Nov 06 2020 00:50:14 GMT-0500 (Eastern Standard Time)",
   "assert": {
     "sha": "49aa67d01046326d85dcd8f265db91e8753038a1",
     "branch": "master"
@@ -25,7 +25,7 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "d91dfa31464f911f5b8e880c08070732563b4d6e",
+    "sha": "0b8e751436068bd595d6a7706f390714846797ec",
     "branch": "master"
   },
   "inverse-square-law-common": {
@@ -33,7 +33,7 @@
     "branch": "master"
   },
   "joist": {
-    "sha": "39712126e23f03fa6500ee3b85525f71026b4cec",
+    "sha": "2b7e455d31504882e5512bf7123242ffe95c9326",
     "branch": "master"
   },
   "kite": {
@@ -45,7 +45,7 @@
     "branch": "master"
   },
   "phet-io": {
-    "sha": "4f4d8f227f072ceab85e59f1cbd6aff3ae418970",
+    "sha": "686738a582a47334d82ba4cd03128c2e5712da72",
     "branch": "master"
   },
   "phet-io-client-guides": {
@@ -93,7 +93,7 @@
     "branch": "master"
   },
   "tandem": {
-    "sha": "56bab20589fd3f083ca85ddd4c06d67f85b50319",
+    "sha": "642af98073e92094b8772a854302760cd6c5c1e0",
     "branch": "master"
   },
   "twixt": {
