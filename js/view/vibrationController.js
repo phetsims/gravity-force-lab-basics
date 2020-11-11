@@ -14,7 +14,7 @@ import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
 // extreme values for for the vibration pattern representing force value - in seconds
-const LOW_FORCE_INTENSITY = 0.2;
+const LOW_FORCE_INTENSITY = 0.35;
 const HIGH_FORCE_INTENSITY = 1;
 
 // extreme values for the intensity of vibration pattern representing mass
@@ -55,6 +55,7 @@ class VibrationController {
       let forceIntensityValue = null;
       model.forceProperty.link( force => {
         forceIntensityValue = forceIntensityFunction( force );
+        console.log( forceIntensityValue );
         vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
       } );
 
