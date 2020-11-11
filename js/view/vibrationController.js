@@ -13,10 +13,6 @@ import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
-// extreme values for for the vibration pattern representing force value - in seconds
-const LOW_FORCE_INTENSITY = 0.35;
-const HIGH_FORCE_INTENSITY = 1;
-
 // extreme values for the intensity of vibration pattern representing mass
 const LOW_MASS_INTENSITY = 0.4;
 const HIGH_MASS_INTENSITY = 1;
@@ -47,54 +43,68 @@ class VibrationController {
     const minForce = model.getMinForceMagnitude();
     const maxForce = model.getMaxForce();
 
+    let forceIntensityMap;
+    let forceSharpnessMap;
+
     if ( paradigmChoice === '1' ) {
 
-      // maps force to the vibration pattern that will represent its value
-      const forceIntensityFunction = new LinearFunction( minForce, maxForce, LOW_FORCE_INTENSITY, HIGH_FORCE_INTENSITY );
-
-      let forceIntensityValue = null;
-      model.forceProperty.link( force => {
-        forceIntensityValue = forceIntensityFunction( force );
-        vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
-      } );
-
-      Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
-        if ( object1Dragging || object2Dragging ) {
-          this.massVibrationController.stop();
-          vibrationManageriOS.vibrateContinuous();
-          vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
-        }
-        else {
-          vibrationManageriOS.stop();
-        }
-      } );
+      // intensity locked at 0.6, sharpness should increase as force increases
+      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.6, 0.6 );
+      forceSharpnessMap = new LinearFunction( minForce, maxForce, 0.0, 1 );
     }
     else if ( paradigmChoice === '2' ) {
 
-      // In this vibration paradigm, we indicate changing force with user interaction,
-      // rather than mapping vibration properties to the value directly - the range
-      // of forces in this sim is so large that it is difficult to feel changes in force
-      // unless you are at extreme values. As it turns out, this means that vibration
-      // is tied to mass position
-      const positionIntensityFunction = new LinearFunction( 10000, 1300, LOW_FORCE_INTENSITY, HIGH_FORCE_INTENSITY, true );
-
-      let intensityValue;
-      model.separationProperty.link( separation => {
-        intensityValue = positionIntensityFunction( separation );
-        vibrationManageriOS.setVibrationIntensity( intensityValue );
-      } );
-
-      Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
-        if ( object1Dragging || object2Dragging ) {
-          this.massVibrationController.stop();
-          vibrationManageriOS.vibrateContinuous();
-          vibrationManageriOS.setVibrationIntensity( intensityValue );
-        }
-        else {
-          vibrationManageriOS.stop();
-        }
-      } );
+      // intensity locked at 0.6, sharpness should decrease as force increases
+      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.6, 0.6 );
+      forceSharpnessMap = new LinearFunction( minForce, maxForce, 1, 0 );
     }
+    else if ( paradigmChoice === '3' ) {
+
+      // intensity locked at 0.3, sharpness should increase as force increases
+      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.3, 0.3 );
+      forceSharpnessMap = new LinearFunction( minForce, maxForce, 0, 1 );
+    }
+    else if ( paradigmChoice === '4' ) {
+
+      // intensity should increase as force increases, sharpness should increase as force increases
+      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.4, 1 );
+      forceSharpnessMap = new LinearFunction( minForce, maxForce, 0, 1 );
+    }
+    else if ( paradigmChoice === '5' ) {
+
+      // intensity should increase as force increases, sharpness should decrease as force increases
+      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.4, 1 );
+      forceSharpnessMap = new LinearFunction( minForce, maxForce, 1, 0 );
+    }
+    else if ( paradigmChoice === '6' ) {
+
+      // intensity increases as force increases, sharpness constant at 1 - however, this applies to mass
+      // spinners as well
+      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.2, 1 );
+      forceSharpnessMap = new LinearFunction( minForce, maxForce, 1, 1 );
+    }
+
+    let forceIntensityValue = null;
+    let forceSharpnessValue = null;
+    model.forceProperty.link( force => {
+      forceIntensityValue = forceIntensityMap( force );
+      forceSharpnessValue = forceSharpnessMap( force );
+      console.log( forceSharpnessValue );
+      vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
+      vibrationManageriOS.setVibrationSharpness( forceSharpnessValue );
+    } );
+
+    Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
+      if ( object1Dragging || object2Dragging ) {
+        this.massVibrationController.stop();
+        vibrationManageriOS.vibrateContinuous();
+        vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
+        vibrationManageriOS.setVibrationSharpness( forceSharpnessValue );
+      }
+      else {
+        vibrationManageriOS.stop();
+      }
+    } );
 
     // maps the mass value to the intensity of vibration
     const massIntensityFunction = new LinearFunction( minMass, maxMass, LOW_MASS_INTENSITY, HIGH_MASS_INTENSITY );
