@@ -55,7 +55,6 @@ class VibrationController {
       let forceIntensityValue = null;
       model.forceProperty.link( force => {
         forceIntensityValue = forceIntensityFunction( force );
-        console.log( forceIntensityValue );
         vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
       } );
 
