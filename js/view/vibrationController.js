@@ -14,7 +14,7 @@ import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
 // extreme values for the intensity of vibration pattern representing mass
-const LOW_MASS_INTENSITY = 0.4;
+const LOW_MASS_INTENSITY = 0.3;
 const HIGH_MASS_INTENSITY = 1;
 
 // extreme intervals for the sharpness of vibration pattern representing mass
@@ -24,7 +24,7 @@ const HIGH_MASS_SHARPNESS = 1;
 // the pattern for vibration indicating mass - pattern is static, the intensity and sharpness
 // change with mass value - itervals in seconds
 const LOW_MASS_INTERVAL = 0.030;
-const HIGH_MASS_INTERVAL = 0.180;
+const HIGH_MASS_INTERVAL = 0.120;
 
 const minMass = GFLBConstants.MASS_RANGE.min;
 const maxMass = GFLBConstants.MASS_RANGE.max;
@@ -87,11 +87,14 @@ class VibrationController {
     let forceIntensityValue = null;
     let forceSharpnessValue = null;
     model.forceProperty.link( force => {
-      forceIntensityValue = forceIntensityMap( force );
-      forceSharpnessValue = forceSharpnessMap( force );
-      console.log( forceSharpnessValue );
-      vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
-      vibrationManageriOS.setVibrationSharpness( forceSharpnessValue );
+
+      // only change intensity of vibration while a mass is being dragged
+      if ( model.object1.isDraggingProperty.value || model.object2.isDraggingProperty.value ) {
+        forceIntensityValue = forceIntensityMap( force );
+        forceSharpnessValue = forceSharpnessMap( force );
+        vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
+        vibrationManageriOS.setVibrationSharpness( forceSharpnessValue );
+      }
     } );
 
     Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
@@ -119,17 +122,27 @@ class VibrationController {
       repeat: false
     } );
 
-    const massVibrationListener = mass => {
+    // one way to convey this - a single pulse per mass change, with dynamic intensity
+    const clickingMassVibrationListener = mass => {
+      vibrationManageriOS.vibrateContinuous( {
+        duration: 0.030,
+        intensity: massIntensityFunction( mass )
+      } );
+    };
+
+    // another way to convey mass - two pulses with dynamic length, intensity and sharpness
+    const patternMassVibrationListener = mass => {
       const massInterval = massIntervalFunction( mass );
-      this.massVibrationController.setPattern( [ massInterval, massInterval, massInterval, massInterval ] );
+      this.massVibrationController.setPattern( [ massInterval, 0.025, massInterval, 0.025 ] );
+      this.massVibrationController.stop();
 
       this.massVibrationController.setIntensity( massIntensityFunction( mass ) );
       this.massVibrationController.setSharpness( massSharpnessFunction( mass ) );
 
       this.massVibrationController.start();
     };
-    model.object1.valueProperty.lazyLink( massVibrationListener );
-    model.object2.valueProperty.lazyLink( massVibrationListener );
+    model.object1.valueProperty.lazyLink( clickingMassVibrationListener );
+    model.object2.valueProperty.lazyLink( patternMassVibrationListener );
   }
 
   /**
