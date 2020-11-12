@@ -99,7 +99,6 @@ class VibrationController {
         const inverseSquare = 1 / ( radius * radius );
         const normalizedIntensity = ( halfMin * halfMin ) * inverseSquare;
 
-        console.log( normalizedIntensity );
         return Utils.clamp( normalizedIntensity, 0.2, 1 );
       };
 
