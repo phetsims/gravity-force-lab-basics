@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.24 Wed Nov 11 2020 13:49:49 GMT-0500 (Eastern Standard Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.25 Wed Nov 11 2020 19:53:04 GMT-0500 (Eastern Standard Time)",
   "assert": {
     "sha": "49aa67d01046326d85dcd8f265db91e8753038a1",
     "branch": "master"
@@ -13,7 +13,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "a43461bf00a5f6b2c3fe6599815f8ffb78d55bf6",
+    "sha": "dfaf696bfebb8aa39a5d398dd95f74eef5f918b4",
     "branch": "master"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "69a10d075b8bb18ecc3f731fe5b8cd2269c8e051",
+    "sha": "ad5299fc7d170808f77d81f4b76ab21981d79a72",
     "branch": "master"
   },
   "inverse-square-law-common": {
