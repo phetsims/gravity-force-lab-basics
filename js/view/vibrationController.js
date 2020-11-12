@@ -122,27 +122,51 @@ class VibrationController {
       repeat: false
     } );
 
-    // one way to convey this - a single pulse per mass change, with dynamic intensity
-    const clickingMassVibrationListener = mass => {
-      vibrationManageriOS.vibrateContinuous( {
-        duration: 0.030,
-        intensity: massIntensityFunction( mass )
-      } );
-    };
+    this.forceVibrationController = new ContinuousPatternVibrationController( {
+      repeat: false
+    } );
 
-    // another way to convey mass - two pulses with dynamic length, intensity and sharpness
-    const patternMassVibrationListener = mass => {
-      const massInterval = massIntervalFunction( mass );
-      this.massVibrationController.setPattern( [ massInterval, 0.025, massInterval, 0.025 ] );
-      this.massVibrationController.stop();
+    if ( paradigmChoice === '6' ) {
+      const forceOnMassChangeVibrationListener = () => {
+        const force = model.forceProperty.value;
 
-      this.massVibrationController.setIntensity( massIntensityFunction( mass ) );
-      this.massVibrationController.setSharpness( massSharpnessFunction( mass ) );
+        // the way to vibrate for 0.1 seconds (for now) - by setting the pattern,
+        // we let the current one play and start when ready
+        this.forceVibrationController.setPattern( [ 0.2, 0 ] );
+        this.forceVibrationController.setIntensity( forceIntensityMap( force ) );
+        this.forceVibrationController.setSharpness( forceSharpnessMap( force ) );
 
-      this.massVibrationController.start();
-    };
-    model.object1.valueProperty.lazyLink( clickingMassVibrationListener );
-    model.object2.valueProperty.lazyLink( patternMassVibrationListener );
+        if ( !this.forceVibrationController.runningPattern ) {
+          this.forceVibrationController.start();
+        }
+      };
+      model.object1.valueProperty.lazyLink( forceOnMassChangeVibrationListener );
+      model.object2.valueProperty.lazyLink( forceOnMassChangeVibrationListener );
+    }
+    else {
+
+      // one way to convey this - a single pulse per mass change, with dynamic intensity
+      const clickingMassVibrationListener = mass => {
+        vibrationManageriOS.vibrateContinuous( {
+          duration: 0.030,
+          intensity: massIntensityFunction( mass )
+        } );
+      };
+
+      // another way to convey mass - two pulses with dynamic length, intensity and sharpness
+      const patternMassVibrationListener = mass => {
+        const massInterval = massIntervalFunction( mass );
+        this.massVibrationController.setPattern( [ massInterval, 0.025, massInterval, 0.025 ] );
+        this.massVibrationController.stop();
+
+        this.massVibrationController.setIntensity( massIntensityFunction( mass ) );
+        this.massVibrationController.setSharpness( massSharpnessFunction( mass ) );
+
+        this.massVibrationController.start();
+      };
+      model.object1.valueProperty.lazyLink( clickingMassVibrationListener );
+      model.object2.valueProperty.lazyLink( patternMassVibrationListener );
+    }
   }
 
   /**
@@ -150,8 +174,8 @@ class VibrationController {
    * @param {number} dt - in seconds
    */
   step( dt ) {
-    // this.forcePatternManager.step( dt );
     this.massVibrationController.step( dt );
+    this.forceVibrationController.step( dt );
   }
 }
 
