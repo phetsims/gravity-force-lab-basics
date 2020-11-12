@@ -8,6 +8,7 @@
 
 import Property from '../../../axon/js/Property.js';
 import LinearFunction from '../../../dot/js/LinearFunction.js';
+import Utils from '../../../dot/js/Utils.js';
 import ContinuousPatternVibrationController from '../../../tappi/js/ContinuousPatternVibrationController.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -82,6 +83,32 @@ class VibrationController {
       // spinners as well
       forceIntensityMap = new LinearFunction( minForce, maxForce, 0.2, 1 );
       forceSharpnessMap = new LinearFunction( minForce, maxForce, 1, 1 );
+    }
+    else if ( paradigmChoice === '7' ) {
+
+      // in this paradigm we are trying to convey the inverse square law and still have vibration
+      // detectable for the full range of motion. So rather than map intensity/sharpness directly
+      // to force, intensity is mapped like 1/r^2 with distance, and sharpness is mapped linearly
+      // to the mass
+
+      // intensity increases exponentially with distance
+      const halfMin = model.getMinDistance( maxMass ) / 2;
+      forceIntensityMap = force => {
+        const separation = model.object2.positionProperty.get() - model.object1.positionProperty.get();
+        const radius = separation / 2;
+        const inverseSquare = 1 / ( radius * radius );
+        const normalizedIntensity = ( halfMin * halfMin ) * inverseSquare;
+
+        console.log( normalizedIntensity );
+        return Utils.clamp( normalizedIntensity, 0.2, 1 );
+      };
+
+      // sharpness increases linearly with mass
+      const massSharpnessMap = new LinearFunction( 2 * minMass, 2 * maxMass, 0.2, 1 );
+      forceSharpnessMap = mass => {
+        const sharpness = massSharpnessMap( model.object1.valueProperty.value + model.object2.valueProperty.value );
+        return sharpness;
+      };
     }
 
     let forceIntensityValue = null;
