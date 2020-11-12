@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.25 Wed Nov 11 2020 19:53:04 GMT-0500 (Eastern Standard Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.26 Thu Nov 12 2020 18:44:28 GMT-0500 (Eastern Standard Time)",
   "assert": {
     "sha": "49aa67d01046326d85dcd8f265db91e8753038a1",
     "branch": "master"
@@ -13,7 +13,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "dfaf696bfebb8aa39a5d398dd95f74eef5f918b4",
+    "sha": "84a98d10462824b977e0b03cb7d8e321a02a657a",
     "branch": "master"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "ad5299fc7d170808f77d81f4b76ab21981d79a72",
+    "sha": "55c357e14a934a4ae58a0514bcade9600f469631",
     "branch": "master"
   },
   "inverse-square-law-common": {
@@ -33,7 +33,7 @@
     "branch": "master"
   },
   "joist": {
-    "sha": "7d5bbd93b18318aa295701424a3b6bfc8130c330",
+    "sha": "e33ee273ec190c8a944076d2ff6c4b06d4fc9746",
     "branch": "master"
   },
   "kite": {
@@ -45,7 +45,7 @@
     "branch": "master"
   },
   "phet-io": {
-    "sha": "f01284e065ea98aa1493029064f058d6f1e0faa5",
+    "sha": "dc557b2c1f24cd50c7edcb23f119df83b78265b6",
     "branch": "master"
   },
   "phet-io-client-guides": {
@@ -69,11 +69,11 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "bf3eb1a8a03f0440de25519534f3092e89ea4b9c",
+    "sha": "4879f62fcd65fc6513707809d235e22ecbe3297e",
     "branch": "master"
   },
   "scenery-phet": {
-    "sha": "1a81c88e54ba0f370fdce8459aafb4f1bcfea4dd",
+    "sha": "c89d58bd7c72c488344b1d094a2bc206761e7abd",
     "branch": "master"
   },
   "sherpa": {
@@ -81,11 +81,11 @@
     "branch": "master"
   },
   "studio": {
-    "sha": "7b1f7c27d79ef23930304886b9720900393c1613",
+    "sha": "f1483eca822b11cd45b9894edd05a717608ea6a7",
     "branch": "master"
   },
   "sun": {
-    "sha": "3c471960eda36bd8180ca20d71a76cf95cf0785e",
+    "sha": "f4676c56409ca06095466aa4cdb2c19755ec16f4",
     "branch": "master"
   },
   "tambo": {
@@ -93,7 +93,7 @@
     "branch": "master"
   },
   "tandem": {
-    "sha": "3e96c16cde06794e75d584b30a1457becbd24fee",
+    "sha": "172bb43c0c324b8424136e6bbb98966b4aab4c25",
     "branch": "master"
   },
   "twixt": {
