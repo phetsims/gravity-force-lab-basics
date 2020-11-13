@@ -7,7 +7,6 @@
  */
 
 import GravityForceLabKeyboardHelpContent from '../../gravity-force-lab/js/view/GravityForceLabKeyboardHelpContent.js';
-import WebSpeechDialogContent from '../../scenery-phet/js/accessibility/speaker/WebSpeechDialogContent.js';
 import Screen from '../../joist/js/Screen.js';
 import Sim from '../../joist/js/Sim.js';
 import simLauncher from '../../joist/js/simLauncher.js';
@@ -19,7 +18,6 @@ import GFLBScreenView from './view/GFLBScreenView.js';
 
 // constants
 const tandem = Tandem.ROOT;
-const SELF_VOICING = phet.chipper.queryParameters.supportsSelfVoicing;
 
 const gravityForceLabBasicsTitleString = gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].title;
 
@@ -37,8 +35,7 @@ const simOptions = {
     soundDesign: 'Ashton Morris',
     thanks: ''
   },
-  hasKeyboardHelpContent: true,
-  createOptionsDialogContent: SELF_VOICING ? () => new WebSpeechDialogContent() : null
+  hasKeyboardHelpContent: true
 };
 
 simLauncher.launch( () => {
