@@ -92,14 +92,19 @@ class VibrationController {
       // to the mass
 
       // intensity increases exponentially with distance
-      const halfMin = model.getMinDistance( maxMass ) / 2;
+      // using distance at max mass, so that changes can be felt clearly without requiring "constant
+      // size" to be checked
+      const minIntensity = 0.4;
+      const maxIntensity = 1;
       forceIntensityMap = force => {
-        const separation = model.object2.positionProperty.get() - model.object1.positionProperty.get();
-        const radius = separation / 2;
-        const inverseSquare = 1 / ( radius * radius );
-        const normalizedIntensity = ( halfMin * halfMin ) * inverseSquare;
+        const minSeparation = model.getSumRadiusWithSeparation() / 1000;
+        const separation = (model.object2.positionProperty.get() - model.object1.positionProperty.get()) / 1000;
 
-        return Utils.clamp( normalizedIntensity, 0.2, 1 );
+        // an offset for the inverse square function such that the intensity is 1 when separation
+        // is at minimum for the given sphere radii
+        const xOffset = Math.pow( 1 / ( maxIntensity - minIntensity ), 0.5 ) - minSeparation;
+        const intensity = 1 / Math.pow( separation + xOffset, 2 ) + minIntensity;
+        return Utils.clamp( intensity, minIntensity, maxIntensity );
       };
 
       // sharpness increases linearly with mass
