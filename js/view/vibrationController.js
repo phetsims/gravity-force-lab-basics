@@ -10,6 +10,7 @@ import Property from '../../../axon/js/Property.js';
 import LinearFunction from '../../../dot/js/LinearFunction.js';
 import Utils from '../../../dot/js/Utils.js';
 import ContinuousPatternVibrationController from '../../../tappi/js/ContinuousPatternVibrationController.js';
+import VibrationPatterns from '../../../tappi/js/VibrationPatterns.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
@@ -89,7 +90,7 @@ class VibrationController {
       const maxIntensity = 1;
       forceIntensityMap = force => {
         const minSeparation = model.getSumRadiusWithSeparation() / 1000;
-        const separation = (model.object2.positionProperty.get() - model.object1.positionProperty.get()) / 1000;
+        const separation = ( model.object2.positionProperty.get() - model.object1.positionProperty.get() ) / 1000;
 
         // an offset for the inverse square function such that the intensity is 1 when separation
         // is at minimum for the given sphere radii
@@ -106,8 +107,8 @@ class VibrationController {
       };
     }
 
-    let forceIntensityValue = null;
-    let forceSharpnessValue = null;
+    let forceIntensityValue = forceIntensityMap( model.forceProperty.get() );
+    let forceSharpnessValue = forceSharpnessMap( model.forceProperty.get() );
     model.forceProperty.link( force => {
 
       // only change intensity of vibration while a mass is being dragged
@@ -172,6 +173,22 @@ class VibrationController {
       model.object1.valueProperty.lazyLink( clickingMassVibrationListener );
       model.object2.valueProperty.lazyLink( clickingMassVibrationListener );
     }
+
+    // after resetting or activating a checkbox, request the interactionSuccess pattern
+    model.resetInProgressProperty.lazyLink( inProgress => {
+      if ( !inProgress ) {
+        VibrationPatterns.interactionSuccess();
+      }
+    } );
+    model.showForceValuesProperty.lazyLink( showForceValues => {
+      VibrationPatterns.interactionSuccess();
+    } );
+    model.showDistanceProperty.lazyLink( showDistance => {
+      VibrationPatterns.interactionSuccess();
+    } );
+    model.constantRadiusProperty.lazyLink( constantRadius => {
+      VibrationPatterns.interactionSuccess();
+    } );
   }
 
   /**
