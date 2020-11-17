@@ -520,10 +520,6 @@ class GFLBScreenView extends ScreenView {
    */
   step( dt ) {
     this.forceSoundGenerator.step( dt );
-
-    if ( phet.chipper.queryParameters.vibrationParadigm ) {
-      vibrationController.step( dt );
-    }
   }
 }
 

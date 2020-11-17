@@ -9,7 +9,6 @@
 import Property from '../../../axon/js/Property.js';
 import LinearFunction from '../../../dot/js/LinearFunction.js';
 import Utils from '../../../dot/js/Utils.js';
-import ContinuousPatternVibrationController from '../../../tappi/js/ContinuousPatternVibrationController.js';
 import VibrationPatterns from '../../../tappi/js/VibrationPatterns.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -33,50 +32,10 @@ class VibrationController {
   initialize( vibrationManageriOS, model ) {
     const paradigmChoice = phet.chipper.queryParameters.vibrationParadigm;
 
-    const minForce = model.getMinForceMagnitude();
-    const maxForce = model.getMaxForce();
-
     let forceIntensityMap;
     let forceSharpnessMap;
 
     if ( paradigmChoice === '1' ) {
-
-      // intensity locked at 0.6, sharpness should increase as force increases
-      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.6, 0.6 );
-      forceSharpnessMap = new LinearFunction( minForce, maxForce, 0.0, 1 );
-    }
-    else if ( paradigmChoice === '2' ) {
-
-      // intensity locked at 0.6, sharpness should decrease as force increases
-      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.6, 0.6 );
-      forceSharpnessMap = new LinearFunction( minForce, maxForce, 1, 0 );
-    }
-    else if ( paradigmChoice === '3' ) {
-
-      // intensity locked at 0.3, sharpness should increase as force increases
-      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.3, 0.3 );
-      forceSharpnessMap = new LinearFunction( minForce, maxForce, 0, 1 );
-    }
-    else if ( paradigmChoice === '4' ) {
-
-      // intensity should increase as force increases, sharpness should increase as force increases
-      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.4, 1 );
-      forceSharpnessMap = new LinearFunction( minForce, maxForce, 0, 1 );
-    }
-    else if ( paradigmChoice === '5' ) {
-
-      // intensity should increase as force increases, sharpness should decrease as force increases
-      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.4, 1 );
-      forceSharpnessMap = new LinearFunction( minForce, maxForce, 1, 0 );
-    }
-    else if ( paradigmChoice === '6' ) {
-
-      // intensity increases as force increases, sharpness constant at 1 - however, this applies to mass
-      // spinners as well
-      forceIntensityMap = new LinearFunction( minForce, maxForce, 0.2, 1 );
-      forceSharpnessMap = new LinearFunction( minForce, maxForce, 1, 1 );
-    }
-    else if ( paradigmChoice === '7' ) {
 
       // in this paradigm we are trying to convey the inverse square law and still have vibration
       // detectable for the full range of motion. So rather than map intensity/sharpness directly
@@ -102,8 +61,7 @@ class VibrationController {
       // sharpness increases linearly with mass
       const massSharpnessMap = new LinearFunction( 2 * minMass, 2 * maxMass, 0.2, 1 );
       forceSharpnessMap = mass => {
-        const sharpness = massSharpnessMap( model.object1.valueProperty.value + model.object2.valueProperty.value );
-        return sharpness;
+        return massSharpnessMap( model.object1.valueProperty.value + model.object2.valueProperty.value );
       };
     }
 
@@ -122,7 +80,6 @@ class VibrationController {
 
     Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
       if ( object1Dragging || object2Dragging ) {
-        this.massVibrationController.stop();
         vibrationManageriOS.vibrateContinuous();
         vibrationManageriOS.setVibrationIntensity( forceIntensityValue );
         vibrationManageriOS.setVibrationSharpness( forceSharpnessValue );
@@ -135,44 +92,16 @@ class VibrationController {
     // maps the mass value to the intensity of vibration
     const massIntensityFunction = new LinearFunction( minMass, maxMass, LOW_MASS_INTENSITY, HIGH_MASS_INTENSITY );
 
-    this.massVibrationController = new ContinuousPatternVibrationController( {
-      repeat: false
-    } );
+    // a single pulse per mass change, with dynamic intensity
+    const clickingMassVibrationListener = mass => {
+      vibrationManageriOS.vibrateContinuous( {
+        duration: 0.030,
+        intensity: massIntensityFunction( mass )
+      } );
+    };
 
-    this.forceVibrationController = new ContinuousPatternVibrationController( {
-      repeat: false
-    } );
-
-    if ( paradigmChoice === '6' ) {
-      const forceOnMassChangeVibrationListener = () => {
-        const force = model.forceProperty.value;
-
-        // the way to vibrate for 0.1 seconds (for now) - by setting the pattern,
-        // we let the current one play and start when ready
-        this.forceVibrationController.setPattern( [ 0.2, 0 ] );
-        this.forceVibrationController.setIntensity( forceIntensityMap( force ) );
-        this.forceVibrationController.setSharpness( forceSharpnessMap( force ) );
-
-        if ( !this.forceVibrationController.runningPattern ) {
-          this.forceVibrationController.start();
-        }
-      };
-      model.object1.valueProperty.lazyLink( forceOnMassChangeVibrationListener );
-      model.object2.valueProperty.lazyLink( forceOnMassChangeVibrationListener );
-    }
-    else {
-
-      // a single pulse per mass change, with dynamic intensity
-      const clickingMassVibrationListener = mass => {
-        vibrationManageriOS.vibrateContinuous( {
-          duration: 0.030,
-          intensity: massIntensityFunction( mass )
-        } );
-      };
-
-      model.object1.valueProperty.lazyLink( clickingMassVibrationListener );
-      model.object2.valueProperty.lazyLink( clickingMassVibrationListener );
-    }
+    model.object1.valueProperty.lazyLink( clickingMassVibrationListener );
+    model.object2.valueProperty.lazyLink( clickingMassVibrationListener );
 
     // after resetting or activating a checkbox, request the interactionSuccess pattern
     model.resetInProgressProperty.lazyLink( inProgress => {
@@ -189,15 +118,6 @@ class VibrationController {
     model.constantRadiusProperty.lazyLink( constantRadius => {
       VibrationPatterns.interactionSuccess();
     } );
-  }
-
-  /**
-   * @public
-   * @param {number} dt - in seconds
-   */
-  step( dt ) {
-    this.massVibrationController.step( dt );
-    this.forceVibrationController.step( dt );
   }
 }
 
