@@ -20,7 +20,6 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 // constants
 const MASS_NODE_Y_POSITION = 215;
 
-const grabbedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.grabbed;
 const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
 const grabDragHintPatternString = sceneryPhetStrings.a11y.selfVoicing.grabDragHintPattern;
 
@@ -94,8 +93,6 @@ class GFLBMassNode extends MassNode {
    * @param listener
    */
   swipeStart( event, listener ) {
-    const response = levelSpeakerModel.collectResponses( grabbedString );
-    phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
 
     // we are going to forward the event to the dragListener rather than continuing
     // with swipe gestures detach the listener that is observing press and hold
