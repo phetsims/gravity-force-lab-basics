@@ -1,11 +1,11 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.29 Wed Nov 18 2020 18:38:06 GMT-0500 (Eastern Standard Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.30 Fri Nov 20 2020 17:10:50 GMT-0500 (Eastern Standard Time)",
   "assert": {
     "sha": "49aa67d01046326d85dcd8f265db91e8753038a1",
     "branch": "master"
   },
   "axon": {
-    "sha": "232fd17ecdcb4ab8d2b1a335be52e3b23b79da72",
+    "sha": "8c6331740e7d95a1821eddeede4a9b8cf51ecf26",
     "branch": "master"
   },
   "brand": {
@@ -13,7 +13,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "fbfb23441d7d03e487651391d6b4b7f8fb430598",
+    "sha": "1e41f1c102353423090b88c49c0706b81fba3cc2",
     "branch": "master"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "87a90dbbd44552f81a24da0419806b37a66c0e4f",
+    "sha": "16d0f5ed12bf53eb77164522e0e502b51cd76045",
     "branch": "master"
   },
   "inverse-square-law-common": {
@@ -45,7 +45,7 @@
     "branch": "master"
   },
   "phet-io": {
-    "sha": "dc557b2c1f24cd50c7edcb23f119df83b78265b6",
+    "sha": "018e89a2f8b60a2e98cbaa511132ced15ed50efd",
     "branch": "master"
   },
   "phet-io-client-guides": {
@@ -53,7 +53,7 @@
     "branch": "master"
   },
   "phet-io-wrappers": {
-    "sha": "2fe32560327cf2c426b6a4c9cd179252d992dc96",
+    "sha": "fc5faa6130a68cf8256b24cad9fa99923003528e",
     "branch": "master"
   },
   "phetcommon": {
@@ -61,7 +61,7 @@
     "branch": "master"
   },
   "phetmarks": {
-    "sha": "37a5f590a8282dbcef80e6a5dde3637b15955a45",
+    "sha": "2da5f4abab247d880d3bb7534477779730716f2d",
     "branch": "master"
   },
   "query-string-machine": {
@@ -69,7 +69,7 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "c8454e2c6d0b78e68f0442237150e4ae9e33fa89",
+    "sha": "112aba050a00d38150bf83ce5477dc2b832c2a39",
     "branch": "master"
   },
   "scenery-phet": {
@@ -85,15 +85,15 @@
     "branch": "master"
   },
   "sun": {
-    "sha": "fffaee5599291a7a206271f592c536c11d0f0b19",
+    "sha": "0cfae4a5c4b6412fc9204b3ccad2fa58bcad625a",
     "branch": "master"
   },
   "tambo": {
-    "sha": "b5b4c12823d96f2426630ff9f2fc768499b64d31",
+    "sha": "7d5ccbe08bce76ad75137ba40a53e2d1ef1fec62",
     "branch": "master"
   },
   "tandem": {
-    "sha": "efbb809b1620a05db963e56b3adda9850d146a20",
+    "sha": "800e7178c9084010ef941909531758f2779faa1b",
     "branch": "master"
   },
   "twixt": {
