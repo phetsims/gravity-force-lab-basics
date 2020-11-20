@@ -526,6 +526,22 @@ class GFLBScreenView extends ScreenView {
       model.object2.positionProperty.lazyLink( value => {
         this.eventRecorder.addTestEvent( new VibrationTestEvent( value, null, this.vibrationTestInputListener.elapsedTime, 'Moving Mass 2' ) );
       } );
+
+      model.constantRadiusProperty.lazyLink( constantRadius => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( constantRadius, null, this.vibrationTestInputListener.elapsedTime, 'Constant Radius' ) );
+      } );
+
+      model.showDistanceProperty.lazyLinkShow( showDistance => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( showDistance, null, this.vibrationTestInputListener.elapsedTime, 'Show Distance' ) );
+      } );
+
+      model.showForceValuesProperty.lazyLinkShow( showForceValues => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( showForceValues, null, this.vibrationTestInputListener.elapsedTime, 'Show Force Values' ) );
+      } );
+
+      model.resetInProgressProperty.lazyLink( inProgress => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( null, null, this.vibrationTestInputListener.elapsedTime, 'Reset All' ) );
+      } );
     }
   }
 
