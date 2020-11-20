@@ -39,7 +39,9 @@ import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
 import ContinuousPropertySoundGenerator from '../../../tambo/js/sound-generators/ContinuousPropertySoundGenerator.js';
 import soundManager from '../../../tambo/js/soundManager.js';
+import VibrationTestEvent from '../../../tappi/js/tracking/VibrationTestEvent.js';
 import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTestEventRecorder.js';
+import VibrationTestInputListener from '../../../tappi/js/tracking/VibrationTestInputListener.js';
 import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
 import ShapeHitDetector from '../../../tappi/js/view/ShapeHitDetector.js';
 import tappiDialogController from '../../../tappi/js/view/tappiDialogController.js';
@@ -503,6 +505,27 @@ class GFLBScreenView extends ScreenView {
 
       // collection of input and simulation events that will be recorded during user interaction
       this.eventRecorder = new VibrationTestEventRecorder( vibrationManager );
+
+      // listener that watches finger/touch input and saves to the event recorder
+      this.vibrationTestInputListener = new VibrationTestInputListener( this.eventRecorder );
+      phet.joist.display.addInputListener( this.vibrationTestInputListener );
+
+      // sim specific events that we want to record
+      model.object1.valueProperty.lazyLink( value => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( value, null, this.vibrationTestInputListener.elapsedTime, 'Mass 1 Value' ) );
+      } );
+
+      model.object2.valueProperty.lazyLink( value => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( value, null, this.vibrationTestInputListener.elapsedTime, 'Mass 2 Value' ) );
+      } );
+
+      model.object1.positionProperty.lazyLink( value => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( value, null, this.vibrationTestInputListener.elapsedTime, 'Moving Mass 1' ) );
+      } );
+
+      model.object2.positionProperty.lazyLink( value => {
+        this.eventRecorder.addTestEvent( new VibrationTestEvent( value, null, this.vibrationTestInputListener.elapsedTime, 'Moving Mass 2' ) );
+      } );
     }
   }
 
@@ -513,6 +536,10 @@ class GFLBScreenView extends ScreenView {
    */
   step( dt ) {
     this.forceSoundGenerator.step( dt );
+
+    if ( this.vibrationTestInputListener ) {
+      this.vibrationTestInputListener.setElapsedTime( this.vibrationTestInputListener.elapsedTime + dt );
+    }
   }
 }
 
