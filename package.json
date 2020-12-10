@@ -13,7 +13,8 @@
     "requirejsNamespace": "GRAVITY_FORCE_LAB_BASICS",
     "phetLibs": [
       "inverse-square-law-common",
-      "gravity-force-lab"
+      "gravity-force-lab",
+      "tappi"
     ],
     "runnable": true,
     "supportedBrands": [
