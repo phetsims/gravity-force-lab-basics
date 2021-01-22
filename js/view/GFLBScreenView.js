@@ -152,7 +152,7 @@ class GFLBScreenView extends ScreenView {
       // for self-voicing, we want to speek when the pointer is over elements, not down on them
       hitOnOver: true
     } );
-    phet.joist.sim.display.addInputListener( this.shapeHitDetector );
+    phet.joist.display.addInputListener( this.shapeHitDetector );
 
     // Create the model-view transform.  The primary units used in the model are meters, so significant zoom is used.
     // The multipliers for the 2nd parameter can be used to adjust where the point (0, 0) in the model, which is
@@ -421,7 +421,7 @@ class GFLBScreenView extends ScreenView {
       speakerHighlighter.initialize();
 
       // add the swipe listener
-      const swipeListener = new SwipeListener( phet.joist.sim.display._input );
+      const swipeListener = new SwipeListener( phet.joist.display._input );
       levelSpeakerModel.gestureControlProperty.link( gestureControl => {
         swipeListener.enabled = gestureControl;
       } );
