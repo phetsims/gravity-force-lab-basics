@@ -44,10 +44,6 @@ class GFLBCheckboxPanel extends ISLCPanel {
       yMargin: 10,
       minWidth: 170,
 
-      // {null|ShapeHitDetector} - a11y, to support prototype self-voicing feature set - if included browser
-      // will speak information about check boxes upon certain user input
-      shapeHitDetector: null,
-
       // phet-io
       tandem: Tandem.REQUIRED
     }, options );
@@ -66,6 +62,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
 
     // PROTOTYPE a11y code, for the self-voicing feature set
     if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+
       // list of interaction hints to be read upon focus, in the order of checkboxes. Pretty rough, but better
       // than looking inside of CheckboxItem for this. IF we want to invest more in this feature we can
       // make this more robust

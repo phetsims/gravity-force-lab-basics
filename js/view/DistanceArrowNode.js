@@ -12,7 +12,6 @@ import Property from '../../../axon/js/Property.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
-import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import SelfVoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingWrapperNode.js';
@@ -40,13 +39,6 @@ class DistanceArrowNode extends Node {
    * @param {Object} [options]
    */
   constructor( model, modelViewTransform, positionDescriber, options ) {
-
-    options = merge( {
-
-      // {null|ShapeHitDetector} - a11y, to support prototype self-voicing feature set - if included, browser
-      // will speak information about disatnce upon certain user input
-      shapeHitDetector: null
-    }, options );
 
     super( options );
 

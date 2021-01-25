@@ -43,7 +43,6 @@ import VibrationTestEvent from '../../../tappi/js/tracking/VibrationTestEvent.js
 import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTestEventRecorder.js';
 import VibrationTestInputListener from '../../../tappi/js/tracking/VibrationTestInputListener.js';
 import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
-import ShapeHitDetector from '../../../tappi/js/view/ShapeHitDetector.js';
 import tappiDialogController from '../../../tappi/js/view/tappiDialogController.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -145,15 +144,6 @@ class GFLBScreenView extends ScreenView {
       } )
     } );
 
-    // @public - PROTOTYPE a11y code, detects if the pointer is over various Nodes and Shapes in the screen view, to
-    // support self-voicing speech output.
-    this.shapeHitDetector = new ShapeHitDetector( this, {
-
-      // for self-voicing, we want to speek when the pointer is over elements, not down on them
-      hitOnOver: true
-    } );
-    phet.joist.display.addInputListener( this.shapeHitDetector );
-
     // Create the model-view transform.  The primary units used in the model are meters, so significant zoom is used.
     // The multipliers for the 2nd parameter can be used to adjust where the point (0, 0) in the model, which is
     // between the two masses.
@@ -172,7 +162,6 @@ class GFLBScreenView extends ScreenView {
         defaultDirection: DefaultDirection.LEFT,
         arrowColor: '#66F',
         forceArrowHeight: 125,
-        shapeHitDetector: this.shapeHitDetector,
         objectColor: blueColorString,
         grabHintLabel: moveMass1HintString,
         tandem: tandem.createTandem( 'mass1Node' )
@@ -186,7 +175,6 @@ class GFLBScreenView extends ScreenView {
         defaultDirection: DefaultDirection.RIGHT,
         arrowColor: '#F66',
         forceArrowHeight: 175,
-        shapeHitDetector: this.shapeHitDetector,
         objectColor: redColorString,
         grabHintLabel: moveMass2HintString,
         tandem: tandem.createTandem( 'mass2Node' )
@@ -219,14 +207,12 @@ class GFLBScreenView extends ScreenView {
     const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
       GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, alertManager,
       massDescriber, tandem.createTandem( 'massControl1' ), {
-        shapeHitDetector: this.shapeHitDetector,
         changeMassHintString: changeMass1HintString
       } );
     const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
       GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, alertManager,
       massDescriber, tandem.createTandem( 'massControl2' ), {
         color: new Color( 255, 0, 0 ),
-        shapeHitDetector: this.shapeHitDetector,
         changeMassHintString: changeMass2HintString
       } );
 
@@ -328,15 +314,13 @@ class GFLBScreenView extends ScreenView {
     ];
     const parameterControlPanel = new GFLBCheckboxPanel( checkboxItems, {
       tandem: tandem.createTandem( 'parameterControlPanel' ),
-      fill: '#f1f1f2',
-      shapeHitDetector: this.shapeHitDetector
+      fill: '#f1f1f2'
     } );
 
     // arrow that shows distance between the two masses
     const distanceArrowNode = new DistanceArrowNode( model, modelViewTransform, positionDescriber, {
       tandem: tandem.createTandem( 'distanceArrowNode' ),
-      y: 145,
-      shapeHitDetector: this.shapeHitDetector
+      y: 145
     } );
     model.showDistanceProperty.linkAttribute( distanceArrowNode, 'visible' );
     massPositionsNode.addChild( distanceArrowNode );

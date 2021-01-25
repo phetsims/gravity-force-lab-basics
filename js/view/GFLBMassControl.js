@@ -61,10 +61,6 @@ class GFLBMassControl extends Panel {
     options = merge( {
       color: new Color( 0, 0, 255 ),
 
-      // {null|ShapeHitDetector} - a11y, to support prototype self-voicing feature set. If included browser
-      // will speak informatioon about the GFLBMassControl on certain user input
-      shapeHitDetector: null,
-
       // {null|string} (self-voicing) custom content to guide the user to dragging with custom gesture
       changeMassHintString: null
     }, options );
@@ -147,14 +143,9 @@ class GFLBMassControl extends Panel {
 
     // PROTOTYPE a11y code, for the self-voicing feature set
     if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
-      options.shapeHitDetector.addNode( numberPicker );
 
       // create a hit shape that will capture events on the panel and also exclude hits on the picker when
-      // pointer is over the panel. Ideally, the ShapeHitDetector will be smart enough to exclude children when
-      // necessary, but this was pretty difficult because listeners on the NumberPicker don't attach
-      // to the pointer and the vBox has infinite self bounds so it cannot be used itself. This is a temp solution,
-      // but there is likely a more general solution in the future - this is the only case of this in this prototype
-      // so far.
+      // pointer is over the panel.
       const panelHitShape = Shape.bounds( panelVBox.bounds ).shapeDifference( Shape.bounds( panelVBox.globalToParentBounds( numberPicker.globalBounds ).dilated( 15 ) ) );
       const panelHitPath = new Path( panelHitShape );
 
