@@ -41,7 +41,7 @@ in the top layer of the scene graph.
 
 This screen view adds all children directly to the PlayArea and ControlArea Nodes, which are meant for PDOM ordering. 
 This pattern is nice when it works, but is atypical since often visual layering order is different from PDOM top-bottom
-order. If needed in the future, `GFLBScreenView` can use `accessibleOrder` instead to accomplish a different PDOM 
+order. If needed in the future, `GFLBScreenView` can use `pdomOrder` instead to accomplish a different PDOM 
 structure without effecting visual ordering.
 
 ### Mass Nodes
