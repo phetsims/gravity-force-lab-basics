@@ -141,7 +141,8 @@ class GFLBScreenView extends ScreenView {
         secondaryDescriptionContent: secondaryOverviewString,
         simStateLabel: basicsSimStateLabelString,
         additionalMassDistanceProperties: [ model.showDistanceProperty ]
-      } )
+      } ),
+      tandem: tandem
     } );
 
     // Create the model-view transform.  The primary units used in the model are meters, so significant zoom is used.
