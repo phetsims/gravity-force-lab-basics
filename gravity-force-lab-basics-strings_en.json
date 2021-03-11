@@ -84,18 +84,6 @@
       "value": "Size of force"
     },
     "selfVoicing": {
-      "checked": {
-        "value": "checked"
-      },
-      "unchecked": {
-        "value": "unchecked"
-      },
-      "verboseCheckboxPattern": {
-        "value": "{{accessibleName}}, {{interactionHint}}"
-      },
-      "briefCheckboxPattern": {
-        "value": "{{accessibleName}}, {{checkedState}}"
-      },
       "verboseCheckedForceValuesCheckboxInteractionHint": {
         "value": "uncheck to hide newtons"
       },
@@ -114,26 +102,14 @@
       "verboseUncheckedConstantSizeCheckboxInteractionHint": {
         "value": "check to keep size of spheres constant while changing mass"
       },
-      "verboseDistanceArrowDescription": {
-        "value": "Centers of spheres, {{distance}} kilometers apart."
-      },
-      "briefDistanceArrowDescription": {
-        "value": "Centers {{distance}} kilometers apart."
-      },
       "redColor": {
         "value": "Red"
       },
       "blueColor": {
         "value": "Blue"
       },
-      "verboseChangeMassHintPattern": {
-        "value": "Change {{labelContent}}, {{valueText}}"
-      },
       "briefChangeMassHintPattern": {
         "value": "{{labelContent}}, {{valueText}}"
-      },
-      "massChangeInteractionPattern": {
-        "value": "{{valueText}}. {{massAlert}}"
       },
       "levels": {
         "forceValuesShown": {
@@ -172,9 +148,6 @@
         "inAddition": {
           "value": "In addition"
         },
-        "dragHint": {
-          "value": "Tap and hold to grab and drag."
-        },
         "moveMass1Hint": {
           "value": "move mass 1, blue sphere"
         },
@@ -187,46 +160,8 @@
         "changeMass2Hint": {
           "value": "change mass of mass 2"
         },
-        "grabbed": {
-          "value": "Grabbed."
-        },
         "released": {
           "value": "Released."
-        },
-        "quickMenu": {
-          "hintPlease": {
-            "value": "Hint Please!"
-          },
-          "overview": {
-            "value": "Sim Overview"
-          },
-          "details": {
-            "value": "Current Details"
-          },
-          "stopSpeech": {
-            "value": "Stop Speech"
-          },
-          "muteSpeech": {
-            "value": "Mute Speech"
-          },
-          "hide": {
-            "value": "Hide"
-          },
-          "show": {
-            "value": "Show"
-          },
-          "hidden": {
-            "value": "hidden"
-          },
-          "shown": {
-            "value": "shown"
-          },
-          "focusResponsePattern": {
-            "value": "{{action}} Self-Voicing Quick Menu"
-          },
-          "pressResponsePattern": {
-            "value": "Self-Voicing Quick Menu {{state}}"
-          }
         }
       }
     }
