@@ -151,7 +151,7 @@ class GFLBScreenView extends ScreenView {
     const modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping(
       Vector2.ZERO,
       new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height / 2 ),
-      .05
+      0.05
     );
 
     // add the mass nodes to the view
