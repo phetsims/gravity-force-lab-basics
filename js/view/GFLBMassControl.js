@@ -174,7 +174,7 @@ class GFLBMassControl extends Panel {
                          massControlsHelpTextBillionsString;
 
         const alertContent = levelSpeakerModel.collectResponses( objectResponse, null, helpText );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( alertContent );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( alertContent );
       };
 
       numberPicker.addInputListener( new SelfVoicingInputListener( {
@@ -193,7 +193,7 @@ class GFLBMassControl extends Panel {
         swipePositionOnValueChange = event.pointer.point;
 
         const response = levelSpeakerModel.collectResponses( draggableAlertString );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
       };
 
       numberPicker.swipeEnd = ( event, listener ) => {
@@ -201,7 +201,7 @@ class GFLBMassControl extends Panel {
           alert: releasedString,
           cancelOther: false
         } );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( releasedUtterance );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( releasedUtterance );
       };
 
       numberPicker.swipeMove = ( event, listener ) => {
@@ -239,7 +239,7 @@ class GFLBMassControl extends Panel {
             } );
 
             const response = levelSpeakerModel.collectResponses( hint );
-            phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+            phet.joist.sim.voicingUtteranceQueue.addToBack( response );
           }
         } );
       }
@@ -252,7 +252,7 @@ class GFLBMassControl extends Panel {
         const valueText = numberPicker.ariaValueText;
         const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
         selfVoicingUtterance.alert = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( selfVoicingUtterance );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( selfVoicingUtterance );
       } );
     }
   }

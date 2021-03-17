@@ -79,7 +79,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
             const hintContent = itemHintList[ i ];
 
             const response = levelSpeakerModel.collectResponses( objectContent, null, hintContent );
-            phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+            phet.joist.sim.voicingUtteranceQueue.addToBack( response );
           },
           highlightTarget: child
         } ) );

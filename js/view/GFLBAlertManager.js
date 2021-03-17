@@ -52,17 +52,17 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
         const response = levelSpeakerModel.collectResponses( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
         const response = levelSpeakerModel.collectResponses( this.getSelfVoicingDistanceVisibleAlert( showDistance ) );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
         const response = levelSpeakerModel.collectResponses( this.getSelfVoicingConstantRadiusAlert( constantRadius ) );
-        phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
       } );
     }
   }

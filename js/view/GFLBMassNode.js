@@ -77,7 +77,7 @@ class GFLBMassNode extends MassNode {
           } );
 
           const response = levelSpeakerModel.collectResponses( hint );
-          phet.joist.sim.selfVoicingUtteranceQueue.addToBack( response );
+          phet.joist.sim.voicingUtteranceQueue.addToBack( response );
         }
       } );
     }
@@ -114,7 +114,7 @@ class GFLBMassNode extends MassNode {
       alert: releasedString,
       cancelOther: false
     } );
-    phet.joist.sim.selfVoicingUtteranceQueue.addToFront( releasedUtterance );
+    phet.joist.sim.voicingUtteranceQueue.addToFront( releasedUtterance );
   }
 }
 
