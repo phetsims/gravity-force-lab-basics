@@ -246,13 +246,13 @@ class GFLBMassControl extends Panel {
 
       // read new value - note that this gets overridden by a different alert in GravityForceLabAlertManager
       // if the change in value pushes the other object away, with the positionChangedFromSecondarySourceEmitter
-      const selfVoicingUtterance = new VoicingUtterance();
+      const voicingUtterance = new VoicingUtterance();
 
       valueProperty.lazyLink( ( value, oldValue ) => {
         const valueText = numberPicker.ariaValueText;
         const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-        selfVoicingUtterance.alert = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( selfVoicingUtterance );
+        voicingUtterance.alert = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
+        phet.joist.sim.voicingUtteranceQueue.addToBack( voicingUtterance );
       } );
     }
   }
