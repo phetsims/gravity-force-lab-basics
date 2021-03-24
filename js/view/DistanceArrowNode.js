@@ -63,7 +63,7 @@ class DistanceArrowNode extends Node {
     } );
     this.addChild( labelText );
 
-    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+    if ( phet.chipper.queryParameters.supportsVoicing ) {
       if ( levelSpeakerModel.objectChangesProperty.get() ) {
         const arrowHitListener = () => {
           let objectResponse;

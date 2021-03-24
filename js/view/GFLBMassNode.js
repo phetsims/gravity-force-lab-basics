@@ -66,7 +66,7 @@ class GFLBMassNode extends MassNode {
 
     super( model, mass, layoutBounds, modelViewTransform, alertManager, forceDescriber, positionDescriber, options );
 
-    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+    if ( phet.chipper.queryParameters.supportsVoicing ) {
 
       // when we receive a click event from a 'double tap', describe to the
       // user how to drag the appendage

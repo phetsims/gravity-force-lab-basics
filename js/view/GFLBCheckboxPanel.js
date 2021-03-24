@@ -61,7 +61,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
     super( checkboxGroup, options );
 
     // PROTOTYPE a11y code, for the self-voicing feature set
-    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+    if ( phet.chipper.queryParameters.supportsVoicing ) {
 
       // list of interaction hints to be read upon focus, in the order of checkboxes. Pretty rough, but better
       // than looking inside of CheckboxItem for this. IF we want to invest more in this feature we can

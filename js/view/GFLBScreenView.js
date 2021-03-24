@@ -327,7 +327,7 @@ class GFLBScreenView extends ScreenView {
     const resetAllButton = new ResetAllButton( {
       listener: () => {
 
-        if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+        if ( phet.chipper.queryParameters.supportsVoicing ) {
 
           // as the simulation resets, do no not speak about changes
           phet.joist.sim.voicingUtteranceQueue.enabled = false;
@@ -338,7 +338,7 @@ class GFLBScreenView extends ScreenView {
         mass2Node.reset();
         this.forceSoundGenerator.reset();
 
-        if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+        if ( phet.chipper.queryParameters.supportsVoicing ) {
           phet.joist.sim.voicingUtteranceQueue.enabled = true;
 
           phet.joist.sim.voicingUtteranceQueue.addToBack( selfVoicingResetVerboseString );
@@ -393,7 +393,7 @@ class GFLBScreenView extends ScreenView {
     //------------------------------------------------
     // self-voicing prototype
     //------------------------------------------------
-    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+    if ( phet.chipper.queryParameters.supportsVoicing ) {
 
       // add the swipe listener
       const swipeListener = new SwipeListener( phet.joist.display._input );

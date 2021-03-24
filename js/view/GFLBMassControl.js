@@ -142,7 +142,7 @@ class GFLBMassControl extends Panel {
     } );
 
     // PROTOTYPE a11y code, for the self-voicing feature set
-    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+    if ( phet.chipper.queryParameters.supportsVoicing ) {
 
       // create a hit shape that will capture events on the panel and also exclude hits on the picker when
       // pointer is over the panel.
@@ -228,7 +228,7 @@ class GFLBMassControl extends Panel {
         }
       };
 
-      if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+      if ( phet.chipper.queryParameters.supportsVoicing ) {
 
         // when we receive a click event from a 'double tap', describe to the
         // user how to drag the appendage

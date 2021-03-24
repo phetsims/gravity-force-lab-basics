@@ -49,7 +49,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     } );
 
 
-    if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
+    if ( phet.chipper.queryParameters.supportsVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
         const response = levelSpeakerModel.collectResponses( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
         phet.joist.sim.voicingUtteranceQueue.addToBack( response );
