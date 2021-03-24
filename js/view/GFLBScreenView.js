@@ -27,7 +27,7 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
-import SelfVoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingQuickControl.js';
+import VoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/VoicingQuickControl.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
@@ -403,7 +403,7 @@ class GFLBScreenView extends ScreenView {
 
       // extra controls to speak about various things in the sim or quickly disable
       // the feature
-      const selfVoicingQuickControl = new SelfVoicingQuickControl( webSpeaker, {
+      const selfVoicingQuickControl = new VoicingQuickControl( webSpeaker, {
         createHintContent: () => {
           return StringUtils.fillIn(
             summaryInteractionHintPatternString,
