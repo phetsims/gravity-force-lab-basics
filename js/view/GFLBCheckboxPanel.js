@@ -15,7 +15,7 @@ import ISLCConstants from '../../../inverse-square-law-common/js/ISLCConstants.j
 import ISLCPanel from '../../../inverse-square-law-common/js/view/ISLCPanel.js';
 import merge from '../../../phet-core/js/merge.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingInputListener.js';
+import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import VerticalCheckboxGroup from '../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../tandem/js/Tandem.js';
@@ -73,7 +73,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
       ];
 
       checkboxGroup.children.forEach( ( child, i ) => {
-        child.addInputListener( new SelfVoicingInputListener( {
+        child.addInputListener( new VoicingInputListener( {
           onFocusIn: () => {
             const objectContent = checkboxItems[ i ].label;
             const hintContent = itemHintList[ i ];

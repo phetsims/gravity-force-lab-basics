@@ -26,7 +26,7 @@ import ScreenView from '../../../joist/js/ScreenView.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingInputListener.js';
+import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
 import SelfVoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingQuickControl.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
@@ -449,7 +449,7 @@ class GFLBScreenView extends ScreenView {
       } );
       this.addChild( selfVoicingQuickControl );
 
-      resetAllButton.addInputListener( new SelfVoicingInputListener( {
+      resetAllButton.addInputListener( new VoicingInputListener( {
         onFocusIn: () => {
 
           // on focus, speak the name of the reset all button

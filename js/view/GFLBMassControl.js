@@ -12,7 +12,7 @@ import Shape from '../../../kite/js/Shape.js';
 import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingInputListener.js';
+import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
 import SelfVoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingWrapperNode.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
@@ -177,7 +177,7 @@ class GFLBMassControl extends Panel {
         phet.joist.sim.voicingUtteranceQueue.addToBack( alertContent );
       };
 
-      numberPicker.addInputListener( new SelfVoicingInputListener( {
+      numberPicker.addInputListener( new VoicingInputListener( {
         onFocusIn: () => {
           speakValueAndHelpText();
         },
