@@ -13,7 +13,7 @@ import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
-import SelfVoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingWrapperNode.js';
+import VoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/VoicingWrapperNode.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
@@ -149,7 +149,7 @@ class GFLBMassControl extends Panel {
       const panelHitShape = Shape.bounds( panelVBox.bounds ).shapeDifference( Shape.bounds( panelVBox.globalToParentBounds( numberPicker.globalBounds ).dilated( 15 ) ) );
       const panelHitPath = new Path( panelHitShape );
 
-      const panelWrapper = new SelfVoicingWrapperNode( panelHitPath, {
+      const panelWrapper = new VoicingWrapperNode( panelHitPath, {
         customNode: panelHitPath,
         focusable: false,
         listenerOptions: {

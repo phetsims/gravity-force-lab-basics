@@ -14,7 +14,7 @@ import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import SelfVoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingWrapperNode.js';
+import VoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/VoicingWrapperNode.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../scenery/js/nodes/Node.js';
@@ -81,7 +81,7 @@ class DistanceArrowNode extends Node {
           phet.joist.sim.voicingUtteranceQueue.addToBack( response );
         };
 
-        this.selfVoicingWrapper = new SelfVoicingWrapperNode( this, {
+        this.selfVoicingWrapper = new VoicingWrapperNode( this, {
           focusable: false,
           listenerOptions: {
             onPress: arrowHitListener,
