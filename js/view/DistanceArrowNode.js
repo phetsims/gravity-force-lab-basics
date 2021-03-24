@@ -23,8 +23,8 @@ import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
-const selfVoicingLevelsDistanceArrowPatternString = gravityForceLabStrings.a11y.voicing.levels.distanceArrowPattern;
-const selfVoicingLevelsMoveSpheresHintString = inverseSquareLawCommonStrings.a11y.voicing.levels.moveSpheresHintString;
+const voicingLevelsDistanceArrowPatternString = gravityForceLabStrings.a11y.voicing.levels.distanceArrowPattern;
+const voicingLevelsMoveSpheresHintString = inverseSquareLawCommonStrings.a11y.voicing.levels.moveSpheresHintString;
 
 // constants
 const HEAD_WIDTH = 8;
@@ -67,8 +67,8 @@ class DistanceArrowNode extends Node {
       if ( levelSpeakerModel.objectChangesProperty.get() ) {
         const arrowHitListener = () => {
           let objectResponse;
-          if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
-            objectResponse = StringUtils.fillIn( selfVoicingLevelsDistanceArrowPatternString, {
+          if ( ISLCQueryParameters.voicingVersion === 1 ) {
+            objectResponse = StringUtils.fillIn( voicingLevelsDistanceArrowPatternString, {
               distance: model.separationProperty.get() / 1000 // m to km
             } );
           }
@@ -76,7 +76,7 @@ class DistanceArrowNode extends Node {
             objectResponse = positionDescriber.getCentersApartDistance();
           }
 
-          const interactionHint = selfVoicingLevelsMoveSpheresHintString;
+          const interactionHint = voicingLevelsMoveSpheresHintString;
           const response = levelSpeakerModel.collectResponses( objectResponse, null, interactionHint );
           phet.joist.sim.voicingUtteranceQueue.addToBack( response );
         };

@@ -16,12 +16,12 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
 const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
 
-const selfVoicingForceValuesShownString = gravityForceLabBasicsStrings.a11y.voicing.levels.forceValuesShown;
-const selfVoicingForceValuesHiddenString = gravityForceLabBasicsStrings.a11y.voicing.levels.forceValuesHidden;
-const selfVoicingDistanceShownString = gravityForceLabBasicsStrings.a11y.voicing.levels.distanceShown;
-const selfVoicingDistanceHiddenString = gravityForceLabBasicsStrings.a11y.voicing.levels.distanceHidden;
-const selfVoicingConstantSizeSetString = gravityForceLabBasicsStrings.a11y.voicing.levels.constantSizeSet;
-const selfVoicingConstantSizeOffString = gravityForceLabBasicsStrings.a11y.voicing.levels.constantSizeOff;
+const voicingForceValuesShownString = gravityForceLabBasicsStrings.a11y.voicing.levels.forceValuesShown;
+const voicingForceValuesHiddenString = gravityForceLabBasicsStrings.a11y.voicing.levels.forceValuesHidden;
+const voicingDistanceShownString = gravityForceLabBasicsStrings.a11y.voicing.levels.distanceShown;
+const voicingDistanceHiddenString = gravityForceLabBasicsStrings.a11y.voicing.levels.distanceHidden;
+const voicingConstantSizeSetString = gravityForceLabBasicsStrings.a11y.voicing.levels.constantSizeSet;
+const voicingConstantSizeOffString = gravityForceLabBasicsStrings.a11y.voicing.levels.constantSizeOff;
 
 
 class GFLBAlertManager extends GravityForceLabAlertManager {
@@ -51,17 +51,17 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
 
     if ( phet.chipper.queryParameters.supportsVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        const response = levelSpeakerModel.collectResponses( this.getSelfVoicingShowForceValuesAlert( showForceValues ) );
+        const response = levelSpeakerModel.collectResponses( this.getVoicingShowForceValuesAlert( showForceValues ) );
         phet.joist.sim.voicingUtteranceQueue.addToBack( response );
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        const response = levelSpeakerModel.collectResponses( this.getSelfVoicingDistanceVisibleAlert( showDistance ) );
+        const response = levelSpeakerModel.collectResponses( this.getVoicingDistanceVisibleAlert( showDistance ) );
         phet.joist.sim.voicingUtteranceQueue.addToBack( response );
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
-        const response = levelSpeakerModel.collectResponses( this.getSelfVoicingConstantRadiusAlert( constantRadius ) );
+        const response = levelSpeakerModel.collectResponses( this.getVoicingConstantRadiusAlert( constantRadius ) );
         phet.joist.sim.voicingUtteranceQueue.addToBack( response );
       } );
     }
@@ -93,14 +93,14 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @param {boolean} showForceValues
    * @returns {string}
    */
-  getSelfVoicingShowForceValuesAlert( showForceValues ) {
-    const version1 = ISLCQueryParameters.selfVoicingVersion === 1;
+  getVoicingShowForceValuesAlert( showForceValues ) {
+    const version1 = ISLCQueryParameters.voicingVersion === 1;
 
     // if not version 1, we are trying to sound more like the PDOM string
-    const shownString = version1 ? selfVoicingForceValuesShownString :
+    const shownString = version1 ? voicingForceValuesShownString :
                         this.forceDescriber.getValuesInUnitsText();
 
-    return showForceValues ? shownString : selfVoicingForceValuesHiddenString;
+    return showForceValues ? shownString : voicingForceValuesHiddenString;
   }
 
   /**
@@ -109,9 +109,9 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @param {boolean} showDistance
    * @returns {string}
    */
-  getSelfVoicingDistanceVisibleAlert( showDistance ) {
-    if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
-      return showDistance ? selfVoicingDistanceShownString : selfVoicingDistanceHiddenString;
+  getVoicingDistanceVisibleAlert( showDistance ) {
+    if ( ISLCQueryParameters.voicingVersion === 1 ) {
+      return showDistance ? voicingDistanceShownString : voicingDistanceHiddenString;
     }
     else {
       return this.getDistanceVisibleAlert( showDistance );
@@ -124,9 +124,9 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @param {boolean} constantRadius
    * @returns {string}
    */
-  getSelfVoicingConstantRadiusAlert( constantRadius ) {
-    if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
-      return constantRadius ? selfVoicingConstantSizeSetString : selfVoicingConstantSizeOffString;
+  getVoicingConstantRadiusAlert( constantRadius ) {
+    if ( ISLCQueryParameters.voicingVersion === 1 ) {
+      return constantRadius ? voicingConstantSizeSetString : voicingConstantSizeOffString;
     }
     else {
 
