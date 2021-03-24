@@ -12,7 +12,7 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import SelfVoicingUtterance from '../../../utterance-queue/js/SelfVoicingUtterance.js';
+import VoicingUtterance from '../../../utterance-queue/js/VoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -20,8 +20,8 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 // constants
 const MASS_NODE_Y_POSITION = 215;
 
-const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
-const grabDragHintPatternString = sceneryPhetStrings.a11y.selfVoicing.grabDragHintPattern;
+const releasedString = gravityForceLabBasicsStrings.a11y.voicing.levels.released;
+const grabDragHintPatternString = sceneryPhetStrings.a11y.voicing.grabDragHintPattern;
 
 class GFLBMassNode extends MassNode {
 
@@ -110,7 +110,7 @@ class GFLBMassNode extends MassNode {
    * @param {SceneryEvent} event
    */
   swipeEnd( event ) {
-    const releasedUtterance = new SelfVoicingUtterance( {
+    const releasedUtterance = new VoicingUtterance( {
       alert: releasedString,
       cancelOther: false
     } );

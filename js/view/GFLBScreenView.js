@@ -28,7 +28,6 @@ import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import SelfVoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingInputListener.js';
 import SelfVoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/SelfVoicingQuickControl.js';
-import speakerHighlighter from '../../../scenery-phet/js/accessibility/speaker/speakerHighlighter.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
@@ -43,7 +42,6 @@ import VibrationTestEvent from '../../../tappi/js/tracking/VibrationTestEvent.js
 import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTestEventRecorder.js';
 import VibrationTestInputListener from '../../../tappi/js/tracking/VibrationTestInputListener.js';
 import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
-import tappiDialogController from '../../../tappi/js/view/tappiDialogController.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -75,32 +73,31 @@ const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.
 const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
 const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
 const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
-const verboseCheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckedForceValuesCheckboxInteractionHint;
-const verboseUncheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseUncheckedForceValuesCheckboxInteractionHint;
-const verboseUncheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseUncheckedDistanceCheckboxInteractionHint;
-const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckedDistanceCheckboxInteractionHint;
-const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseCheckedConstantSizeCheckboxInteractionHint;
-const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.selfVoicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
-const selfVoicingResetString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.resetAll;
-const selfVoicingResetVerboseString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.resetAllVerbose;
-const redColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.redColor;
-const blueColorString = gravityForceLabBasicsStrings.a11y.selfVoicing.blueColor;
+const verboseCheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedForceValuesCheckboxInteractionHint;
+const verboseUncheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedForceValuesCheckboxInteractionHint;
+const verboseUncheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedDistanceCheckboxInteractionHint;
+const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedDistanceCheckboxInteractionHint;
+const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedConstantSizeCheckboxInteractionHint;
+const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
+const selfVoicingResetVerboseString = gravityForceLabBasicsStrings.a11y.voicing.levels.resetAllVerbose;
+const redColorString = gravityForceLabBasicsStrings.a11y.voicing.redColor;
+const blueColorString = gravityForceLabBasicsStrings.a11y.voicing.blueColor;
 const resetAllString = sceneryPhetStrings.a11y.resetAll.label;
-const detailsPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.detailsPattern;
-const overviewPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.overviewPattern;
-const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.selfVoicing.simSection.screenSummary.singleScreenIntroPattern;
+const detailsPatternString = gravityForceLabBasicsStrings.a11y.voicing.levels.detailsPattern;
+const overviewPatternString = gravityForceLabBasicsStrings.a11y.voicing.levels.overviewPattern;
+const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.voicing.simSection.screenSummary.singleScreenIntroPattern;
 const summaryInteractionHintPatternString = inverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
 const massString = gravityForceLabStrings.a11y.mass;
 const screenSummaryPlayAreaOverviewPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
 const screenSummarySecondaryDescriptionPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
 const thePlayAreaHasString = gravityForceLabBasicsStrings.a11y.screenSummary.thePlayAreaHas;
-const thereAreString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.thereAre;
+const thereAreString = gravityForceLabBasicsStrings.a11y.voicing.levels.thereAre;
 const inTheControlAreaString = gravityForceLabBasicsStrings.a11y.screenSummary.inTheControlArea;
-const inAdditionString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.inAddition;
-const moveMass1HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.moveMass1Hint;
-const moveMass2HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.moveMass2Hint;
-const changeMass1HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.changeMass1Hint;
-const changeMass2HintString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.changeMass2Hint;
+const inAdditionString = gravityForceLabBasicsStrings.a11y.voicing.levels.inAddition;
+const moveMass1HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.moveMass1Hint;
+const moveMass2HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.moveMass2Hint;
+const changeMass1HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.changeMass1Hint;
+const changeMass2HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.changeMass2Hint;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;
@@ -344,12 +341,7 @@ class GFLBScreenView extends ScreenView {
         if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
           phet.joist.sim.voicingUtteranceQueue.enabled = true;
 
-          if ( ISLCQueryParameters.selfVoicingVersion === 1 ) {
-            webSpeaker.speak( selfVoicingResetString );
-          }
-          else {
-            webSpeaker.speak( selfVoicingResetVerboseString );
-          }
+          phet.joist.sim.voicingUtteranceQueue.addToBack( selfVoicingResetVerboseString );
         }
       },
       right: this.layoutBounds.maxX - 10,
@@ -402,8 +394,6 @@ class GFLBScreenView extends ScreenView {
     // self-voicing prototype
     //------------------------------------------------
     if ( phet.chipper.queryParameters.supportsSelfVoicing ) {
-      webSpeaker.initialize();
-      speakerHighlighter.initialize();
 
       // add the swipe listener
       const swipeListener = new SwipeListener( phet.joist.display._input );
@@ -475,9 +465,6 @@ class GFLBScreenView extends ScreenView {
       // in this mode, focus just goes from top to bottom, but starting with the quick control
       // to guide the user to hear details about the simulation first
       massPositionsNode.pdomOrder = [ selfVoicingQuickControl, mass2Node.selfVoicingWrapper, mass1Node.selfVoicingWrapper, distanceArrowNode.selfVoicingWrapper, null ];
-
-      // dialogs to enable the feature and introduce custom gestures
-      tappiDialogController.initialize( selfVoicingQuickControl );
     }
 
     if ( phet.chipper.queryParameters.vibrationParadigm ) {

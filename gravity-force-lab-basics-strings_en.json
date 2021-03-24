@@ -83,7 +83,7 @@
     "sizeOfForce": {
       "value": "Size of force"
     },
-    "selfVoicing": {
+    "voicing": {
       "verboseCheckedForceValuesCheckboxInteractionHint": {
         "value": "uncheck to hide newtons"
       },

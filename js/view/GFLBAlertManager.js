@@ -16,12 +16,12 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
 const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
 
-const selfVoicingForceValuesShownString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.forceValuesShown;
-const selfVoicingForceValuesHiddenString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.forceValuesHidden;
-const selfVoicingDistanceShownString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.distanceShown;
-const selfVoicingDistanceHiddenString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.distanceHidden;
-const selfVoicingConstantSizeSetString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.constantSizeSet;
-const selfVoicingConstantSizeOffString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.constantSizeOff;
+const selfVoicingForceValuesShownString = gravityForceLabBasicsStrings.a11y.voicing.levels.forceValuesShown;
+const selfVoicingForceValuesHiddenString = gravityForceLabBasicsStrings.a11y.voicing.levels.forceValuesHidden;
+const selfVoicingDistanceShownString = gravityForceLabBasicsStrings.a11y.voicing.levels.distanceShown;
+const selfVoicingDistanceHiddenString = gravityForceLabBasicsStrings.a11y.voicing.levels.distanceHidden;
+const selfVoicingConstantSizeSetString = gravityForceLabBasicsStrings.a11y.voicing.levels.constantSizeSet;
+const selfVoicingConstantSizeOffString = gravityForceLabBasicsStrings.a11y.voicing.levels.constantSizeOff;
 
 
 class GFLBAlertManager extends GravityForceLabAlertManager {

@@ -24,18 +24,18 @@ import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
 import Playable from '../../../tambo/js/Playable.js';
-import SelfVoicingUtterance from '../../../utterance-queue/js/SelfVoicingUtterance.js';
+import VoicingUtterance from '../../../utterance-queue/js/VoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
-const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.selfVoicing.briefChangeMassHintPattern;
+const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.voicing.briefChangeMassHintPattern;
 const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
 const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
-const draggableAlertString = sceneryPhetStrings.a11y.selfVoicing.draggableAlert;
-const releasedString = gravityForceLabBasicsStrings.a11y.selfVoicing.levels.released;
-const grabDragHintPatternString = sceneryPhetStrings.a11y.selfVoicing.grabDragHintPattern;
+const draggableAlertString = sceneryPhetStrings.a11y.voicing.draggableAlert;
+const releasedString = gravityForceLabBasicsStrings.a11y.voicing.levels.released;
+const grabDragHintPatternString = sceneryPhetStrings.a11y.voicing.grabDragHintPattern;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -197,7 +197,7 @@ class GFLBMassControl extends Panel {
       };
 
       numberPicker.swipeEnd = ( event, listener ) => {
-        const releasedUtterance = new SelfVoicingUtterance( {
+        const releasedUtterance = new VoicingUtterance( {
           alert: releasedString,
           cancelOther: false
         } );
@@ -246,7 +246,7 @@ class GFLBMassControl extends Panel {
 
       // read new value - note that this gets overridden by a different alert in GravityForceLabAlertManager
       // if the change in value pushes the other object away, with the positionChangedFromSecondarySourceEmitter
-      const selfVoicingUtterance = new SelfVoicingUtterance();
+      const selfVoicingUtterance = new VoicingUtterance();
 
       valueProperty.lazyLink( ( value, oldValue ) => {
         const valueText = numberPicker.ariaValueText;
