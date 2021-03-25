@@ -11,7 +11,6 @@
 import Property from '../../../axon/js/Property.js';
 import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
-import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import VoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/VoicingWrapperNode.js';
@@ -66,15 +65,9 @@ class DistanceArrowNode extends Node {
     if ( phet.chipper.queryParameters.supportsVoicing ) {
       if ( levelSpeakerModel.objectChangesProperty.get() ) {
         const arrowHitListener = () => {
-          let objectResponse;
-          if ( ISLCQueryParameters.voicingVersion === 1 ) {
-            objectResponse = StringUtils.fillIn( voicingLevelsDistanceArrowPatternString, {
-              distance: model.separationProperty.get() / 1000 // m to km
-            } );
-          }
-          else {
-            objectResponse = positionDescriber.getCentersApartDistance();
-          }
+          const objectResponse = StringUtils.fillIn( voicingLevelsDistanceArrowPatternString, {
+            distance: model.separationProperty.get() / 1000 // m to km
+          } );
 
           const interactionHint = voicingLevelsMoveSpheresHintString;
           const response = levelSpeakerModel.collectResponses( objectResponse, null, interactionHint );

@@ -79,7 +79,7 @@ const verboseUncheckedDistanceCheckboxInteractionHintString = gravityForceLabBas
 const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedDistanceCheckboxInteractionHint;
 const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedConstantSizeCheckboxInteractionHint;
 const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
-const selfVoicingResetVerboseString = gravityForceLabBasicsStrings.a11y.voicing.levels.resetAllVerbose;
+const voicingResetVerboseString = gravityForceLabBasicsStrings.a11y.voicing.levels.resetAllVerbose;
 const redColorString = gravityForceLabBasicsStrings.a11y.voicing.redColor;
 const blueColorString = gravityForceLabBasicsStrings.a11y.voicing.blueColor;
 const resetAllString = sceneryPhetStrings.a11y.resetAll.label;
@@ -341,7 +341,7 @@ class GFLBScreenView extends ScreenView {
         if ( phet.chipper.queryParameters.supportsVoicing ) {
           phet.joist.sim.voicingUtteranceQueue.enabled = true;
 
-          phet.joist.sim.voicingUtteranceQueue.addToBack( selfVoicingResetVerboseString );
+          phet.joist.sim.voicingUtteranceQueue.addToBack( voicingResetVerboseString );
         }
       },
       right: this.layoutBounds.maxX - 10,

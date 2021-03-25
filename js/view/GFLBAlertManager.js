@@ -7,7 +7,6 @@
  */
 
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
-import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -94,13 +93,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @returns {string}
    */
   getVoicingShowForceValuesAlert( showForceValues ) {
-    const version1 = ISLCQueryParameters.voicingVersion === 1;
-
-    // if not version 1, we are trying to sound more like the PDOM string
-    const shownString = version1 ? voicingForceValuesShownString :
-                        this.forceDescriber.getValuesInUnitsText();
-
-    return showForceValues ? shownString : voicingForceValuesHiddenString;
+    return showForceValues ? voicingForceValuesShownString : voicingForceValuesHiddenString;
   }
 
   /**
@@ -110,12 +103,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @returns {string}
    */
   getVoicingDistanceVisibleAlert( showDistance ) {
-    if ( ISLCQueryParameters.voicingVersion === 1 ) {
-      return showDistance ? voicingDistanceShownString : voicingDistanceHiddenString;
-    }
-    else {
-      return this.getDistanceVisibleAlert( showDistance );
-    }
+    return showDistance ? voicingDistanceShownString : voicingDistanceHiddenString;
   }
 
   /**
@@ -125,14 +113,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @returns {string}
    */
   getVoicingConstantRadiusAlert( constantRadius ) {
-    if ( ISLCQueryParameters.voicingVersion === 1 ) {
-      return constantRadius ? voicingConstantSizeSetString : voicingConstantSizeOffString;
-    }
-    else {
-
-      // if not version 1, we are trying to sound more like the PDOM string
-      return this.getConstantRadiusAlert( constantRadius );
-    }
+    return constantRadius ? voicingConstantSizeSetString : voicingConstantSizeOffString;
   }
 }
 
