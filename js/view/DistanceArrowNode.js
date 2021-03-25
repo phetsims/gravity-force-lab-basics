@@ -74,7 +74,7 @@ class DistanceArrowNode extends Node {
           phet.joist.sim.voicingUtteranceQueue.addToBack( response );
         };
 
-        this.selfVoicingWrapper = new VoicingWrapperNode( this, {
+        this.voicingWrapper = new VoicingWrapperNode( this, {
           focusable: false,
           listenerOptions: {
             onPress: arrowHitListener,

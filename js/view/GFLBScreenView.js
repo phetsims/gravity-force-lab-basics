@@ -458,13 +458,13 @@ class GFLBScreenView extends ScreenView {
         highlightTarget: resetAllButton
       } ) );
 
-      this.addChild( mass1Node.selfVoicingWrapper );
-      this.addChild( mass2Node.selfVoicingWrapper );
-      this.addChild( distanceArrowNode.selfVoicingWrapper );
+      this.addChild( mass1Node.voicingWrapper );
+      this.addChild( mass2Node.voicingWrapper );
+      this.addChild( distanceArrowNode.voicingWrapper );
 
       // in this mode, focus just goes from top to bottom, but starting with the quick control
       // to guide the user to hear details about the simulation first
-      massPositionsNode.pdomOrder = [ selfVoicingQuickControl, mass2Node.selfVoicingWrapper, mass1Node.selfVoicingWrapper, distanceArrowNode.selfVoicingWrapper, null ];
+      massPositionsNode.pdomOrder = [ selfVoicingQuickControl, mass2Node.voicingWrapper, mass1Node.voicingWrapper, distanceArrowNode.voicingWrapper, null ];
     }
 
     if ( phet.chipper.queryParameters.vibrationParadigm ) {
