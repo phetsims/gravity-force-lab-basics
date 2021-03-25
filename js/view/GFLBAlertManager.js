@@ -87,7 +87,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
   }
 
   /**
-   * Get a string for the self voicing prototype that describes the changing visibility of force values.
+   * Get a string for the voicing prototype that describes the changing visibility of force values.
    * @private
    * @param {boolean} showForceValues
    * @returns {string}
@@ -97,7 +97,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
   }
 
   /**
-   * Get a string for the self voicing prototype that describes the changing visibility of distance.
+   * Get a string for the voicing prototype that describes the changing visibility of distance.
    * @private
    * @param {boolean} showDistance
    * @returns {string}
@@ -107,7 +107,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
   }
 
   /**
-   * Get a string for the self voicing prototype that describes the changing visibility of distance.
+   * Get a string for the voicing prototype that describes the changing visibility of distance.
    * @private
    * @param {boolean} constantRadius
    * @returns {string}

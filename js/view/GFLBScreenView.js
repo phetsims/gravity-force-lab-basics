@@ -391,7 +391,7 @@ class GFLBScreenView extends ScreenView {
     }
 
     //------------------------------------------------
-    // self-voicing prototype
+    // voicing prototype
     //------------------------------------------------
     if ( phet.chipper.queryParameters.supportsVoicing ) {
 
@@ -403,7 +403,7 @@ class GFLBScreenView extends ScreenView {
 
       // extra controls to speak about various things in the sim or quickly disable
       // the feature
-      const selfVoicingQuickControl = new VoicingQuickControl( webSpeaker, {
+      const voicingQuickControl = new VoicingQuickControl( webSpeaker, {
         createHintContent: () => {
           return StringUtils.fillIn(
             summaryInteractionHintPatternString,
@@ -447,7 +447,7 @@ class GFLBScreenView extends ScreenView {
         },
         leftBottom: this.layoutBounds.leftBottom.minusXY( -8, 8 )
       } );
-      this.addChild( selfVoicingQuickControl );
+      this.addChild( voicingQuickControl );
 
       resetAllButton.addInputListener( new VoicingInputListener( {
         onFocusIn: () => {
@@ -464,7 +464,7 @@ class GFLBScreenView extends ScreenView {
 
       // in this mode, focus just goes from top to bottom, but starting with the quick control
       // to guide the user to hear details about the simulation first
-      massPositionsNode.pdomOrder = [ selfVoicingQuickControl, mass2Node.voicingWrapper, mass1Node.voicingWrapper, distanceArrowNode.voicingWrapper, null ];
+      massPositionsNode.pdomOrder = [ voicingQuickControl, mass2Node.voicingWrapper, mass1Node.voicingWrapper, distanceArrowNode.voicingWrapper, null ];
     }
 
     if ( phet.chipper.queryParameters.vibrationParadigm ) {

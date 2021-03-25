@@ -61,7 +61,7 @@ class GFLBMassControl extends Panel {
     options = merge( {
       color: new Color( 0, 0, 255 ),
 
-      // {null|string} (self-voicing) custom content to guide the user to dragging with custom gesture
+      // {null|string} (voicing) custom content to guide the user to dragging with custom gesture
       changeMassHintString: null
     }, options );
 
@@ -141,7 +141,7 @@ class GFLBMassControl extends Panel {
       tagName: 'div' // Though not necessary, it is helpful for the a11y view to display the valuetext within this div.
     } );
 
-    // PROTOTYPE a11y code, for the self-voicing feature set
+    // PROTOTYPE a11y code, for the voicing feature set
     if ( phet.chipper.queryParameters.supportsVoicing ) {
 
       // create a hit shape that will capture events on the panel and also exclude hits on the picker when

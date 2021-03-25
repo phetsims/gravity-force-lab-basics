@@ -60,7 +60,7 @@ class GFLBMassNode extends MassNode {
       // pdom recompute the PDOM descriptions when show distance is toggled
       additionalA11yDependencies: [ model.showDistanceProperty ],
 
-      // self-voicing
+      // voicing
       grabHintLabel: null
     }, options );
 
@@ -104,7 +104,7 @@ class GFLBMassNode extends MassNode {
   }
 
   /**
-   * Part of the self-voicing prototype. User has ended a drag of the appendage.
+   * Part of the voicing prototype. User has ended a drag of the appendage.
    * @public (called by SwipeListener)
    *
    * @param {SceneryEvent} event
