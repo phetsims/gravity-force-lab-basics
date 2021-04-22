@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.0.2 Mon Mar 08 2021 14:32:35 GMT-0500 (Eastern Standard Time)",
+  "comment": "# gravity-force-lab-basics 1.0.2 Thu Apr 22 2021 14:30:12 GMT-0600 (Mountain Daylight Time)",
   "assert": {
     "sha": "201c50a840e082354b013f4ab9e9d45006f98cfe",
     "branch": "HEAD"
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "c15c32647362de2dbd011ab5b253bc8be7581fb0",
+    "sha": "c48c0d405b28981cac1d2d5155377ee4b262469e",
     "branch": "1.0"
   },
   "inverse-square-law-common": {
@@ -58,15 +58,15 @@
   },
   "phetmarks": {
     "sha": "b76a2541feaaf29a498f7c9f71a35f73ec7b49a9",
-    "branch": "gravity-force-lab-basics-1.0"
+    "branch": "HEAD"
   },
   "query-string-machine": {
     "sha": "c4c6d494b474aeb14d700a8142da81776f62a2ba",
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "6aafd5f2df91926c11d5f8e6c4870b8db1ccf00a",
-    "branch": "HEAD"
+    "sha": "911f321389dafdf2b409bb110bbd27e7fddeb061",
+    "branch": "gravity-force-lab-basics-1.0"
   },
   "scenery-phet": {
     "sha": "a49bdc080915d1ef040184fbc7fa54b857951de8",
