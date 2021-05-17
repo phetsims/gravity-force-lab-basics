@@ -24,6 +24,7 @@ import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
 import Playable from '../../../tambo/js/Playable.js';
+import voicingUtteranceQueue from '../../../utterance-queue/js/UtteranceQueue.js';
 import VoicingUtterance from '../../../utterance-queue/js/VoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -174,7 +175,7 @@ class GFLBMassControl extends Panel {
                          massControlsHelpTextBillionsString;
 
         const alertContent = levelSpeakerModel.collectResponses( objectResponse, null, helpText );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( alertContent );
+        voicingUtteranceQueue.addToBack( alertContent );
       };
 
       numberPicker.addInputListener( new VoicingInputListener( {
@@ -193,7 +194,7 @@ class GFLBMassControl extends Panel {
         swipePositionOnValueChange = event.pointer.point;
 
         const response = levelSpeakerModel.collectResponses( draggableAlertString );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
+        voicingUtteranceQueue.addToBack( response );
       };
 
       numberPicker.swipeEnd = ( event, listener ) => {
@@ -201,7 +202,7 @@ class GFLBMassControl extends Panel {
           alert: releasedString,
           cancelOther: false
         } );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( releasedUtterance );
+        voicingUtteranceQueue.addToBack( releasedUtterance );
       };
 
       numberPicker.swipeMove = ( event, listener ) => {
@@ -239,7 +240,7 @@ class GFLBMassControl extends Panel {
             } );
 
             const response = levelSpeakerModel.collectResponses( hint );
-            phet.joist.sim.voicingUtteranceQueue.addToBack( response );
+            voicingUtteranceQueue.addToBack( response );
           }
         } );
       }
@@ -252,7 +253,7 @@ class GFLBMassControl extends Panel {
         const valueText = numberPicker.ariaValueText;
         const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
         voicingUtterance.alert = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( voicingUtterance );
+        voicingUtteranceQueue.addToBack( voicingUtterance );
       } );
     }
   }

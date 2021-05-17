@@ -18,6 +18,7 @@ import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Text from '../../../scenery/js/nodes/Text.js';
+import voicingUtteranceQueue from '../../../utterance-queue/js/UtteranceQueue.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
@@ -71,7 +72,7 @@ class DistanceArrowNode extends Node {
 
           const interactionHint = voicingLevelsMoveSpheresHintString;
           const response = levelSpeakerModel.collectResponses( objectResponse, null, interactionHint );
-          phet.joist.sim.voicingUtteranceQueue.addToBack( response );
+          voicingUtteranceQueue.addToBack( response );
         };
 
         this.voicingWrapper = new VoicingWrapperNode( this, {

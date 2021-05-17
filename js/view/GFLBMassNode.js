@@ -11,6 +11,7 @@ import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
+import voicingUtteranceQueue from '../../../scenery/js/accessibility/speaker/voicingUtteranceQueue.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import VoicingUtterance from '../../../utterance-queue/js/VoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
@@ -77,7 +78,7 @@ class GFLBMassNode extends MassNode {
           } );
 
           const response = levelSpeakerModel.collectResponses( hint );
-          phet.joist.sim.voicingUtteranceQueue.addToBack( response );
+          voicingUtteranceQueue.addToBack( response );
         }
       } );
     }
@@ -114,7 +115,7 @@ class GFLBMassNode extends MassNode {
       alert: releasedString,
       cancelOther: false
     } );
-    phet.joist.sim.voicingUtteranceQueue.addToFront( releasedUtterance );
+    voicingUtteranceQueue.addToFront( releasedUtterance );
   }
 }
 

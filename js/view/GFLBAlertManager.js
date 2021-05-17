@@ -9,6 +9,7 @@
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
+import voicingUtteranceQueue from '../../../utterance-queue/js/UtteranceQueue.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
@@ -51,17 +52,17 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
     if ( phet.chipper.queryParameters.supportsVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
         const response = levelSpeakerModel.collectResponses( this.getVoicingShowForceValuesAlert( showForceValues ) );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
+        voicingUtteranceQueue.addToBack( response );
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
         const response = levelSpeakerModel.collectResponses( this.getVoicingDistanceVisibleAlert( showDistance ) );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
+        voicingUtteranceQueue.addToBack( response );
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
         const response = levelSpeakerModel.collectResponses( this.getVoicingConstantRadiusAlert( constantRadius ) );
-        phet.joist.sim.voicingUtteranceQueue.addToBack( response );
+        voicingUtteranceQueue.addToBack( response );
       } );
     }
   }

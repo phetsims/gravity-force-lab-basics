@@ -31,6 +31,7 @@ import VoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
+import voicingUtteranceQueue from '../../../scenery/js/accessibility/speaker/voicingUtteranceQueue.js';
 import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
 import SwipeListener from '../../../scenery/js/listeners/SwipeListener.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
@@ -330,7 +331,7 @@ class GFLBScreenView extends ScreenView {
         if ( phet.chipper.queryParameters.supportsVoicing ) {
 
           // as the simulation resets, do no not speak about changes
-          phet.joist.sim.voicingUtteranceQueue.enabled = false;
+          voicingUtteranceQueue.enabled = false;
         }
 
         model.reset();
@@ -339,9 +340,9 @@ class GFLBScreenView extends ScreenView {
         this.forceSoundGenerator.reset();
 
         if ( phet.chipper.queryParameters.supportsVoicing ) {
-          phet.joist.sim.voicingUtteranceQueue.enabled = true;
+          voicingUtteranceQueue.enabled = true;
 
-          phet.joist.sim.voicingUtteranceQueue.addToBack( voicingResetVerboseString );
+          voicingUtteranceQueue.addToBack( voicingResetVerboseString );
         }
       },
       right: this.layoutBounds.maxX - 10,
@@ -453,7 +454,7 @@ class GFLBScreenView extends ScreenView {
         onFocusIn: () => {
 
           // on focus, speak the name of the reset all button
-          phet.joist.sim.voicingUtteranceQueue.addToBack( levelSpeakerModel.collectResponses( resetAllString ) );
+          voicingUtteranceQueue.addToBack( levelSpeakerModel.collectResponses( resetAllString ) );
         },
         highlightTarget: resetAllButton
       } ) );
