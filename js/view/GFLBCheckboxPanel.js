@@ -16,7 +16,7 @@ import ISLCPanel from '../../../inverse-square-law-common/js/view/ISLCPanel.js';
 import merge from '../../../phet-core/js/merge.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
-import voicingUtteranceQueue from '../../../scenery/js/accessibility/speaker/voicingUtteranceQueue.js';
+import voicingUtteranceQueue from '../../../scenery/js/accessibility/voicing/voicingUtteranceQueue.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import VerticalCheckboxGroup from '../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../tandem/js/Tandem.js';

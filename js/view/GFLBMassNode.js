@@ -11,7 +11,7 @@ import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
-import voicingUtteranceQueue from '../../../scenery/js/accessibility/speaker/voicingUtteranceQueue.js';
+import voicingUtteranceQueue from '../../../scenery/js/accessibility/voicing/voicingUtteranceQueue.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import VoicingUtterance from '../../../utterance-queue/js/VoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';

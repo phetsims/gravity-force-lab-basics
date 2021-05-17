@@ -31,8 +31,8 @@ import VoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
-import voicingUtteranceQueue from '../../../scenery/js/accessibility/speaker/voicingUtteranceQueue.js';
-import webSpeaker from '../../../scenery/js/accessibility/speaker/webSpeaker.js';
+import voicingUtteranceQueue from '../../../scenery/js/accessibility/voicing/voicingUtteranceQueue.js';
+import webSpeaker from '../../../scenery/js/accessibility/voicing/webSpeaker.js';
 import SwipeListener from '../../../scenery/js/listeners/SwipeListener.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Node from '../../../scenery/js/nodes/Node.js';
