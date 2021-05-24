@@ -9,22 +9,15 @@
  */
 
 import Property from '../../../axon/js/Property.js';
-import gravityForceLabStrings from '../../../gravity-force-lab/js/gravityForceLabStrings.js';
-import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
-import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import VoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/VoicingWrapperNode.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Text from '../../../scenery/js/nodes/Text.js';
-import voicingUtteranceQueue from '../../../utterance-queue/js/UtteranceQueue.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
-const voicingLevelsDistanceArrowPatternString = gravityForceLabStrings.a11y.voicing.levels.distanceArrowPattern;
-const voicingLevelsMoveSpheresHintString = inverseSquareLawCommonStrings.a11y.voicing.levels.moveSpheresHintString;
 
 // constants
 const HEAD_WIDTH = 8;
@@ -62,28 +55,6 @@ class DistanceArrowNode extends Node {
       phetioDocumentation: 'The distance as text between the two masses'
     } );
     this.addChild( labelText );
-
-    if ( phet.chipper.queryParameters.supportsVoicing ) {
-      if ( levelSpeakerModel.objectChangesProperty.get() ) {
-        const arrowHitListener = () => {
-          const objectResponse = StringUtils.fillIn( voicingLevelsDistanceArrowPatternString, {
-            distance: model.separationProperty.get() / 1000 // m to km
-          } );
-
-          const interactionHint = voicingLevelsMoveSpheresHintString;
-          const response = levelSpeakerModel.collectResponses( objectResponse, null, interactionHint );
-          voicingUtteranceQueue.addToBack( response );
-        };
-
-        this.voicingWrapper = new VoicingWrapperNode( this, {
-          focusable: false,
-          listenerOptions: {
-            onPress: arrowHitListener,
-            representedNode: this
-          }
-        } );
-      }
-    }
 
     // DistanceArrowNode exists for life of sim and does not need disposal
     Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],

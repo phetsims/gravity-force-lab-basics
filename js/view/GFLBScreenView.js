@@ -25,15 +25,9 @@ import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjec
 import ScreenView from '../../../joist/js/ScreenView.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
-import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
-import VoicingQuickControl from '../../../scenery-phet/js/accessibility/speaker/VoicingQuickControl.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
-import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
 import voicingUtteranceQueue from '../../../scenery/js/accessibility/voicing/voicingUtteranceQueue.js';
-import webSpeaker from '../../../scenery/js/accessibility/voicing/webSpeaker.js';
-import SwipeListener from '../../../scenery/js/listeners/SwipeListener.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
@@ -81,24 +75,12 @@ const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasic
 const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedConstantSizeCheckboxInteractionHint;
 const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
 const voicingResetVerboseString = gravityForceLabBasicsStrings.a11y.voicing.levels.resetAllVerbose;
-const redColorString = gravityForceLabBasicsStrings.a11y.voicing.redColor;
-const blueColorString = gravityForceLabBasicsStrings.a11y.voicing.blueColor;
-const resetAllString = sceneryPhetStrings.a11y.resetAll.label;
-const detailsPatternString = gravityForceLabBasicsStrings.a11y.voicing.levels.detailsPattern;
-const overviewPatternString = gravityForceLabBasicsStrings.a11y.voicing.levels.overviewPattern;
-const screenSummarySingleScreenIntroPatternString = sceneryPhetStrings.a11y.voicing.simSection.screenSummary.singleScreenIntroPattern;
-const summaryInteractionHintPatternString = inverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
-const massString = gravityForceLabStrings.a11y.mass;
 const screenSummaryPlayAreaOverviewPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
 const screenSummarySecondaryDescriptionPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
 const thePlayAreaHasString = gravityForceLabBasicsStrings.a11y.screenSummary.thePlayAreaHas;
-const thereAreString = gravityForceLabBasicsStrings.a11y.voicing.levels.thereAre;
 const inTheControlAreaString = gravityForceLabBasicsStrings.a11y.screenSummary.inTheControlArea;
-const inAdditionString = gravityForceLabBasicsStrings.a11y.voicing.levels.inAddition;
 const moveMass1HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.moveMass1Hint;
 const moveMass2HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.moveMass2Hint;
-const changeMass1HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.changeMass1Hint;
-const changeMass2HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.changeMass2Hint;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;
@@ -161,7 +143,6 @@ class GFLBScreenView extends ScreenView {
         defaultDirection: DefaultDirection.LEFT,
         arrowColor: '#66F',
         forceArrowHeight: 125,
-        objectColor: blueColorString,
         grabHintLabel: moveMass1HintString,
         tandem: tandem.createTandem( 'mass1Node' )
       } );
@@ -174,7 +155,6 @@ class GFLBScreenView extends ScreenView {
         defaultDirection: DefaultDirection.RIGHT,
         arrowColor: '#F66',
         forceArrowHeight: 175,
-        objectColor: redColorString,
         grabHintLabel: moveMass2HintString,
         tandem: tandem.createTandem( 'mass2Node' )
       } );
@@ -205,14 +185,11 @@ class GFLBScreenView extends ScreenView {
     // mass controls
     const massControl1 = new GFLBMassControl( mass1String, model.object1.valueProperty,
       GFLBConstants.MASS_RANGE, mass1ControlLabelString, OBJECT_ONE, alertManager,
-      massDescriber, tandem.createTandem( 'massControl1' ), {
-        changeMassHintString: changeMass1HintString
-      } );
+      massDescriber, tandem.createTandem( 'massControl1' ) );
     const massControl2 = new GFLBMassControl( mass2String, model.object2.valueProperty,
       GFLBConstants.MASS_RANGE, mass2ControlLabelString, OBJECT_TWO, alertManager,
       massDescriber, tandem.createTandem( 'massControl2' ), {
-        color: new Color( 255, 0, 0 ),
-        changeMassHintString: changeMass2HintString
+        color: new Color( 255, 0, 0 )
       } );
 
     const massControlsNode = new Node( {
@@ -392,82 +369,8 @@ class GFLBScreenView extends ScreenView {
     }
 
     //------------------------------------------------
-    // voicing prototype
+    // vibration prototype
     //------------------------------------------------
-    if ( phet.chipper.queryParameters.supportsVoicing ) {
-
-      // add the swipe listener
-      const swipeListener = new SwipeListener( phet.joist.display._input );
-      levelSpeakerModel.gestureControlProperty.link( gestureControl => {
-        swipeListener.enabled = gestureControl;
-      } );
-
-      // extra controls to speak about various things in the sim or quickly disable
-      // the feature
-      const voicingQuickControl = new VoicingQuickControl( webSpeaker, {
-        createHintContent: () => {
-          return StringUtils.fillIn(
-            summaryInteractionHintPatternString,
-            { massOrCharge: massString }
-          );
-        },
-        createDetailsContent: () => {
-          const simStateText = basicsSimStateLabelString;
-          const summaryText = forceDescriber.getForceVectorsSummaryText();
-          const distanceText = positionDescriber.getObjectDistanceSummary();
-          const massText = massDescriber.getMassValuesSummaryText();
-          const robotText = forceDescriber.getRobotEffortSummaryText();
-
-          return StringUtils.fillIn( detailsPatternString, {
-            simState: simStateText,
-            summary: summaryText,
-            distance: distanceText,
-            mass: massText,
-            robot: robotText
-          } );
-        },
-        createOverviewContent: () => {
-          const simDescriptionString = StringUtils.fillIn( screenSummarySingleScreenIntroPatternString, {
-            sim: phet.joist.sim.simNameProperty.get()
-          } );
-
-          const playAreaDescriptionString = StringUtils.fillIn( screenSummaryPlayAreaOverviewPatternString, {
-            playArea: thereAreString
-          } );
-
-          const controlsDescriptionString = StringUtils.fillIn( screenSummarySecondaryDescriptionPatternString, {
-            controlArea: inAdditionString
-          } );
-
-          return StringUtils.fillIn( overviewPatternString, {
-            simDescription: simDescriptionString,
-            playArea: playAreaDescriptionString,
-            spheres: screenSummaryPlayAreaControlsString,
-            controls: controlsDescriptionString
-          } );
-        },
-        leftBottom: this.layoutBounds.leftBottom.minusXY( -8, 8 )
-      } );
-      this.addChild( voicingQuickControl );
-
-      resetAllButton.addInputListener( new VoicingInputListener( {
-        onFocusIn: () => {
-
-          // on focus, speak the name of the reset all button
-          voicingUtteranceQueue.addToBack( levelSpeakerModel.collectResponses( resetAllString ) );
-        },
-        highlightTarget: resetAllButton
-      } ) );
-
-      this.addChild( mass1Node.voicingWrapper );
-      this.addChild( mass2Node.voicingWrapper );
-      this.addChild( distanceArrowNode.voicingWrapper );
-
-      // in this mode, focus just goes from top to bottom, but starting with the quick control
-      // to guide the user to hear details about the simulation first
-      massPositionsNode.pdomOrder = [ voicingQuickControl, mass2Node.voicingWrapper, mass1Node.voicingWrapper, distanceArrowNode.voicingWrapper, null ];
-    }
-
     if ( phet.chipper.queryParameters.vibrationParadigm ) {
 
       // sends messages to the containing Swift app

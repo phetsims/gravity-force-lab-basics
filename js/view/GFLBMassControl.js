@@ -8,35 +8,20 @@
 
 import Property from '../../../axon/js/Property.js';
 import Utils from '../../../dot/js/Utils.js';
-import Shape from '../../../kite/js/Shape.js';
 import merge from '../../../phet-core/js/merge.js';
-import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
-import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
-import VoicingInputListener from '../../../scenery-phet/js/accessibility/speaker/VoicingInputListener.js';
-import VoicingWrapperNode from '../../../scenery-phet/js/accessibility/speaker/VoicingWrapperNode.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
-import sceneryPhetStrings from '../../../scenery-phet/js/sceneryPhetStrings.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
-import Path from '../../../scenery/js/nodes/Path.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
 import Playable from '../../../tambo/js/Playable.js';
-import voicingUtteranceQueue from '../../../utterance-queue/js/UtteranceQueue.js';
-import VoicingUtterance from '../../../utterance-queue/js/VoicingUtterance.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
-const briefChangeMassHintPatternString = gravityForceLabBasicsStrings.a11y.voicing.briefChangeMassHintPattern;
-const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
-const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
-const draggableAlertString = sceneryPhetStrings.a11y.voicing.draggableAlert;
-const releasedString = gravityForceLabBasicsStrings.a11y.voicing.levels.released;
-const grabDragHintPatternString = sceneryPhetStrings.a11y.voicing.grabDragHintPattern;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -141,121 +126,6 @@ class GFLBMassControl extends Panel {
       // pdom
       tagName: 'div' // Though not necessary, it is helpful for the a11y view to display the valuetext within this div.
     } );
-
-    // PROTOTYPE a11y code, for the voicing feature set
-    if ( phet.chipper.queryParameters.supportsVoicing ) {
-
-      // create a hit shape that will capture events on the panel and also exclude hits on the picker when
-      // pointer is over the panel.
-      const panelHitShape = Shape.bounds( panelVBox.bounds ).shapeDifference( Shape.bounds( panelVBox.globalToParentBounds( numberPicker.globalBounds ).dilated( 15 ) ) );
-      const panelHitPath = new Path( panelHitShape );
-
-      const panelWrapper = new VoicingWrapperNode( panelHitPath, {
-        customNode: panelHitPath,
-        focusable: false,
-        listenerOptions: {
-          onPress: () => {
-            speakValueAndHelpText();
-          },
-          onFocusIn: () => {
-            speakValueAndHelpText();
-          }
-        }
-      } );
-      this.addChild( panelWrapper );
-
-      // prepare and speak value text and help text for the control - spoken with mouse input on the containing
-      // panel, and on keyboard focus of the actual number picker
-      const speakValueAndHelpText = () => {
-        const objectResponse = StringUtils.fillIn( briefChangeMassHintPatternString, {
-          labelContent: labelContent,
-          valueText: numberPicker.ariaValueText
-        } );
-        const helpText = alertManager.model.constantRadiusProperty.get() ? massControlsHelpTextDensityBillionsString :
-                         massControlsHelpTextBillionsString;
-
-        const alertContent = levelSpeakerModel.collectResponses( objectResponse, null, helpText );
-        voicingUtteranceQueue.addToBack( alertContent );
-      };
-
-      numberPicker.addInputListener( new VoicingInputListener( {
-        onFocusIn: () => {
-          speakValueAndHelpText();
-        },
-        highlightTarget: numberPicker
-      } ) );
-
-      // swipe gestures control mass, see SwipeListener. The SwipeListener assumes that
-      // these functions are implemented on the focused node - perhaps a better
-      // way to do this would be to create new SceneryEvents, which you could directly
-      // add listeners to
-      let swipePositionOnValueChange = null;
-      numberPicker.swipeStart = ( event, listener ) => {
-        swipePositionOnValueChange = event.pointer.point;
-
-        const response = levelSpeakerModel.collectResponses( draggableAlertString );
-        voicingUtteranceQueue.addToBack( response );
-      };
-
-      numberPicker.swipeEnd = ( event, listener ) => {
-        const releasedUtterance = new VoicingUtterance( {
-          alert: releasedString,
-          cancelOther: false
-        } );
-        voicingUtteranceQueue.addToBack( releasedUtterance );
-      };
-
-      numberPicker.swipeMove = ( event, listener ) => {
-        const delta = event.pointer.point.minus( swipePositionOnValueChange );
-        const distance = event.pointer.point.distance( swipePositionOnValueChange );
-
-        if ( distance > 50 ) {
-
-          let increment;
-          if ( Math.abs( delta.x ) > 25 ) {
-
-            // likely horizontal swipe
-            increment = delta.x > 0;
-          }
-          else if ( Math.abs( delta.y ) > 25 ) {
-
-            // more likely a vertical swipe
-            increment = delta.y < 0;
-          }
-
-          const valueChange = increment ? BILLION_MULTIPLIER : -BILLION_MULTIPLIER;
-          valueProperty.set( massRange.constrainValue( valueProperty.get() + valueChange ) );
-          swipePositionOnValueChange = event.pointer.point;
-        }
-      };
-
-      if ( phet.chipper.queryParameters.supportsVoicing ) {
-
-        // when we receive a click event from a 'double tap', describe to the
-        // user how to drag the appendage
-        this.addInputListener( {
-          click: event => {
-            const hint = StringUtils.fillIn( grabDragHintPatternString, {
-              manipulation: options.changeMassHintString
-            } );
-
-            const response = levelSpeakerModel.collectResponses( hint );
-            voicingUtteranceQueue.addToBack( response );
-          }
-        } );
-      }
-
-      // read new value - note that this gets overridden by a different alert in GravityForceLabAlertManager
-      // if the change in value pushes the other object away, with the positionChangedFromSecondarySourceEmitter
-      const voicingUtterance = new VoicingUtterance();
-
-      valueProperty.lazyLink( ( value, oldValue ) => {
-        const valueText = numberPicker.ariaValueText;
-        const massChangedUtterance = alertManager.getMassValueChangedAlert( thisObjectEnum );
-        voicingUtterance.alert = levelSpeakerModel.collectResponses( valueText, massChangedUtterance.alert );
-        voicingUtteranceQueue.addToBack( voicingUtterance );
-      } );
-    }
   }
 }
 

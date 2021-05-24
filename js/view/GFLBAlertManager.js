@@ -7,7 +7,7 @@
  */
 
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
-import levelSpeakerModel from '../../../scenery-phet/js/accessibility/speaker/levelSpeakerModel.js';
+import voicingManager from '../../../scenery/js/accessibility/voicing/voicingManager.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import voicingUtteranceQueue from '../../../utterance-queue/js/UtteranceQueue.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
@@ -51,17 +51,23 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
 
     if ( phet.chipper.queryParameters.supportsVoicing ) {
       model.showForceValuesProperty.lazyLink( showForceValues => {
-        const response = levelSpeakerModel.collectResponses( this.getVoicingShowForceValuesAlert( showForceValues ) );
+        const response = voicingManager.collectResponses( {
+          objectResponse: this.getVoicingShowForceValuesAlert( showForceValues )
+        } );
         voicingUtteranceQueue.addToBack( response );
       } );
 
       model.showDistanceProperty.lazyLink( showDistance => {
-        const response = levelSpeakerModel.collectResponses( this.getVoicingDistanceVisibleAlert( showDistance ) );
+        const response = voicingManager.collectResponses( {
+          objectResponse: this.getVoicingDistanceVisibleAlert( showDistance )
+        } );
         voicingUtteranceQueue.addToBack( response );
       } );
 
       model.constantRadiusProperty.lazyLink( constantRadius => {
-        const response = levelSpeakerModel.collectResponses( this.getVoicingConstantRadiusAlert( constantRadius ) );
+        const response = voicingManager.collectResponses( {
+          objectResponse: this.getVoicingConstantRadiusAlert( constantRadius )
+        } );
         voicingUtteranceQueue.addToBack( response );
       } );
     }
