@@ -164,7 +164,7 @@ class GFLBScreenView extends ScreenView {
       object2Label: mass2LabelString
     };
 
-    // PDOM descriptions for each mass - the masses themselves leverage AccessibleValueHandler, but these
+    // pdom descriptions for each mass - the masses themselves leverage AccessibleValueHandler, but these
     // form descriptive summaries for the state of each mass
     const objectOneMassDescriptionNode = new GFLBMassDescriptionNode( model, model.object1, massDescriber, forceDescriber,
       positionDescriber, massDescriptionNodeOptions );
