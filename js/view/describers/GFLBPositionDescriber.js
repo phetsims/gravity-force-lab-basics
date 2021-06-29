@@ -83,7 +83,7 @@ class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
     if ( distance <= 1.3 ) {
       return 8;
     }
-    assert && assert( false, `Invalid distance value: ${distance}` );
+    throw new Error( `Invalid distance value: ${distance}` );
   }
 }
 
