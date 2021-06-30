@@ -13,11 +13,13 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../scenery/js/nodes/Node.js';
+import ReadingBlock from '../../../scenery/js/accessibility/voicing/ReadingBlock.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
+const distanceKilometersPatternString = gravityForceLabBasicsStrings.a11y.voicing.distanceKilometersPattern;
 
 // constants
 const HEAD_WIDTH = 8;
@@ -26,6 +28,7 @@ const HEAD_HEIGHT = 8;
 class DistanceArrowNode extends Node {
 
   /**
+   * @mixes {ReadingBlock}
    * @param {GFLBModel} model
    * @param {ModelViewTransform2} modelViewTransform
    * @param {PositionDescriber} positionDescriber
@@ -34,6 +37,11 @@ class DistanceArrowNode extends Node {
   constructor( model, modelViewTransform, positionDescriber, options ) {
 
     super( options );
+
+    // voicing - The DistanceArrowNode can be clicked to hear information about the distance
+    this.initializeReadingBlock( {
+      readingBlockHintResponse: 'Move spheres closer or farther from each other.'
+    } );
 
     const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,
       model.object2.positionProperty.get(), 0, {
@@ -65,15 +73,24 @@ class DistanceArrowNode extends Node {
         const viewPosition2 = modelViewTransform.modelToViewX( position2 );
         arrowNode.setTailAndTip( viewPosition1, 0, viewPosition2, 0 );
 
+        const distanceInKm = model.separationProperty.get() / 1000; // m to km
+
         // update label text and center, distance in meters so divide by 1000 to read out in km
         labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, {
-          distance: model.separationProperty.get() / 1000 // m to km
+          distance: distanceInKm
         } ) );
+
+        // voicing - update the ReadingBlock content
+        this.readingBlockContent = StringUtils.fillIn( distanceKilometersPatternString, {
+          distance: distanceInKm
+        } );
 
         labelText.centerX = arrowNode.centerX;
       } );
   }
 }
+
+ReadingBlock.compose( DistanceArrowNode );
 
 gravityForceLabBasics.register( 'DistanceArrowNode', DistanceArrowNode );
 export default DistanceArrowNode;

@@ -98,6 +98,9 @@
           "value": "In addition"
         }
       },
+      "distanceKilometersPattern": {
+        "value": "{{distance}} kilometers"
+      },
       "verboseCheckedForceValuesCheckboxInteractionHint": {
         "value": "uncheck to hide newtons"
       },
