@@ -23,7 +23,8 @@
       "adapted-from-phet"
     ],
     "features":{
-      "supportsInteractiveDescription": true
+      "supportsInteractiveDescription": true,
+      "supportsVoicing": true
     },
     "supportsSound": true,
     "simulation": true
