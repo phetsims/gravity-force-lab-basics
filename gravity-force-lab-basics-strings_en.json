@@ -84,6 +84,20 @@
       "value": "Size of force"
     },
     "voicing": {
+      "toolbar": {
+        "overviewPattern": {
+          "value": "{{simDescription}} {{playArea}} {{spheres}} {{controls}}"
+        },
+        "detailsPattern": {
+          "value": "{{simState}} {{force}} {{distance}} {{mass}} {{robot}}"
+        },
+        "thereAre": {
+          "value": "There are"
+        },
+        "inAddition": {
+          "value": "In addition"
+        }
+      },
       "verboseCheckedForceValuesCheckboxInteractionHint": {
         "value": "uncheck to hide newtons"
       },

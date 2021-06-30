@@ -43,6 +43,7 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 import GFLBForceDescriber from './describers/GFLBForceDescriber.js';
 import GFLBMassDescriber from './describers/GFLBMassDescriber.js';
 import GFLBPositionDescriber from './describers/GFLBPositionDescriber.js';
+import GFLBVoicingSummaryDescriber from './describers/GFLBVoicingSummaryDescriber.js';
 import DistanceArrowNode from './DistanceArrowNode.js';
 import GFLBAlertManager from './GFLBAlertManager.js';
 import GFLBCheckboxPanel from './GFLBCheckboxPanel.js';
@@ -124,6 +125,10 @@ class GFLBScreenView extends ScreenView {
       } ),
       tandem: tandem
     } );
+
+    // @private {GFLBVoicingSummaryDescriber} - Generates alerts for the Voicing feature from buttons in the Sim
+    // Toolbar.
+    this.voicingSummaryDescriber = new GFLBVoicingSummaryDescriber( forceDescriber, positionDescriber, massDescriber );
 
     // Create the model-view transform.  The primary units used in the model are meters, so significant zoom is used.
     // The multipliers for the 2nd parameter can be used to adjust where the point (0, 0) in the model, which is
@@ -432,6 +437,36 @@ class GFLBScreenView extends ScreenView {
     if ( this.vibrationTestInputListener ) {
       this.vibrationTestInputListener.setElapsedTime( this.vibrationTestInputListener.elapsedTime + dt );
     }
+  }
+
+  /**
+   * Returns the string to use for the "Overview" button of the simulation Toolbar when
+   * this screen is active.
+   * @public
+   * @returns {string}
+   */
+  getVoicingOverviewContent() {
+    return this.voicingSummaryDescriber.createOverviewAlert();
+  }
+
+  /**
+   * Returns the string to speak when the "Details" button of the simulation Toolbar
+   * is pressed when this screen is active.
+   * @public
+   * @returns {string}
+   */
+  getVoicingDetailsContent() {
+    return this.voicingSummaryDescriber.createDetailsAlert();
+  }
+
+  /**
+   * Returns the string to speak whe the "Hints" button of the simulation Toolbar
+   * is pressed when this screen is active.
+   * @public
+   * @returns {string}
+   */
+  getVoicingHintContent() {
+    return this.voicingSummaryDescriber.createHintAlert();
   }
 }
 
