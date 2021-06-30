@@ -27,7 +27,6 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
-import voicingUtteranceQueue from '../../../scenery/js/accessibility/voicing/voicingUtteranceQueue.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
@@ -75,7 +74,6 @@ const verboseUncheckedDistanceCheckboxInteractionHintString = gravityForceLabBas
 const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedDistanceCheckboxInteractionHint;
 const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedConstantSizeCheckboxInteractionHint;
 const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
-const voicingResetVerboseString = gravityForceLabBasicsStrings.a11y.voicing.levels.resetAllVerbose;
 const screenSummaryPlayAreaOverviewPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
 const screenSummarySecondaryDescriptionPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
 const thePlayAreaHasString = gravityForceLabBasicsStrings.a11y.screenSummary.thePlayAreaHas;
@@ -310,22 +308,10 @@ class GFLBScreenView extends ScreenView {
     const resetAllButton = new ResetAllButton( {
       listener: () => {
 
-        if ( phet.chipper.queryParameters.supportsVoicing ) {
-
-          // as the simulation resets, do no not speak about changes
-          voicingUtteranceQueue.enabled = false;
-        }
-
         model.reset();
         mass1Node.reset();
         mass2Node.reset();
         this.forceSoundGenerator.reset();
-
-        if ( phet.chipper.queryParameters.supportsVoicing ) {
-          voicingUtteranceQueue.enabled = true;
-
-          voicingUtteranceQueue.addToBack( voicingResetVerboseString );
-        }
       },
       right: this.layoutBounds.maxX - 10,
       bottom: this.layoutBounds.maxY - 10,

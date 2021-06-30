@@ -147,9 +147,6 @@
         "resetAll": {
           "value": "Reset All. Everything reset."
         },
-        "resetAllVerbose": {
-          "value": "Reset All. Sim screen restarted. Everything reset."
-        },
         "detailsPattern": {
           "value": "{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}"
         },
