@@ -9,7 +9,7 @@
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
 import voicingManager from '../../../scenery/js/accessibility/voicing/voicingManager.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
-import voicingUtteranceQueue from '../../../utterance-queue/js/UtteranceQueue.js';
+import voicingUtteranceQueue from '../../../scenery/js/accessibility/voicing/voicingUtteranceQueue.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
