@@ -20,6 +20,7 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
 const distanceKilometersPatternString = gravityForceLabBasicsStrings.a11y.voicing.distanceKilometersPattern;
+const distanceArrowReadingBlockContentString = gravityForceLabBasicsStrings.a11y.voicing.distanceArrowReadingBlockContent;
 
 // constants
 const HEAD_WIDTH = 8;
@@ -38,9 +39,13 @@ class DistanceArrowNode extends Node {
 
     super( options );
 
-    // voicing - The DistanceArrowNode can be clicked to hear information about the distance
+    // voicing - initialize the trait
     this.initializeReadingBlock( {
-      readingBlockHintResponse: 'Move spheres closer or farther from each other.'
+      readingBlockHintResponse: distanceArrowReadingBlockContentString,
+
+      // the content of this ReadingBlock is generally provided with other interaction and so it should not
+      // add any content in the PDOM or be added to the navigation order, but it is still available for mouse and touch
+      readingBlockTagName: null
     } );
 
     const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,

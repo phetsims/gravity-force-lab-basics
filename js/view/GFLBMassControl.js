@@ -9,8 +9,10 @@
 import Property from '../../../axon/js/Property.js';
 import Utils from '../../../dot/js/Utils.js';
 import merge from '../../../phet-core/js/merge.js';
+import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
+import ReadingBlock from '../../../scenery/js/accessibility/voicing/ReadingBlock.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
@@ -22,6 +24,8 @@ import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const billionKgString = gravityForceLabBasicsStrings.billionKg;
+const changeMassHintResponseString = gravityForceLabBasicsStrings.a11y.voicing.changeMassHintResponse;
+const massControlReadingBlockPatternString = gravityForceLabBasicsStrings.a11y.voicing.massControlReadingBlockPattern;
 
 // constants
 const MIN_PANEL_WIDTH = 150;
@@ -107,9 +111,12 @@ class GFLBMassControl extends Panel {
       spacing: 10
     } );
 
-    const panelVBox = new VBox( {
+    const panelVBox = new MassControlReadingBlock( {
       children: [ titleText, numberPickerHBox ],
-      spacing: 10
+      spacing: 10,
+
+      // voicing
+      readingBlockHintResponse: changeMassHintResponseString
     } );
 
     titleText.textProperty.lazyLink( () => { titleText.centerX = panelVBox.centerX; } );
@@ -126,8 +133,40 @@ class GFLBMassControl extends Panel {
       // pdom
       tagName: 'div' // Though not necessary, it is helpful for the a11y view to display the valuetext within this div.
     } );
+
+    // voicing - when the Property changes, update the ReadingBlock content
+    valueProperty.link( value => {
+      panelVBox.readingBlockContent = StringUtils.fillIn( massControlReadingBlockPatternString, {
+        label: labelContent,
+        value: numberPicker.ariaValueText
+      } );
+    } );
   }
 }
+
+/**
+ * An inner class for the mass contents surrounding the NumberPicker (title, readout) that can be activated
+ * to get the current value and any other help content provided by Voicing.
+ */
+class MassControlReadingBlock extends VBox {
+
+  /**
+   * @param {Object} [options]
+   */
+  constructor( options ) {
+    options = merge( {
+
+      // voicing - This ReadingBlock should neither be focusable nor discoverable in the PDOM because its content
+      // is provided in other responses. It was requested that it be removed from the focus order.
+      readingBlockTagName: null
+    }, options );
+
+    super( options );
+    this.initializeReadingBlock( options );
+  }
+}
+
+ReadingBlock.compose( MassControlReadingBlock );
 
 gravityForceLabBasics.register( 'GFLBMassControl', GFLBMassControl );
 export default GFLBMassControl;

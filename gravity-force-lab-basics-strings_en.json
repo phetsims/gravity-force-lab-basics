@@ -101,6 +101,15 @@
       "distanceKilometersPattern": {
         "value": "{{distance}} kilometers"
       },
+      "changeMassHintResponse": {
+        "value": "Change mass in billions of kilograms."
+      },
+      "massControlReadingBlockPattern": {
+        "value": "{{label}}, {{value}}"
+      },
+      "distanceArrowReadingBlockContent": {
+        "value": "Move spheres closer or farther from each other."
+      },
       "verboseCheckedForceValuesCheckboxInteractionHint": {
         "value": "uncheck to hide newtons"
       },
