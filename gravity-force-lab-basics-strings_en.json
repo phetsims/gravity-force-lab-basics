@@ -110,23 +110,32 @@
       "distanceArrowReadingBlockContent": {
         "value": "Move spheres closer or farther from each other."
       },
-      "verboseCheckedForceValuesCheckboxInteractionHint": {
-        "value": "uncheck to hide newtons"
+      "forceValuesHintResponse": {
+        "value": "Explore value of forces in newtons."
       },
-      "verboseUncheckedForceValuesCheckboxInteractionHint": {
-        "value": "check to explore value of forces in newtons"
+      "distanceHintResponse": {
+        "value": "Measure distance between spheres in kilometers."
       },
-      "verboseUncheckedDistanceCheckboxInteractionHint": {
-        "value": "check to measure distance between spheres in kilometers"
+      "constantSizeHintResponse": {
+        "value": "Keep size of spheres constant while changing mass."
       },
-      "verboseCheckedDistanceCheckboxInteractionHint": {
-        "value": "uncheck to hide measurement between spheres"
+      "forceValuesShownResponse": {
+        "value": "shown in newtons"
       },
-      "verboseCheckedConstantSizeCheckboxInteractionHint": {
-        "value": "uncheck to compare size of spheres while changing mass"
+      "forceValuesHiddenResponse": {
+        "value": "hidden"
       },
-      "verboseUncheckedConstantSizeCheckboxInteractionHint": {
-        "value": "check to keep size of spheres constant while changing mass"
+      "distanceShownResponse": {
+        "value": "measured in kilometers"
+      },
+      "distanceHiddenResponse": {
+        "value": "measurement hidden"
+      },
+      "constantSizeSetResponse": {
+        "value": "set on spheres"
+      },
+      "constantSizeNotSetResponse": {
+        "value": "no longer set"
       },
       "redColor": {
         "value": "Red"

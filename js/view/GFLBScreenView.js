@@ -68,18 +68,23 @@ const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.
 const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
 const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
 const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
-const verboseCheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedForceValuesCheckboxInteractionHint;
-const verboseUncheckedForceValuesCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedForceValuesCheckboxInteractionHint;
-const verboseUncheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedDistanceCheckboxInteractionHint;
-const verboseCheckedDistanceCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedDistanceCheckboxInteractionHint;
-const verboseCheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseCheckedConstantSizeCheckboxInteractionHint;
-const verboseUncheckedConstantSizeCheckboxInteractionHintString = gravityForceLabBasicsStrings.a11y.voicing.verboseUncheckedConstantSizeCheckboxInteractionHint;
 const screenSummaryPlayAreaOverviewPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
 const screenSummarySecondaryDescriptionPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
 const thePlayAreaHasString = gravityForceLabBasicsStrings.a11y.screenSummary.thePlayAreaHas;
 const inTheControlAreaString = gravityForceLabBasicsStrings.a11y.screenSummary.inTheControlArea;
 const moveMass1HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.moveMass1Hint;
 const moveMass2HintString = gravityForceLabBasicsStrings.a11y.voicing.levels.moveMass2Hint;
+
+const forceValuesHintResponseString = gravityForceLabBasicsStrings.a11y.voicing.forceValuesHintResponse;
+const distanceHintResponseString = gravityForceLabBasicsStrings.a11y.voicing.distanceHintResponse;
+const constantSizeHintResponseString = gravityForceLabBasicsStrings.a11y.voicing.constantSizeHintResponse;
+
+const forceValuesShownResponseString = gravityForceLabBasicsStrings.a11y.voicing.forceValuesShownResponse;
+const forceValuesHiddenResponseString = gravityForceLabBasicsStrings.a11y.voicing.forceValuesHiddenResponse;
+const distanceShownResponseString = gravityForceLabBasicsStrings.a11y.voicing.distanceShownResponse;
+const distanceHiddenResponseString = gravityForceLabBasicsStrings.a11y.voicing.distanceHiddenResponse;
+const constantSizeSetResponseString = gravityForceLabBasicsStrings.a11y.voicing.constantSizeSetResponse;
+const constantSizeNotSetResponseString = gravityForceLabBasicsStrings.a11y.voicing.constantSizeNotSetResponse;
 
 // constants
 const MASS_CONTROLS_Y_POSITION = 385;
@@ -262,32 +267,44 @@ class GFLBScreenView extends ScreenView {
     const checkboxItems = [
       {
         label: forceValuesString, property: model.showForceValuesProperty,
-        checkedInteractionHint: verboseCheckedForceValuesCheckboxInteractionHintString,
-        uncheckedInteractionHint: verboseUncheckedForceValuesCheckboxInteractionHintString,
         tandem: tandem.createTandem( 'forceValuesCheckbox' ),
         options: {
           accessibleName: forceValuesString,
-          descriptionContent: forceValuesCheckboxHelpTextString
+          descriptionContent: forceValuesCheckboxHelpTextString,
+
+          // voicing
+          voicingNameResponse: forceValuesString,
+          voicingHintResponse: forceValuesHintResponseString,
+          voicingCheckedContextResponse: forceValuesShownResponseString,
+          voicingUncheckedContextResponse: forceValuesHiddenResponseString
         }
       },
       {
         label: distanceString, property: model.showDistanceProperty,
-        checkedInteractionHint: verboseCheckedDistanceCheckboxInteractionHintString,
-        uncheckedInteractionHint: verboseUncheckedDistanceCheckboxInteractionHintString,
         tandem: tandem.createTandem( 'distanceCheckbox' ),
         options: {
           accessibleName: distanceString,
-          descriptionContent: distanceCheckboxHelpTextString
+          descriptionContent: distanceCheckboxHelpTextString,
+
+          // voicing
+          voicingNameResponse: distanceString,
+          voicingHintResponse: distanceHintResponseString,
+          voicingCheckedContextResponse: distanceShownResponseString,
+          voicingUncheckedContextResponse: distanceHiddenResponseString
         }
       },
       {
         label: constantSizeString, property: model.constantRadiusProperty,
-        checkedInteractionHint: verboseCheckedConstantSizeCheckboxInteractionHintString,
-        uncheckedInteractionHint: verboseUncheckedConstantSizeCheckboxInteractionHintString,
         tandem: tandem.createTandem( 'constantSizeCheckbox' ),
         options: {
           accessibleName: constantSizeString,
-          descriptionContent: constantSizeCheckboxHelpTextString
+          descriptionContent: constantSizeCheckboxHelpTextString,
+
+          // voicing
+          voicingNameResponse: constantSizeString,
+          voicingHintResponse: constantSizeHintResponseString,
+          voicingCheckedContextResponse: constantSizeSetResponseString,
+          voicingUncheckedContextResponse: constantSizeNotSetResponseString
         }
       }
     ];
@@ -340,6 +357,17 @@ class GFLBScreenView extends ScreenView {
 
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
+
+    // voicing
+    model.showForceValuesProperty.link( showValues => {
+
+    } );
+    model.showDistanceProperty.link( showDistance => {
+
+    } );
+    model.constantRadiusProperty.link( constantRadius => {
+
+    } );
 
     //------------------------------------------------
     // debugging

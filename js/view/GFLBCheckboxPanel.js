@@ -13,23 +13,31 @@ import ISLCConstants from '../../../inverse-square-law-common/js/ISLCConstants.j
 import ISLCPanel from '../../../inverse-square-law-common/js/view/ISLCPanel.js';
 import merge from '../../../phet-core/js/merge.js';
 import Text from '../../../scenery/js/nodes/Text.js';
-import VerticalCheckboxGroup from '../../../sun/js/VerticalCheckboxGroup.js';
+import VBox from '../../../scenery/js/nodes/VBox.js';
+import Checkbox from '../../../sun/js/Checkbox.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 class GFLBCheckboxPanel extends ISLCPanel {
 
   /**
-   * @param {Object} checkboxItems - see VerticalCheckboxGroup for doc, note that this Type sets the `node`, and
-   *    expects a `label` {string} property that is used to create the Node
+   * @param {*[]} checkboxItems - Array of Objects with content for each checkbox. Each entry should look like
+   *                            {
+   *                              label: {string},
+   *                              property: Property.<boolean>,
+   *                              options: {Object} - options for the GFLBCheckbox, see inner class
+   *                            }
    * @param {Object} [options]
    */
   constructor( checkboxItems, options ) {
 
     options = merge( {
-      checkboxGroupOptions: {
-        checkboxOptions: ISLCConstants.CHECKBOX_OPTIONS
-      },
+
+      // {Object} options passed to ALL checkboxes, for options that are unique to each checkbox,
+      // use GFLBCheckbox options, and provide through checkboxItems `options`
+      checkboxOptions: ISLCConstants.CHECKBOX_OPTIONS,
+
+      // ISLCPanel options
       fill: '#FDF498',
       xMargin: 10,
       yMargin: 10,
@@ -39,17 +47,50 @@ class GFLBCheckboxPanel extends ISLCPanel {
       tandem: Tandem.REQUIRED
     }, options );
 
-    // Given a string as a label, convert it to a Text Node.
-    checkboxItems = checkboxItems.map( item => {
-      assert && assert( item.tandem );
-      item.node = new Text( item.label, merge( {}, ISLCConstants.UI_TEXT_OPTIONS, {
+    const checkboxes = [];
+
+    checkboxItems.forEach( item => {
+      const contentNode = new Text( item.label, merge( {}, ISLCConstants.UI_TEXT_OPTIONS, {
         tandem: item.tandem.createTandem( 'labelText' )
       } ) );
-      return item;
+
+      checkboxes.push( new GFLBCheckbox( contentNode, item.property, merge( {}, item.options, options.checkboxOptions ) ) );
     } );
 
-    const checkboxGroup = new VerticalCheckboxGroup( checkboxItems, options.checkboxGroupOptions );
-    super( checkboxGroup, options );
+    const panelContent = new VBox( {
+      children: checkboxes,
+      align: 'left',
+      spacing: 10
+    } );
+
+    super( panelContent, options );
+  }
+}
+
+/**
+ * Inner class for the GFLBCheckboxPanel, the Checkbox itself that implements Voicing responses.
+ */
+class GFLBCheckbox extends Checkbox {
+
+  /**
+   * @param {Node} content
+   * @param {Property} property
+   * @param options
+   */
+  constructor( content, property, options ) {
+    merge( {
+
+      // {string} - voicing: responses for when the checkbox becomes checked/unchecked
+      voicingCheckedContextResponse: null,
+      voicingUncheckedContextResponse: null
+    }, options );
+
+    property.lazyLink( checked => {
+      this.voicingContextResponse = checked ? options.voicingCheckedContextResponse : options.voicingUncheckedContextResponse;
+      this.voicingSpeakFullResponse();
+    } );
+
+    super( content, property, options );
   }
 }
 
