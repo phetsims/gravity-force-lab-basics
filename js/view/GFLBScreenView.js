@@ -7,6 +7,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import Property from '../../../axon/js/Property.js';
 import stepTimer from '../../../axon/js/stepTimer.js';
 import Bounds2 from '../../../dot/js/Bounds2.js';
 import Range from '../../../dot/js/Range.js';
@@ -360,15 +361,11 @@ class GFLBScreenView extends ScreenView {
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
 
-    // voicing
-    model.showForceValuesProperty.link( showValues => {
-
-    } );
-    model.showDistanceProperty.link( showDistance => {
-
-    } );
-    model.constantRadiusProperty.link( constantRadius => {
-
+    // voicing - Update the voicingObjectResponse for each mass when either one changes. The aria-valuetext includes
+    // information about the relative distance between the two masses, so when either one changes both need to update
+    Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ], () => {
+      mass1Node.voicingObjectResponse = mass1Node.ariaValueText;
+      mass2Node.voicingObjectResponse = mass2Node.ariaValueText;
     } );
 
     //------------------------------------------------
