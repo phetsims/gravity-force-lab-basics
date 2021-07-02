@@ -351,6 +351,15 @@ class GFLBScreenView extends ScreenView {
       resetAllButton
     ];
 
+    // voicing - when ReadingBlocks for the arrows are enabled, they should come before everything else, where top
+    // most component vertically comes first
+    massPositionsNode.pdomOrder = [
+      mass2Node.arrowNode,
+      mass1Node.arrowNode,
+      mass1Node,
+      mass2Node
+    ];
+
     // layout the view elements
     parameterControlPanel.right = this.layoutBounds.width - 15;
     parameterControlPanel.bottom = MASS_CONTROLS_Y_POSITION;
