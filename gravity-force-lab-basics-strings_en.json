@@ -147,28 +147,10 @@
         "value": "{{labelContent}}, {{valueText}}"
       },
       "levels": {
-        "forceValuesShown": {
-          "value": "Force values shown."
-        },
-        "forceValuesHidden": {
-          "value": "Force values hidden."
-        },
-        "distanceShown": {
-          "value": "Distance shown."
-        },
-        "distanceHidden": {
-          "value": "Distance hidden."
-        },
-        "constantSizeSet": {
-          "value": "Constant size set."
-        },
-        "constantSizeOff": {
-          "value": "Constant size off."
-        },
         "resetAll": {
           "value": "Reset All. Everything reset."
         },
-        "detailsPattern": {
+      "detailsPattern": {
           "value": "{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}"
         },
         "overviewPattern": {

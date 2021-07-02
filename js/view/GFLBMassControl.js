@@ -13,6 +13,7 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import ReadingBlock from '../../../scenery/js/accessibility/voicing/ReadingBlock.js';
+import Voicing from '../../../scenery/js/accessibility/voicing/Voicing.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
@@ -64,7 +65,7 @@ class GFLBMassControl extends Panel {
     // Keep track of the current mass between the start and end of an interaction to see if we should alert.
     let currentMass = valueProperty.value;
 
-    const numberPicker = new NumberPicker( valueProperty, new Property( massRange ), {
+    const numberPicker = new VoicingNumberPicker( valueProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
       scale: 1.5,
       tandem: tandem.createTandem( 'numberPicker' ),
@@ -82,9 +83,6 @@ class GFLBMassControl extends Panel {
       valueChangedSoundPlayer: Playable.NO_SOUND,
       boundarySoundPlayer: Playable.NO_SOUND,
 
-      // pdom
-      pageKeyboardStep: BILLION_MULTIPLIER * 2,
-      accessibleName: labelContent,
       a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
 
       // on end interaction, if alert a special alert if the mass started at the min/max and didnt' change.
@@ -98,7 +96,14 @@ class GFLBMassControl extends Panel {
       },
       startChange: () => {
         currentMass = valueProperty.value;
-      }
+      },
+
+      // pdom
+      pageKeyboardStep: BILLION_MULTIPLIER * 2,
+      accessibleName: labelContent,
+
+      // voicing
+      voicingNameResponse: labelContent
     } );
     const numberPickerLabel = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),
@@ -144,6 +149,8 @@ class GFLBMassControl extends Panel {
   }
 }
 
+gravityForceLabBasics.register( 'GFLBMassControl', GFLBMassControl );
+
 /**
  * An inner class for the mass contents surrounding the NumberPicker (title, readout) that can be activated
  * to get the current value and any other help content provided by Voicing.
@@ -151,6 +158,7 @@ class GFLBMassControl extends Panel {
 class MassControlReadingBlock extends VBox {
 
   /**
+   * @mixes {ReadingBlock}
    * @param {Object} [options]
    */
   constructor( options ) {
@@ -168,5 +176,39 @@ class MassControlReadingBlock extends VBox {
 
 ReadingBlock.compose( MassControlReadingBlock );
 
-gravityForceLabBasics.register( 'GFLBMassControl', GFLBMassControl );
+
+/**
+ * An inner class that implements the Voicing for the NumberPicker. Eventually this could be moved to NumberPicker,
+ * but it is unclear how much of this feature will persist.
+ */
+class VoicingNumberPicker extends NumberPicker {
+
+  /**
+   * @mixes {Voicing}
+   * @param {Property} valueProperty
+   * @param {Property.<Range>} rangeProperty
+   * @param {Object} [options]
+   */
+  constructor( valueProperty, rangeProperty, options ) {
+    options = merge( {
+
+      voicingNameResponse: null,
+      voicingHintResponse: changeMassHintResponseString
+
+    }, options );
+    super( valueProperty, rangeProperty, options );
+
+    this.initializeVoicing( options );
+
+    valueProperty.link( value => {
+
+      // voicing - NumberPicker has aria-valuetext through AccessibleValueHandler, the "object response" for voicing
+      // is the same as the aria-valuetext
+      this.voicingObjectResponse = this.ariaValueText;
+    } );
+  }
+}
+
+Voicing.compose( VoicingNumberPicker );
+
 export default GFLBMassControl;
