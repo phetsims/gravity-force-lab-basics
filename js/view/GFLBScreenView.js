@@ -7,6 +7,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import stepTimer from '../../../axon/js/stepTimer.js';
 import Bounds2 from '../../../dot/js/Bounds2.js';
 import Range from '../../../dot/js/Range.js';
 import Vector2 from '../../../dot/js/Vector2.js';
@@ -27,6 +28,7 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import PDOMPeer from '../../../scenery/js/accessibility/pdom/PDOMPeer.js';
+import voicingManager from '../../../scenery/js/accessibility/voicing/voicingManager.js';
 import HBox from '../../../scenery/js/nodes/HBox.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Color from '../../../scenery/js/util/Color.js';
@@ -385,6 +387,21 @@ class GFLBScreenView extends ScreenView {
         { stroke: 'rgba( 250, 100, 100, 0.6 )' }
       );
       this.addChild( gridNode );
+    }
+
+    //------------------------------------------------
+    // Voicing survey, see
+    //------------------------------------------------
+    voicingManager.nameResponsesEnabledProperty.value = ISLCQueryParameters.voicingNameResponsesInitiallyEnabled;
+    voicingManager.objectResponsesEnabledProperty.value = ISLCQueryParameters.voicingObjectResponsesInitiallyEnabled;
+    voicingManager.contextResponsesEnabledProperty.value = ISLCQueryParameters.voicingContextResponsesInitiallyEnabled;
+    voicingManager.hintResponsesEnabledProperty.value = ISLCQueryParameters.voicingHintResponsesInitiallyEnabled;
+
+    // hack alert! Pop up the voicing dialog by default when it opens
+    if ( ISLCQueryParameters.voicingSurvey ) {
+      stepTimer.setTimeout( () => {
+        phet.joist.sim.navigationBar.a11yButtonsHBox.children[ 0 ]._inputListeners[ 0 ].click();
+      }, 500 );
     }
 
     //------------------------------------------------
