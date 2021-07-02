@@ -406,6 +406,11 @@ class GFLBScreenView extends ScreenView {
     // hack alert! Pop up the voicing dialog by default when it opens
     if ( ISLCQueryParameters.voicingSurvey ) {
       stepTimer.setTimeout( () => {
+
+        // blur the active element (ScreenView h1) before adding the Dialog, so that we don't try to focus
+        // the h1 again when the dialog is closed - if this were a long term feature we would work on a better
+        // solution but since this is temporary and we need this fast we are going with this hack for now
+        document.activeElement.blur();
         phet.joist.sim.navigationBar.a11yButtonsHBox.children[ 0 ]._inputListeners[ 0 ].click();
       }, 500 );
     }
