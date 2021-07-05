@@ -370,9 +370,9 @@ class GFLBScreenView extends ScreenView {
     resetAllButton.right = parameterControlPanel.right;
     resetAllButton.top = parameterControlPanel.bottom + 13.5;
 
-    // voicing - Update the voicingObjectResponse for each mass when either one changes. The aria-valuetext includes
-    // information about the relative distance between the two masses, so when either one changes both need to update
-    Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ], () => {
+    // voicing - Update the voicingObjectResponse for each mass when any Property changes that would update the object
+    // response
+    Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty, model.showDistanceProperty ], () => {
       mass1Node.voicingObjectResponse = mass1Node.ariaValueText;
       mass2Node.voicingObjectResponse = mass2Node.ariaValueText;
     } );
