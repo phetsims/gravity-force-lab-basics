@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.32 Fri Jul 02 2021 18:31:52 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.33 Mon Jul 05 2021 13:49:04 GMT-0400 (Eastern Daylight Time)",
   "assert": {
     "sha": "f360fa1bd09a47b3c9e49cd90c8dddd136a13e0c",
     "branch": "master"
@@ -13,7 +13,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "de3e18c395259244eaf6f697cb58f10db7917155",
+    "sha": "60bb3c3c8fe40c2895485a25dc6938789d63a73a",
     "branch": "master"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "6eb17700ecefbd829c2352039712d6e4fa4b5916",
+    "sha": "0730675e378e6dca4129bbd0b40a58db74dd0229",
     "branch": "master"
   },
   "inverse-square-law-common": {
@@ -69,7 +69,7 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "8680b6b49e46bf1184d4eb8d9dbb4c05c06d79e6",
+    "sha": "073054f30b2b736ebd903393c6ecf37dd2d1bb7c",
     "branch": "master"
   },
   "scenery-phet": {
