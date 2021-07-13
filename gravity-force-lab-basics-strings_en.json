@@ -136,47 +136,6 @@
       },
       "constantSizeNotSetResponse": {
         "value": "no longer set"
-      },
-      "redColor": {
-        "value": "Red"
-      },
-      "blueColor": {
-        "value": "Blue"
-      },
-      "briefChangeMassHintPattern": {
-        "value": "{{labelContent}}, {{valueText}}"
-      },
-      "levels": {
-        "resetAll": {
-          "value": "Reset All. Everything reset."
-        },
-      "detailsPattern": {
-          "value": "{{simState}} {{summary}} {{distance}} {{mass}} {{robot}}"
-        },
-        "overviewPattern": {
-          "value": "{{simDescription}} {{playArea}} {{spheres}} {{controls}}"
-        },
-        "thereAre": {
-          "value": "There are"
-        },
-        "inAddition": {
-          "value": "In addition"
-        },
-        "moveMass1Hint": {
-          "value": "move mass 1, blue sphere"
-        },
-        "moveMass2Hint": {
-          "value": "move mass 2, red sphere"
-        },
-        "changeMass1Hint": {
-          "value": "change mass of mass 1"
-        },
-        "changeMass2Hint": {
-          "value": "change mass of mass 2"
-        },
-        "released": {
-          "value": "Released."
-        }
       }
     }
   }
