@@ -29,7 +29,7 @@
         "value": "{{playArea}} two mass spheres, a blue sphere labeled mass 1 and a red sphere labeled mass 2. A force arrow starts at the center of each sphere and points directly at the opposite sphere."
       },
       "playAreaControls": {
-        "value": "Spheres can be moved closer or farther from each other along a track. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot."
+        "value": "Spheres can be moved closer or farther from each other along an invisible track. The mass of each sphere can be increased or decreased. Each sphere is held in place by a robot."
       },
       "secondaryDescriptionPattern": {
         "value": "{{controlArea}}, checkboxes change what things are shown and how they behave, and a button resets the sim."
