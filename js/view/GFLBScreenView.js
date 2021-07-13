@@ -270,8 +270,11 @@ class GFLBScreenView extends ScreenView {
     const checkboxItems = [
       {
         label: forceValuesString, property: model.showForceValuesProperty,
-        tandem: tandem.createTandem( 'forceValuesCheckbox' ),
         options: {
+
+          //phet-io
+          tandem: tandem.createTandem( 'forceValuesCheckbox' ),
+
           accessibleName: forceValuesString,
           descriptionContent: forceValuesCheckboxHelpTextString,
 
@@ -284,8 +287,11 @@ class GFLBScreenView extends ScreenView {
       },
       {
         label: distanceString, property: model.showDistanceProperty,
-        tandem: tandem.createTandem( 'distanceCheckbox' ),
         options: {
+
+          // phet-io
+          tandem: tandem.createTandem( 'distanceCheckbox' ),
+
           accessibleName: distanceString,
           descriptionContent: distanceCheckboxHelpTextString,
 
@@ -298,8 +304,11 @@ class GFLBScreenView extends ScreenView {
       },
       {
         label: constantSizeString, property: model.constantRadiusProperty,
-        tandem: tandem.createTandem( 'constantSizeCheckbox' ),
         options: {
+
+          // phet-io
+          tandem: tandem.createTandem( 'constantSizeCheckbox' ),
+
           accessibleName: constantSizeString,
           descriptionContent: constantSizeCheckboxHelpTextString,
 

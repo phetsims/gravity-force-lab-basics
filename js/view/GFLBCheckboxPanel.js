@@ -49,9 +49,9 @@ class GFLBCheckboxPanel extends ISLCPanel {
 
     const checkboxes = [];
 
-    checkboxItems.forEach( item => {
+    checkboxItems.forEach( ( item, index ) => {
       const contentNode = new Text( item.label, merge( {}, ISLCConstants.UI_TEXT_OPTIONS, {
-        tandem: item.tandem.createTandem( 'labelText' )
+        tandem: item.options.tandem.createTandem( 'labelText' )
       } ) );
 
       checkboxes.push( new GFLBCheckbox( contentNode, item.property, merge( {}, item.options, options.checkboxOptions ) ) );
@@ -78,11 +78,14 @@ class GFLBCheckbox extends Checkbox {
    * @param options
    */
   constructor( content, property, options ) {
-    merge( {
+    options = merge( {
 
       // {string} - voicing: responses for when the checkbox becomes checked/unchecked
       voicingCheckedContextResponse: null,
-      voicingUncheckedContextResponse: null
+      voicingUncheckedContextResponse: null,
+
+      // phet-io
+      tandem: Tandem.REQUIRED
     }, options );
 
     property.lazyLink( checked => {
