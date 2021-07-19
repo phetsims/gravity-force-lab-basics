@@ -22,7 +22,7 @@
       "phet-io",
       "adapted-from-phet"
     ],
-    "features": {
+    "simFeatures": {
       "supportsInteractiveDescription": true,
       "supportsVoicing": true,
       "supportsInteractiveHighlights": true,
