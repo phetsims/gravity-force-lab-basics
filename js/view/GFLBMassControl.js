@@ -19,7 +19,7 @@ import Text from '../../../scenery/js/nodes/Text.js';
 import VBox from '../../../scenery/js/nodes/VBox.js';
 import Color from '../../../scenery/js/util/Color.js';
 import Panel from '../../../sun/js/Panel.js';
-import Playable from '../../../tambo/js/Playable.js';
+import SoundPlayer from '../../../tambo/js/SoundPlayer.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -80,8 +80,8 @@ class GFLBMassControl extends Panel {
       color: options.color,
 
       // sound
-      valueChangedSoundPlayer: Playable.NO_SOUND,
-      boundarySoundPlayer: Playable.NO_SOUND,
+      valueChangedSoundPlayer: SoundPlayer.NO_SOUND,
+      boundarySoundPlayer: SoundPlayer.NO_SOUND,
 
       a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
 
