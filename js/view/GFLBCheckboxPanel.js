@@ -90,7 +90,10 @@ class GFLBCheckbox extends Checkbox {
 
     property.lazyLink( checked => {
       this.voicingContextResponse = checked ? options.voicingCheckedContextResponse : options.voicingUncheckedContextResponse;
-      this.voicingSpeakFullResponse();
+      this.voicingSpeakResponse( {
+        nameResponse: this.voicingNameResponse,
+        contextResponse: this.voicingContextResponse
+      } );
     } );
 
     super( content, property, options );
