@@ -111,13 +111,13 @@
         "value": "Move spheres closer or farther from each other."
       },
       "forceValuesHintResponse": {
-        "value": "Explore value of forces in newtons."
+        "value": "Explore force changes with or without values"
       },
       "distanceHintResponse": {
-        "value": "Measure distance between spheres in kilometers."
+        "value": "Explore sphere positions with or without exact distance."
       },
       "constantSizeHintResponse": {
-        "value": "Keep size of spheres constant while changing mass."
+        "value": "Explore mass changes with or without changing size of spheres."
       },
       "forceValuesShownResponse": {
         "value": "shown in newtons"
