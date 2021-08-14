@@ -41,50 +41,6 @@ class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
       this.useQuantitativeDistance = showDistance;
     } );
   }
-
-  /**
-   * These empirically determined values were designed, see https://docs.google.com/document/d/1HdDG9ds2MdbCb21l9qk3cI8yBQxK6-wBWNXC4Tloji8/edit#heading=h.gnyv76vd5fvr
-   * @protected
-   * @param {number} distance
-   * @param {number} numberOfRegions - for crosscheck
-   * @returns {number}
-   * @override
-   */
-  getDistanceIndex( distance, numberOfRegions ) {
-    assert && assert( distance > 0, 'Distance between spheres should always be positive.' );
-    assert && assert( numberOfRegions === 9, 'If numberOfRegions changes, this function should too.' );
-
-    if ( distance === 9.6 ) {
-      return 0;
-    }
-    if ( distance >= 9.0 ) {
-      return 1;
-    }
-    if ( distance >= 7.6 ) {
-      return 2;
-    }
-    if ( distance >= 6.1 ) {
-      return 3;
-    }
-    if ( distance >= 4.6 ) {
-      return 4;
-    }
-    if ( distance >= 3.1 ) {
-      return 5;
-    }
-    if ( distance >= 2.0 ) {
-      return 6;
-    }
-    if ( distance >= 1.4 ) {
-      return 7;
-    }
-
-    // This is less than, because while fuzzing the distance can somehow go to 1.2, not sure how.
-    if ( distance <= 1.3 ) {
-      return 8;
-    }
-    throw new Error( `Invalid distance value: ${distance}` );
-  }
 }
 
 gravityForceLabBasics.register( 'GFLBPositionDescriber', GFLBPositionDescriber );
