@@ -376,8 +376,8 @@ class GFLBScreenView extends ScreenView {
     // voicing - Update the voicingObjectResponse for each mass when any Property changes that would update the object
     // response
     Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty, model.showDistanceProperty ], () => {
-      mass1Node.voicingObjectResponse = mass1Node.ariaValueText;
-      mass2Node.voicingObjectResponse = mass2Node.ariaValueText;
+      mass1Node.voicingObjectResponse = positionDescriber.getDistanceFromOtherObjectDescription( model.object1.enum );
+      mass2Node.voicingObjectResponse = positionDescriber.getDistanceFromOtherObjectDescription( model.object2.enum );
     } );
 
     //------------------------------------------------
