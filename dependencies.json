@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.36 Sat Aug 14 2021 22:11:05 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.37 Tue Aug 17 2021 23:22:50 GMT-0400 (Eastern Daylight Time)",
   "assert": {
     "sha": "f360fa1bd09a47b3c9e49cd90c8dddd136a13e0c",
     "branch": "master"
@@ -13,23 +13,23 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "1d62c312200ee7628b55c43969d6492176ce1429",
+    "sha": "6e352103c79b646b89ce49b8ee4c50141722aa30",
     "branch": "master"
   },
   "dot": {
-    "sha": "9973679df035b87793ad35190c79eebdfd959166",
+    "sha": "00d9b249a9bd804a0f71029ef7506376ca37236b",
     "branch": "master"
   },
   "gravity-force-lab": {
-    "sha": "0492b7bd9f86217eafa2216563bfac416a417d3f",
+    "sha": "105f25fabe63e7fdf7565d11f4c246136bcd86d1",
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "374ccf1165a6f02a236ee25df4371697c8f95d88",
+    "sha": "73cdf8d5bebf5dc6b73cc115532916707cb8076f",
     "branch": "master"
   },
   "inverse-square-law-common": {
-    "sha": "81eaeeb5e427eca0d52f0180ed2c31e5afc20f49",
+    "sha": "2dcdaafffd6ca3cddee9db6accbdf989c0c898a7",
     "branch": "master"
   },
   "joist": {
@@ -37,7 +37,7 @@
     "branch": "master"
   },
   "kite": {
-    "sha": "a5a45cba30bc83d0400d83f03c7e4ffe06d75501",
+    "sha": "2386606ce9190fce00456352044b5d0ca97686f0",
     "branch": "master"
   },
   "perennial-alias": {
@@ -49,7 +49,7 @@
     "branch": "master"
   },
   "phet-io": {
-    "sha": "9ad3f989de7596fc20fbdf4a7790985aab53899a",
+    "sha": "58fe8642384911d165e007484c880a2553ff2138",
     "branch": "master"
   },
   "phet-io-client-guides": {
@@ -73,15 +73,15 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "4d2b0fba53748ba691743fca43ca5b5dcf65a052",
+    "sha": "b42bf676ca603dcdffd003da62923da8a5cc6452",
     "branch": "master"
   },
   "scenery-phet": {
-    "sha": "22c138b0439bcd4b9faa7637cb278472a115c32c",
+    "sha": "d1bc506f511076df549ea98c2ba3ea0c612cb312",
     "branch": "master"
   },
   "sherpa": {
-    "sha": "eccff937712366a696d6df778546779bc4e36821",
+    "sha": "b6fa8ae5c805a6d764b8a1c8d851ec0f72e1b82a",
     "branch": "master"
   },
   "studio": {
