@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-dev.37 Tue Aug 17 2021 23:22:50 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-dev.38 Tue Aug 17 2021 23:26:55 GMT-0400 (Eastern Daylight Time)",
   "assert": {
     "sha": "f360fa1bd09a47b3c9e49cd90c8dddd136a13e0c",
     "branch": "master"
@@ -21,15 +21,15 @@
     "branch": "master"
   },
   "gravity-force-lab": {
-    "sha": "105f25fabe63e7fdf7565d11f4c246136bcd86d1",
+    "sha": "7ba4c362d4c2e05dc610add28d8d8b59d3b1821a",
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "73cdf8d5bebf5dc6b73cc115532916707cb8076f",
+    "sha": "4523e987c7466aebcd4d265e14937fa30d0b07b2",
     "branch": "master"
   },
   "inverse-square-law-common": {
-    "sha": "2dcdaafffd6ca3cddee9db6accbdf989c0c898a7",
+    "sha": "1293eacdf2cebc57a91fba8ee281ffe0f4ff8e99",
     "branch": "master"
   },
   "joist": {
