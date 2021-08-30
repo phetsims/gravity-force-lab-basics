@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-rc.0 Mon Aug 30 2021 11:55:12 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-rc.0 Mon Aug 30 2021 12:07:13 GMT-0400 (Eastern Daylight Time)",
   "assert": {
     "sha": "f360fa1bd09a47b3c9e49cd90c8dddd136a13e0c",
     "branch": "master"
@@ -25,7 +25,7 @@
     "branch": "master"
   },
   "gravity-force-lab-basics": {
-    "sha": "302ae43bde3882ea2c0395668211766388e2157a",
+    "sha": "8099e324360a34b27b753a9fde9bfa90e560bf71",
     "branch": "1.1"
   },
   "inverse-square-law-common": {
@@ -33,8 +33,8 @@
     "branch": "master"
   },
   "joist": {
-    "sha": "2de2fe3fdccbd91fe77adc9aa11f1de660b20257",
-    "branch": "master"
+    "sha": "c93498f985fceceb7c489e6c90fa22fa3c274f93",
+    "branch": "gravity-force-lab-basics-1.1"
   },
   "kite": {
     "sha": "2386606ce9190fce00456352044b5d0ca97686f0",
@@ -73,8 +73,8 @@
     "branch": "master"
   },
   "scenery": {
-    "sha": "11f97fe70a21249c081a1c85295e2955608d429b",
-    "branch": "master"
+    "sha": "782581599a0c2b7bbea5b51f8dc301a3dba08691",
+    "branch": "gravity-force-lab-basics-1.1"
   },
   "scenery-phet": {
     "sha": "2f3840378117bb13d14b329332e9b712d03e72f9",
