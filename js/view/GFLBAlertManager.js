@@ -18,7 +18,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
 
   /**
    * @param {GFLBModel} model
-   * @param {GFLBf} massDescriber
+   * @param {GFLBForceDescriber} massDescriber
    * @param {GFLBForceDescriber} forceDescriber
    */
   constructor( model, massDescriber, forceDescriber ) {
