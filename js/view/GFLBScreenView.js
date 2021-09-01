@@ -106,7 +106,6 @@ class GFLBScreenView extends ScreenView {
     const positionDescriber = new GFLBPositionDescriber( model, mass1LabelString, mass2LabelString );
     const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString, positionDescriber );
     const massDescriber = new GFLBMassDescriber( model, forceDescriber );
-    const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber );
 
     const playAreaOverviewString = StringUtils.fillIn( screenSummaryPlayAreaOverviewPatternString, {
       playArea: thePlayAreaHasString
@@ -126,6 +125,10 @@ class GFLBScreenView extends ScreenView {
         additionalMassDistanceProperties: [ model.showDistanceProperty ]
       } ),
       tandem: tandem
+    } );
+
+    const alertManager = new GFLBAlertManager( model, massDescriber, forceDescriber, {
+      descriptionAlertNode: this
     } );
 
     // @private {GFLBVoicingSummaryDescriber} - Generates alerts for the Voicing feature from buttons in the Sim

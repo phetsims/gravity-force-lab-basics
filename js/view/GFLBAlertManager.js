@@ -7,6 +7,7 @@
  */
 
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
+import merge from '../../../phet-core/js/merge.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -20,16 +21,18 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    * @param {GFLBModel} model
    * @param {GFLBForceDescriber} massDescriber
    * @param {GFLBForceDescriber} forceDescriber
+   * @param {Object} [options]
    */
-  constructor( model, massDescriber, forceDescriber ) {
-    super( model, massDescriber, forceDescriber, {
+  constructor( model, massDescriber, forceDescriber, options ) {
+    options = merge( {
       linkToForceValuesDisplayProperty: false, // opt out of REGULAR specific linking
 
       // by default the REGULAR version is different from this because of scientific notation
       showForceValuesListener: showValues => {
         this.alertShowForceValues( showValues );
       }
-    } );
+    }, options );
+    super( model, massDescriber, forceDescriber, options );
 
     // @private {Utterance}
     this.distanceVisibleUtterance = new ActivationUtterance();
@@ -45,7 +48,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    */
   alertDistanceVisible( showDistance ) {
     this.distanceVisibleUtterance.alert = this.getDistanceVisibleAlert( showDistance );
-    phet.joist.sim.utteranceQueue.addToBack( this.distanceVisibleUtterance );
+    this.alertDescriptionUtterance( this.distanceVisibleUtterance );
   }
 
   /**
