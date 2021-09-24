@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-rc.2 Wed Sep 15 2021 17:11:25 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-rc.2 Fri Sep 24 2021 13:01:26 GMT-0400 (Eastern Daylight Time)",
   "assert": {
     "sha": "f360fa1bd09a47b3c9e49cd90c8dddd136a13e0c",
     "branch": "HEAD"
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "2afca69ef8426ef28e6dcab14554672c7febf05b",
+    "sha": "26368a416f2e2c2d28997d6f7b2d673cb6a40500",
     "branch": "1.1"
   },
   "inverse-square-law-common": {
@@ -78,7 +78,7 @@
   },
   "scenery-phet": {
     "sha": "c8cdd95f77ad40905e534c88ae6fc9e7c81cabbf",
-    "branch": "gravity-force-lab-basics-1.1"
+    "branch": "HEAD"
   },
   "sherpa": {
     "sha": "c1b1e894d86bed6b7e3f240ba570d983dd00739e",
@@ -89,8 +89,8 @@
     "branch": "HEAD"
   },
   "sun": {
-    "sha": "02fc15c6e02cf930d940d8d51a478325c1d9e654",
-    "branch": "HEAD"
+    "sha": "1f7c6127a1bde2f70b1bbd163507eb5feaa85220",
+    "branch": "gravity-force-lab-basics-1.1"
   },
   "tambo": {
     "sha": "632e6c6e05e4f0849a0b78e8479d7bd6db0b01ea",
