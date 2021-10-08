@@ -21,7 +21,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab": {
-    "sha": "febb1dcf74e28a332ff2a29bfd9b7f20ca55496b",
+    "sha": "1c41979803e5544509f38a619fc0b063a0ba3130",
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
@@ -29,11 +29,11 @@
     "branch": "1.1"
   },
   "inverse-square-law-common": {
-    "sha": "d2a83b73bd2ae422ce01e92714ff3c1c75cfd7a0",
+    "sha": "c1fbb54c65edd8c195b7552748a9f0e4fbc3646a",
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "b8703cbfd45435fdc97babc90ed08a89749f3be9",
+    "sha": "1dbb57df79e7fc748202f760f000aabde53a6be2",
     "branch": "HEAD"
   },
   "kite": {
@@ -77,7 +77,7 @@
     "branch": "HEAD"
   },
   "scenery-phet": {
-    "sha": "8f38f80d1b4bc33e354aee5eef6fb30e3a8af3bf",
+    "sha": "37367e80216f0b24cfca904f78629ede6b6a0865",
     "branch": "HEAD"
   },
   "sherpa": {
@@ -93,7 +93,7 @@
     "branch": "gravity-force-lab-basics-1.1"
   },
   "tambo": {
-    "sha": "cc8f712f792c7cee272dab47126f660523a17bf1",
+    "sha": "784064d11fb6a6b37c572400b6813360dc67f2d7",
     "branch": "HEAD"
   },
   "tandem": {
