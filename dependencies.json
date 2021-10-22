@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.0-rc.2 Fri Oct 22 2021 13:02:57 GMT-0400 (Eastern Daylight Time)",
+  "comment": "# gravity-force-lab-basics 1.1.0-rc.2 Fri Oct 22 2021 13:09:48 GMT-0400 (Eastern Daylight Time)",
   "assert": {
     "sha": "f360fa1bd09a47b3c9e49cd90c8dddd136a13e0c",
     "branch": "HEAD"
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "14ac94ef91156d64ed0b7785ae2e91e625c208f7",
+    "sha": "53e8caabdea6dd2b77019e034d33ff242be56c00",
     "branch": "1.1"
   },
   "inverse-square-law-common": {
@@ -73,7 +73,7 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "ffae857a56445106cbeb049df453a894b8772aed",
+    "sha": "b6c6e3ac6872f8cde1a8d6b63c7efd420b2ee9f1",
     "branch": "gravity-force-lab-basics-1.1"
   },
   "scenery-phet": {
