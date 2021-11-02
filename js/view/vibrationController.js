@@ -61,7 +61,7 @@ class VibrationController {
       // sharpness increases linearly with mass
       const massSharpnessMap = new LinearFunction( 2 * minMass, 2 * maxMass, 0.4, 1 );
       forceSharpnessMap = mass => {
-        return massSharpnessMap( model.object1.valueProperty.value + model.object2.valueProperty.value );
+        return massSharpnessMap.evaluate( model.object1.valueProperty.value + model.object2.valueProperty.value );
       };
     }
 
@@ -96,7 +96,7 @@ class VibrationController {
     const clickingMassVibrationListener = mass => {
       vibrationManageriOS.vibrateContinuous( {
         duration: 0.030,
-        intensity: massIntensityFunction( mass )
+        intensity: massIntensityFunction.evaluate( mass )
       } );
     };
 
