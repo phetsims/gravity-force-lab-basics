@@ -12,9 +12,9 @@ import Property from '../../../axon/js/Property.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
-import Node from '../../../scenery/js/nodes/Node.js';
-import ReadingBlock from '../../../scenery/js/accessibility/voicing/ReadingBlock.js';
-import Text from '../../../scenery/js/nodes/Text.js';
+import { Node } from '../../../scenery/js/imports.js';
+import { ReadingBlock } from '../../../scenery/js/imports.js';
+import { Text } from '../../../scenery/js/imports.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 

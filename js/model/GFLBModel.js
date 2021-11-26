@@ -10,7 +10,7 @@ import BooleanProperty from '../../../axon/js/BooleanProperty.js';
 import Mass from '../../../gravity-force-lab/js/model/Mass.js';
 import ISLCModel from '../../../inverse-square-law-common/js/model/ISLCModel.js';
 import PhysicalConstants from '../../../phet-core/js/PhysicalConstants.js';
-import Color from '../../../scenery/js/util/Color.js';
+import { Color } from '../../../scenery/js/imports.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
