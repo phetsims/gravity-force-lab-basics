@@ -164,8 +164,10 @@ class MassControlReadingBlock extends VBox {
       readingBlockTagName: null
     }, options );
 
-    super( options );
-    this.initializeReadingBlock( options );
+    super();
+    this.initializeReadingBlock();
+
+    this.mutate( options );
   }
 }
 

@@ -9,12 +9,11 @@
  */
 
 import Property from '../../../axon/js/Property.js';
+import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
-import { Node } from '../../../scenery/js/imports.js';
-import { ReadingBlock } from '../../../scenery/js/imports.js';
-import { Text } from '../../../scenery/js/imports.js';
+import { Node, ReadingBlock, Text } from '../../../scenery/js/imports.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
@@ -37,16 +36,18 @@ class DistanceArrowNode extends Node {
    */
   constructor( model, modelViewTransform, positionDescriber, options ) {
 
-    super( options );
-
-    // voicing - initialize the trait
-    this.initializeReadingBlock( {
+    options = merge( {
       readingBlockHintResponse: distanceArrowReadingBlockContentString,
 
       // the content of this ReadingBlock is generally provided with other interaction and so it should not
       // add any content in the PDOM or be added to the navigation order, but it is still available for mouse and touch
       readingBlockTagName: null
-    } );
+    }, options );
+
+    super();
+
+    // voicing - initialize the trait
+    this.initializeReadingBlock();
 
     const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,
       model.object2.positionProperty.get(), 0, {
@@ -92,6 +93,8 @@ class DistanceArrowNode extends Node {
 
         labelText.centerX = arrowNode.centerX;
       } );
+
+    this.mutate( options );
   }
 }
 
