@@ -16,7 +16,7 @@ import GravityForceLabScreenSummaryNode from '../../../gravity-force-lab/js/view
 import MassBoundarySoundGenerator from '../../../gravity-force-lab/js/view/MassBoundarySoundGenerator.js';
 import MassSoundGenerator from '../../../gravity-force-lab/js/view/MassSoundGenerator.js';
 import SpherePositionsDescriptionNode from '../../../gravity-force-lab/js/view/SpherePositionsDescriptionNode.js';
-import forceSound from '../../../gravity-force-lab/sounds/saturated-sine-loop-trimmed_wav.js';
+import saturatedSineLoopTrimmed_wav from '../../../gravity-force-lab/sounds/saturatedSineLoopTrimmed_wav.js';
 import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import DefaultDirection from '../../../inverse-square-law-common/js/view/DefaultDirection.js';
@@ -245,7 +245,7 @@ class GFLBScreenView extends ScreenView {
     // @private - sound generation for the force sound
     this.forceSoundGenerator = new ContinuousPropertySoundGenerator(
       model.forceProperty,
-      forceSound,
+      saturatedSineLoopTrimmed_wav,
       new Range( model.getMinForce(), model.getMaxForce() ),
       {
         initialOutputLevel: 0.2,
