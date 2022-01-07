@@ -12,7 +12,7 @@ import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
-import { Color, HBox, ReadingBlock, Text, VBox, Voicing } from '../../../scenery/js/imports.js';
+import { Color, HBox, ReadingBlock, Text, VBox } from '../../../scenery/js/imports.js';
 import Panel from '../../../sun/js/Panel.js';
 import SoundPlayer from '../../../tambo/js/SoundPlayer.js';
 import GFLBConstants from '../GFLBConstants.js';
@@ -193,7 +193,7 @@ class VoicingNumberPicker extends NumberPicker {
       voicingHintResponse: changeMassHintResponseString
 
     }, options );
-    super( valueProperty, rangeProperty, _.omit( options, Voicing.VOICING_OPTION_KEYS ) );
+    super( valueProperty, rangeProperty, options );
 
     valueProperty.link( value => {
 
@@ -201,11 +201,7 @@ class VoicingNumberPicker extends NumberPicker {
       // is the same as the aria-valuetext
       this.voicingObjectResponse = this.ariaValueText;
     } );
-
-    this.mutate( _.pick( options, Voicing.VOICING_OPTION_KEYS ) );
   }
 }
-
-Voicing.compose( VoicingNumberPicker );
 
 export default GFLBMassControl;
