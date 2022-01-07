@@ -195,8 +195,6 @@ class VoicingNumberPicker extends NumberPicker {
     }, options );
     super( valueProperty, rangeProperty, _.omit( options, Voicing.VOICING_OPTION_KEYS ) );
 
-    this.initializeVoicing();
-
     valueProperty.link( value => {
 
       // voicing - NumberPicker has aria-valuetext through AccessibleValueHandler, the "object response" for voicing
