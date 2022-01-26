@@ -25,7 +25,7 @@ const distanceArrowReadingBlockContentString = gravityForceLabBasicsStrings.a11y
 const HEAD_WIDTH = 8;
 const HEAD_HEIGHT = 8;
 
-class DistanceArrowNode extends Node {
+class DistanceArrowNode extends ReadingBlock( Node ) {
 
   /**
    * @mixes {ReadingBlock}
@@ -45,9 +45,6 @@ class DistanceArrowNode extends Node {
     }, options );
 
     super();
-
-    // voicing - initialize the trait
-    this.initializeReadingBlock();
 
     const arrowNode = new ArrowNode( model.object1.positionProperty.get(), 0,
       model.object2.positionProperty.get(), 0, {
@@ -97,8 +94,6 @@ class DistanceArrowNode extends Node {
     this.mutate( options );
   }
 }
-
-ReadingBlock.compose( DistanceArrowNode );
 
 gravityForceLabBasics.register( 'DistanceArrowNode', DistanceArrowNode );
 export default DistanceArrowNode;
