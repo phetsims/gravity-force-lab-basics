@@ -31,7 +31,7 @@ const simOptions = {
     leadDesign: 'Amy Rouinfar',
     softwareDevelopment: 'Michael Barlow, John Blanco, Jesse Greenberg, Michael Kauzmann',
     team: 'Ariel Paul, Kathy Perkins, Emily B. Moore, Taliesin Smith, Brianna Tomlinson',
-    qualityAssurance: 'Logan Bray, Steele Dalton, Megan Lai, Liam Mulhall, Laura Rea, Jacob Romero, and Kathryn Woessner',
+    qualityAssurance: 'Logan Bray, Steele Dalton, Megan Lai, Brooklyn Lash, Emily Miller, Liam Mulhall, Laura Rea, Jacob Romero, Nancy Salpepi, and Kathryn Woessner',
     graphicArts: 'Mariah Hermsmeyer',
     soundDesign: 'Ashton Morris',
     thanks: ''
