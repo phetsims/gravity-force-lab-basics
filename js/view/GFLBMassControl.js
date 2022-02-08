@@ -150,7 +150,7 @@ gravityForceLabBasics.register( 'GFLBMassControl', GFLBMassControl );
  * An inner class for the mass contents surrounding the NumberPicker (title, readout) that can be activated
  * to get the current value and any other help content provided by Voicing.
  */
-class MassControlReadingBlock extends ReadingBlock( VBox ) {
+class MassControlReadingBlock extends ReadingBlock( VBox, 0 ) {
 
   /**
    * @mixes {ReadingBlock}
@@ -164,8 +164,7 @@ class MassControlReadingBlock extends ReadingBlock( VBox ) {
       readingBlockTagName: null
     }, options );
 
-    super();
-    this.mutate( options );
+    super( options );
   }
 }
 
