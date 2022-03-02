@@ -60,7 +60,7 @@ class GFLBMassControl extends Panel {
     // Keep track of the current mass between the start and end of an interaction to see if we should alert.
     let currentMass = valueProperty.value;
 
-    const numberPicker = new VoicingNumberPicker( valueProperty, new Property( massRange ), {
+    const numberPicker = new NumberPicker( valueProperty, new Property( massRange ), {
       font: new PhetFont( 20 ),
       scale: 1.5,
       tandem: tandem.createTandem( 'numberPicker' ),
@@ -98,7 +98,9 @@ class GFLBMassControl extends Panel {
       accessibleName: labelContent,
 
       // voicing
-      voicingNameResponse: labelContent
+      voicingNameResponse: labelContent,
+      voicingObjectResponse: () => massDescriber.getMassAndUnit( thisObjectEnum ),
+      voicingHintResponse: changeMassHintResponseString
     } );
     const numberPickerLabel = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),
@@ -165,37 +167,6 @@ class MassControlReadingBlock extends ReadingBlock( VBox, 0 ) {
     }, options );
 
     super( options );
-  }
-}
-
-
-/**
- * An inner class that implements the Voicing for the NumberPicker. Eventually this could be moved to NumberPicker,
- * but it is unclear how much of this feature will persist.
- */
-class VoicingNumberPicker extends NumberPicker {
-
-  /**
-   * @mixes {Voicing}
-   * @param {Property} valueProperty
-   * @param {Property.<Range>} rangeProperty
-   * @param {Object} [options]
-   */
-  constructor( valueProperty, rangeProperty, options ) {
-    options = merge( {
-
-      voicingNameResponse: null,
-      voicingHintResponse: changeMassHintResponseString
-
-    }, options );
-    super( valueProperty, rangeProperty, options );
-
-    valueProperty.link( value => {
-
-      // voicing - NumberPicker has aria-valuetext through AccessibleValueHandler, the "object response" for voicing
-      // is the same as the aria-valuetext
-      this.voicingObjectResponse = this.ariaValueText;
-    } );
   }
 }
 
