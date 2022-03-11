@@ -100,6 +100,7 @@ class GFLBMassControl extends Panel {
       // voicing
       voicingNameResponse: labelContent,
       voicingObjectResponse: () => massDescriber.getMassAndUnit( thisObjectEnum ),
+      voicingContextResponse: alertManager.getMassValueChangedAlert( thisObjectEnum ).alert,
       voicingHintResponse: changeMassHintResponseString
     } );
     const numberPickerLabel = new Text( billionKgString, {
