@@ -50,7 +50,7 @@ type StringsType = {
       'distanceKilometersPattern': string,
       'changeMassHintResponse': string,
       'massControlReadingBlockPattern': string,
-      'distanceArrowReadingBlockContent': string,
+      'distanceArrowReadingBlockNameResponse': string,
       'forceValuesHintResponse': string,
       'distanceHintResponse': string,
       'constantSizeHintResponse': string,

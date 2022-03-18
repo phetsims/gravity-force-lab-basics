@@ -107,7 +107,7 @@
       "massControlReadingBlockPattern": {
         "value": "{{label}}, {{value}}"
       },
-      "distanceArrowReadingBlockContent": {
+      "distanceArrowReadingBlockNameResponse": {
         "value": "Move spheres closer or farther from each other."
       },
       "forceValuesHintResponse": {

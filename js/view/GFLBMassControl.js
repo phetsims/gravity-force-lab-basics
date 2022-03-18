@@ -139,7 +139,7 @@ class GFLBMassControl extends Panel {
 
     // voicing - when the Property changes, update the ReadingBlock content
     valueProperty.link( value => {
-      panelVBox.readingBlockContent = StringUtils.fillIn( massControlReadingBlockPatternString, {
+      panelVBox.readingBlockNameResponse = StringUtils.fillIn( massControlReadingBlockPatternString, {
         label: labelContent,
         value: numberPicker.ariaValueText
       } );

@@ -19,7 +19,7 @@ import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
 
 const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
 const distanceKilometersPatternString = gravityForceLabBasicsStrings.a11y.voicing.distanceKilometersPattern;
-const distanceArrowReadingBlockContentString = gravityForceLabBasicsStrings.a11y.voicing.distanceArrowReadingBlockContent;
+const distanceArrowReadingBlockNameResponseString = gravityForceLabBasicsStrings.a11y.voicing.distanceArrowReadingBlockNameResponse;
 
 // constants
 const HEAD_WIDTH = 8;
@@ -37,7 +37,7 @@ class DistanceArrowNode extends ReadingBlock( Node, 0 ) {
   constructor( model, modelViewTransform, positionDescriber, options ) {
 
     options = merge( {
-      readingBlockHintResponse: distanceArrowReadingBlockContentString,
+      readingBlockHintResponse: distanceArrowReadingBlockNameResponseString,
 
       // the content of this ReadingBlock is generally provided with other interaction and so it should not
       // add any content in the PDOM or be added to the navigation order, but it is still available for mouse and touch
@@ -84,7 +84,7 @@ class DistanceArrowNode extends ReadingBlock( Node, 0 ) {
         } ) );
 
         // voicing - update the ReadingBlock content
-        this.readingBlockContent = StringUtils.fillIn( distanceKilometersPatternString, {
+        this.readingBlockNameResponse = StringUtils.fillIn( distanceKilometersPatternString, {
           distance: distanceInKm
         } );
 
