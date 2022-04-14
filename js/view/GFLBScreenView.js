@@ -27,7 +27,7 @@ import ScreenView from '../../../joist/js/ScreenView.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
-import { PDOMPeer } from '../../../scenery/js/imports.js';
+import { PDOMPeer, Voicing } from '../../../scenery/js/imports.js';
 import { HBox } from '../../../scenery/js/imports.js';
 import { Node } from '../../../scenery/js/imports.js';
 import { Color } from '../../../scenery/js/imports.js';
@@ -365,6 +365,10 @@ class GFLBScreenView extends ScreenView {
       mass1Node,
       mass2Node
     ];
+
+    // voicing - Make sure that the Utterances from Alerters only announce when the content under this ScreenView
+    // is visible
+    Voicing.registerUtteranceToNode( alertManager.constantSizeChangedContextResponseUtterance, this );
 
     // layout the view elements
     parameterControlPanel.right = this.layoutBounds.width - 15;
