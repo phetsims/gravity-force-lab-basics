@@ -14,7 +14,7 @@ import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import { Color, HBox, ReadingBlock, Text, VBox } from '../../../scenery/js/imports.js';
 import Panel from '../../../sun/js/Panel.js';
-import SoundPlayer from '../../../tambo/js/SoundPlayer.js';
+import nullSoundPlayer from '../../../tambo/js/shared-sound-players/nullSoundPlayer.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
@@ -75,8 +75,8 @@ class GFLBMassControl extends Panel {
       color: options.color,
 
       // sound
-      valueChangedSoundPlayer: SoundPlayer.NO_SOUND,
-      boundarySoundPlayer: SoundPlayer.NO_SOUND,
+      valueChangedSoundPlayer: nullSoundPlayer,
+      boundarySoundPlayer: nullSoundPlayer,
 
       a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
 
