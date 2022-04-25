@@ -27,8 +27,7 @@ const DENSITY = GFLBConstants.MASS_DENSITY;
 const MASS_OPTIONS = {
   constantRadius: GFLBConstants.CONSTANT_RADIUS,
   leftObjectBoundary: GFLBConstants.PULL_POSITION_RANGE.min,
-  rightObjectBoundary: GFLBConstants.PULL_POSITION_RANGE.max,
-  valueStep: GFLBConstants.BILLION_MULTIPLIER
+  rightObjectBoundary: GFLBConstants.PULL_POSITION_RANGE.max
 };
 
 class GFLBModel extends ISLCModel {
