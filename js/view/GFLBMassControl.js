@@ -89,7 +89,7 @@ class GFLBMassControl extends Panel {
         }
         return null; // regular mass changed alerts come from model changes
       },
-      startChange: () => {
+      startInput: () => {
         currentMass = valueProperty.value;
       },
 
