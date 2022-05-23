@@ -8,7 +8,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Property from '../../../axon/js/Property.js';
+import Multilink from '../../../axon/js/Multilink.js';
 import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
@@ -68,7 +68,7 @@ class DistanceArrowNode extends ReadingBlock( Node, 0 ) {
     this.addChild( labelText );
 
     // DistanceArrowNode exists for life of sim and does not need disposal
-    Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],
+    Multilink.multilink( [ model.object1.positionProperty, model.object2.positionProperty ],
       ( position1, position2 ) => {
 
         // update the arrow node width

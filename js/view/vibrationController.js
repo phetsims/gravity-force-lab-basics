@@ -6,7 +6,7 @@
  * @author Jesse Greenberg
  */
 
-import Property from '../../../axon/js/Property.js';
+import Multilink from '../../../axon/js/Multilink.js';
 import LinearFunction from '../../../dot/js/LinearFunction.js';
 import Utils from '../../../dot/js/Utils.js';
 import VibrationPatterns from '../../../tappi/js/VibrationPatterns.js';
@@ -78,7 +78,7 @@ class VibrationController {
       }
     } );
 
-    Property.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
+    Multilink.multilink( [ model.object1.isDraggingProperty, model.object2.isDraggingProperty ], ( object1Dragging, object2Dragging ) => {
       if ( object1Dragging || object2Dragging ) {
         vibrationManageriOS.vibrateContinuous();
         vibrationManageriOS.setVibrationIntensity( forceIntensityValue );

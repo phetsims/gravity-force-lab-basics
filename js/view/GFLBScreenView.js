@@ -7,7 +7,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import Property from '../../../axon/js/Property.js';
+import Multilink from '../../../axon/js/Multilink.js';
 import Bounds2 from '../../../dot/js/Bounds2.js';
 import Range from '../../../dot/js/Range.js';
 import Vector2 from '../../../dot/js/Vector2.js';
@@ -382,7 +382,7 @@ class GFLBScreenView extends ScreenView {
 
     // voicing - Update the voicingObjectResponse for each mass when any Property changes that would update the object
     // response
-    Property.multilink( [ model.object1.positionProperty, model.object2.positionProperty, model.showDistanceProperty ], () => {
+    Multilink.multilink( [ model.object1.positionProperty, model.object2.positionProperty, model.showDistanceProperty ], () => {
       mass1Node.voicingObjectResponse = positionDescriber.getDistanceFromOtherObjectDescription( model.object1.enum );
       mass2Node.voicingObjectResponse = positionDescriber.getDistanceFromOtherObjectDescription( model.object2.enum );
     } );
