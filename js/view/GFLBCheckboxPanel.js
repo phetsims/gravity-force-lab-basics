@@ -54,7 +54,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
         tandem: item.options.tandem.createTandem( 'labelText' )
       } ) );
 
-      checkboxes.push( new GFLBCheckbox( contentNode, item.property, merge( {}, item.options, options.checkboxOptions ) ) );
+      checkboxes.push( new GFLBCheckbox( item.property, contentNode, merge( {}, item.options, options.checkboxOptions ) ) );
     } );
 
     const panelContent = new VBox( {
@@ -73,11 +73,11 @@ class GFLBCheckboxPanel extends ISLCPanel {
 class GFLBCheckbox extends Checkbox {
 
   /**
-   * @param {Node} content
    * @param {Property} property
+   * @param {Node} content
    * @param options
    */
-  constructor( content, property, options ) {
+  constructor( property, content, options ) {
     options = merge( {
 
       // {string} - voicing: responses for when the checkbox becomes checked/unchecked
@@ -96,7 +96,7 @@ class GFLBCheckbox extends Checkbox {
       } );
     } );
 
-    super( content, property, options );
+    super( property, content, options );
   }
 }
 
