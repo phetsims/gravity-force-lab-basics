@@ -10,7 +10,7 @@ import Property from '../../../axon/js/Property.js';
 import Utils from '../../../dot/js/Utils.js';
 import merge from '../../../phet-core/js/merge.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
-import NumberPicker from '../../../scenery-phet/js/NumberPicker.js';
+import NumberPicker from '../../../sun/js/NumberPicker.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import { Color, HBox, ReadingBlock, Text, VBox } from '../../../scenery/js/imports.js';
 import Panel from '../../../sun/js/Panel.js';
