@@ -106,17 +106,17 @@ class VibrationController {
     // after resetting or activating a checkbox, request the interactionSuccess pattern
     model.resetInProgressProperty.lazyLink( inProgress => {
       if ( !inProgress ) {
-        VibrationPatterns.interactionSuccess();
+        VibrationPatterns.interactionSuccess( vibrationManageriOS );
       }
     } );
     model.showForceValuesProperty.lazyLink( showForceValues => {
-      VibrationPatterns.interactionSuccess();
+      VibrationPatterns.interactionSuccess( vibrationManageriOS );
     } );
     model.showDistanceProperty.lazyLink( showDistance => {
-      VibrationPatterns.interactionSuccess();
+      VibrationPatterns.interactionSuccess( vibrationManageriOS );
     } );
     model.constantRadiusProperty.lazyLink( constantRadius => {
-      VibrationPatterns.interactionSuccess();
+      VibrationPatterns.interactionSuccess( vibrationManageriOS );
     } );
   }
 }
