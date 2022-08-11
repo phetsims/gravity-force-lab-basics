@@ -25,7 +25,7 @@ const distanceArrowReadingBlockNameResponseString = gravityForceLabBasicsStrings
 const HEAD_WIDTH = 8;
 const HEAD_HEIGHT = 8;
 
-class DistanceArrowNode extends ReadingBlock( Node, 0 ) {
+class DistanceArrowNode extends ReadingBlock( Node ) {
 
   /**
    * @mixes {ReadingBlock}
