@@ -7,7 +7,6 @@
  */
 
 import GravityForceLabKeyboardHelpContent from '../../gravity-force-lab/js/view/GravityForceLabKeyboardHelpContent.js';
-import PreferencesConfiguration from '../../joist/js/preferences/PreferencesConfiguration.js';
 import Screen from '../../joist/js/Screen.js';
 import Sim from '../../joist/js/Sim.js';
 import simLauncher from '../../joist/js/simLauncher.js';
@@ -36,10 +35,7 @@ const simOptions = {
     soundDesign: 'Ashton Morris',
     thanks: ''
   },
-  hasKeyboardHelpContent: true,
-
-  // default configuration with defaults specified by package.json
-  preferencesConfiguration: new PreferencesConfiguration()
+  hasKeyboardHelpContent: true
 };
 
 simLauncher.launch( () => {
