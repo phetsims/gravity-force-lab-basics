@@ -19,7 +19,7 @@ import GFLBScreenView from './view/GFLBScreenView.js';
 // constants
 const tandem = Tandem.ROOT;
 
-const gravityForceLabBasicsTitleString = gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].title;
+const gravityForceLabBasicsTitleStringProperty = gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty;
 
 const keyboardHelpNode = new GravityForceLabKeyboardHelpContent( {
   isBasics: true // in basics, there is no way to change the mass in smaller steps
@@ -42,7 +42,7 @@ simLauncher.launch( () => {
 
   const gravityForceLabBasicsScreenTandem = tandem.createTandem( 'gravityForceLabBasicsScreen' );
 
-  const sim = new Sim( gravityForceLabBasicsTitleString,
+  const sim = new Sim( gravityForceLabBasicsTitleStringProperty,
     [ new Screen(
       () => new GFLBModel( gravityForceLabBasicsScreenTandem.createTandem( 'model' ) ),
       model => new GFLBScreenView( model, gravityForceLabBasicsScreenTandem.createTandem( 'view' ) ),

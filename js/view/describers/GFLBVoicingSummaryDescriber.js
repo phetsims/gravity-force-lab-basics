@@ -53,7 +53,7 @@ class GFLBVoicingSummaryDescriber {
 
   createOverviewAlert() {
   const simDescriptionString = StringUtils.fillIn( singleScreenIntroPatternString, {
-      sim: gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].title
+      sim: gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty
     } );
     const playAreaString = StringUtils.fillIn( playAreaOverviewPatternString, {
       playArea: thereAreString
