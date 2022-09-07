@@ -10,10 +10,10 @@ import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/Grav
 import merge from '../../../phet-core/js/merge.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
+import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 
-const distanceArrowVisibleString = gravityForceLabBasicsStrings.a11y.distanceArrowVisible;
-const distanceArrowRemovedString = gravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
+const distanceArrowVisibleString = GravityForceLabBasicsStrings.a11y.distanceArrowVisible;
+const distanceArrowRemovedString = GravityForceLabBasicsStrings.a11y.distanceArrowRemoved;
 
 class GFLBAlertManager extends GravityForceLabAlertManager {
 

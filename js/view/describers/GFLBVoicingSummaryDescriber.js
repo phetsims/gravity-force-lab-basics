@@ -8,25 +8,25 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import gravityForceLabStrings from '../../../../gravity-force-lab/js/gravityForceLabStrings.js';
+import GravityForceLabStrings from '../../../../gravity-force-lab/js/GravityForceLabStrings.js';
 import InverseSquareLawCommonStrings from '../../../../inverse-square-law-common/js/InverseSquareLawCommonStrings.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import SceneryPhetStrings from '../../../../scenery-phet/js/SceneryPhetStrings.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../../gravityForceLabBasicsStrings.js';
+import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 // constants
 const singleScreenIntroPatternString = SceneryPhetStrings.a11y.voicing.simSection.screenSummary.singleScreenIntroPattern;
-const overviewPatternString = gravityForceLabBasicsStrings.a11y.voicing.toolbar.overviewPattern;
-const thereAreString = gravityForceLabBasicsStrings.a11y.voicing.toolbar.thereAre;
-const playAreaOverviewPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
-const playAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
-const inAdditionString = gravityForceLabBasicsStrings.a11y.voicing.toolbar.inAddition;
-const secondaryDescriptionPatternString = gravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
-const detailsPatternString = gravityForceLabBasicsStrings.a11y.voicing.toolbar.detailsPattern;
-const basicsSimStateLabelString = gravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
+const overviewPatternString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.overviewPattern;
+const thereAreString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.thereAre;
+const playAreaOverviewPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
+const playAreaControlsString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
+const inAdditionString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.inAddition;
+const secondaryDescriptionPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
+const detailsPatternString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.detailsPattern;
+const basicsSimStateLabelString = GravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
 const summaryInteractionHintPatternString = InverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
-const massString = gravityForceLabStrings.a11y.mass;
+const massString = GravityForceLabStrings.a11y.mass;
 
 class GFLBVoicingSummaryDescriber {
 
@@ -53,7 +53,7 @@ class GFLBVoicingSummaryDescriber {
 
   createOverviewAlert() {
   const simDescriptionString = StringUtils.fillIn( singleScreenIntroPatternString, {
-      sim: gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty
+      sim: GravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty
     } );
     const playAreaString = StringUtils.fillIn( playAreaOverviewPatternString, {
       playArea: thereAreString

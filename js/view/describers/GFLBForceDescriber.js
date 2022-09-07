@@ -9,13 +9,13 @@
 import Utils from '../../../../dot/js/Utils.js';
 import ForceDescriber from '../../../../inverse-square-law-common/js/view/describers/ForceDescriber.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../../gravityForceLabBasicsStrings.js';
+import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
-const forceArrowsCapitalizedString = gravityForceLabBasicsStrings.a11y.forceArrowsCapitalized;
-const forceArrowsString = gravityForceLabBasicsStrings.a11y.forceArrows;
-const arrowsString = gravityForceLabBasicsStrings.a11y.arrows;
-const forceArrowCapitalizedString = gravityForceLabBasicsStrings.a11y.forceArrowCapitalized;
-const sizeOfForceString = gravityForceLabBasicsStrings.a11y.sizeOfForce;
+const forceArrowsCapitalizedString = GravityForceLabBasicsStrings.a11y.forceArrowsCapitalized;
+const forceArrowsString = GravityForceLabBasicsStrings.a11y.forceArrows;
+const arrowsString = GravityForceLabBasicsStrings.a11y.arrows;
+const forceArrowCapitalizedString = GravityForceLabBasicsStrings.a11y.forceArrowCapitalized;
+const sizeOfForceString = GravityForceLabBasicsStrings.a11y.sizeOfForce;
 
 class GFLBForceDescriber extends ForceDescriber {
 

@@ -12,14 +12,14 @@ import Sim from '../../joist/js/Sim.js';
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import GFLBConstants from './GFLBConstants.js';
-import gravityForceLabBasicsStrings from './gravityForceLabBasicsStrings.js';
+import GravityForceLabBasicsStrings from './GravityForceLabBasicsStrings.js';
 import GFLBModel from './model/GFLBModel.js';
 import GFLBScreenView from './view/GFLBScreenView.js';
 
 // constants
 const tandem = Tandem.ROOT;
 
-const gravityForceLabBasicsTitleStringProperty = gravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty;
+const gravityForceLabBasicsTitleStringProperty = GravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty;
 
 const keyboardHelpNode = new GravityForceLabKeyboardHelpContent( {
   isBasics: true // in basics, there is no way to change the mass in smaller steps

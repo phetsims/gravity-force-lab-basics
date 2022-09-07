@@ -17,11 +17,11 @@ import Panel from '../../../sun/js/Panel.js';
 import nullSoundPlayer from '../../../tambo/js/shared-sound-players/nullSoundPlayer.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
+import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 
-const billionKgString = gravityForceLabBasicsStrings.billionKg;
-const changeMassHintResponseString = gravityForceLabBasicsStrings.a11y.voicing.changeMassHintResponse;
-const massControlReadingBlockPatternString = gravityForceLabBasicsStrings.a11y.voicing.massControlReadingBlockPattern;
+const billionKgString = GravityForceLabBasicsStrings.billionKg;
+const changeMassHintResponseString = GravityForceLabBasicsStrings.a11y.voicing.changeMassHintResponse;
+const massControlReadingBlockPatternString = GravityForceLabBasicsStrings.a11y.voicing.massControlReadingBlockPattern;
 
 // constants
 const MIN_PANEL_WIDTH = 150;

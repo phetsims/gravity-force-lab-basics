@@ -15,11 +15,11 @@ import ArrowNode from '../../../scenery-phet/js/ArrowNode.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import { Node, ReadingBlock, Text } from '../../../scenery/js/imports.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
-import gravityForceLabBasicsStrings from '../gravityForceLabBasicsStrings.js';
+import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 
-const distanceUnitsPatternString = gravityForceLabBasicsStrings.distanceUnitsPattern;
-const distanceKilometersPatternString = gravityForceLabBasicsStrings.a11y.voicing.distanceKilometersPattern;
-const distanceArrowReadingBlockNameResponseString = gravityForceLabBasicsStrings.a11y.voicing.distanceArrowReadingBlockNameResponse;
+const distanceUnitsPatternString = GravityForceLabBasicsStrings.distanceUnitsPattern;
+const distanceKilometersPatternString = GravityForceLabBasicsStrings.a11y.voicing.distanceKilometersPattern;
+const distanceArrowReadingBlockNameResponseString = GravityForceLabBasicsStrings.a11y.voicing.distanceArrowReadingBlockNameResponse;
 
 // constants
 const HEAD_WIDTH = 8;
