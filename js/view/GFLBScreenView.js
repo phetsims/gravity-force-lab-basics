@@ -17,7 +17,7 @@ import MassBoundarySoundGenerator from '../../../gravity-force-lab/js/view/MassB
 import MassSoundGenerator from '../../../gravity-force-lab/js/view/MassSoundGenerator.js';
 import SpherePositionsDescriptionNode from '../../../gravity-force-lab/js/view/SpherePositionsDescriptionNode.js';
 import saturatedSineLoopTrimmed_wav from '../../../gravity-force-lab/sounds/saturatedSineLoopTrimmed_wav.js';
-import inverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/inverseSquareLawCommonStrings.js';
+import InverseSquareLawCommonStrings from '../../../inverse-square-law-common/js/InverseSquareLawCommonStrings.js';
 import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQueryParameters.js';
 import DefaultDirection from '../../../inverse-square-law-common/js/view/DefaultDirection.js';
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
@@ -51,7 +51,7 @@ import vibrationController from './vibrationController.js';
 
 const constantSizeString = gravityForceLabStrings.constantSize;
 const distanceString = gravityForceLabBasicsStrings.distance;
-const forceValuesString = inverseSquareLawCommonStrings.forceValues;
+const forceValuesString = InverseSquareLawCommonStrings.forceValues;
 const mass1LabelString = gravityForceLabBasicsStrings.mass1Label;
 const mass1String = gravityForceLabStrings.mass1;
 const mass2LabelString = gravityForceLabBasicsStrings.mass2Label;
@@ -61,7 +61,7 @@ const mass2ControlLabelString = gravityForceLabBasicsStrings.mass2ControlLabel;
 const massControlsLabelString = gravityForceLabStrings.a11y.controls.massControlsLabel;
 const massControlsHelpTextBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextBillions;
 const massControlsHelpTextDensityBillionsString = gravityForceLabBasicsStrings.a11y.massControlsHelpTextDensityBillions;
-const forceValuesCheckboxHelpTextString = inverseSquareLawCommonStrings.a11y.forceValuesCheckboxHelpText;
+const forceValuesCheckboxHelpTextString = InverseSquareLawCommonStrings.a11y.forceValuesCheckboxHelpText;
 const constantSizeCheckboxHelpTextString = gravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
 const distanceCheckboxHelpTextString = gravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
 const screenSummaryPlayAreaControlsString = gravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
