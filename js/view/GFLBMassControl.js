@@ -103,14 +103,14 @@ class GFLBMassControl extends Panel {
       voicingContextResponse: alertManager.getMassValueChangedAlert( thisObjectEnum ).alert,
       voicingHintResponse: changeMassHintResponseString
     } );
-    const numberPickerLabel = new Text( billionKgString, {
+    const numberPickerLabelText = new Text( billionKgString, {
       font: new PhetFont( { size: 14 } ),
       maxWidth: MAX_TEXT_WIDTH,
-      tandem: tandem.createTandem( 'numberPickerLabel' )
+      tandem: tandem.createTandem( 'numberPickerLabelText' )
     } );
 
     const numberPickerHBox = new HBox( {
-      children: [ numberPicker, numberPickerLabel ],
+      children: [ numberPicker, numberPickerLabelText ],
       spacing: 10
     } );
 
