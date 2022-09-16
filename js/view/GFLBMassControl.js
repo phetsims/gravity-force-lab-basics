@@ -122,7 +122,7 @@ class GFLBMassControl extends Panel {
       readingBlockHintResponse: changeMassHintResponseString
     } );
 
-    titleText.textProperty.lazyLink( () => { titleText.centerX = panelVBox.centerX; } );
+    titleText.stringProperty.lazyLink( () => { titleText.centerX = panelVBox.centerX; } );
 
     super( panelVBox, {
       fill: '#f1f1f2',

@@ -62,7 +62,7 @@ class DistanceArrowNode extends ReadingBlock( Node ) {
       font: new PhetFont( 12 ),
       bottom: arrowNode.top + ( 3 * HEAD_WIDTH / 4 ),
       tandem: options.tandem.createTandem( 'labelText' ),
-      textPropertyOptions: { phetioReadOnly: true },
+      stringPropertyOptions: { phetioReadOnly: true },
       phetioDocumentation: 'The distance as text between the two masses'
     } );
     this.addChild( labelText );
