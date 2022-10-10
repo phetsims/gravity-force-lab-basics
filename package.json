@@ -25,7 +25,6 @@
     "simFeatures": {
       "supportsInteractiveDescription": true,
       "supportsVoicing": true,
-      "supportsInteractiveHighlights": true,
       "supportsSound": true
     },
     "simulation": true,
