@@ -21,10 +21,6 @@ const tandem = Tandem.ROOT;
 
 const gravityForceLabBasicsTitleStringProperty = GravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty;
 
-const keyboardHelpNode = new GravityForceLabKeyboardHelpContent( {
-  isBasics: true // in basics, there is no way to change the mass in smaller steps
-} );
-
 const simOptions = {
   credits: {
     leadDesign: 'Amy Rouinfar',
@@ -49,7 +45,9 @@ simLauncher.launch( () => {
       {
         backgroundColorProperty: GFLBConstants.BACKGROUND_COLOR_PROPERTY,
         tandem: gravityForceLabBasicsScreenTandem,
-        keyboardHelpNode: keyboardHelpNode
+        createKeyboardHelpNode: () => new GravityForceLabKeyboardHelpContent( {
+          isBasics: true // in basics, there is no way to change the mass in smaller steps
+        } )
       }
     )
     ], simOptions );
