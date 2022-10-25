@@ -16,7 +16,7 @@ import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 // constants
-const singleScreenIntroPatternString = SceneryPhetStrings.a11y.voicing.simSection.screenSummary.singleScreenIntroPatternStringProperty;
+const singleScreenIntroPatternStringProperty = SceneryPhetStrings.a11y.voicing.simSection.screenSummary.singleScreenIntroPatternStringProperty;
 const overviewPatternString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.overviewPattern;
 const thereAreString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.thereAre;
 const playAreaOverviewPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
@@ -52,7 +52,7 @@ class GFLBVoicingSummaryDescriber {
    */
 
   createOverviewAlert() {
-    const simDescriptionString = StringUtils.fillIn( singleScreenIntroPatternString, {
+    const simDescriptionString = StringUtils.fillIn( singleScreenIntroPatternStringProperty, {
       sim: GravityForceLabBasicsStrings[ 'gravity-force-lab-basics' ].titleStringProperty
     } );
     const playAreaString = StringUtils.fillIn( playAreaOverviewPatternString, {
