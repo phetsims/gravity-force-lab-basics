@@ -30,8 +30,7 @@ const simOptions = {
     graphicArts: 'Mariah Hermsmeyer',
     soundDesign: 'Ashton Morris',
     thanks: ''
-  },
-  hasKeyboardHelpContent: true
+  }
 };
 
 simLauncher.launch( () => {
