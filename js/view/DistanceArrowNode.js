@@ -79,7 +79,7 @@ class DistanceArrowNode extends ReadingBlock( Node ) {
         const distanceInKm = model.separationProperty.get() / 1000; // m to km
 
         // update label text and center, distance in meters so divide by 1000 to read out in km
-        labelText.setText( StringUtils.fillIn( distanceUnitsPatternString, {
+        labelText.setString( StringUtils.fillIn( distanceUnitsPatternString, {
           distance: distanceInKm
         } ) );
 
