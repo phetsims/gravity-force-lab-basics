@@ -22,7 +22,7 @@ import ISLCQueryParameters from '../../../inverse-square-law-common/js/ISLCQuery
 import DefaultDirection from '../../../inverse-square-law-common/js/view/DefaultDirection.js';
 import ISLCDragBoundsNode from '../../../inverse-square-law-common/js/view/ISLCDragBoundsNode.js';
 import ISLCGridNode from '../../../inverse-square-law-common/js/view/ISLCGridNode.js';
-import ISLCObjectEnum from '../../../inverse-square-law-common/js/view/ISLCObjectEnum.js';
+import ISLCObjectEnum from '../../../inverse-square-law-common/js/model/ISLCObjectEnum.js';
 import ScreenView from '../../../joist/js/ScreenView.js';
 import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
