@@ -53,7 +53,7 @@ class GFLBCheckboxPanel extends ISLCPanel {
         tandem: item.options.tandem.createTandem( 'labelText' )
       } ) );
 
-      checkboxes.push( new GFLBCheckbox( item.property, contentNode, merge( {}, item.options, options.checkboxOptions ) ) );
+      checkboxes.push( new Checkbox( item.property, contentNode, merge( {}, item.options, options.checkboxOptions ) ) );
     } );
 
     const panelContent = new VBox( {
@@ -63,39 +63,6 @@ class GFLBCheckboxPanel extends ISLCPanel {
     } );
 
     super( panelContent, options );
-  }
-}
-
-/**
- * Inner class for the GFLBCheckboxPanel, the Checkbox itself that implements Voicing responses.
- */
-class GFLBCheckbox extends Checkbox {
-
-  /**
-   * @param {Property} property
-   * @param {Node} content
-   * @param options
-   */
-  constructor( property, content, options ) {
-    options = merge( {
-
-      // {string} - voicing: responses for when the checkbox becomes checked/unchecked
-      voicingCheckedContextResponse: null,
-      voicingUncheckedContextResponse: null,
-
-      // phet-io
-      tandem: Tandem.REQUIRED
-    }, options );
-
-    property.lazyLink( checked => {
-      this.voicingContextResponse = checked ? options.voicingCheckedContextResponse : options.voicingUncheckedContextResponse;
-      this.voicingSpeakResponse( {
-        nameResponse: this.voicingNameResponse,
-        contextResponse: this.voicingContextResponse
-      } );
-    } );
-
-    super( property, content, options );
   }
 }
 
