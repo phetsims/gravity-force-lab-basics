@@ -16,4 +16,4 @@ The simulation portrays how the gravitational force changes when masses are chan
 
 As an example of an Inverse Square Law, the underlying model for the gravitational force can be found at:
 
-[Inverse Square Law Common](https://github.com/phetsims/inverse-square-law-common/blob/master/doc/model.md)
+[Inverse Square Law Common](https://github.com/phetsims/inverse-square-law-common/blob/main/doc/model.md)
