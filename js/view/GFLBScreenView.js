@@ -29,7 +29,7 @@ import StringUtils from '../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../scenery-phet/js/buttons/ResetAllButton.js';
 import { Color, HBox, Node, PDOMPeer, Voicing } from '../../../scenery/js/imports.js';
-import ContinuousPropertySoundGenerator from '../../../tambo/js/sound-generators/ContinuousPropertySoundGenerator.js';
+import ContinuousPropertySoundClip from '../../../tambo/js/sound-generators/ContinuousPropertySoundClip.js';
 import soundManager from '../../../tambo/js/soundManager.js';
 import VibrationTestEvent from '../../../tappi/js/tracking/VibrationTestEvent.js';
 import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTestEventRecorder.js';
@@ -245,7 +245,7 @@ class GFLBScreenView extends ScreenView {
     ) );
 
     // @private - sound generation for the force sound
-    this.forceSoundGenerator = new ContinuousPropertySoundGenerator(
+    this.forceSoundGenerator = new ContinuousPropertySoundClip(
       model.forceProperty,
       saturatedSineLoopTrimmed_wav,
       new Range( model.getMinForce(), model.getMaxForce() ),
