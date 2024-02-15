@@ -247,8 +247,8 @@ class GFLBScreenView extends ScreenView {
     // @private - sound generation for the force sound
     this.forceSoundGenerator = new ContinuousPropertySoundClip(
       model.forceProperty,
-      saturatedSineLoopTrimmed_wav,
       new Range( model.getMinForce(), model.getMaxForce() ),
+      saturatedSineLoopTrimmed_wav,
       {
         initialOutputLevel: 0.2,
         playbackRateCenterOffset: 0.122, // this is about 2 semitone, and was necessary to match original sound design
