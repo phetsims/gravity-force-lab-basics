@@ -251,7 +251,8 @@ class GFLBScreenView extends ScreenView {
       saturatedSineLoopTrimmed_wav,
       {
         initialOutputLevel: 0.2,
-        playbackRateCenterOffset: 0.122, // this is about 2 semitone, and was necessary to match original sound design
+        playbackRateRange: new Range( 0.6, 2.1 ), // down about 2 semitones, necessary to match original sound design
+        normalizationMappingExponent: 0.25, // more pitch change in lower portion of range
         enableControlProperties: [ DerivedProperty.not( model.resetInProgressProperty ) ],
         trimSilence: false // a very precise sound file is used, so make sure it doesn't get changed
       }
