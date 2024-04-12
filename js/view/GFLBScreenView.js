@@ -7,7 +7,6 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import DerivedProperty from '../../../axon/js/DerivedProperty.js';
 import Multilink from '../../../axon/js/Multilink.js';
 import Bounds2 from '../../../dot/js/Bounds2.js';
 import Range from '../../../dot/js/Range.js';
@@ -251,7 +250,6 @@ class GFLBScreenView extends ScreenView {
         initialOutputLevel: 0.2,
         playbackRateRange: new Range( 0.6, 2.1 ), // down about 2 semitones, necessary to match original sound design
         normalizationMappingExponent: 0.25, // more pitch change in lower portion of range
-        enableControlProperties: [ DerivedProperty.not( ResetAllButton.isResettingAllProperty ) ],
         trimSilence: false // a very precise sound file is used, so make sure it doesn't get changed
       }
     );
