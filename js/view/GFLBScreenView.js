@@ -234,13 +234,11 @@ class GFLBScreenView extends ScreenView {
     soundManager.addSoundGenerator( new MassSoundGenerator(
       model.object1.valueProperty,
       GFLBConstants.MASS_RANGE,
-      model.resetInProgressProperty,
       { initialOutputLevel: 0.7 }
     ) );
     soundManager.addSoundGenerator( new MassSoundGenerator(
       model.object2.valueProperty,
       GFLBConstants.MASS_RANGE,
-      model.resetInProgressProperty,
       { initialOutputLevel: 0.7 }
     ) );
 
@@ -253,7 +251,7 @@ class GFLBScreenView extends ScreenView {
         initialOutputLevel: 0.2,
         playbackRateRange: new Range( 0.6, 2.1 ), // down about 2 semitones, necessary to match original sound design
         normalizationMappingExponent: 0.25, // more pitch change in lower portion of range
-        enableControlProperties: [ DerivedProperty.not( model.resetInProgressProperty ) ],
+        enableControlProperties: [ DerivedProperty.not( ResetAllButton.isResettingAllProperty ) ],
         trimSilence: false // a very precise sound file is used, so make sure it doesn't get changed
       }
     );
