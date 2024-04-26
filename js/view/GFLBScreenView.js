@@ -451,7 +451,7 @@ class GFLBScreenView extends ScreenView {
         this.eventRecorder.addTestEvent( new VibrationTestEvent( showForceValues, null, this.vibrationTestInputListener.elapsedTime, 'Show Force Values' ) );
       } );
 
-      model.resetInProgressProperty.lazyLink( inProgress => {
+      model.resetInProgressProperty.lazyLink( () => {
         this.eventRecorder.addTestEvent( new VibrationTestEvent( null, null, this.vibrationTestInputListener.elapsedTime, 'Reset All' ) );
       } );
     }
@@ -463,8 +463,6 @@ class GFLBScreenView extends ScreenView {
    * @public
    */
   step( dt ) {
-    this.forceSoundGenerator.step( dt );
-
     if ( this.vibrationTestInputListener ) {
       this.vibrationTestInputListener.setElapsedTime( this.vibrationTestInputListener.elapsedTime + dt );
     }
