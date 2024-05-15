@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "0e974cafe54ffd0ff3c9b35e921f52956bf1c152",
+    "sha": "efad746b3cb231c3fa8144731e8eeb83a06b754b",
     "branch": "1.1"
   },
   "inverse-square-law-common": {
@@ -61,7 +61,7 @@
     "branch": "HEAD"
   },
   "phetcommon": {
-    "sha": "8868faddbf3e9ac7afc25f26d07754e5af8afe72",
+    "sha": "ac28a9eaa60b9ba6ff8c15894fd7f5fbcb00ebd5",
     "branch": "HEAD"
   },
   "phetmarks": {
