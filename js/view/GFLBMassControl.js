@@ -67,7 +67,7 @@ class GFLBMassControl extends Panel {
       incrementFunction: mass => mass + BILLION_MULTIPLIER,
       decrementFunction: mass => mass - BILLION_MULTIPLIER,
       formatValue: value => Utils.toFixed( value / BILLION_MULTIPLIER, 0 ),
-      a11yMapPDOMValue: value => Utils.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
+      pdomMapPDOMValue: value => Utils.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
 
       // arrow options
       arrowHeight: 3,
@@ -78,10 +78,10 @@ class GFLBMassControl extends Panel {
       valueChangedSoundPlayer: nullSoundPlayer,
       boundarySoundPlayer: nullSoundPlayer,
 
-      a11yCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
+      pdomCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
 
       // on end interaction, if alert a special alert if the mass started at the min/max and didnt' change.
-      a11yCreateContextResponseAlert: () => {
+      pdomCreateContextResponseAlert: () => {
 
         // no change and at max or min
         if ( currentMass === valueProperty.value && ( currentMass === massRange.max || currentMass === massRange.min ) ) {
