@@ -14,7 +14,7 @@ import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import { Color, HBox, ReadingBlock, Text, VBox } from '../../../scenery/js/imports.js';
 import NumberPicker from '../../../sun/js/NumberPicker.js';
 import Panel from '../../../sun/js/Panel.js';
-import nullSoundPlayer from '../../../tambo/js/shared-sound-players/nullSoundPlayer.js';
+import nullSoundPlayer from '../../../tambo/js/nullSoundPlayer.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
