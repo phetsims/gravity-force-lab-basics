@@ -5,5 +5,19 @@
     "images/**/*",
     "mipmaps/**/*",
     "sounds/**/*"
+  ],
+  "references": [
+    {
+      "path": "../inverse-square-law-common/tsconfig.json"
+    },
+    {
+      "path": "../gravity-force-lab/tsconfig.json"
+    },
+    {
+      "path": "../tappi/tsconfig.json"
+    },
+    {
+      "path": "../chipper/tsconfig/buildjson"
+    }
   ]
 }
