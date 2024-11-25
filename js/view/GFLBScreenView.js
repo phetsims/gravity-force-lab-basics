@@ -36,6 +36,7 @@ import VibrationTestInputListener from '../../../tappi/js/tracking/VibrationTest
 import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
 import GFLBConstants from '../GFLBConstants.js';
 import gravityForceLabBasics from '../gravityForceLabBasics.js';
+import GravityForceLabBasicsFluentMessages from '../GravityForceLabBasicsFluentMessages.js';
 import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 import GFLBForceDescriber from './describers/GFLBForceDescriber.js';
 import GFLBMassDescriber from './describers/GFLBMassDescriber.js';
@@ -64,12 +65,7 @@ const massControlsHelpTextDensityBillionsString = GravityForceLabBasicsStrings.a
 const forceValuesCheckboxHelpTextString = InverseSquareLawCommonStrings.a11y.forceValuesCheckboxHelpText;
 const constantSizeCheckboxHelpTextString = GravityForceLabStrings.a11y.controls.constantSizeCheckboxHelpText;
 const distanceCheckboxHelpTextString = GravityForceLabBasicsStrings.a11y.distanceCheckboxHelpText;
-const screenSummaryPlayAreaControlsString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
 const basicsSimStateLabelString = GravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
-const screenSummaryPlayAreaOverviewPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
-const screenSummarySecondaryDescriptionPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
-const thePlayAreaHasString = GravityForceLabBasicsStrings.a11y.screenSummary.thePlayAreaHas;
-const inTheControlAreaString = GravityForceLabBasicsStrings.a11y.screenSummary.inTheControlArea;
 
 const forceValuesHintResponseString = GravityForceLabBasicsStrings.a11y.voicing.forceValuesHintResponse;
 const distanceHintResponseString = GravityForceLabBasicsStrings.a11y.voicing.distanceHintResponse;
@@ -104,14 +100,6 @@ class GFLBScreenView extends ScreenView {
     const forceDescriber = new GFLBForceDescriber( model, mass1LabelString, mass2LabelString, positionDescriber );
     const massDescriber = new GFLBMassDescriber( model, forceDescriber );
 
-    const playAreaOverviewString = StringUtils.fillIn( screenSummaryPlayAreaOverviewPatternString, {
-      playArea: thePlayAreaHasString
-    } );
-
-    const secondaryOverviewString = StringUtils.fillIn( screenSummarySecondaryDescriptionPatternString, {
-      controlArea: inTheControlAreaString
-    } );
-
     super( {
 
       // A PhET wide decision was made to not update custom layout bounds even if they do not match the
@@ -119,10 +107,10 @@ class GFLBScreenView extends ScreenView {
       // any phet-io instrumention. https://github.com/phetsims/phet-io/issues/1939
       layoutBounds: new Bounds2( 0, 0, 768, 464 ),
       screenSummaryContent: new GravityForceLabScreenSummaryNode( model, massDescriber, forceDescriber, positionDescriber, {
-        screenSummaryPlayAreaOverview: playAreaOverviewString,
-        screenSummaryPlayAreaControls: screenSummaryPlayAreaControlsString,
-        secondaryDescriptionContent: secondaryOverviewString,
-        simStateLabel: basicsSimStateLabelString,
+        screenSummaryPlayAreaOverview: GravityForceLabBasicsFluentMessages.playAreaOverviewMessageProperty,
+        screenSummaryPlayAreaControls: GravityForceLabBasicsFluentMessages.playAreaControlsMessageProperty,
+        secondaryDescriptionContent: GravityForceLabBasicsFluentMessages.secondaryDescriptionMessageProperty,
+        simStateLabel: GravityForceLabBasicsFluentMessages.basicsSimStateLabelMessageProperty,
         additionalMassDistanceProperties: [ model.showDistanceProperty ]
       } ),
       tandem: tandem
@@ -289,7 +277,7 @@ class GFLBScreenView extends ScreenView {
           tandem: tandem.createTandem( 'distanceCheckbox' ),
 
           accessibleName: distanceString,
-          descriptionContent: distanceCheckboxHelpTextString,
+          helpText: GravityForceLabBasicsFluentMessages.distanceCheckboxHelpTextMessageProperty,
 
           // voicing
           voicingNameResponse: distanceString,

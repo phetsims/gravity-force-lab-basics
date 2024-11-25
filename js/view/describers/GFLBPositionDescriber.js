@@ -9,6 +9,7 @@
 import Utils from '../../../../dot/js/Utils.js';
 import GravityForceLabPositionDescriber from '../../../../gravity-force-lab/js/view/describers/GravityForceLabPositionDescriber.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
+import GravityForceLabBasicsFluentMessages from '../../GravityForceLabBasicsFluentMessages.js';
 import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 // strings
@@ -25,8 +26,10 @@ class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
   constructor( model, object1Label, object2Label ) {
 
     const options = {
-      unit: kilometerString,
-      units: kilometersString,
+
+      // TODO: The implementation of these unit strings do not support translation.
+      unit: GravityForceLabBasicsFluentMessages.kilometerMessageProperty,
+      units: GravityForceLabBasicsFluentMessages.kilometersMessageProperty,
       formatDisplayDistance: distance => Utils.toFixedNumber( distance / 1e3, 1 )
     };
 
