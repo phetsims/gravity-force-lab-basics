@@ -39,12 +39,14 @@ class GFLBModel extends ISLCModel {
 
     // The Properties need to be passed to the Mass constructors, so store as local variables for now.
     const constantRadiusProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'constantRadiusProperty' )
+      tandem: tandem.createTandem( 'constantRadiusProperty' ),
+      phetioFeatured: true
     } );
 
     // Property driving the "show distance" checkbox
     const showDistanceProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'showDistanceProperty' )
+      tandem: tandem.createTandem( 'showDistanceProperty' ),
+      phetioFeatured: true
     } );
 
     const mass1 = new Mass( INITIAL_VALUE_1, INITIAL_POTISION_1, VALUE_RANGE, DENSITY,
