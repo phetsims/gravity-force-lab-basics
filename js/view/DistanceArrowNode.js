@@ -1,4 +1,4 @@
-// Copyright 2017-2023, University of Colorado Boulder
+// Copyright 2017-2025, University of Colorado Boulder
 
 /**
  * Double headed arrow that shows the distance between the two masses in gravity-force-lab-basics.  The arrow
