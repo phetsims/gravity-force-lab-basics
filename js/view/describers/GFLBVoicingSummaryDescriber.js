@@ -1,4 +1,4 @@
-// Copyright 2021-2022, University of Colorado Boulder
+// Copyright 2021-2025, University of Colorado Boulder
 
 /**
  * Generates the content that is read by the Toolbar when the "Details", "Overview" and "Hint"
