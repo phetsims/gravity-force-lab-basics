@@ -206,9 +206,7 @@ class GFLBScreenView extends ScreenView {
       } );
 
     const massControlsNode = new Node( {
-      labelTagName: 'h3',
-      labelContent: massControlsLabelString,
-      tagName: 'div',
+      accessibleHeading: massControlsLabelString,
       descriptionContent: massControlsHelpTextBillionsString
     } );
 
