@@ -136,8 +136,7 @@ class GFLBScreenView extends ScreenView {
       descriptionAlertNode: this
     } );
 
-    // @private {GFLBVoicingSummaryDescriber} - Generates alerts for the Voicing feature from buttons in the Sim
-    // Toolbar.
+    // @private {GFLBVoicingSummaryDescriber} - Generates alerts for the Voicing feature from buttons in the VoicingToolbar.
     this.voicingSummaryDescriber = new GFLBVoicingSummaryDescriber( forceDescriber, positionDescriber, massDescriber );
 
     // Create the model-view transform.  The primary units used in the model are meters, so significant zoom is used.
@@ -471,7 +470,7 @@ class GFLBScreenView extends ScreenView {
   }
 
   /**
-   * Returns the string to use for the "Overview" button of the simulation Toolbar when
+   * Returns the string to use for the "Overview" button of the VoicingToolbar when
    * this screen is active.
    * @public
    * @returns {string}
@@ -481,7 +480,7 @@ class GFLBScreenView extends ScreenView {
   }
 
   /**
-   * Returns the string to speak when the "Details" button of the simulation Toolbar
+   * Returns the string to speak when the "Details" button of the VoicingToolbar
    * is pressed when this screen is active.
    * @public
    * @returns {string}
@@ -491,7 +490,7 @@ class GFLBScreenView extends ScreenView {
   }
 
   /**
-   * Returns the string to speak whe the "Hints" button of the simulation Toolbar
+   * Returns the string to speak whe the "Hints" button of the VoicingToolbar
    * is pressed when this screen is active.
    * @public
    * @returns {string}

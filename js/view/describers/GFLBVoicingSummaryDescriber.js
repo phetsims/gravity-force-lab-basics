@@ -1,7 +1,7 @@
 // Copyright 2021-2025, University of Colorado Boulder
 
 /**
- * Generates the content that is read by the Toolbar when the "Details", "Overview" and "Hint"
+ * Generates the content that is read by the VoicingToolbar when the "Details", "Overview" and "Hint"
  * buttons are pressed. Generally very similar content to the GFLBScreenSummaryNode, and uses
  * the exact same content where possible.
  *
@@ -45,7 +45,7 @@ class GFLBVoicingSummaryDescriber {
   }
 
   /**
-   * Creates the overview alert when the "Overview" button is pressed in the Sim Toolbar.
+   * Creates the overview alert when the "Overview" button is pressed in the VoicingToolbar.
    * @public
    *
    * @returns {string}
@@ -71,7 +71,7 @@ class GFLBVoicingSummaryDescriber {
   }
 
   /**
-   * Create the Details content for when the details button is pressed in the Simulation Toolbar.
+   * Create the Details content for when the details button is pressed in the VoicingToolbar.
    * @public
    *
    * @returns {string}
@@ -92,7 +92,7 @@ class GFLBVoicingSummaryDescriber {
   }
 
   /**
-   * Create the content for when the hint button is pressed in the Toolbar.
+   * Create the content for when the hint button is pressed in the VoicingToolbar.
    * @public
    *
    * @returns {string}
