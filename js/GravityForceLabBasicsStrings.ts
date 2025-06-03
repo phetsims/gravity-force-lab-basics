@@ -72,7 +72,7 @@ type StringsType = {
     'sizeOfForce': string;
     'sizeOfForceStringProperty': LocalizedStringProperty;
     'voicing': {
-      'toolbar': {
+      'voicingToolbar': {
         'overviewPattern': string;
         'overviewPatternStringProperty': LocalizedStringProperty;
         'detailsPattern': string;

@@ -84,7 +84,7 @@
       "value": "Size of force"
     },
     "voicing": {
-      "toolbar": {
+      "voicingToolbar": {
         "overviewPattern": {
           "value": "{{simDescription}} {{playArea}} {{spheres}} {{controls}}"
         },

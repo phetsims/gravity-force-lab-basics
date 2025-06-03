@@ -17,13 +17,13 @@ import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js'
 
 // constants
 const singleScreenIntroPatternStringProperty = SceneryPhetStrings.a11y.voicing.simSection.screenSummary.singleScreenIntroPatternStringProperty;
-const overviewPatternString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.overviewPattern;
-const thereAreString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.thereAre;
+const overviewPatternString = GravityForceLabBasicsStrings.a11y.voicing.voicingToolbar.overviewPattern;
+const thereAreString = GravityForceLabBasicsStrings.a11y.voicing.voicingToolbar.thereAre;
 const playAreaOverviewPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
 const playAreaControlsString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaControls;
-const inAdditionString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.inAddition;
+const inAdditionString = GravityForceLabBasicsStrings.a11y.voicing.voicingToolbar.inAddition;
 const secondaryDescriptionPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.secondaryDescriptionPattern;
-const detailsPatternString = GravityForceLabBasicsStrings.a11y.voicing.toolbar.detailsPattern;
+const detailsPatternString = GravityForceLabBasicsStrings.a11y.voicing.voicingToolbar.detailsPattern;
 const basicsSimStateLabelString = GravityForceLabBasicsStrings.a11y.screenSummary.basicsSimStateLabel;
 const summaryInteractionHintPatternString = InverseSquareLawCommonStrings.a11y.screenSummary.summaryInteractionHintPattern;
 const massString = GravityForceLabStrings.a11y.mass;
