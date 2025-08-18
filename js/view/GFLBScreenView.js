@@ -278,8 +278,8 @@ class GFLBScreenView extends ScreenView {
           // voicing
           voicingNameResponse: forceValuesString,
           voicingHintResponse: forceValuesHintResponseString,
-          accessibleContextResponseChecked: forceValuesShownResponseString,
-          accessibleContextResponseUnchecked: forceValuesHiddenResponseString
+          voicingContextResponseChecked: forceValuesShownResponseString,
+          voicingContextResponseUnchecked: forceValuesHiddenResponseString
         }
       },
       {
@@ -295,8 +295,8 @@ class GFLBScreenView extends ScreenView {
           // voicing
           voicingNameResponse: distanceString,
           voicingHintResponse: distanceHintResponseString,
-          accessibleContextResponseChecked: distanceShownResponseString,
-          accessibleContextResponseUnchecked: distanceHiddenResponseString
+          voicingContextResponseChecked: distanceShownResponseString,
+          voicingContextResponseUnchecked: distanceHiddenResponseString
         }
       },
       {
@@ -312,8 +312,8 @@ class GFLBScreenView extends ScreenView {
           // voicing
           voicingNameResponse: constantSizeString,
           voicingHintResponse: constantSizeHintResponseString,
-          accessibleContextResponseChecked: constantSizeSetResponseString,
-          accessibleContextResponseUnchecked: constantSizeNotSetResponseString
+          voicingContextResponseChecked: constantSizeSetResponseString,
+          voicingContextResponseUnchecked: constantSizeNotSetResponseString
         }
       }
     ];
