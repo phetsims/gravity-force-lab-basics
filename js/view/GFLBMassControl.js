@@ -82,7 +82,7 @@ class GFLBMassControl extends Panel {
       valueChangedSoundPlayer: nullSoundPlayer,
       boundarySoundPlayer: nullSoundPlayer,
 
-      pdomCreateAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
+      createAriaValueText: () => massDescriber.getMassAndUnit( thisObjectEnum ),
 
       // on end interaction, if alert a special alert if the mass started at the min/max and didnt' change.
       pdomCreateContextResponseAlert: () => {
