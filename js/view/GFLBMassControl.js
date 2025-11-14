@@ -71,7 +71,7 @@ class GFLBMassControl extends Panel {
       incrementFunction: mass => mass + BILLION_MULTIPLIER,
       decrementFunction: mass => mass - BILLION_MULTIPLIER,
       formatValue: value => Utils.toFixed( value / BILLION_MULTIPLIER, 0 ),
-      pdomMapPDOMValue: value => Utils.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
+      mapPDOMValue: value => Utils.toFixedNumber( Math.ceil( value / BILLION_MULTIPLIER ), 0 ),
 
       // arrow options
       arrowHeight: 3,
