@@ -48,7 +48,7 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
    */
   alertDistanceVisible( showDistance ) {
     this.distanceVisibleUtterance.alert = this.getDistanceVisibleAlert( showDistance );
-    this.addAccessibleResponse( this.distanceVisibleUtterance );
+    this.addAccessibleContextResponse( this.distanceVisibleUtterance );
   }
 
   /**
