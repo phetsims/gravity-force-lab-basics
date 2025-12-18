@@ -11,12 +11,12 @@
 import GravityForceLabStrings from '../../../../gravity-force-lab/js/GravityForceLabStrings.js';
 import InverseSquareLawCommonStrings from '../../../../inverse-square-law-common/js/InverseSquareLawCommonStrings.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
-import SceneryPhetStrings from '../../../../scenery-phet/js/SceneryPhetStrings.js';
+import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 // constants
-const singleScreenIntroPatternStringProperty = SceneryPhetStrings.a11y.voicing.simSection.screenSummary.singleScreenIntroPatternStringProperty;
+const singleScreenIntroPatternStringProperty = SceneryPhetFluent.a11y.voicing.simSection.screenSummary.singleScreenIntroPatternStringProperty;
 const overviewPatternString = GravityForceLabBasicsStrings.a11y.voicing.voicingToolbar.overviewPattern;
 const thereAreString = GravityForceLabBasicsStrings.a11y.voicing.voicingToolbar.thereAre;
 const playAreaOverviewPatternString = GravityForceLabBasicsStrings.a11y.screenSummary.playAreaOverviewPattern;
