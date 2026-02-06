@@ -1,5 +1,5 @@
 {
-  "comment": "# gravity-force-lab-basics 1.1.23-rc.1 Tue Feb 03 2026 07:55:00 GMT-0500 (Eastern Standard Time)",
+  "comment": "# gravity-force-lab-basics 1.1.23 Fri Feb 06 2026 16:20:30 GMT-0500 (Eastern Standard Time)",
   "assert": {
     "sha": "f360fa1bd09a47b3c9e49cd90c8dddd136a13e0c",
     "branch": "HEAD"
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "b86995975fa80e82664d7fe1f4a555e9df749628",
+    "sha": "46991496a8abb53f0ba0e89015d6f6b8bc5ac40a",
     "branch": "1.1"
   },
   "inverse-square-law-common": {
