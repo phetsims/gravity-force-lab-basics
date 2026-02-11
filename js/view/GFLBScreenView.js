@@ -116,8 +116,6 @@ class GFLBScreenView extends ScreenView {
       controlArea: inTheControlAreaString
     } );
 
-    console.log( 'test commit' );
-
     super( {
 
       // A PhET wide decision was made to not update custom layout bounds even if they do not match the
