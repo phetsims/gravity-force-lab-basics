@@ -145,7 +145,7 @@ class GFLBMassControl extends Panel {
     valueProperty.link( value => {
       panelVBox.readingBlockNameResponse = StringUtils.fillIn( massControlReadingBlockPatternString, {
         label: labelContent,
-        value: numberPicker.ariaValueText
+        value: massDescriber.getMassAndUnit( thisObjectEnum )
       } );
     } );
   }
