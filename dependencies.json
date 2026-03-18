@@ -9,7 +9,7 @@
     "branch": "HEAD"
   },
   "brand": {
-    "sha": "92b3a9b2fff4e02fb12f83475e8c649e9318bf4e",
+    "sha": "9ea8d6ce2fae6113b68e9e1fa3f631e7fdee8512",
     "branch": "HEAD"
   },
   "chipper": {
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "a618492b053e6ac713f9c2ef1697c1e8f572e9a6",
+    "sha": "5567a99ab62722304fa130a3c73703eb2ff7a3de",
     "branch": "1.1"
   },
   "inverse-square-law-common": {
