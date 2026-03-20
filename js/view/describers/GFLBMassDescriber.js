@@ -9,7 +9,6 @@
 import MassDescriber from '../../../../gravity-force-lab/js/view/describers/MassDescriber.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import GFLBConstants from '../../GFLBConstants.js';
-import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 // string
@@ -36,5 +35,4 @@ class GFLBMassDescriber extends MassDescriber {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBMassDescriber', GFLBMassDescriber );
 export default GFLBMassDescriber;

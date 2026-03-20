@@ -6,7 +6,6 @@
  */
 
 import MassDescriptionNode from '../../../gravity-force-lab/js/view/MassDescriptionNode.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 class GFLBMassDescriptionNode extends MassDescriptionNode {
 
@@ -28,5 +27,4 @@ class GFLBMassDescriptionNode extends MassDescriptionNode {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBMassDescriptionNode', GFLBMassDescriptionNode );
 export default GFLBMassDescriptionNode;

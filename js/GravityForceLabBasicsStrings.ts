@@ -114,6 +114,4 @@ type StringsType = {
 
 const GravityForceLabBasicsStrings = getStringModule( 'GRAVITY_FORCE_LAB_BASICS' ) as StringsType;
 
-gravityForceLabBasics.register( 'GravityForceLabBasicsStrings', GravityForceLabBasicsStrings );
-
 export default GravityForceLabBasicsStrings;

@@ -9,7 +9,6 @@
 import GravityForceLabAlertManager from '../../../gravity-force-lab/js/view/GravityForceLabAlertManager.js';
 import merge from '../../../phet-core/js/merge.js';
 import ActivationUtterance from '../../../utterance-queue/js/ActivationUtterance.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 
 const distanceArrowVisibleString = GravityForceLabBasicsStrings.a11y.distanceArrowVisible;
@@ -63,5 +62,4 @@ class GFLBAlertManager extends GravityForceLabAlertManager {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBAlertManager', GFLBAlertManager );
 export default GFLBAlertManager;

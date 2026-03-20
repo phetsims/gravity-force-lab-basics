@@ -11,7 +11,6 @@ import LinearFunction from '../../../dot/js/LinearFunction.js';
 import Utils from '../../../dot/js/Utils.js';
 import VibrationPatterns from '../../../tappi/js/VibrationPatterns.js';
 import GFLBConstants from '../GFLBConstants.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
 // extreme values for the intensity of vibration pattern representing mass
@@ -123,5 +122,4 @@ class VibrationController {
 
 const vibrationController = new VibrationController();
 
-gravityForceLabBasics.register( 'VibrationController', VibrationController );
 export default vibrationController;

@@ -12,7 +12,6 @@ import ISLCModel from '../../../inverse-square-law-common/js/model/ISLCModel.js'
 import PhysicalConstants from '../../../phet-core/js/PhysicalConstants.js';
 import Color from '../../../scenery/js/util/Color.js';
 import GFLBConstants from '../GFLBConstants.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
 const INITIAL_VALUE_1 = 2 * GFLBConstants.BILLION_MULTIPLIER;
@@ -87,5 +86,4 @@ class GFLBModel extends ISLCModel {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBModel', GFLBModel );
 export default GFLBModel;

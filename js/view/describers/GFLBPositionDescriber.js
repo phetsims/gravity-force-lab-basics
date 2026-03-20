@@ -8,7 +8,6 @@
 
 import Utils from '../../../../dot/js/Utils.js';
 import GravityForceLabPositionDescriber from '../../../../gravity-force-lab/js/view/describers/GravityForceLabPositionDescriber.js';
-import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 // strings
@@ -43,5 +42,4 @@ class GFLBPositionDescriber extends GravityForceLabPositionDescriber {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBPositionDescriber', GFLBPositionDescriber );
 export default GFLBPositionDescriber;

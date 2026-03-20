@@ -9,7 +9,6 @@
 import Property from '../../axon/js/Property.js';
 import Range from '../../dot/js/Range.js';
 import Mass from '../../gravity-force-lab/js/model/Mass.js';
-import gravityForceLabBasics from './gravityForceLabBasics.js';
 
 // constants
 const BILLION_MULTIPLIER = 1000000000;
@@ -30,5 +29,4 @@ const GFLBConstants = {
   MASS_STEP_SIZE: 500 // in m, each time the mass is moved with a keyboard
 };
 
-gravityForceLabBasics.register( 'GFLBConstants', GFLBConstants );
 export default GFLBConstants;

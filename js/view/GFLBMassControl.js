@@ -20,7 +20,6 @@ import NumberPicker from '../../../sun/js/NumberPicker.js';
 import Panel from '../../../sun/js/Panel.js';
 import nullSoundPlayer from '../../../tambo/js/nullSoundPlayer.js';
 import GFLBConstants from '../GFLBConstants.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 
 const billionKgString = GravityForceLabBasicsStrings.billionKg;
@@ -150,8 +149,6 @@ class GFLBMassControl extends Panel {
     } );
   }
 }
-
-gravityForceLabBasics.register( 'GFLBMassControl', GFLBMassControl );
 
 /**
  * An inner class for the mass contents surrounding the NumberPicker (title, readout) that can be activated

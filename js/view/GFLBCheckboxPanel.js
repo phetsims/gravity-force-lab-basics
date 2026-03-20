@@ -16,7 +16,6 @@ import VBox from '../../../scenery/js/layout/nodes/VBox.js';
 import Text from '../../../scenery/js/nodes/Text.js';
 import Checkbox from '../../../sun/js/Checkbox.js';
 import Tandem from '../../../tandem/js/Tandem.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 class GFLBCheckboxPanel extends ISLCPanel {
 
@@ -67,5 +66,4 @@ class GFLBCheckboxPanel extends ISLCPanel {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBCheckboxPanel', GFLBCheckboxPanel );
 export default GFLBCheckboxPanel;

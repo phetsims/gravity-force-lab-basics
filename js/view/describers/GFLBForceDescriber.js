@@ -8,7 +8,6 @@
 
 import Utils from '../../../../dot/js/Utils.js';
 import ForceDescriber from '../../../../inverse-square-law-common/js/view/describers/ForceDescriber.js';
-import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 const forceArrowsCapitalizedString = GravityForceLabBasicsStrings.a11y.forceArrowsCapitalized;
@@ -74,5 +73,4 @@ class GFLBForceDescriber extends ForceDescriber {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBForceDescriber', GFLBForceDescriber );
 export default GFLBForceDescriber;

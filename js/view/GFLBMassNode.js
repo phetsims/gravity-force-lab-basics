@@ -10,7 +10,6 @@ import MassNode from '../../../gravity-force-lab/js/view/MassNode.js';
 import merge from '../../../phet-core/js/merge.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import GFLBConstants from '../GFLBConstants.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 
 // constants
 const MASS_NODE_Y_POSITION = 215;
@@ -57,5 +56,4 @@ class GFLBMassNode extends MassNode {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBMassNode', GFLBMassNode );
 export default GFLBMassNode;

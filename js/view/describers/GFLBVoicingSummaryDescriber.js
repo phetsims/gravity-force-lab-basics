@@ -12,7 +12,6 @@ import GravityForceLabStrings from '../../../../gravity-force-lab/js/GravityForc
 import InverseSquareLawCommonStrings from '../../../../inverse-square-law-common/js/InverseSquareLawCommonStrings.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
-import gravityForceLabBasics from '../../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../../GravityForceLabBasicsStrings.js';
 
 // constants
@@ -104,5 +103,4 @@ class GFLBVoicingSummaryDescriber {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBVoicingSummaryDescriber', GFLBVoicingSummaryDescriber );
 export default GFLBVoicingSummaryDescriber;

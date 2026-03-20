@@ -39,7 +39,6 @@ import VibrationTestEventRecorder from '../../../tappi/js/tracking/VibrationTest
 import VibrationTestInputListener from '../../../tappi/js/tracking/VibrationTestInputListener.js';
 import VibrationManageriOS from '../../../tappi/js/VibrationManageriOS.js';
 import GFLBConstants from '../GFLBConstants.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 import GFLBForceDescriber from './describers/GFLBForceDescriber.js';
 import GFLBMassDescriber from './describers/GFLBMassDescriber.js';
@@ -500,5 +499,4 @@ class GFLBScreenView extends ScreenView {
   }
 }
 
-gravityForceLabBasics.register( 'GFLBScreenView', GFLBScreenView );
 export default GFLBScreenView;

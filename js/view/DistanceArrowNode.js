@@ -16,7 +16,6 @@ import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import ReadingBlock from '../../../scenery/js/accessibility/voicing/ReadingBlock.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Text from '../../../scenery/js/nodes/Text.js';
-import gravityForceLabBasics from '../gravityForceLabBasics.js';
 import GravityForceLabBasicsStrings from '../GravityForceLabBasicsStrings.js';
 
 const distanceUnitsPatternString = GravityForceLabBasicsStrings.distanceUnitsPattern;
@@ -97,5 +96,4 @@ class DistanceArrowNode extends ReadingBlock( Node ) {
   }
 }
 
-gravityForceLabBasics.register( 'DistanceArrowNode', DistanceArrowNode );
 export default DistanceArrowNode;
