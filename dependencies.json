@@ -13,7 +13,7 @@
     "branch": "HEAD"
   },
   "chipper": {
-    "sha": "9c08b902f1f9ab9449dc9714bea4a793ec17de6c",
+    "sha": "1c13c39b8e7adf91e568f3483cfbc8acf303a9c1",
     "branch": "HEAD"
   },
   "dot": {
@@ -25,7 +25,7 @@
     "branch": "HEAD"
   },
   "gravity-force-lab-basics": {
-    "sha": "457f2490c55328ecf095c7d037a637308d642845",
+    "sha": "1cc1b8eeb7959a8094611bac13571c0f088293d1",
     "branch": "1.1"
   },
   "inverse-square-law-common": {
